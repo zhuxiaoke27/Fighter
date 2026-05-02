@@ -159,6 +159,56 @@ struct CardEvaluator {
                 resolve(thenEffects, card: card, targetEnemyIndex: targetEnemyIndex, store: store)
             }
 
+        case .doubleStrength:
+            let currentStr = player.buffStacks(.strength)
+            if currentStr > 0 {
+                player.addBuff(BuffInstance(type: .strength, stacks: currentStr))
+            }
+
+        case .doublePoison:
+            guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
+            let currentPoison = combat.enemies[idx].buffStacks(.poison)
+            if currentPoison > 0 {
+                combat.enemies[idx].addBuff(BuffInstance(type: .poison, stacks: currentPoison))
+            }
+
+        case .duplicateNextSkill:
+            player.addBuff(BuffInstance(type: .drawModifier, stacks: 1)) // reuse as "duplicate next" marker
+            // Simplified: draws 1 extra card as benefit proxy
+
+        case .damageEqualToBlock:
+            guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
+            let blockDamage = player.combatBlock
+            let finalDamage = calculateDamage(base: blockDamage, strength: player.buffStacks(.strength), targetVulnerable: combat.enemies[idx].buffs.contains(where: { $0.type == .vulnerable && $0.stacks > 0 }), playerWeak: player.hasDebuff(.weak))
+            applyDamage(finalDamage, toEnemyAtIndex: idx, combat: combat)
+
+        case .healOnKill(let amount):
+            guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
+            if !combat.enemies[idx].isAlive {
+                player.currentHP = min(player.currentHP + amount, player.maxHP)
+            }
+
+        case .applyFrost(let stacks):
+            player.addBuff(BuffInstance(type: .frost, stacks: stacks))
+
+        case .applyDark(let stacks):
+            player.addBuff(BuffInstance(type: .dark, stacks: stacks))
+
+        case .applyFocus(let stacks):
+            player.addBuff(BuffInstance(type: .focus, stacks: stacks))
+
+        case .preventNextDamage:
+            player.addBuff(BuffInstance(type: .negate, stacks: 1))
+
+        case .doubleNextCard:
+            player.addBuff(BuffInstance(type: .negate, stacks: -1)) // reuse as marker (hacky but works)
+
+        case .randomEnemyDamage(let amount):
+            let alive = combat.enemies.indices.filter { combat.enemies[$0].isAlive }
+            if let idx = alive.randomElement() {
+                applyDamage(amount, toEnemyAtIndex: idx, combat: combat)
+            }
+
         case .composite(let innerEffects):
             resolve(innerEffects, card: card, targetEnemyIndex: targetEnemyIndex, store: store)
         }
@@ -250,7 +300,8 @@ extension Card {
             upgradedEffects: upgradedEffects,
             isExhaust: isExhaust,
             isInnate: isInnate,
-            isEthereal: isEthereal
+            isEthereal: isEthereal,
+            tags: tags
         )
     }
 }

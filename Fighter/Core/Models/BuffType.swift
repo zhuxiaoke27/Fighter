@@ -24,6 +24,12 @@ enum BuffType: String, Codable, Sendable, CaseIterable {
     case poison
     case burn
 
+    // New buff types
+    case frost
+    case dark
+    case focus
+    case negate
+
     var isDebuff: Bool {
         switch self {
         case .vulnerable, .weak, .frail, .poison, .burn:

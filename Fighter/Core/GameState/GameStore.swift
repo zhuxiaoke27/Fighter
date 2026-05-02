@@ -57,6 +57,9 @@ final class GameStore {
     // Event state
     var currentEvent: EventTemplate?
 
+    // Run modifier (season rules)
+    var activeModifier: RunModifier? = nil
+
     init() {
         self.player = PlayerState(characterClass: .warrior)
         if let savedSettings = SaveManager.shared.loadSettings() {
@@ -71,6 +74,23 @@ final class GameStore {
         player.deck = CardDatabase.startingDeck(for: characterClass)
         player.relics = [RelicDatabase.startingRelic(for: characterClass)]
         mapState = MapGenerator.generate(act: 1)
+
+        // Apply run modifier effects
+        if let modifier = activeModifier {
+            for effect in modifier.effects {
+                switch effect {
+                case .startWithCurse(let cardKey):
+                    if let curseCard = CardDatabase.card(byKey: cardKey)?.copy() {
+                        player.deck.append(curseCard)
+                    }
+                case .bonusGoldPerFloor(let amount):
+                    player.gold += amount
+                default:
+                    break
+                }
+            }
+        }
+
         gameState = .map
     }
 

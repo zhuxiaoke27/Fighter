@@ -45,6 +45,7 @@ struct EnemyTemplate: Identifiable, Sendable {
 struct CombatEnemy: Identifiable {
     let id: UUID
     let templateID: String
+    let isBoss: Bool
     var currentHP: Int
     var maxHP: Int
     var block: Int
@@ -58,6 +59,7 @@ struct CombatEnemy: Identifiable {
     init(template: EnemyTemplate) {
         self.id = UUID()
         self.templateID = template.id
+        self.isBoss = template.isBoss
         self.maxHP = Int.random(in: template.minHP...template.maxHP)
         self.currentHP = self.maxHP
         self.block = 0

@@ -32,6 +32,22 @@ enum CombatEngine {
             }
         }
 
+        // Apply run modifier: extra boss HP
+        if let modifier = store.activeModifier {
+            for effect in modifier.effects {
+                switch effect {
+                case .extraBossHP(let multiplier):
+                    for i in combat.enemies.indices where combat.enemies[i].isBoss {
+                        let scaledHP = Int(Double(combat.enemies[i].maxHP) * multiplier)
+                        combat.enemies[i].maxHP = scaledHP
+                        combat.enemies[i].currentHP = scaledHP
+                    }
+                default:
+                    break
+                }
+            }
+        }
+
         for i in combat.enemies.indices {
             determineNextIntent(for: &combat.enemies[i])
         }
@@ -70,6 +86,24 @@ enum CombatEngine {
         let metallicize = store.player.buffStacks(.metallicize)
         if metallicize > 0 {
             store.player.combatBlock += metallicize
+        }
+
+        // Frost: gain block at turn start
+        let frostStacks = store.player.buffStacks(.frost)
+        if frostStacks > 0 {
+            let focusBonus = store.player.buffStacks(.focus)
+            store.player.combatBlock += frostStacks + focusBonus
+        }
+
+        // Dark: deal random damage at turn start
+        let darkStacks = store.player.buffStacks(.dark)
+        if darkStacks > 0, let combat = store.combatState {
+            let focusBonus = store.player.buffStacks(.focus)
+            let damage = darkStacks + focusBonus
+            let aliveIndices = combat.enemies.indices.filter { combat.enemies[$0].isAlive }
+            if let idx = aliveIndices.randomElement() {
+                combat.enemies[idx].currentHP -= damage
+            }
         }
 
         triggerRelics(.onTurnStart, store: store)
@@ -445,6 +479,43 @@ enum CombatEngine {
                     player.combatEnergy += 1
                 case "chemical_x":
                     player.combatBlock += 5
+                // New relics
+                case "happy_flower":
+                    if combat.turnNumber % 3 == 0 {
+                        player.combatEnergy += 1
+                    }
+                case "red_skull":
+                    if player.currentHP <= player.maxHP / 2 {
+                        player.addBuff(BuffInstance(type: .strength, stacks: 1))
+                    }
+                case "kunai":
+                    if player.attackCardsPlayedThisCombat % 3 == 0 {
+                        player.addBuff(BuffInstance(type: .dexterity, stacks: 1))
+                    }
+                case "wrist_blade":
+                    if player.attackCardsPlayedThisCombat % 5 == 0 {
+                        player.penNibActive = true
+                    }
+                case "pantograph":
+                    if player.currentHP <= player.maxHP / 2 {
+                        player.currentHP = min(player.currentHP + 5, player.maxHP)
+                    }
+                case "paper_crane":
+                    for i in combat.enemies.indices where combat.enemies[i].isAlive {
+                        if combat.enemies[i].buffStacks(.strength) > 0 {
+                            combat.enemies[i].addBuff(BuffInstance(type: .weak, stacks: 1, isDurationBased: true))
+                        }
+                    }
+                case "strange_spoon":
+                    if Double.random(in: 0...1) < 0.5, !combat.exhaustPile.isEmpty {
+                        let card = combat.exhaustPile.removeLast()
+                        combat.discardPile.append(card)
+                    }
+                case "du_vu_doll":
+                    let curseCount = store.player.deck.filter { $0.type == .curse }.count
+                    if curseCount > 0 {
+                        player.addBuff(BuffInstance(type: .strength, stacks: curseCount))
+                    }
                 default:
                     // Generic: resolve effect through CardEvaluator
                     CardEvaluator.resolve(
@@ -470,6 +541,9 @@ enum CombatEngine {
              (.onGoldGained, .onGoldGained),
              (.onCardAdded, .onCardAdded),
              (.onShuffle, .onShuffle),
+             (.onExhaust, .onExhaust),
+             (.onDraw, .onDraw),
+             (.onGainStrength, .onGainStrength),
              (.passive, .passive):
             return true
         case (.onCardPlayed(let relicType), .onCardPlayed(let eventType)):

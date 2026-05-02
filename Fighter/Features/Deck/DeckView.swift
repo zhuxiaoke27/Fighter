@@ -8,9 +8,14 @@ import SwiftUI
 struct DeckView: View {
     let deck: [Card]
     @Environment(\.dismiss) private var dismiss
+    @State private var selectedTag: CardTag? = nil
 
-    private var sortedDeck: [Card] {
-        deck.sorted { lhs, rhs in
+    private var filteredDeck: [Card] {
+        var cards = deck
+        if let selectedTag {
+            cards = cards.filter { $0.tags.contains(selectedTag) }
+        }
+        return cards.sorted { lhs, rhs in
             if lhs.type.rawValue != rhs.type.rawValue {
                 return lhs.type.rawValue < rhs.type.rawValue
             }
@@ -36,12 +41,15 @@ struct DeckView: View {
                     .padding(.top, 16)
                     .padding(.bottom, 8)
 
+                tagFilterBar
+                    .padding(.bottom, 8)
+
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVGrid(columns: [
                         GridItem(.flexible(), spacing: 8),
                         GridItem(.flexible(), spacing: 8)
                     ], spacing: 8) {
-                        ForEach(sortedDeck) { card in
+                        ForEach(filteredDeck) { card in
                             DeckCardRow(card: card)
                         }
                     }
@@ -58,7 +66,7 @@ struct DeckView: View {
                 .font(.system(size: 18, weight: .bold, design: .rounded))
                 .foregroundStyle(Theme.textPrimary)
 
-            Text("\(deck.count)")
+            Text("\(filteredDeck.count)/\(deck.count)")
                 .font(.system(size: 14, weight: .bold, design: .rounded))
                 .foregroundStyle(Theme.textSecondary)
 
@@ -74,6 +82,59 @@ struct DeckView: View {
             .buttonStyle(.plain)
         }
         .padding(.horizontal, Theme.padding)
+    }
+
+    private var tagFilterBar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 6) {
+                tagChip(label: "All", isSelected: selectedTag == nil) {
+                    selectedTag = nil
+                }
+                ForEach(Array(CardTag.allCases.enumerated()), id: \.offset) { _, tag in
+                    tagChip(label: tagLabel(tag), isSelected: selectedTag == tag) {
+                        selectedTag = selectedTag == tag ? nil : tag
+                    }
+                }
+            }
+            .padding(.horizontal, Theme.padding)
+        }
+    }
+
+    private func tagChip(label: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(label)
+                .font(.system(size: 11, weight: .bold, design: .rounded))
+                .foregroundStyle(isSelected ? Theme.textPrimary : Theme.textSecondary)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .background(
+                    Capsule()
+                        .fill(isSelected ? Theme.energyColor.opacity(0.25) : Color.white.opacity(0.05))
+                )
+                .overlay(
+                    Capsule()
+                        .stroke(isSelected ? Theme.energyColor.opacity(0.5) : Color.white.opacity(0.08), lineWidth: 0.5)
+                )
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func tagLabel(_ tag: CardTag) -> String {
+        switch tag {
+        case .exhaust: return "Exhaust"
+        case .strength: return "STR"
+        case .poison: return "Poison"
+        case .energy: return "Energy"
+        case .block: return "Block"
+        case .draw: return "Draw"
+        case .multiHit: return "Multi"
+        case .selfDamage: return "Self"
+        case .cardGen: return "Generate"
+        case .starter: return "Starter"
+        case .offensive: return "ATK"
+        case .defensive: return "DEF"
+        case .utility: return "Util"
+        }
     }
 }
 

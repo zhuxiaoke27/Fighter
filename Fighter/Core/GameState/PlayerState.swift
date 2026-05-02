@@ -76,6 +76,15 @@ final class PlayerState {
     }
 
     func takeDamage(_ amount: Int) -> Int {
+        // Negate buff: prevent next damage
+        if buffs.contains(where: { $0.type == .negate && $0.stacks > 0 }) {
+            if let idx = buffs.firstIndex(where: { $0.type == .negate }) {
+                buffs[idx].stacks -= 1
+                if buffs[idx].stacks <= 0 { buffs.remove(at: idx) }
+            }
+            return 0
+        }
+
         var remaining = amount
         if combatBlock > 0 {
             if combatBlock >= remaining {

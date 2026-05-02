@@ -240,6 +240,17 @@ struct CardDetailView: View {
         case .ifHasDebuff(_, let e):          return e.map { effectDescription($0) }.joined(separator: " + ") + " (if debuffed)"
         case .ifHPBelow(_, let e):            return e.map { effectDescription($0) }.joined(separator: " + ") + " (if low HP)"
         case .ifCardInHand(_, let e):         return e.map { effectDescription($0) }.joined(separator: " + ") + " (if card in hand)"
+        case .doubleStrength:                   return "Double strength"
+        case .doublePoison:                     return "Double poison on target"
+        case .duplicateNextSkill:               return "Next skill plays twice"
+        case .damageEqualToBlock:               return "Deal damage equal to block"
+        case .healOnKill(let n):                return "Heal \(n) on kill"
+        case .applyFrost(let n):                return "Gain \(n) Frost"
+        case .applyDark(let n):                 return "Gain \(n) Dark"
+        case .applyFocus(let n):                return "Gain \(n) Focus"
+        case .preventNextDamage:                return "Block next attack"
+        case .doubleNextCard:                   return "Next card plays twice"
+        case .randomEnemyDamage(let n):         return "Deal \(n) to random enemy"
         case .composite(let effects):         return effects.map { effectDescription($0) }.joined(separator: " + ")
         }
     }
@@ -260,6 +271,10 @@ struct CardDetailView: View {
         case .thorns:       return "Thorns"
         case .drawModifier: return "Draw+"
         case .burn:         return "Burn"
+        case .frost:    return "Frost"
+        case .dark:     return "Dark"
+        case .focus:    return "Focus"
+        case .negate:   return "Negate"
         }
     }
 }

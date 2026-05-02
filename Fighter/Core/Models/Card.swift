@@ -20,6 +20,12 @@ enum CardTarget: String, Codable, Sendable {
     case none
 }
 
+enum CardTag: String, Codable, Sendable, CaseIterable {
+    case exhaust, strength, poison, energy, block, draw
+    case multiHit, selfDamage, cardGen
+    case starter, offensive, defensive, utility
+}
+
 struct Card: Identifiable, Codable, Sendable, Equatable {
     let id: String
     let templateKey: String
@@ -33,6 +39,7 @@ struct Card: Identifiable, Codable, Sendable, Equatable {
     let isExhaust: Bool
     let isInnate: Bool
     let isEthereal: Bool
+    let tags: Set<CardTag>
 
     var isUpgraded: Bool
 
@@ -61,6 +68,7 @@ struct Card: Identifiable, Codable, Sendable, Equatable {
         isExhaust: false,
         isInnate: false,
         isEthereal: false,
+        tags: [],
         isUpgraded: false
     )
 
@@ -78,6 +86,7 @@ struct Card: Identifiable, Codable, Sendable, Equatable {
             isExhaust: isExhaust,
             isInnate: isInnate,
             isEthereal: isEthereal,
+            tags: tags,
             isUpgraded: true
         )
     }
@@ -93,7 +102,8 @@ struct Card: Identifiable, Codable, Sendable, Equatable {
         upgradedEffects: [Effect]? = nil,
         isExhaust: Bool = false,
         isInnate: Bool = false,
-        isEthereal: Bool = false
+        isEthereal: Bool = false,
+        tags: Set<CardTag> = []
     ) -> Card {
         Card(
             id: UUID().uuidString,
@@ -108,6 +118,7 @@ struct Card: Identifiable, Codable, Sendable, Equatable {
             isExhaust: isExhaust,
             isInnate: isInnate,
             isEthereal: isEthereal,
+            tags: tags,
             isUpgraded: false
         )
     }
