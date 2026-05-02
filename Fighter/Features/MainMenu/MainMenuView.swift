@@ -106,6 +106,7 @@ struct MainMenuView: View {
                     Button {
                         store.player = PlayerState(characterClass: .warrior)
                         store.player.deck = CardDatabase.startingDeck(for: .warrior)
+                        store.mapState = MapGenerator.generate(act: 1)
                         store.startCombat(enemies: EnemyDatabase.randomBattle(act: 1))
                     } label: {
                         HStack(spacing: 8) {

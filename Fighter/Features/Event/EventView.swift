@@ -233,10 +233,10 @@ struct EventView: View {
                 }
                 if upgraded > 0 { results.append("\(upgraded) cards upgraded") }
             case .gainStrength(let amount):
-                player.buffs.append(BuffInstance(type: .strength, stacks: amount))
+                player.permanentStrengthBonus += amount
                 results.append("+\(amount) Strength")
             case .gainDexterity(let amount):
-                player.buffs.append(BuffInstance(type: .dexterity, stacks: amount))
+                player.permanentDexterityBonus += amount
                 results.append("+\(amount) Dexterity")
             case .gainBlockPermanent(let amount):
                 player.combatBlock += amount

@@ -100,6 +100,14 @@ final class GameStore {
         combatState = combat
         combat.enemies = enemies.map { CombatEnemy(template: $0) }
         player.resetForCombat()
+
+        // Safety: ensure deck is not empty
+        if player.deck.isEmpty {
+            if let strike = CardDatabase.card(byKey: "strike_warrior")?.copy() {
+                player.deck.append(strike)
+            }
+        }
+
         CombatEngine.startCombat(store: self)
         gameState = .combat
     }
@@ -109,6 +117,12 @@ final class GameStore {
         rewardRelic = nil
         rewardPotion = nil
         if victory {
+            // Inserter relic: gain 1 max HP on combat victory
+            if player.relics.contains(where: { $0.id == "inserter" }) {
+                player.maxHP += 1
+                player.currentHP = min(player.currentHP + 1, player.maxHP)
+            }
+
             if lastBattleWasEliteOrBoss {
                 // Elite/Boss: better gold + guaranteed uncommon/rare cards
                 rewardGold = Int.random(in: 30...50) + currentFloor * 3

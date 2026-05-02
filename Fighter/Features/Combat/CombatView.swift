@@ -33,6 +33,10 @@ struct CombatView: View {
     @State private var enemyZoneFrame: CGRect = .zero
     @State private var playerZoneFrame: CGRect = .zero
 
+    // Potion usage
+    @State private var showPotionMenu: Bool = false
+    @State private var potionTargetingIndex: Int? = nil
+
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -97,6 +101,9 @@ struct CombatView: View {
 
                         // Pile indicators (tappable)
                         pileIndicators(combat: combat)
+
+                        // Potion bar
+                        potionBar(combat: combat)
 
                         Spacer()
 
@@ -605,9 +612,19 @@ struct CombatView: View {
 
     private func handleEnemyTap(_ enemy: CombatEnemy) {
         guard let combat = store.combatState,
-              let cardID = combat.selectedCardID,
               combat.combatPhase == .targetSelection else { return }
 
+        // Potion targeting mode
+        if let potionIdx = potionTargetingIndex {
+            CombatEngine.usePotion(potionIndex: potionIdx, targetEnemyID: enemy.id, store: store)
+            potionTargetingIndex = nil
+            combat.selectedTargetID = nil
+            combat.combatPhase = .playerAction
+            return
+        }
+
+        // Card targeting mode
+        guard let cardID = combat.selectedCardID else { return }
         combat.selectedTargetID = enemy.id
         CombatEngine.playCard(cardID: cardID, targetEnemyID: enemy.id, store: store)
         combat.selectedCardID = nil
@@ -647,6 +664,71 @@ struct CombatView: View {
         case .power:  return "bolt.fill"
         case .status: return "exclamationmark.triangle"
         case .curse:  return "flame"
+        }
+    }
+
+    // MARK: - Potion Bar
+
+    private func potionBar(combat: CombatState) -> some View {
+        HStack(spacing: 12) {
+            ForEach(0..<3, id: \.self) { index in
+                let potion = store.player.potions[index]
+                Button {
+                    if potion != nil {
+                        handlePotionTap(index: index, combat: combat)
+                    }
+                } label: {
+                    ZStack {
+                        Circle()
+                            .fill(potion != nil ? potionCircleColor(for: potion!.id).opacity(0.2) : Color.white.opacity(0.04))
+                            .frame(width: 32, height: 32)
+                        if let p = potion {
+                            Image(systemName: "drop.fill")
+                                .font(.system(size: 14))
+                                .foregroundStyle(potionCircleColor(for: p.id))
+                        } else {
+                            Circle()
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                .frame(width: 32, height: 32)
+                        }
+                    }
+                }
+                .buttonStyle(.plain)
+                .disabled(potion == nil || !combat.isPlayerTurn)
+            }
+        }
+        .padding(.vertical, 4)
+    }
+
+    private func handlePotionTap(index: Int, combat: CombatState) {
+        guard let potion = store.player.potions[index] else { return }
+
+        switch potion.target {
+        case .enemy:
+            let alive = combat.aliveEnemies
+            if alive.count == 1 {
+                CombatEngine.usePotion(potionIndex: index, targetEnemyID: alive[0].id, store: store)
+            } else if alive.count > 1 {
+                combat.selectedCardID = nil
+                combat.combatPhase = .targetSelection
+                potionTargetingIndex = index
+            }
+        case .allEnemies, .selfTarget, .none:
+            CombatEngine.usePotion(potionIndex: index, targetEnemyID: nil, store: store)
+        }
+    }
+
+    private func potionCircleColor(for id: String) -> Color {
+        switch id {
+        case "fire_potion":       return Color(red: 0.90, green: 0.30, blue: 0.25)
+        case "block_potion":      return Theme.blockColor
+        case "strength_potion":   return Color(red: 0.85, green: 0.55, blue: 0.20)
+        case "weakness_potion":   return Color(red: 0.60, green: 0.40, blue: 0.80)
+        case "energy_potion":     return Theme.energyColor
+        case "elixir_potion":     return Color(red: 0.30, green: 0.85, blue: 0.40)
+        case "liquid_memories":   return Color(red: 0.40, green: 0.70, blue: 0.90)
+        case "bottled_void":      return Color(red: 0.50, green: 0.30, blue: 0.70)
+        default:                  return Theme.textSecondary
         }
     }
 

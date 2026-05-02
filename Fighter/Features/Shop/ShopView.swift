@@ -41,15 +41,63 @@ struct ShopView: View {
                 .padding(.horizontal, Theme.padding)
                 .padding(.top, 20)
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 14) {
-                        ForEach(Array(store.shopCards.enumerated()), id: \.offset) { index, card in
-                            shopCardView(card: card, index: index)
+                // Cards section
+                if !store.shopCards.isEmpty {
+                    Text(String(localized: "label_cards"))
+                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .foregroundStyle(Theme.textSecondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, Theme.padding)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 14) {
+                            ForEach(Array(store.shopCards.enumerated()), id: \.offset) { index, card in
+                                shopCardView(card: card, index: index)
+                            }
                         }
+                        .padding(.horizontal, Theme.padding)
                     }
-                    .padding(.horizontal, Theme.padding)
                 }
 
+                // Relics section
+                if !store.shopRelics.isEmpty {
+                    Text(String(localized: "label_relics"))
+                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .foregroundStyle(Theme.textSecondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, Theme.padding)
+                        .padding(.top, 4)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 14) {
+                            ForEach(Array(store.shopRelics.enumerated()), id: \.offset) { index, relic in
+                                shopRelicView(relic: relic, index: index)
+                            }
+                        }
+                        .padding(.horizontal, Theme.padding)
+                    }
+                }
+
+                // Potions section
+                if !store.shopPotions.isEmpty {
+                    Text(String(localized: "label_potions"))
+                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .foregroundStyle(Theme.textSecondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, Theme.padding)
+                        .padding(.top, 4)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 14) {
+                            ForEach(Array(store.shopPotions.enumerated()), id: \.offset) { index, potion in
+                                shopPotionView(potion: potion, index: index)
+                            }
+                        }
+                        .padding(.horizontal, Theme.padding)
+                    }
+                }
+
+                // Remove card button
                 HStack(spacing: 16) {
                     Button {
                         showRemoveSheet = true
@@ -156,6 +204,7 @@ struct ShopView: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                     ForEach(store.player.deck) { card in
                         Button {
+                            guard store.player.gold >= 75 else { return }
                             if let idx = store.player.deck.firstIndex(where: { $0.id == card.id }) {
                                 store.player.deck.remove(at: idx)
                             }
@@ -204,6 +253,115 @@ struct ShopView: View {
         case .power:  return "bolt.fill"
         case .status: return "exclamationmark.triangle"
         case .curse:  return "flame"
+        }
+    }
+
+    // MARK: - Shop Relic View
+
+    private func shopRelicView(relic: RelicTemplate, index: Int) -> some View {
+        let price = index < store.shopRelicPrices.count ? store.shopRelicPrices[index] : 150
+        let canAfford = store.player.gold >= price
+        return Button {
+            store.purchaseRelic(at: index)
+        } label: {
+            VStack(spacing: 4) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(red: 0.85, green: 0.65, blue: 0.20).opacity(0.15))
+                        .frame(width: 80, height: 50)
+                    Image(systemName: "gem")
+                        .font(.system(size: 20))
+                        .foregroundStyle(Color(red: 0.85, green: 0.65, blue: 0.20).opacity(0.7))
+                }
+                Text(String(localized: LocalizedStringResource(stringLiteral: relic.nameKey)))
+                    .font(Theme.cardTitleFont)
+                    .foregroundStyle(Theme.textPrimary)
+                    .lineLimit(1)
+                Text(String(localized: LocalizedStringResource(stringLiteral: relic.descriptionKey)))
+                    .font(.system(size: 8))
+                    .foregroundStyle(Theme.textAccent)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+                HStack(spacing: 3) {
+                    Image(systemName: "coins")
+                        .font(.system(size: 10))
+                    Text("\(price)")
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                }
+                .foregroundStyle(canAfford ? Theme.energyColor : Theme.textSecondary.opacity(0.5))
+            }
+            .padding(8)
+            .frame(width: 90, height: 140)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 0.14, green: 0.13, blue: 0.22)))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(canAfford ? Color(red: 0.85, green: 0.65, blue: 0.20).opacity(0.3) : Color.white.opacity(0.06), lineWidth: 1))
+        }
+        .buttonStyle(.plain)
+        .opacity(canAfford ? 1.0 : 0.5)
+    }
+
+    // MARK: - Shop Potion View
+
+    private func shopPotionView(potion: PotionTemplate, index: Int) -> some View {
+        let price = index < store.shopPotionPrices.count ? store.shopPotionPrices[index] : 50
+        let canAfford = store.player.gold >= price
+        let hasEmptySlot = store.player.potions.contains(where: { $0 == nil })
+        return Button {
+            store.purchasePotion(at: index)
+        } label: {
+            VStack(spacing: 4) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(potionColor(for: potion.id).opacity(0.15))
+                        .frame(width: 80, height: 50)
+                    Image(systemName: "drop.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(potionColor(for: potion.id).opacity(0.7))
+                }
+                Text(String(localized: LocalizedStringResource(stringLiteral: potion.nameKey)))
+                    .font(Theme.cardTitleFont)
+                    .foregroundStyle(Theme.textPrimary)
+                    .lineLimit(1)
+                Text(String(localized: LocalizedStringResource(stringLiteral: potion.descriptionKey)))
+                    .font(.system(size: 8))
+                    .foregroundStyle(Theme.textAccent)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+                if !hasEmptySlot {
+                    Text(String(localized: "label_full"))
+                        .font(.system(size: 11, weight: .bold, design: .rounded))
+                        .foregroundStyle(Theme.textSecondary.opacity(0.5))
+                } else {
+                    HStack(spacing: 3) {
+                        Image(systemName: "coins")
+                            .font(.system(size: 10))
+                        Text("\(price)")
+                            .font(.system(size: 12, weight: .bold, design: .rounded))
+                    }
+                    .foregroundStyle(canAfford ? Theme.energyColor : Theme.textSecondary.opacity(0.5))
+                }
+            }
+            .padding(8)
+            .frame(width: 90, height: 140)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 0.14, green: 0.13, blue: 0.22)))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(canAfford && hasEmptySlot ? potionColor(for: potion.id).opacity(0.3) : Color.white.opacity(0.06), lineWidth: 1))
+        }
+        .buttonStyle(.plain)
+        .opacity(canAfford && hasEmptySlot ? 1.0 : 0.5)
+    }
+
+    private func potionColor(for id: String) -> Color {
+        switch id {
+        case "fire_potion":       return Color(red: 0.90, green: 0.30, blue: 0.25)
+        case "block_potion":      return Theme.blockColor
+        case "strength_potion":   return Color(red: 0.85, green: 0.55, blue: 0.20)
+        case "weakness_potion":   return Color(red: 0.60, green: 0.40, blue: 0.80)
+        case "energy_potion":     return Theme.energyColor
+        case "elixir_potion":     return Color(red: 0.30, green: 0.85, blue: 0.40)
+        case "liquid_memories":   return Color(red: 0.40, green: 0.70, blue: 0.90)
+        case "bottled_void":      return Color(red: 0.50, green: 0.30, blue: 0.70)
+        default:                  return Theme.textSecondary
         }
     }
 }
