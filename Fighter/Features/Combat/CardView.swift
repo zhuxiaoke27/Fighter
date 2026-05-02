@@ -19,11 +19,18 @@ struct CardView: View {
 
             // Info area
             VStack(spacing: 3) {
-                Text(String(localized: LocalizedStringResource(stringLiteral: card.nameKey)))
-                    .font(Theme.cardTitleFont)
-                    .foregroundStyle(Theme.textPrimary)
-                    .lineLimit(1)
-                    .padding(.horizontal, 6)
+                HStack(spacing: 2) {
+                    Text(String(localized: LocalizedStringResource(stringLiteral: card.nameKey)))
+                        .font(Theme.cardTitleFont)
+                        .foregroundStyle(card.isUpgraded ? Theme.energyColor : Theme.textPrimary)
+                        .lineLimit(1)
+                    if card.isUpgraded {
+                        Text("+")
+                            .font(.system(size: 10, weight: .bold, design: .rounded))
+                            .foregroundStyle(.green)
+                    }
+                }
+                .padding(.horizontal, 6)
 
                 Text(String(localized: LocalizedStringResource(stringLiteral: card.descriptionKey)))
                     .font(Theme.cardDescFont)

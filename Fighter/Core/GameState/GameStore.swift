@@ -24,7 +24,7 @@ enum AppLanguage: String, Codable, Sendable, CaseIterable {
     case zhHans
 }
 
-struct GameSettings: Codable, Sendable {
+struct GameSettings: Codable, Sendable, Equatable {
     var language: AppLanguage = .system
     var hapticFeedback: Bool = true
     var showDamageNumbers: Bool = true
@@ -59,6 +59,9 @@ final class GameStore {
 
     init() {
         self.player = PlayerState(characterClass: .warrior)
+        if let savedSettings = SaveManager.shared.loadSettings() {
+            self.settings = savedSettings
+        }
     }
 
     // MARK: - Run Lifecycle
@@ -105,6 +108,7 @@ final class GameStore {
             gameState = .reward
         } else {
             gameState = .gameOver(victory: false)
+            SaveManager.shared.deleteSave()
         }
         combatVictory = nil
     }
@@ -170,32 +174,39 @@ final class GameStore {
             let nextAct = currentAct + 1
             if nextAct > 3 {
                 gameState = .gameOver(victory: true)
+                SaveManager.shared.deleteSave()
             } else {
                 mapState = MapGenerator.generate(act: nextAct)
                 gameState = .map
+                SaveManager.shared.save(store: self)
             }
         } else {
             gameState = .map
+            SaveManager.shared.save(store: self)
         }
     }
 
     func completeRestSite() {
         gameState = .map
+        SaveManager.shared.save(store: self)
     }
 
     func completeShop() {
         gameState = .map
+        SaveManager.shared.save(store: self)
     }
 
     func completeEvent() {
         currentEvent = nil
         gameState = .map
+        SaveManager.shared.save(store: self)
     }
 
     // MARK: - Run End
 
     func endRun(victory: Bool) {
         gameState = .gameOver(victory: victory)
+        SaveManager.shared.deleteSave()
     }
 
     // MARK: - Shop Preparation

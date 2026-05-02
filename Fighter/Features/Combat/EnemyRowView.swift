@@ -32,6 +32,8 @@ struct EnemyView: View {
     let isSelected: Bool
     let onTap: () -> Void
 
+    @State private var hitFlash = false
+
     var body: some View {
         Button(action: onTap) {
             VStack(spacing: 8) {
@@ -55,6 +57,12 @@ struct EnemyView: View {
                             )
                             .frame(width: 90, height: 70)
 
+                        // Hit flash overlay
+                        RoundedRectangle(cornerRadius: 14)
+                            .fill(Color.white)
+                            .frame(width: 90, height: 70)
+                            .opacity(hitFlash ? 0.6 : 0)
+
                         if !enemy.isAlive {
                             Image(systemName: "xmark")
                                 .font(.system(size: 28, weight: .heavy))
@@ -64,6 +72,14 @@ struct EnemyView: View {
                             Image(systemName: enemyIcon)
                                 .font(.system(size: 26))
                                 .foregroundStyle(Theme.textSecondary.opacity(0.6))
+                        }
+                    }
+                    .onChange(of: enemy.currentHP) { oldHP, newHP in
+                        if newHP < oldHP {
+                            hitFlash = true
+                            withAnimation(.easeOut(duration: 0.25)) {
+                                hitFlash = false
+                            }
                         }
                     }
                     .overlay(
@@ -199,14 +215,36 @@ struct EnemyView: View {
                             .fill(Theme.enemyIntentDefend.opacity(0.15))
                             .overlay(Capsule().stroke(Theme.enemyIntentDefend.opacity(0.3), lineWidth: 1))
                     )
-                case .buff:
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.system(size: 20))
-                        .foregroundStyle(Theme.enemyIntentBuff)
-                case .debuff:
-                    Image(systemName: "arrow.down.circle.fill")
-                        .font(.system(size: 20))
-                        .foregroundStyle(Theme.enemyIntentDebuff)
+                case .buff(let type, let stacks):
+                    HStack(spacing: 3) {
+                        Image(systemName: "arrow.up.circle.fill")
+                            .font(.system(size: 11, weight: .semibold))
+                        Text("\(stacks)")
+                            .font(Theme.enemyIntentFont)
+                    }
+                    .foregroundStyle(Theme.enemyIntentBuff)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(Theme.enemyIntentBuff.opacity(0.15))
+                            .overlay(Capsule().stroke(Theme.enemyIntentBuff.opacity(0.3), lineWidth: 1))
+                    )
+                case .debuff(let type, let stacks):
+                    HStack(spacing: 3) {
+                        Image(systemName: "arrow.down.circle.fill")
+                            .font(.system(size: 11, weight: .semibold))
+                        Text("\(stacks)")
+                            .font(Theme.enemyIntentFont)
+                    }
+                    .foregroundStyle(Theme.enemyIntentDebuff)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(Theme.enemyIntentDebuff.opacity(0.15))
+                            .overlay(Capsule().stroke(Theme.enemyIntentDebuff.opacity(0.3), lineWidth: 1))
+                    )
                 case .unknown:
                     Image(systemName: "questionmark.circle.fill")
                         .font(.system(size: 20))

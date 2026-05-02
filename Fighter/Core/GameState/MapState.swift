@@ -31,7 +31,7 @@ enum MapNodeType: String, Codable, Sendable {
     }
 }
 
-struct MapNode: Identifiable {
+struct MapNode: Identifiable, Codable {
     let id: UUID
     let floor: Int
     let column: Int
@@ -68,6 +68,31 @@ final class MapState {
 
     init(act: Int) {
         self.act = act
+    }
+
+    // MARK: - Codable Support
+
+    struct CodableDTO: Codable, Sendable {
+        let act: Int
+        let floors: [[MapNode]]
+        let currentNodeID: UUID?
+        let currentFloor: Int
+    }
+
+    convenience init(from dto: CodableDTO) {
+        self.init(act: dto.act)
+        self.floors = dto.floors
+        self.currentNodeID = dto.currentNodeID
+        self.currentFloor = dto.currentFloor
+    }
+
+    var dto: CodableDTO {
+        CodableDTO(
+            act: act,
+            floors: floors,
+            currentNodeID: currentNodeID,
+            currentFloor: currentFloor
+        )
     }
 
     func accessibleNodes() -> [MapNode] {

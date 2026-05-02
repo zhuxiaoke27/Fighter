@@ -24,9 +24,14 @@ struct CardHandView: View {
                         onLongPress: { onCardLongPress?(card) }
                     )
                     .zIndex(card.id == selectedCardID ? 10 : 0)
+                    .transition(.asymmetric(
+                        insertion: .scale(scale: 0.5).combined(with: .opacity),
+                        removal: .scale(scale: 0.8).combined(with: .opacity)
+                    ))
                 }
             }
             .padding(.horizontal, Theme.padding)
+            .animation(.spring(response: 0.35, dampingFraction: 0.75), value: hand.count)
         }
         .frame(height: Theme.cardHeight + 16)
     }

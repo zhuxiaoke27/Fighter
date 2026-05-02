@@ -218,20 +218,77 @@ enum CombatEngine {
     // MARK: - Enemy AI
 
     private static func determineNextIntent(for enemy: inout CombatEnemy) {
-        let roll = Double.random(in: 0...1)
-        if roll < 0.6 {
+        guard let template = EnemyDatabase.enemy(byID: enemy.templateID),
+              !template.actions.isEmpty else {
             let damage = Int.random(in: 5...12)
             enemy.nextIntent = .attack(damage)
             enemy.nextAction = EnemyAction(intent: .attack(damage), effects: [.dealDamage(damage)])
-        } else if roll < 0.85 {
-            let blockAmount = Int.random(in: 4...8)
-            enemy.nextIntent = .defend(blockAmount)
-            enemy.nextAction = EnemyAction(intent: .defend(blockAmount), effects: [.gainBlock(blockAmount)])
-        } else {
-            let damage = Int.random(in: 8...15)
-            enemy.nextIntent = .attack(damage)
-            enemy.nextAction = EnemyAction(intent: .attack(damage), effects: [.dealDamage(damage)])
+            return
         }
+
+        switch template.pattern {
+        case .sequential:
+            let index = enemy.actionIndex % template.actions.count
+            let weighted = template.actions[index]
+            enemy.nextIntent = weighted.action.intent
+            enemy.nextAction = weighted.action
+            enemy.actionIndex += 1
+
+        case .conditional:
+            if enemy.currentHP > enemy.maxHP * 3 / 4 && template.actions.contains(where: { isBuffAction($0.action) }) {
+                let buffActions = template.actions.filter { isBuffAction($0.action) }
+                let picked = pickWeighted(buffActions)
+                enemy.nextIntent = picked.intent
+                enemy.nextAction = picked
+            } else if enemy.block == 0 && template.actions.contains(where: { isDefendAction($0.action) }) {
+                let defendActions = template.actions.filter { isDefendAction($0.action) }
+                let picked = pickWeighted(defendActions)
+                enemy.nextIntent = picked.intent
+                enemy.nextAction = picked
+            } else {
+                let attackActions = template.actions.filter { isAttackAction($0.action) }
+                if attackActions.isEmpty {
+                    let picked = pickWeighted(template.actions)
+                    enemy.nextIntent = picked.intent
+                    enemy.nextAction = picked
+                } else {
+                    let picked = pickWeighted(attackActions)
+                    enemy.nextIntent = picked.intent
+                    enemy.nextAction = picked
+                }
+            }
+
+        case .random:
+            let picked = pickWeighted(template.actions)
+            enemy.nextIntent = picked.intent
+            enemy.nextAction = picked
+        }
+    }
+
+    private static func pickWeighted(_ actions: [WeightedAction]) -> EnemyAction {
+        let totalWeight = actions.reduce(0.0) { $0 + $1.weight }
+        var roll = Double.random(in: 0...totalWeight)
+        for weighted in actions {
+            roll -= weighted.weight
+            if roll <= 0 { return weighted.action }
+        }
+        return actions.last!.action
+    }
+
+    private static func isAttackAction(_ action: EnemyAction) -> Bool {
+        if case .attack = action.intent { return true }
+        if case .attackMulti = action.intent { return true }
+        return false
+    }
+
+    private static func isDefendAction(_ action: EnemyAction) -> Bool {
+        if case .defend = action.intent { return true }
+        return false
+    }
+
+    private static func isBuffAction(_ action: EnemyAction) -> Bool {
+        if case .buff = action.intent { return true }
+        return false
     }
 
     // MARK: - Relic Triggers

@@ -20,6 +20,11 @@ struct CombatView: View {
     @State private var dragStartPosition: CGPoint = .zero
     @State private var isDragging: Bool = false
 
+    // Animation state
+    @State private var floatingTexts: [FloatingText] = []
+    @State private var isEnemyTurnTransition = false
+    @State private var previousTurnFlag = false
+
     // Drop zone tracking
     @State private var enemyZoneFrame: CGRect = .zero
     @State private var playerZoneFrame: CGRect = .zero
@@ -131,6 +136,29 @@ struct CombatView: View {
                     detailCard = nil
                 }
             }
+
+            // Floating damage/heal numbers
+            ForEach(floatingTexts) { ft in
+                Text(ft.text)
+                    .font(.system(size: ft.isCrit ? 22 : 16, weight: .heavy, design: .rounded))
+                    .foregroundStyle(ft.color)
+                    .shadow(color: .black.opacity(0.6), radius: 2)
+                    .position(ft.position)
+                    .opacity(ft.opacity)
+                    .offset(y: ft.offset)
+            }
+
+            // Enemy turn transition overlay
+            if isEnemyTurnTransition {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                    .transition(.opacity)
+                Text(String(localized: "label_enemy_turn"))
+                    .font(.system(size: 28, weight: .heavy, design: .rounded))
+                    .foregroundStyle(Color(red: 0.90, green: 0.30, blue: 0.25))
+                    .shadow(color: .black.opacity(0.5), radius: 4)
+                    .transition(.opacity.combined(with: .scale(scale: 0.8)))
+            }
         }
         .sheet(item: $browsePile) { pile in
             if let combat = store.combatState {
@@ -143,6 +171,65 @@ struct CombatView: View {
                         case .exhaust: return combat.exhaustPile
                         }
                     }()
+                )
+            }
+        }
+        .onChange(of: store.combatState?.isPlayerTurn ?? true) { _, isPlayerTurn in
+            if !isPlayerTurn && !previousTurnFlag {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    isEnemyTurnTransition = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        isEnemyTurnTransition = false
+                    }
+                }
+            }
+            previousTurnFlag = isPlayerTurn
+        }
+        .onChange(of: store.combatState?.enemies.map(\.currentHP) ?? []) { oldHPs, newHPs in
+            guard let combat = store.combatState else { return }
+            for i in 0..<min(oldHPs.count, newHPs.count) {
+                let oldHP = oldHPs[i]
+                let newHP = newHPs[i]
+                if newHP < oldHP {
+                    let damage = oldHP - newHP
+                    let isCrit = damage >= 20
+                    spawnFloatingText(
+                        "\(damage)",
+                        at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.32),
+                        color: Color(red: 0.95, green: 0.30, blue: 0.20),
+                        isCrit: isCrit
+                    )
+                }
+            }
+        }
+        .onChange(of: store.player.currentHP) { oldHP, newHP in
+            if newHP < oldHP {
+                let damage = oldHP - newHP
+                spawnFloatingText(
+                    "\(damage)",
+                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.08),
+                    color: Color(red: 0.95, green: 0.30, blue: 0.20),
+                    isCrit: damage >= 15
+                )
+            } else if newHP > oldHP {
+                let heal = newHP - oldHP
+                spawnFloatingText(
+                    "+\(heal)",
+                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.08),
+                    color: Color(red: 0.30, green: 0.85, blue: 0.40),
+                    isCrit: false
+                )
+            }
+        }
+        .onChange(of: store.player.combatBlock) { _, newBlock in
+            if newBlock > 0 {
+                spawnFloatingText(
+                    "+\(newBlock)🛡",
+                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.12),
+                    color: Theme.blockColor,
+                    isCrit: false
                 )
             }
         }
@@ -491,6 +578,23 @@ struct CombatView: View {
         isDragging = false
     }
 
+    private func spawnFloatingText(_ text: String, at position: CGPoint, color: Color, isCrit: Bool) {
+        let id = UUID()
+        let ft = FloatingText(id: id, text: text, position: position, color: color, isCrit: isCrit)
+        floatingTexts.append(ft)
+
+        withAnimation(.easeOut(duration: 0.8)) {
+            if let idx = floatingTexts.firstIndex(where: { $0.id == id }) {
+                floatingTexts[idx].offset = -50
+                floatingTexts[idx].opacity = 0
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            floatingTexts.removeAll { $0.id == id }
+        }
+    }
+
     private func typeIcon(for type: CardType) -> String {
         switch type {
         case .attack: return "sword"
@@ -508,4 +612,16 @@ private extension CGPoint {
     static func + (lhs: CGPoint, rhs: CGSize) -> CGPoint {
         CGPoint(x: lhs.x + rhs.width, y: lhs.y + rhs.height)
     }
+}
+
+// MARK: - Floating Text Model
+
+struct FloatingText: Identifiable {
+    let id: UUID
+    let text: String
+    let position: CGPoint
+    let color: Color
+    let isCrit: Bool
+    var offset: CGFloat = 0
+    var opacity: Double = 1.0
 }

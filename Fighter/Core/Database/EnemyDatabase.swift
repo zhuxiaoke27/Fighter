@@ -69,7 +69,7 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .attack(14), effects: [.dealDamage(14)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.5),
         ],
-        pattern: .random
+        pattern: .conditional
     )
 
     // MARK: - Act 1 Boss
@@ -84,10 +84,10 @@ enum EnemyDatabase {
         act: 1,
         actions: [
             WeightedAction(action: EnemyAction(intent: .attack(18), effects: [.dealDamage(18)]), weight: 0.3),
-            WeightedAction(action: EnemyAction(intent: .attack(15), effects: [.dealDamage(15)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .defend(12), effects: [.gainBlock(12), .dealDamage(10)]), weight: 0.3),
             WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10), .dealDamage(10)]), weight: 0.4),
         ],
-        pattern: .random
+        pattern: .sequential
     )
 
     // MARK: - Act 2 Basic Enemies
@@ -155,7 +155,7 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .defend(18), effects: [.gainBlock(18)]), weight: 0.65),
             WeightedAction(action: EnemyAction(intent: .attack(22), effects: [.dealDamage(22), .applyBuff(.strength, stacks: 1)]), weight: 0.55),
         ],
-        pattern: .random
+        pattern: .conditional
     )
 
     // MARK: - Act 2 Boss
@@ -172,8 +172,9 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .attack(16), effects: [.dealDamage(16)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .defend(20), effects: [.gainBlock(20)]), weight: 0.6),
             WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2)]), weight: 0.4),
+            WeightedAction(action: EnemyAction(intent: .attack(22), effects: [.dealDamage(22)]), weight: 0.3),
         ],
-        pattern: .random
+        pattern: .sequential
     )
 
     // MARK: - Act 3 Basic Enemies
@@ -240,7 +241,7 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.5),
             WeightedAction(action: EnemyAction(intent: .attack(25), effects: [.dealDamage(25)]), weight: 0.35),
         ],
-        pattern: .random
+        pattern: .conditional
     )
 
     // MARK: - Act 3 Boss
@@ -257,8 +258,9 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .attack(20), effects: [.dealDamage(20)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .defend(22), effects: [.gainBlock(22)]), weight: 0.5),
             WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2), .applyDebuff(.vulnerable, stacks: 2)]), weight: 0.4),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.3),
         ],
-        pattern: .random
+        pattern: .sequential
     )
 
     // MARK: - All Enemies
