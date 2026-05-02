@@ -74,13 +74,14 @@ struct MapNodeView: View {
 
     private var typeColor: Color {
         switch node.type {
-        case .battle:   return Color(red: 0.90, green: 0.30, blue: 0.25)
-        case .elite:    return Theme.energyColor
-        case .boss:     return Color(red: 0.70, green: 0.35, blue: 0.90)
-        case .restSite: return Color(red: 0.30, green: 0.72, blue: 0.42)
-        case .shop:     return Color(red: 0.25, green: 0.70, blue: 0.50)
-        case .event:    return Color(red: 0.45, green: 0.55, blue: 0.90)
-        case .mystery:  return Theme.textSecondary
+        case .battle:     return Color(red: 0.90, green: 0.30, blue: 0.25)
+        case .hardBattle: return Color(red: 0.95, green: 0.50, blue: 0.15)
+        case .elite:      return Theme.energyColor
+        case .boss:       return Color(red: 0.70, green: 0.35, blue: 0.90)
+        case .restSite:   return Color(red: 0.30, green: 0.72, blue: 0.42)
+        case .shop:       return Color(red: 0.25, green: 0.70, blue: 0.50)
+        case .event:      return Color(red: 0.45, green: 0.55, blue: 0.90)
+        case .mystery:    return Theme.textSecondary
         }
     }
 }

@@ -122,6 +122,10 @@ final class GameStore {
             lastBattleWasEliteOrBoss = false
             let enemies = EnemyDatabase.randomBattle(act: currentAct)
             startCombat(enemies: enemies)
+        case .hardBattle:
+            lastBattleWasEliteOrBoss = true
+            let enemies = EnemyDatabase.eliteBattle(act: currentAct)
+            startCombat(enemies: enemies)
         case .elite:
             lastBattleWasEliteOrBoss = true
             let enemies = EnemyDatabase.eliteBattle(act: currentAct)

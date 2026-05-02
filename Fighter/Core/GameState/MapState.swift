@@ -7,6 +7,7 @@ import Foundation
 
 enum MapNodeType: String, Codable, Sendable {
     case battle
+    case hardBattle
     case elite
     case boss
     case restSite
@@ -16,13 +17,14 @@ enum MapNodeType: String, Codable, Sendable {
 
     var iconName: String {
         switch self {
-        case .battle:   return "cross.sword"
-        case .elite:    return "star.shield"
-        case .boss:     return "crown"
-        case .restSite: return "flame"
-        case .shop:     return "cart"
-        case .event:    return "questionmark"
-        case .mystery:  return "questionmark.folder"
+        case .battle:     return "cross.sword"
+        case .hardBattle: return "flame.circle"
+        case .elite:      return "star.shield"
+        case .boss:       return "crown"
+        case .restSite:   return "flame"
+        case .shop:       return "cart"
+        case .event:      return "questionmark"
+        case .mystery:    return "questionmark.folder"
         }
     }
 

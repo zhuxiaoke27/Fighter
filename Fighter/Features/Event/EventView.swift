@@ -7,6 +7,8 @@ import SwiftUI
 
 struct EventView: View {
     @Environment(GameStore.self) private var store
+    @State private var resultMessage: String? = nil
+    @State private var resultColor: Color = .white
 
     var body: some View {
         ZStack {
@@ -21,13 +23,15 @@ struct EventView: View {
             .ignoresSafeArea()
 
             if let event = store.currentEvent {
-                VStack(spacing: 28) {
+                VStack(spacing: 0) {
                     Spacer()
 
-                    Image(systemName: "questionmark.diamond.fill")
+                    // Event icon
+                    Image(systemName: event.icon)
                         .font(.system(size: 48, weight: .medium))
-                        .foregroundStyle(Color(red: 0.45, green: 0.55, blue: 0.90))
-                        .shadow(color: Color(red: 0.45, green: 0.55, blue: 0.90).opacity(0.4), radius: 12)
+                        .foregroundStyle(eventIconColor(for: event.id))
+                        .shadow(color: eventIconColor(for: event.id).opacity(0.4), radius: 12)
+                        .padding(.bottom, 16)
 
                     Text(String(localized: LocalizedStringResource(stringLiteral: event.titleKey)))
                         .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -38,22 +42,40 @@ struct EventView: View {
                         .foregroundStyle(Theme.textAccent)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 40)
+                        .padding(.top, 8)
+
+                    Spacer()
+
+                    if let msg = resultMessage {
+                        Text(msg)
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .foregroundStyle(resultColor)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.black.opacity(0.4))
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(resultColor.opacity(0.3), lineWidth: 1))
+                            )
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                    }
 
                     VStack(spacing: 12) {
                         ForEach(event.choices) { choice in
                             Button {
                                 resolveChoice(choice)
                             } label: {
-                                HStack(spacing: 8) {
+                                HStack(spacing: 10) {
                                     Image(systemName: "arrow.right.circle")
                                         .font(.system(size: 14))
                                     Text(String(localized: LocalizedStringResource(stringLiteral: choice.textKey)))
                                         .font(.system(size: 14, weight: .medium, design: .rounded))
                                         .multilineTextAlignment(.leading)
                                     Spacer()
+                                    effectPreviewTags(for: choice.effects)
                                 }
                                 .foregroundStyle(Theme.textPrimary)
-                                .padding(.horizontal, 20)
+                                .padding(.horizontal, 16)
                                 .padding(.vertical, 14)
                                 .frame(maxWidth: .infinity)
                                 .background(
@@ -69,50 +91,234 @@ struct EventView: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    .padding(.horizontal, 40)
-                    .padding(.top, 8)
+                    .padding(.horizontal, 30)
+                    .padding(.top, 16)
 
-                    Spacer()
+                    Spacer().frame(height: 40)
                 }
             }
         }
     }
 
+    // MARK: - Effect Preview
+
+    @ViewBuilder
+    private func effectPreviewTags(for effects: [EventEffect]) -> some View {
+        HStack(spacing: 4) {
+            ForEach(previewTags(for: effects), id: \.0) { tag in
+                Text(tag.0)
+                    .font(.system(size: 11, weight: .bold, design: .rounded))
+                    .foregroundStyle(tag.1)
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 2)
+                    .background(Capsule().fill(tag.1.opacity(0.15)))
+            }
+        }
+    }
+
+    private func previewTags(for effects: [EventEffect]) -> [(String, Color)] {
+        var tags: [(String, Color)] = []
+        for effect in effects {
+            switch effect {
+            case .loseHP(let v):    tags.append(("-\(v)HP", Color(red: 0.95, green: 0.30, blue: 0.20)))
+            case .gainHP(let v):    tags.append(("+\(v)HP", Color(red: 0.30, green: 0.85, blue: 0.40)))
+            case .gainGold(let v):  tags.append(("+\(v)G", Color(red: 1.0, green: 0.85, blue: 0.30)))
+            case .loseGold(let v):  tags.append(("-\(v)G", Color(red: 0.85, green: 0.65, blue: 0.20)))
+            case .gainMaxHP(let v): tags.append(("+\(v)MaxHP", Color(red: 0.30, green: 0.85, blue: 0.40)))
+            case .loseMaxHP(let v): tags.append(("-\(v)MaxHP", Color(red: 0.95, green: 0.30, blue: 0.20)))
+            case .gainStrength(let v): tags.append(("+\(v)STR", Color(red: 0.90, green: 0.45, blue: 0.30)))
+            case .gainDexterity(let v): tags.append(("+\(v)DEX", Color(red: 0.30, green: 0.75, blue: 0.90)))
+            case .gainRandomRelic:  tags.append(("Relic", Color(red: 0.70, green: 0.50, blue: 0.90)))
+            case .gainRandomPotion: tags.append(("Potion", Color(red: 0.40, green: 0.80, blue: 0.50)))
+            case .gainRelic:        tags.append(("Relic", Color(red: 0.70, green: 0.50, blue: 0.90)))
+            case .gainPotion:       tags.append(("Potion", Color(red: 0.40, green: 0.80, blue: 0.50)))
+            case .upgradeRandomCard: tags.append(("Upgrade", Theme.energyColor))
+            case .upgradeRandomCards(let v): tags.append(("Upgrade x\(v)", Theme.energyColor))
+            case .removeRandomCard: tags.append(("Remove", Color(red: 0.90, green: 0.30, blue: 0.25)))
+            case .addCardToDeck:    tags.append(("+Card", Theme.energyColor))
+            case .healPercent(let v): tags.append(("+\(Int(v * 100))%HP", Color(red: 0.30, green: 0.85, blue: 0.40)))
+            case .randomDebuff:     tags.append(("Debuff", Color(red: 0.90, green: 0.30, blue: 0.25)))
+            case .transformRandomStrike: tags.append(("Transform", Theme.energyColor))
+            case .duplicateRandomCard: tags.append(("Copy", Theme.energyColor))
+            case .removeAllStrikes: tags.append(("No Strikes", Color(red: 0.90, green: 0.30, blue: 0.25)))
+            case .gainEnergyNextCombat(let v): tags.append(("+\(v)Energy", Theme.energyColor))
+            case .gainBlockPermanent(let v): tags.append(("+\(v)Armor", Color(red: 0.30, green: 0.70, blue: 0.90)))
+            case .gainGoldPerCard(let v): tags.append(("+\(v)G/card", Color(red: 1.0, green: 0.85, blue: 0.30)))
+            case .nothing: break
+            case .removeSpecificCard: tags.append(("Remove", Color(red: 0.90, green: 0.30, blue: 0.25)))
+            }
+        }
+        return tags
+    }
+
+    private func eventIconColor(for id: String) -> Color {
+        if id.contains("dark") || id.contains("shadow") || id.contains("abyss") || id.contains("soul") || id.contains("curse") || id.contains("doom") || id.contains("fallen") || id.contains("cursed") || id.contains("snake") {
+            return Color(red: 0.70, green: 0.30, blue: 0.85)
+        }
+        if id.contains("shrine") || id.contains("altar") || id.contains("forge") || id.contains("rune") || id.contains("throne") || id.contains("guardian") {
+            return Color(red: 0.90, green: 0.70, blue: 0.30)
+        }
+        if id.contains("merchant") || id.contains("trader") || id.contains("shop") || id.contains("gambl") || id.contains("gold") || id.contains("trade") || id.contains("flower") || id.contains("smith") || id.contains("wheel") || id.contains("exchange") {
+            return Color(red: 1.0, green: 0.85, blue: 0.30)
+        }
+        if id.contains("ghost") || id.contains("spirit") || id.contains("music") || id.contains("ferry") || id.contains("ship") {
+            return Color(red: 0.50, green: 0.70, blue: 0.90)
+        }
+        return Color(red: 0.45, green: 0.55, blue: 0.90)
+    }
+
+    // MARK: - Resolve Choice
+
     private func resolveChoice(_ choice: EventChoice) {
+        var results: [String] = []
+        let player = store.player
+
         for effect in choice.effects {
             switch effect {
             case .loseHP(let amount):
-                store.player.currentHP = max(0, store.player.currentHP - amount)
-                if store.player.currentHP <= 0 {
+                player.currentHP = max(0, player.currentHP - amount)
+                results.append("-\(amount) HP")
+                if player.currentHP <= 0 {
                     store.endRun(victory: false)
                     return
                 }
+            case .gainHP(let amount):
+                let healed = min(amount, player.maxHP - player.currentHP)
+                player.currentHP += healed
+                results.append("+\(healed) HP")
             case .gainGold(let amount):
-                store.player.gold += amount
+                player.gold += amount
+                results.append("+\(amount) Gold")
             case .loseGold(let amount):
-                store.player.gold = max(0, store.player.gold - amount)
+                let lost = min(amount, player.gold)
+                player.gold -= lost
+                results.append("-\(lost) Gold")
             case .gainMaxHP(let amount):
-                store.player.maxHP += amount
-                store.player.currentHP += amount
-            case .gainStrength:
-                break
+                player.maxHP += amount
+                player.currentHP += amount
+                results.append("+\(amount) Max HP")
+            case .loseMaxHP(let amount):
+                player.maxHP = max(1, player.maxHP - amount)
+                player.currentHP = min(player.currentHP, player.maxHP)
+                results.append("-\(amount) Max HP")
             case .addCardToDeck(let templateKey):
                 if let card = CardDatabase.card(byKey: templateKey) {
-                    store.player.deck.append(card.copy())
+                    player.deck.append(card.copy())
+                    results.append("+Card")
                 }
             case .removeRandomCard:
-                if !store.player.deck.isEmpty {
-                    store.player.deck.remove(at: Int.random(in: 0..<store.player.deck.count))
+                if !player.deck.isEmpty {
+                    player.deck.remove(at: Int.random(in: 0..<player.deck.count))
+                    results.append("Card removed")
+                }
+            case .removeSpecificCard(let templateKey):
+                if let idx = player.deck.firstIndex(where: { $0.templateKey == templateKey }) {
+                    player.deck.remove(at: idx)
+                    results.append("Card removed")
                 }
             case .upgradeRandomCard:
-                let upgradable = store.player.deck.indices.filter { !store.player.deck[$0].isUpgraded }
+                let upgradable = player.deck.indices.filter { !player.deck[$0].isUpgraded }
                 if let idx = upgradable.randomElement() {
-                    store.player.deck[idx] = store.player.deck[idx].withUpgrade()
+                    player.deck[idx] = player.deck[idx].withUpgrade()
+                    results.append("Card upgraded")
                 }
+            case .upgradeRandomCards(let count):
+                var upgraded = 0
+                for _ in 0..<count {
+                    let upgradable = player.deck.indices.filter { !player.deck[$0].isUpgraded }
+                    if let idx = upgradable.randomElement() {
+                        player.deck[idx] = player.deck[idx].withUpgrade()
+                        upgraded += 1
+                    }
+                }
+                if upgraded > 0 { results.append("\(upgraded) cards upgraded") }
+            case .gainStrength(let amount):
+                player.buffs.append(BuffInstance(type: .strength, stacks: amount))
+                results.append("+\(amount) Strength")
+            case .gainDexterity(let amount):
+                player.buffs.append(BuffInstance(type: .dexterity, stacks: amount))
+                results.append("+\(amount) Dexterity")
+            case .gainBlockPermanent(let amount):
+                player.combatBlock += amount
+                results.append("+\(amount) Block")
+            case .healPercent(let percent):
+                if percent >= 0 {
+                    let amount = Int(Double(player.maxHP) * percent)
+                    let healed = min(amount, player.maxHP - player.currentHP)
+                    player.currentHP += healed
+                    results.append("+\(healed) HP")
+                } else {
+                    let targetHP = Int(Double(player.maxHP) * -percent)
+                    let damage = player.currentHP - max(1, player.currentHP - targetHP)
+                    player.currentHP = max(1, player.currentHP - targetHP)
+                    results.append("HP reduced to \(Int((1.0 + percent) * 100))%")
+                }
+            case .gainRelic(let relicID):
+                if let relic = RelicDatabase.allRelics.first(where: { $0.id == relicID }) {
+                    player.relics.append(relic)
+                    results.append("Relic acquired")
+                }
+            case .gainRandomRelic:
+                let relic = RelicDatabase.randomRelic(excluding: player.relics)
+                player.relics.append(relic)
+                results.append("Random relic")
+            case .gainPotion(let potionID):
+                if let potion = PotionDatabase.allPotions.first(where: { $0.id == potionID }) {
+                    store.receivePotion(potion)
+                    results.append("Potion acquired")
+                }
+            case .gainRandomPotion:
+                let potion = PotionDatabase.randomPotion()
+                store.receivePotion(potion)
+                results.append("Random potion")
+            case .randomDebuff:
+                let debuffs: [BuffType] = [.vulnerable, .weak, .frail]
+                if let debuff = debuffs.randomElement() {
+                    player.addBuff(BuffInstance(type: debuff, stacks: 2, isDurationBased: true))
+                    results.append("Debuffed!")
+                }
+            case .transformRandomStrike:
+                if let idx = player.deck.firstIndex(where: { $0.templateKey.contains("strike") }) {
+                    let attackCards = CardDatabase.allCards.filter { $0.type == .attack && $0.rarity != .starter && ($0.characterClass == player.characterClass || $0.characterClass == nil) }
+                    if let newCard = attackCards.randomElement() {
+                        player.deck[idx] = newCard.copy()
+                        results.append("Strike transformed!")
+                    }
+                }
+            case .duplicateRandomCard:
+                if !player.deck.isEmpty {
+                    let idx = Int.random(in: 0..<player.deck.count)
+                    player.deck.append(player.deck[idx].copy())
+                    results.append("Card duplicated")
+                }
+            case .removeAllStrikes:
+                let before = player.deck.count
+                player.deck.removeAll { $0.templateKey.contains("strike") }
+                let removed = before - player.deck.count
+                if removed > 0 { results.append("\(removed) Strikes removed") }
+            case .gainEnergyNextCombat(let amount):
+                player.energyNextTurnBonus += amount
+                results.append("+\(amount) Energy next combat")
+            case .gainGoldPerCard(let amount):
+                let gold = player.deck.count * amount
+                player.gold += gold
+                results.append("+\(gold) Gold")
             case .nothing:
                 break
             }
         }
-        store.completeEvent()
+
+        if results.isEmpty {
+            store.completeEvent()
+        } else {
+            let msg = results.joined(separator: ", ")
+            resultColor = results.contains(where: { $0.hasPrefix("-") }) ? Color(red: 0.95, green: 0.60, blue: 0.40) : Color(red: 0.30, green: 0.85, blue: 0.50)
+            withAnimation(.spring(response: 0.3)) {
+                resultMessage = msg
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                store.completeEvent()
+            }
+        }
     }
 }

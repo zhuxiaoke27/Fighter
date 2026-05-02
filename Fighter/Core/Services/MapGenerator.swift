@@ -66,26 +66,28 @@ enum MapGenerator {
     private static func weightedRandomType(floorIndex: Int, act: Int) -> MapNodeType {
         let roll = Double.random(in: 0...1)
 
-        // Scale elite/rest thresholds by act (more elites, fewer rest sites in later acts)
         let eliteBonus = Double(act - 1) * 0.06
         let restPenalty = Double(act - 1) * 0.04
+        let hardBattleChance = floorIndex >= 4 ? 0.08 + Double(act - 1) * 0.04 : 0
 
         if floorIndex <= 3 {
-            if roll < 0.65 { return .battle }
-            if roll < 0.80 { return .event }
-            if roll < 0.90 { return .shop }
+            if roll < 0.60 { return .battle }
+            if roll < 0.78 { return .event }
+            if roll < 0.88 { return .shop }
             if roll < 0.95 + eliteBonus { return .elite }
             return .restSite
         } else if floorIndex <= 9 {
-            if roll < 0.45 { return .battle }
-            if roll < 0.60 { return .event }
-            if roll < 0.75 { return .shop }
+            if roll < 0.35 { return .battle }
+            if roll < 0.35 + hardBattleChance { return .hardBattle }
+            if roll < 0.55 { return .event }
+            if roll < 0.70 { return .shop }
             if roll < 0.88 + eliteBonus { return .elite }
             return .restSite
         } else {
-            if roll < 0.35 { return .battle }
-            if roll < 0.50 { return .event }
-            if roll < 0.65 + eliteBonus { return .elite }
+            if roll < 0.25 { return .battle }
+            if roll < 0.25 + hardBattleChance { return .hardBattle }
+            if roll < 0.45 { return .event }
+            if roll < 0.60 + eliteBonus { return .elite }
             if roll < 0.80 + restPenalty { return .shop }
             return .restSite
         }
