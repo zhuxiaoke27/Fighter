@@ -113,6 +113,13 @@ final class MapState {
         currentNodeID = id
         currentFloor = floorIndex
 
+        // Clear all accessibility, then only enable connections of visited node
+        for fi in floors.indices {
+            for ni in floors[fi].indices {
+                floors[fi][ni].isAccessible = false
+            }
+        }
+
         for connectionID in floors[floorIndex][nodeIndex].connections {
             for fi in floors.indices {
                 for ni in floors[fi].indices {
