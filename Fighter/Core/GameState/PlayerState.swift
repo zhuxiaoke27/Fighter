@@ -97,6 +97,15 @@ final class PlayerState {
         }
         currentHP -= remaining
         if currentHP < 0 { currentHP = 0 }
+
+        // Plated Armor: lose 1 stack when taking unblocked damage
+        if remaining > 0 {
+            if let paIdx = buffs.firstIndex(where: { $0.type == .platedArmor && $0.stacks > 0 }) {
+                buffs[paIdx].stacks -= 1
+                if buffs[paIdx].stacks <= 0 { buffs.remove(at: paIdx) }
+            }
+        }
+
         return remaining
     }
 

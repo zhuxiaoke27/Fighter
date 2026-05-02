@@ -8,6 +8,7 @@ import SwiftUI
 struct MapView: View {
     @Environment(GameStore.self) private var store
     @State private var showDeck = false
+    @State private var nodePositions: [UUID: CGPoint] = [:]
 
     var body: some View {
         ZStack {
@@ -74,18 +75,41 @@ struct MapView: View {
 
     private func mapContent(mapState: MapState) -> some View {
         ScrollViewReader { proxy in
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 36) {
-                    ForEach(Array(mapState.floors.enumerated().reversed()), id: \.offset) { floorIndex, nodes in
-                        mapFloorRow(nodes: nodes, floorIndex: floorIndex, mapState: mapState)
-                            .id(floorIndex)
+            ZStack {
+                // Path lines canvas
+                Canvas { context, _ in
+                    for floor in mapState.floors {
+                        for node in floor {
+                            guard let fromPoint = nodePositions[node.id] else { continue }
+                            for connectionID in node.connections {
+                                guard let toPoint = nodePositions[connectionID] else { continue }
+                                var path = Path()
+                                path.move(to: fromPoint)
+                                path.addLine(to: toPoint)
+                                let color = node.isVisited
+                                    ? Color.white.opacity(0.15)
+                                    : Color.white.opacity(0.06)
+                                context.stroke(path, with: .color(color), lineWidth: 1)
+                            }
+                        }
                     }
                 }
-                .padding(.vertical, 40)
-            }
-            .onChange(of: mapState.currentFloor) { _, newFloor in
-                withAnimation {
-                    proxy.scrollTo(newFloor, anchor: .center)
+
+                // Existing scroll content with position tracking
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 36) {
+                        ForEach(Array(mapState.floors.enumerated().reversed()), id: \.offset) { floorIndex, nodes in
+                            mapFloorRow(nodes: nodes, floorIndex: floorIndex, mapState: mapState)
+                                .id(floorIndex)
+                        }
+                    }
+                    .padding(.vertical, 40)
+                }
+                .coordinateSpace(name: "mapScrollView")
+                .onChange(of: mapState.currentFloor) { _, newFloor in
+                    withAnimation {
+                        proxy.scrollTo(newFloor, anchor: .center)
+                    }
                 }
             }
         }
@@ -110,6 +134,24 @@ struct MapView: View {
                         mapState.visitNode(id: node.id)
                         store.handleNodeEncounter(node)
                     }
+                    .background(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    let frame = geo.frame(in: .named("mapScrollView"))
+                                    nodePositions[node.id] = CGPoint(
+                                        x: frame.midX,
+                                        y: frame.midY
+                                    )
+                                }
+                                .onChange(of: geo.frame(in: .named("mapScrollView"))) { _, frame in
+                                    nodePositions[node.id] = CGPoint(
+                                        x: frame.midX,
+                                        y: frame.midY
+                                    )
+                                }
+                        }
+                    )
                 }
             }
         }

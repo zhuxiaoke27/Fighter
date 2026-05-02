@@ -104,7 +104,7 @@ enum EnemyDatabase {
         pattern: .conditional
     )
 
-    // MARK: - Act 1 Boss
+    // MARK: - Act 1 Bosses
 
     static let slimeBoss = EnemyTemplate(
         id: "slime_boss",
@@ -120,6 +120,39 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10), .dealDamage(10)]), weight: 0.4),
         ],
         pattern: .sequential
+    )
+
+    static let hexaghost = EnemyTemplate(
+        id: "hexaghost",
+        nameKey: "enemy_hexaghost",
+        minHP: 160,
+        maxHP: 160,
+        isBoss: true,
+        isElite: false,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(15), effects: [.dealDamage(15)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(12), effects: [.gainBlock(12), .dealDamage(8)]), weight: 0.5),
+            WeightedAction(action: EnemyAction(intent: .attack(20), effects: [.dealDamage(20)]), weight: 0.3),
+        ],
+        pattern: .sequential
+    )
+
+    static let guardian = EnemyTemplate(
+        id: "guardian",
+        nameKey: "enemy_guardian",
+        minHP: 180,
+        maxHP: 180,
+        isBoss: true,
+        isElite: false,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(16), effects: [.dealDamage(16)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(20), effects: [.gainBlock(20)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.5),
+            WeightedAction(action: EnemyAction(intent: .attack(24), effects: [.dealDamage(24)]), weight: 0.3),
+        ],
+        pattern: .conditional
     )
 
     // MARK: - Act 2 Basic Enemies
@@ -206,7 +239,7 @@ enum EnemyDatabase {
         pattern: .conditional
     )
 
-    // MARK: - Act 2 Boss
+    // MARK: - Act 2 Bosses
 
     static let theChamp = EnemyTemplate(
         id: "the_champ",
@@ -221,6 +254,40 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .defend(20), effects: [.gainBlock(20)]), weight: 0.6),
             WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2)]), weight: 0.4),
             WeightedAction(action: EnemyAction(intent: .attack(22), effects: [.dealDamage(22)]), weight: 0.3),
+        ],
+        pattern: .sequential
+    )
+
+    static let collector = EnemyTemplate(
+        id: "collector",
+        nameKey: "enemy_collector",
+        minHP: 200,
+        maxHP: 200,
+        isBoss: true,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(14), effects: [.dealDamage(14)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2)]), weight: 0.5),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.4),
+            WeightedAction(action: EnemyAction(intent: .attack(18), effects: [.dealDamage(18), .applyDebuff(.poison, stacks: 3)]), weight: 0.3),
+        ],
+        pattern: .random
+    )
+
+    static let bronzeAutomatonPrime = EnemyTemplate(
+        id: "bronze_automaton_prime",
+        nameKey: "enemy_bronze_automaton_prime",
+        minHP: 220,
+        maxHP: 220,
+        isBoss: true,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(20), effects: [.dealDamage(20)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(24), effects: [.gainBlock(24)]), weight: 0.5),
+            WeightedAction(action: EnemyAction(intent: .attack(30), effects: [.dealDamage(30)]), weight: 0.3),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 4), effects: [.applyBuff(.strength, stacks: 4)]), weight: 0.2),
         ],
         pattern: .sequential
     )
@@ -324,7 +391,7 @@ enum EnemyDatabase {
         pattern: .conditional
     )
 
-    // MARK: - Act 3 Boss
+    // MARK: - Act 3 Bosses
 
     static let timeEater = EnemyTemplate(
         id: "time_eater",
@@ -343,21 +410,78 @@ enum EnemyDatabase {
         pattern: .sequential
     )
 
+    static let corruptHeart = EnemyTemplate(
+        id: "corrupt_heart",
+        nameKey: "enemy_corrupt_heart",
+        minHP: 300,
+        maxHP: 300,
+        isBoss: true,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(25), effects: [.dealDamage(25)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attack(40), effects: [.dealDamage(40)]), weight: 0.3),
+            WeightedAction(action: EnemyAction(intent: .debuff(.vulnerable, stacks: 3), effects: [.applyDebuff(.vulnerable, stacks: 3)]), weight: 0.4),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 5), effects: [.applyBuff(.strength, stacks: 5)]), weight: 0.3),
+        ],
+        pattern: .sequential
+    )
+
+    static let awakenedOne = EnemyTemplate(
+        id: "awakened_one",
+        nameKey: "enemy_awakened_one",
+        minHP: 260,
+        maxHP: 260,
+        isBoss: true,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(22), effects: [.dealDamage(22)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2)]), weight: 0.5),
+            WeightedAction(action: EnemyAction(intent: .attack(35), effects: [.dealDamage(35)]), weight: 0.3),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 4), effects: [.applyBuff(.strength, stacks: 4)]), weight: 0.4),
+        ],
+        pattern: .conditional
+    )
+
     // MARK: - All Enemies
 
     static let allEnemies: [EnemyTemplate] = [
         // Act 1
         cultist, jawWorm, slime,
         gremlinNob, lagavulin, gremlinLeader,
-        slimeBoss,
+        slimeBoss, hexaghost, guardian,
         // Act 2
         byrd, chokeOrb, shellParasite,
         bronzeAutomaton, bookOfStabbing,
-        theChamp,
+        theChamp, collector, bronzeAutomatonPrime,
         // Act 3
         darkling, orbWalker, spiker,
         giantHead, nemesis, reptomancer,
-        timeEater
+        timeEater, corruptHeart, awakenedOne
+    ]
+
+    // MARK: - Multi-Enemy Encounters
+
+    struct MultiEnemyEncounter {
+        let enemyIDs: [String]
+        let act: Int
+        let isElite: Bool
+    }
+
+    static let multiEncounters: [MultiEnemyEncounter] = [
+        // Act 1
+        MultiEnemyEncounter(enemyIDs: ["slime", "slime"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["cultist", "jaw_worm"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["slime", "slime", "slime"], act: 1, isElite: false),
+        // Act 2
+        MultiEnemyEncounter(enemyIDs: ["byrd", "byrd"], act: 2, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["choke_orb", "shell_parasite"], act: 2, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["byrd", "choke_orb"], act: 2, isElite: false),
+        // Act 3
+        MultiEnemyEncounter(enemyIDs: ["darkling", "darkling"], act: 3, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["orb_walker", "spiker"], act: 3, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["darkling", "darkling", "darkling"], act: 3, isElite: false),
     ]
 
     // MARK: - Accessors
@@ -367,6 +491,14 @@ enum EnemyDatabase {
     }
 
     static func randomBattle(act: Int) -> [EnemyTemplate] {
+        // 30% chance of multi-enemy encounter
+        if Double.random(in: 0...1) < 0.30 {
+            let multis = multiEncounters.filter { $0.act == act && !$0.isElite }
+            if let encounter = multis.randomElement() {
+                let templates = encounter.enemyIDs.compactMap { enemy(byID: $0) }
+                if !templates.isEmpty { return templates }
+            }
+        }
         let normal = allEnemies.filter { $0.act == act && !$0.isElite && !$0.isBoss }
         guard let enemy = normal.randomElement() else { return [cultist] }
         return [enemy]

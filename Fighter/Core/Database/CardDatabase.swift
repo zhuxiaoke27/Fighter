@@ -42,6 +42,7 @@ enum CardDatabase {
         characterClass: .warrior,
         effects: [.dealDamage(8), .applyDebuff(.vulnerable, stacks: 2)],
         upgradedEffects: [.dealDamage(10), .applyDebuff(.vulnerable, stacks: 3)],
+        isInnate: true,
         tags: [.starter, .offensive]
     )
 
@@ -285,6 +286,7 @@ enum CardDatabase {
         effects: [.gainBlock(30)],
         upgradedEffects: [.gainBlock(40)],
         isExhaust: true,
+        isEthereal: true,
         tags: [.defensive, .block, .exhaust]
     )
 
@@ -336,6 +338,7 @@ enum CardDatabase {
         characterClass: .assassin,
         effects: [.dealDamage(3), .applyDebuff(.weak, stacks: 1)],
         upgradedEffects: [.dealDamage(4), .applyDebuff(.weak, stacks: 2)],
+        isInnate: true,
         tags: [.starter, .offensive]
     )
 
@@ -387,6 +390,7 @@ enum CardDatabase {
         effects: [.gainBlock(8), .drawCards(1)],
         upgradedEffects: [.gainBlock(11), .drawCards(1)],
         isExhaust: true,
+        isInnate: true,
         tags: [.starter, .defensive, .block, .draw, .exhaust]
     )
 
@@ -401,6 +405,7 @@ enum CardDatabase {
         characterClass: .assassin,
         effects: [.dealDamage(9)],
         upgradedEffects: [.dealDamage(12)],
+        isInnate: true,
         tags: [.offensive]
     )
 
@@ -553,6 +558,7 @@ enum CardDatabase {
         effects: [.drawCards(2), .gainEnergy(1)],
         upgradedEffects: [.drawCards(3), .gainEnergy(2)],
         isExhaust: true,
+        isEthereal: true,
         tags: [.draw, .energy, .exhaust]
     )
 
@@ -988,6 +994,68 @@ enum CardDatabase {
         effects: []
     )
 
+    // MARK: - Curse Cards
+
+    static let decay = Card.newInstance(
+        templateKey: "decay",
+        type: .curse,
+        rarity: .common,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
+    static let doubt = Card.newInstance(
+        templateKey: "doubt",
+        type: .curse,
+        rarity: .common,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
+    static let normality = Card.newInstance(
+        templateKey: "normality",
+        type: .curse,
+        rarity: .common,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
+    static let pain = Card.newInstance(
+        templateKey: "pain",
+        type: .curse,
+        rarity: .common,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
+    static let regret = Card.newInstance(
+        templateKey: "regret",
+        type: .curse,
+        rarity: .common,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
+    static let shame = Card.newInstance(
+        templateKey: "shame",
+        type: .curse,
+        rarity: .common,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
     // MARK: - All Cards
 
     static let allCards: [Card] = [
@@ -1014,7 +1082,9 @@ enum CardDatabase {
         safeGuard, flashOfSteel, panacea,
         enlightenment, handOfGreed, metamorphosis,
         // Status
-        wound, daze, burn, slimed, voidCard, writhe
+        wound, daze, burn, slimed, voidCard, writhe,
+        // Curse
+        decay, doubt, normality, pain, regret, shame
     ]
 
     // MARK: - Accessors

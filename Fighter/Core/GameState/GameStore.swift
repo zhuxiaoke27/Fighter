@@ -44,6 +44,7 @@ final class GameStore {
     var rewardCards: [Card] = []
     var rewardRelic: RelicTemplate? = nil
     var rewardPotion: PotionTemplate? = nil
+    var rewardBossRelics: [RelicTemplate] = []
     var combatVictory: Bool? = nil
     var lastBattleWasEliteOrBoss: Bool = false
 
@@ -127,6 +128,14 @@ final class GameStore {
             }
             player.gold += rewardGold
         }
+
+        // Boss relic choice after defeating a boss
+        if victory, let combat = combatState, combat.enemies.contains(where: { $0.isBoss }) {
+            rewardBossRelics = RelicDatabase.randomBossRelics(excluding: player.relics)
+        } else {
+            rewardBossRelics = []
+        }
+
         lastBattleWasEliteOrBoss = false
     }
 
@@ -138,6 +147,12 @@ final class GameStore {
             SaveManager.shared.deleteSave()
         }
         combatVictory = nil
+    }
+
+    func takeBossRelic(at index: Int) {
+        guard index < rewardBossRelics.count else { return }
+        player.relics.append(rewardBossRelics[index])
+        rewardBossRelics = []
     }
 
     // MARK: - Encounter Routing
