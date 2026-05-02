@@ -6,7 +6,7 @@
 import Foundation
 import SwiftUI
 
-enum GameState: Sendable {
+enum GameState: Sendable, Equatable {
     case menu
     case characterSelect
     case map
