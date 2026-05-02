@@ -99,6 +99,14 @@ struct CardEvaluator {
         case .exhaustFromHand:
             break
 
+        case .exhaustRandomFromHand(let count):
+            for _ in 0..<count {
+                guard !combat.hand.isEmpty else { break }
+                let idx = Int.random(in: 0..<combat.hand.count)
+                let c = combat.hand.remove(at: idx)
+                combat.exhaustPile.append(c)
+            }
+
         case .returnFromDiscard(let count):
             let available = combat.discardPile
             let toReturn = Array(available.suffix(min(count, available.count)))

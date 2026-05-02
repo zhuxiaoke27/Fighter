@@ -72,6 +72,38 @@ enum EnemyDatabase {
         pattern: .conditional
     )
 
+    static let lagavulin = EnemyTemplate(
+        id: "lagavulin",
+        nameKey: "enemy_lagavulin",
+        minHP: 109,
+        maxHP: 111,
+        isBoss: false,
+        isElite: true,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(18), effects: [.dealDamage(18)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 1), effects: [.applyDebuff(.weak, stacks: 1), .applyDebuff(.vulnerable, stacks: 1)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .defend(12), effects: [.gainBlock(12)]), weight: 0.4),
+        ],
+        pattern: .sequential
+    )
+
+    static let gremlinLeader = EnemyTemplate(
+        id: "gremlin_leader",
+        nameKey: "enemy_gremlin_leader",
+        minHP: 100,
+        maxHP: 106,
+        isBoss: false,
+        isElite: true,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(12), effects: [.dealDamage(12)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.7),
+            WeightedAction(action: EnemyAction(intent: .defend(10), effects: [.gainBlock(10)]), weight: 0.5),
+        ],
+        pattern: .conditional
+    )
+
     // MARK: - Act 1 Boss
 
     static let slimeBoss = EnemyTemplate(
@@ -154,6 +186,22 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .attack(14), effects: [.dealDamage(14)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .defend(18), effects: [.gainBlock(18)]), weight: 0.65),
             WeightedAction(action: EnemyAction(intent: .attack(22), effects: [.dealDamage(22), .applyBuff(.strength, stacks: 1)]), weight: 0.55),
+        ],
+        pattern: .conditional
+    )
+
+    static let bookOfStabbing = EnemyTemplate(
+        id: "book_of_stabbing",
+        nameKey: "enemy_book_of_stabbing",
+        minHP: 120,
+        maxHP: 126,
+        isBoss: false,
+        isElite: true,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(6), effects: [.dealDamage(6)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attack(20), effects: [.dealDamage(20)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.45),
         ],
         pattern: .conditional
     )
@@ -244,6 +292,38 @@ enum EnemyDatabase {
         pattern: .conditional
     )
 
+    static let nemesis = EnemyTemplate(
+        id: "nemesis",
+        nameKey: "enemy_nemesis",
+        minHP: 140,
+        maxHP: 146,
+        isBoss: false,
+        isElite: true,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(22), effects: [.dealDamage(22)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .debuff(.vulnerable, stacks: 2), effects: [.applyDebuff(.vulnerable, stacks: 2)]), weight: 0.7),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 4), effects: [.applyBuff(.strength, stacks: 4)]), weight: 0.4),
+        ],
+        pattern: .sequential
+    )
+
+    static let reptomancer = EnemyTemplate(
+        id: "reptomancer",
+        nameKey: "enemy_reptomancer",
+        minHP: 130,
+        maxHP: 136,
+        isBoss: false,
+        isElite: true,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(16), effects: [.dealDamage(16)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attack(30), effects: [.dealDamage(30)]), weight: 0.3),
+            WeightedAction(action: EnemyAction(intent: .defend(16), effects: [.gainBlock(16)]), weight: 0.5),
+        ],
+        pattern: .conditional
+    )
+
     // MARK: - Act 3 Boss
 
     static let timeEater = EnemyTemplate(
@@ -268,15 +348,15 @@ enum EnemyDatabase {
     static let allEnemies: [EnemyTemplate] = [
         // Act 1
         cultist, jawWorm, slime,
-        gremlinNob,
+        gremlinNob, lagavulin, gremlinLeader,
         slimeBoss,
         // Act 2
         byrd, chokeOrb, shellParasite,
-        bronzeAutomaton,
+        bronzeAutomaton, bookOfStabbing,
         theChamp,
         // Act 3
         darkling, orbWalker, spiker,
-        giantHead,
+        giantHead, nemesis, reptomancer,
         timeEater
     ]
 

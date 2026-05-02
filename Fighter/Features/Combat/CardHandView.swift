@@ -19,7 +19,7 @@ struct CardHandView: View {
                     CardView(
                         card: card,
                         isSelected: card.id == selectedCardID,
-                        isPlayable: card.cost <= currentEnergy,
+                        isPlayable: card.cost >= 0 && card.cost <= currentEnergy,
                         onTap: { onCardTap(card) },
                         onLongPress: { onCardLongPress?(card) }
                     )

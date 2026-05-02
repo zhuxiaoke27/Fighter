@@ -27,6 +27,7 @@ enum Effect: Codable, Sendable, Equatable {
     case drawCards(Int)
     case discardCards(Int)
     case exhaustFromHand
+    case exhaustRandomFromHand(count: Int)
     case returnFromDiscard(count: Int)
 
     // MARK: - Energy

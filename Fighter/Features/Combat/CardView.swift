@@ -105,7 +105,7 @@ struct CardView: View {
                         .frame(width: 24, height: 24)
                         .shadow(color: Theme.energyGlow, radius: 4)
 
-                    Text(card.cost >= 0 ? "\(card.cost)" : "X")
+                    Text(card.cost >= 0 ? "\(card.cost)" : "—")
                         .font(Theme.cardCostFont)
                         .foregroundStyle(Color(red: 0.15, green: 0.10, blue: 0.0))
                 }
@@ -131,6 +131,37 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
                 .stroke(Theme.energyColor, lineWidth: 2)
                 .shadow(color: Theme.energyGlow, radius: 6)
+        } else if card.type == .status {
+            RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
+                .stroke(Color(red: 0.90, green: 0.30, blue: 0.25), lineWidth: 1.5)
+        } else if card.type == .curse {
+            RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
+                .stroke(Color(red: 0.70, green: 0.35, blue: 0.90), lineWidth: 1.5)
+                .shadow(color: Color(red: 0.70, green: 0.35, blue: 0.90).opacity(0.3), radius: 4)
+        } else if card.rarity == .rare {
+            RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
+                .stroke(
+                    LinearGradient(
+                        colors: [Color(red: 1.0, green: 0.85, blue: 0.30), Color(red: 0.85, green: 0.65, blue: 0.15)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    ),
+                    lineWidth: 2
+                )
+                .shadow(color: Color(red: 1.0, green: 0.85, blue: 0.30).opacity(0.4), radius: 6)
+        } else if card.rarity == .uncommon {
+            RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
+                .stroke(
+                    LinearGradient(
+                        colors: [Color(red: 0.35, green: 0.55, blue: 0.90).opacity(0.7), Color(red: 0.35, green: 0.55, blue: 0.90).opacity(0.3)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    ),
+                    lineWidth: 1.5
+                )
+        } else if card.rarity == .starter {
+            RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
+                .stroke(Color.white.opacity(0.2), lineWidth: 1)
         } else if isPlayable {
             RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
                 .stroke(

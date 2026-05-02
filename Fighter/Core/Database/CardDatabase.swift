@@ -181,6 +181,44 @@ enum CardDatabase {
         upgradedEffects: [.dealDamage(12)]
     )
 
+    // MARK: - Warrior Exhaust Cards
+
+    static let trueGrit = Card.newInstance(
+        templateKey: "true_grit_warrior",
+        type: .skill,
+        rarity: .common,
+        cost: 1,
+        target: .selfTarget,
+        characterClass: .warrior,
+        effects: [.gainBlock(7), .exhaustRandomFromHand(count: 1)],
+        upgradedEffects: [.gainBlock(9), .exhaustRandomFromHand(count: 1)],
+        isExhaust: true
+    )
+
+    static let fiendFire = Card.newInstance(
+        templateKey: "fiend_fire_warrior",
+        type: .attack,
+        rarity: .rare,
+        cost: 2,
+        target: .enemy,
+        characterClass: .warrior,
+        effects: [.dealDamage(7), .exhaustRandomFromHand(count: 3)],
+        upgradedEffects: [.dealDamage(10), .exhaustRandomFromHand(count: 3)],
+        isExhaust: true
+    )
+
+    static let sentinel = Card.newInstance(
+        templateKey: "sentinel_warrior",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 1,
+        target: .selfTarget,
+        characterClass: .warrior,
+        effects: [.gainBlock(6), .exhaustRandomFromHand(count: 1)],
+        upgradedEffects: [.gainBlock(9), .exhaustRandomFromHand(count: 1)],
+        isExhaust: true
+    )
+
     // MARK: - Assassin Starter Cards
 
     static let strikeAssassin = Card.newInstance(
@@ -625,6 +663,71 @@ enum CardDatabase {
         isExhaust: true
     )
 
+    // MARK: - Status Cards
+
+    static let wound = Card.newInstance(
+        templateKey: "wound",
+        type: .status,
+        rarity: .starter,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
+    static let daze = Card.newInstance(
+        templateKey: "daze",
+        type: .status,
+        rarity: .starter,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: [],
+        isExhaust: true
+    )
+
+    static let burn = Card.newInstance(
+        templateKey: "burn",
+        type: .status,
+        rarity: .starter,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
+    static let slimed = Card.newInstance(
+        templateKey: "slimed",
+        type: .status,
+        rarity: .starter,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: [],
+        isExhaust: true
+    )
+
+    static let voidCard = Card.newInstance(
+        templateKey: "void_card",
+        type: .status,
+        rarity: .starter,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: [],
+        isExhaust: true
+    )
+
+    static let writhe = Card.newInstance(
+        templateKey: "writhe",
+        type: .status,
+        rarity: .starter,
+        cost: -1,
+        target: .none,
+        characterClass: nil,
+        effects: []
+    )
+
     // MARK: - All Cards
 
     static let allCards: [Card] = [
@@ -632,7 +735,7 @@ enum CardDatabase {
         strikeWarrior, defendWarrior, bashWarrior,
         angrier, clash, cleave, ironWave, armaments, shoutWarrior, warcryWarrior,
         uppercut, inflame, metallicize,
-        bludgeon, feed,
+        bludgeon, feed, trueGrit, fiendFire, sentinel,
         // Assassin
         strikeAssassin, defendAssassin, neutralizeAssassin,
         backstab, poisonStab, dodgeAssassin, bladeDance, setupAssassin, dashAssassin,
@@ -646,7 +749,9 @@ enum CardDatabase {
         // Neutral
         deepBreath, bandageUp, darkShackles, swiftStrike,
         safeGuard, flashOfSteel, panacea,
-        enlightenment, handOfGreed, metamorphosis
+        enlightenment, handOfGreed, metamorphosis,
+        // Status
+        wound, daze, burn, slimed, voidCard, writhe
     ]
 
     // MARK: - Accessors

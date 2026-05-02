@@ -50,6 +50,7 @@ enum CombatEngine {
         combat.combatPhase = .playerAction
         combat.selectedCardID = nil
         combat.selectedTargetID = nil
+        combat.cardsPlayedThisTurn = 0
 
         if !store.player.hasDebuff(.barricade) {
             if store.player.relics.contains(where: { $0.id == "calipers" }) {
@@ -80,7 +81,7 @@ enum CombatEngine {
         guard let combat = store.combatState,
               let card = combat.hand.first(where: { $0.id == cardID }) else { return }
 
-        guard store.player.combatEnergy >= card.cost else { return }
+        guard store.player.combatEnergy >= card.cost, card.cost >= 0 else { return }
 
         store.player.combatEnergy -= card.cost
         combat.removeCardFromHand(id: card.id)
@@ -96,6 +97,25 @@ enum CombatEngine {
         // Track attack cards for relic counters
         if card.type == .attack {
             store.player.attackCardsPlayedThisCombat += 1
+        }
+
+        // Track cards played this turn for Time Eater
+        combat.cardsPlayedThisTurn += 1
+
+        // Time Eater: force end turn after 12 cards
+        let hasTimeEater = combat.enemies.contains { $0.templateID == "time_eater" && $0.isAlive }
+        if hasTimeEater && combat.cardsPlayedThisTurn >= 12 {
+            // Time Eater devours buffs
+            for i in combat.enemies.indices where combat.enemies[i].templateID == "time_eater" {
+                combat.enemies[i].addBuff(BuffInstance(type: .strength, stacks: 2))
+                // Inject Void into discard pile
+                if let voidCard = CardDatabase.card(byKey: "void_card")?.copy() {
+                    combat.discardPile.append(voidCard)
+                }
+            }
+            // Force end player turn
+            endPlayerTurn(store: store)
+            return
         }
 
         // Run statistics
@@ -127,13 +147,38 @@ enum CombatEngine {
         combat.selectedTargetID = nil
 
         for card in combat.hand {
-            if card.isEthereal {
+            if card.isEthereal || card.isExhaust {
                 combat.exhaustPile.append(card)
             } else {
                 combat.discardPile.append(card)
             }
         }
         combat.hand = []
+
+        // Status card end-of-turn effects
+        var statusCardsToProcess: [Card] = []
+        for card in combat.discardPile {
+            if card.type == .status {
+                statusCardsToProcess.append(card)
+            }
+        }
+        for card in statusCardsToProcess {
+            switch card.templateKey {
+            case "burn":
+                store.player.takeDamage(2)
+            case "void_card":
+                store.player.combatEnergy = max(0, store.player.combatEnergy - 1)
+            default:
+                break
+            }
+        }
+
+        // Check player death from status effects
+        if store.player.isDead {
+            combat.combatPhase = .combatEnd
+            store.endCombat(victory: false)
+            return
+        }
 
         if !store.player.hasDebuff(.barricade) {
             store.player.combatBlock = 0
@@ -206,6 +251,15 @@ enum CombatEngine {
             return
         }
 
+        // Boss mechanic checks
+        checkBossMechanics(combat: combat, store: store)
+
+        if combat.isCombatOver {
+            combat.combatPhase = .combatEnd
+            store.endCombat(victory: true)
+            return
+        }
+
         if store.player.isDead {
             combat.combatPhase = .combatEnd
             store.endCombat(victory: false)
@@ -213,6 +267,61 @@ enum CombatEngine {
         }
 
         beginPlayerTurn(store: store)
+    }
+
+    // MARK: - Boss Mechanics
+
+    private static func checkBossMechanics(combat: CombatState, store: GameStore) {
+        // Slime Boss: at 50% HP, split into two smaller slimes
+        for i in combat.enemies.indices {
+            let enemy = combat.enemies[i]
+            guard enemy.isAlive else { continue }
+
+            if enemy.templateID == "slime_boss" && enemy.currentHP <= enemy.maxHP / 2 {
+                let slimeHP = enemy.currentHP / 2
+                combat.enemies[i].currentHP = 0 // Remove boss
+
+                let slimeTemplate1 = CombatEnemy(template: EnemyDatabase.cultist) // reuse as base
+                var slime1 = CombatEnemy(template: EnemyTemplate(
+                    id: "slime_boss_split",
+                    nameKey: "enemy_slime_boss_split",
+                    minHP: slimeHP, maxHP: slimeHP,
+                    isBoss: false, isElite: false, act: 1,
+                    actions: [
+                        WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10)]), weight: 1.0),
+                        WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 1), effects: [.applyDebuff(.weak, stacks: 1)]), weight: 0.5),
+                    ],
+                    pattern: .random
+                ))
+                slime1.currentHP = slimeHP
+                slime1.maxHP = slimeHP
+
+                var slime2 = CombatEnemy(template: EnemyTemplate(
+                    id: "slime_boss_split",
+                    nameKey: "enemy_slime_boss_split",
+                    minHP: slimeHP, maxHP: slimeHP,
+                    isBoss: false, isElite: false, act: 1,
+                    actions: [
+                        WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10)]), weight: 1.0),
+                        WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 1), effects: [.applyDebuff(.weak, stacks: 1)]), weight: 0.5),
+                    ],
+                    pattern: .random
+                ))
+                slime2.currentHP = slimeHP
+                slime2.maxHP = slimeHP
+
+                determineNextIntent(for: &slime1)
+                determineNextIntent(for: &slime2)
+                combat.enemies.append(slime1)
+                combat.enemies.append(slime2)
+            }
+
+            // Champ: enrage below 30% HP — gain strength and Metallicize
+            if enemy.templateID == "the_champ" && enemy.currentHP <= enemy.maxHP * 3 / 10 {
+                combat.enemies[i].addBuff(BuffInstance(type: .strength, stacks: 5))
+                combat.enemies[i].addBuff(BuffInstance(type: .metallicize, stacks: 6))
+            }
+        }
     }
 
     // MARK: - Enemy AI

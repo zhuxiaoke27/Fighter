@@ -70,7 +70,7 @@ struct CardDetailView: View {
                             )
                             .frame(width: 32, height: 32)
                             .shadow(color: Theme.energyGlow, radius: 4)
-                        Text(card.cost >= 0 ? "\(card.cost)" : "X")
+                        Text(card.cost >= 0 ? "\(card.cost)" : "—")
                             .font(Theme.cardCostFont)
                             .foregroundStyle(Color(red: 0.15, green: 0.10, blue: 0.0))
                     }
@@ -228,6 +228,7 @@ struct CardDetailView: View {
         case .drawCards(let n):               return "Draw \(n) cards"
         case .discardCards(let n):            return "Discard \(n) cards"
         case .exhaustFromHand:                return "Exhaust"
+        case .exhaustRandomFromHand(let n):   return "Exhaust \(n) random card(s)"
         case .returnFromDiscard(let n):       return "Return \(n) from discard"
         case .gainEnergy(let n):              return "Gain \(n) energy"
         case .gainEnergyNextTurn(let n):      return "Gain \(n) energy next turn"

@@ -39,6 +39,62 @@ struct RewardView: View {
                 }
                 .foregroundStyle(Theme.energyColor)
 
+                // Elite/Boss relic reward
+                if let relic = store.rewardRelic {
+                    Button {
+                        store.player.relics.append(relic)
+                        store.rewardRelic = nil
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "gem")
+                                .font(.system(size: 14))
+                            Text(String(localized: LocalizedStringResource(stringLiteral: relic.nameKey)))
+                                .font(.system(size: 14, weight: .bold, design: .rounded))
+                            Spacer()
+                            Text(String(localized: LocalizedStringResource(stringLiteral: "btn_take")))
+                                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                        }
+                        .foregroundStyle(Color(red: 0.70, green: 0.50, blue: 0.90))
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(red: 0.70, green: 0.50, blue: 0.90).opacity(0.1))
+                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.70, green: 0.50, blue: 0.90).opacity(0.3), lineWidth: 1))
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, 30)
+                }
+
+                // Elite/Boss potion reward
+                if let potion = store.rewardPotion {
+                    Button {
+                        store.receivePotion(potion)
+                        store.rewardPotion = nil
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "drop.fill")
+                                .font(.system(size: 14))
+                            Text(String(localized: LocalizedStringResource(stringLiteral: potion.nameKey)))
+                                .font(.system(size: 14, weight: .bold, design: .rounded))
+                            Spacer()
+                            Text(String(localized: LocalizedStringResource(stringLiteral: "btn_take")))
+                                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                        }
+                        .foregroundStyle(Color(red: 0.40, green: 0.80, blue: 0.50))
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(red: 0.40, green: 0.80, blue: 0.50).opacity(0.1))
+                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.40, green: 0.80, blue: 0.50).opacity(0.3), lineWidth: 1))
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, 30)
+                }
+
                 if !store.rewardCards.isEmpty {
                     VStack(spacing: 12) {
                         Text(String(localized: "label_choose_card"))

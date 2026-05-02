@@ -25,6 +25,10 @@ struct CombatView: View {
     @State private var isEnemyTurnTransition = false
     @State private var previousTurnFlag = false
 
+    // Combat log
+    @State private var combatLog: [CombatLogEntry] = []
+    @State private var showCombatLog = false
+
     // Drop zone tracking
     @State private var enemyZoneFrame: CGRect = .zero
     @State private var playerZoneFrame: CGRect = .zero
@@ -130,6 +134,35 @@ struct CombatView: View {
                 floatingDragCard(card)
             }
 
+            // Combat log toggle button
+            if let combat = store.combatState, !combat.isCombatOver {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            withAnimation(.spring(response: 0.3)) {
+                                showCombatLog.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "list.bullet.clipboard")
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundStyle(Theme.textSecondary)
+                                .padding(8)
+                                .background(Circle().fill(Color.white.opacity(0.08)))
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.top, 50)
+                        .padding(.trailing, 12)
+                    }
+                    Spacer()
+                }
+            }
+
+            // Combat log panel
+            if showCombatLog {
+                combatLogPanel
+            }
+
             // Card detail overlay
             if let card = detailCard {
                 CardDetailView(card: card) {
@@ -231,6 +264,18 @@ struct CombatView: View {
                     color: Theme.blockColor,
                     isCrit: false
                 )
+                addLogEntry(icon: "shield", text: "+\(newBlock) Block", color: Theme.blockColor)
+            }
+        }
+        .onChange(of: store.combatState?.enemies.map(\.currentHP) ?? []) { oldHPs, newHPs in
+            guard let combat = store.combatState else { return }
+            for i in 0..<min(oldHPs.count, newHPs.count) {
+                let oldHP = oldHPs[i]
+                let newHP = newHPs[i]
+                if newHP < oldHP {
+                    let damage = oldHP - newHP
+                    addLogEntry(icon: "sword", text: "-\(damage) → \(combat.enemies[i].templateID)", color: Color(red: 0.95, green: 0.30, blue: 0.20))
+                }
             }
         }
         .gesture(dragGesture)
@@ -239,7 +284,7 @@ struct CombatView: View {
     // MARK: - Floating Drag Card
 
     private func floatingDragCard(_ card: Card) -> some View {
-        let canPlay = card.cost <= store.player.combatEnergy
+        let canPlay = card.cost >= 0 && card.cost <= store.player.combatEnergy
         let finalPoint = dragStartPosition + dragOffset
         let inEnemyZone = enemyZoneFrame.contains(finalPoint)
         let inPlayerZone = playerZoneFrame.contains(finalPoint)
@@ -297,7 +342,7 @@ struct CombatView: View {
 
                 if dragCard == nil {
                     if let card = findCardAt(location: value.startLocation, in: combat.hand) {
-                        if card.cost <= store.player.combatEnergy {
+                        if card.cost >= 0 && card.cost <= store.player.combatEnergy {
                             dragCard = card
                             dragStartPosition = value.startLocation
                             isDragging = true
@@ -524,7 +569,7 @@ struct CombatView: View {
     // MARK: - Card/Enemy Tap Handlers
 
     private func handleCardTap(_ card: Card) {
-        guard let combat = store.combatState else { return }
+        guard let combat = store.combatState, card.cost >= 0 else { return }
 
         if combat.selectedCardID == card.id {
             combat.selectedCardID = nil
@@ -604,6 +649,68 @@ struct CombatView: View {
         case .curse:  return "flame"
         }
     }
+
+    // MARK: - Combat Log
+
+    private var combatLogPanel: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text(String(localized: "label_combat_log"))
+                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                    .foregroundStyle(Theme.textSecondary)
+                Spacer()
+                Button {
+                    withAnimation(.spring(response: 0.3)) {
+                        showCombatLog = false
+                    }
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundStyle(Theme.textSecondary)
+                }
+                .buttonStyle(.plain)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(Color(red: 0.08, green: 0.07, blue: 0.12))
+
+            Divider().background(Color.white.opacity(0.06))
+
+            let recentLogs = Array(combatLog.suffix(5))
+            ForEach(recentLogs) { entry in
+                HStack(spacing: 6) {
+                    Image(systemName: entry.icon)
+                        .font(.system(size: 10))
+                        .foregroundStyle(entry.color)
+                        .frame(width: 16)
+                    Text(entry.text)
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .foregroundStyle(Theme.textPrimary)
+                    Spacer()
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+            }
+        }
+        .frame(width: 220)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(red: 0.10, green: 0.09, blue: 0.16))
+                .shadow(color: .black.opacity(0.5), radius: 12, y: 4)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.white.opacity(0.08), lineWidth: 1)
+        )
+        .padding(.top, 80)
+        .padding(.trailing, 12)
+        .frame(maxWidth: .infinity, alignment: .topTrailing)
+        .transition(.opacity.combined(with: .move(edge: .trailing)))
+    }
+
+    private func addLogEntry(icon: String, text: String, color: Color) {
+        combatLog.append(CombatLogEntry(icon: icon, text: text, color: color))
+    }
 }
 
 // MARK: - CGPoint + CGSize
@@ -624,4 +731,13 @@ struct FloatingText: Identifiable {
     let isCrit: Bool
     var offset: CGFloat = 0
     var opacity: Double = 1.0
+}
+
+// MARK: - Combat Log Entry
+
+struct CombatLogEntry: Identifiable {
+    let id = UUID()
+    let icon: String
+    let text: String
+    let color: Color
 }

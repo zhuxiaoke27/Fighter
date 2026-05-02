@@ -88,17 +88,24 @@ final class GameStore {
         rewardRelic = nil
         rewardPotion = nil
         if victory {
-            rewardGold = Int.random(in: 20...30) + currentFloor * 2
-            let characterClass = player.characterClass
-            let rarity = weightedRarityRoll()
-            rewardCards = CardDatabase.randomCards(count: 3, rarity: rarity, for: characterClass)
-            player.gold += rewardGold
-
-            // Elite/Boss drops relic + potion
             if lastBattleWasEliteOrBoss {
+                // Elite/Boss: better gold + guaranteed uncommon/rare cards
+                rewardGold = Int.random(in: 30...50) + currentFloor * 3
+                let characterClass = player.characterClass
+                let rarityRoll = Double.random(in: 0...1)
+                let rarity: CardRarity = rarityRoll < 0.4 ? .rare : .uncommon
+                rewardCards = CardDatabase.randomCards(count: 3, rarity: rarity, for: characterClass)
+
+                // Guaranteed relic + potion
                 rewardRelic = RelicDatabase.randomRelic(excluding: player.relics)
                 rewardPotion = PotionDatabase.randomPotion()
+            } else {
+                rewardGold = Int.random(in: 20...30) + currentFloor * 2
+                let characterClass = player.characterClass
+                let rarity = weightedRarityRoll()
+                rewardCards = CardDatabase.randomCards(count: 3, rarity: rarity, for: characterClass)
             }
+            player.gold += rewardGold
         }
         lastBattleWasEliteOrBoss = false
     }
