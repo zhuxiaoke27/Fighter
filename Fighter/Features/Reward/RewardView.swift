@@ -39,6 +39,42 @@ struct RewardView: View {
                 }
                 .foregroundStyle(Theme.energyColor)
 
+                // Boss relic choice (3 options)
+                if !store.rewardBossRelics.isEmpty {
+                    VStack(spacing: 10) {
+                        Text(String(localized: "label_choose_boss_relic"))
+                            .font(.system(size: 14, weight: .medium, design: .rounded))
+                            .foregroundStyle(Color(red: 0.70, green: 0.35, blue: 0.90))
+
+                        HStack(spacing: 12) {
+                            ForEach(Array(store.rewardBossRelics.enumerated()), id: \.offset) { index, relic in
+                                Button {
+                                    store.takeBossRelic(at: index)
+                                } label: {
+                                    VStack(spacing: 4) {
+                                        Image(systemName: "crown.fill")
+                                            .font(.system(size: 18))
+                                            .foregroundStyle(Color(red: 0.70, green: 0.35, blue: 0.90))
+                                        Text(String(localized: LocalizedStringResource(stringLiteral: relic.nameKey)))
+                                            .font(.system(size: 10, weight: .bold, design: .rounded))
+                                            .foregroundStyle(Theme.textPrimary)
+                                            .lineLimit(2)
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    .padding(10)
+                                    .frame(width: 90, height: 70)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color(red: 0.70, green: 0.35, blue: 0.90).opacity(0.1))
+                                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.70, green: 0.35, blue: 0.90).opacity(0.3), lineWidth: 1))
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
+                }
+
                 // Elite/Boss relic reward
                 if let relic = store.rewardRelic {
                     Button {

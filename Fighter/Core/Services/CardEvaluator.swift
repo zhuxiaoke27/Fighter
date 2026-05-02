@@ -80,11 +80,31 @@ struct CardEvaluator {
 
         case .applyDebuff(let type, let stacks):
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
-            combat.enemies[idx].addBuff(BuffInstance(type: type, stacks: stacks, isDurationBased: true))
+            // Artifact: block debuff if enemy has stacks
+            if combat.enemies[idx].buffStacks(.artifact) > 0 {
+                if let aIdx = combat.enemies[idx].buffs.firstIndex(where: { $0.type == .artifact }) {
+                    combat.enemies[idx].buffs[aIdx].stacks -= 1
+                    if combat.enemies[idx].buffs[aIdx].stacks <= 0 {
+                        combat.enemies[idx].buffs.remove(at: aIdx)
+                    }
+                }
+            } else {
+                combat.enemies[idx].addBuff(BuffInstance(type: type, stacks: stacks, isDurationBased: true))
+            }
 
         case .applyDebuffToAll(let type, let stacks):
             for i in combat.enemies.indices where combat.enemies[i].isAlive {
-                combat.enemies[i].addBuff(BuffInstance(type: type, stacks: stacks, isDurationBased: true))
+                // Artifact: block debuff if enemy has stacks
+                if combat.enemies[i].buffStacks(.artifact) > 0 {
+                    if let aIdx = combat.enemies[i].buffs.firstIndex(where: { $0.type == .artifact }) {
+                        combat.enemies[i].buffs[aIdx].stacks -= 1
+                        if combat.enemies[i].buffs[aIdx].stacks <= 0 {
+                            combat.enemies[i].buffs.remove(at: aIdx)
+                        }
+                    }
+                } else {
+                    combat.enemies[i].addBuff(BuffInstance(type: type, stacks: stacks, isDurationBased: true))
+                }
             }
 
         case .drawCards(let count):
@@ -141,8 +161,10 @@ struct CardEvaluator {
                 combat.drawPile.append(newCard.copy())
             }
 
-        case .removeFromCombat:
-            break
+        case .removeFromCombat(let templateKey):
+            combat.hand.removeAll { $0.templateKey == templateKey }
+            combat.drawPile.removeAll { $0.templateKey == templateKey }
+            combat.discardPile.removeAll { $0.templateKey == templateKey }
 
         case .ifHasDebuff(let buffType, let thenEffects):
             if player.hasDebuff(buffType) {

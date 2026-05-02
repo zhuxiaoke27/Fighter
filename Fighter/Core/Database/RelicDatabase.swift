@@ -314,6 +314,68 @@ struct RelicDatabase {
             ],
             rarity: .rare,
             tags: [.rare, .utility]
+        ),
+
+        // MARK: - Boss relics
+        RelicTemplate(
+            id: "philosophers_stone",
+            nameKey: "relic_philosophers_stone",
+            descriptionKey: "relic_philosophers_stone_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnStart, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .utility]
+        ),
+        RelicTemplate(
+            id: "fusion_hammer",
+            nameKey: "relic_fusion_hammer",
+            descriptionKey: "relic_fusion_hammer_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnStart, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .utility]
+        ),
+        RelicTemplate(
+            id: "cursed_key",
+            nameKey: "relic_cursed_key",
+            descriptionKey: "relic_cursed_key_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnStart, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .utility]
+        ),
+        RelicTemplate(
+            id: "ring_of_the_serpent",
+            nameKey: "relic_ring_of_the_serpent",
+            descriptionKey: "relic_ring_of_the_serpent_desc",
+            effects: [
+                RelicEffect(trigger: .onCombatStart, effect: .drawCards(1))
+            ],
+            rarity: .rare,
+            tags: [.boss, .utility]
+        ),
+        RelicTemplate(
+            id: "inserter",
+            nameKey: "relic_inserter",
+            descriptionKey: "relic_inserter_desc",
+            effects: [
+                RelicEffect(trigger: .onEnemyKilled, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .defensive]
+        ),
+        RelicTemplate(
+            id: "sling_of_courage",
+            nameKey: "relic_sling_of_courage",
+            descriptionKey: "relic_sling_of_courage_desc",
+            effects: [
+                RelicEffect(trigger: .onCombatStart, effect: .applyBuff(.strength, stacks: 2))
+            ],
+            rarity: .rare,
+            tags: [.boss, .offensive]
         )
     ]
 
@@ -338,5 +400,11 @@ struct RelicDatabase {
             pool = pool.filter { $0.rarity == rarity }
         }
         return pool.randomElement() ?? allRelics[3]
+    }
+
+    static func randomBossRelics(count: Int = 3, excluding owned: [RelicTemplate] = []) -> [RelicTemplate] {
+        let ownedIDs = Set(owned.map(\.id))
+        let pool = allRelics.filter { $0.tags.contains(.boss) && !ownedIDs.contains($0.id) }
+        return Array(pool.shuffled().prefix(count))
     }
 }

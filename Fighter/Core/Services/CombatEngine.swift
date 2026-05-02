@@ -48,6 +48,13 @@ enum CombatEngine {
             }
         }
 
+        // Philosopher's Stone: enemies gain strength at combat start
+        if store.player.relics.contains(where: { $0.id == "philosophers_stone" }) {
+            for i in combat.enemies.indices {
+                combat.enemies[i].addBuff(BuffInstance(type: .strength, stacks: 1))
+            }
+        }
+
         for i in combat.enemies.indices {
             determineNextIntent(for: &combat.enemies[i])
         }
@@ -81,11 +88,38 @@ enum CombatEngine {
 
         CardEvaluator.drawCards(cardsToDrawPerTurn, combat: combat)
 
-        store.player.tickBuffs()
+        // Innate cards: ensure they are in the opening hand
+        if combat.turnNumber == 1 {
+            var innateCards: [Card] = []
+            for card in combat.drawPile where card.isInnate {
+                if let idx = combat.drawPile.firstIndex(where: { $0.id == card.id }) {
+                    innateCards.append(combat.drawPile.remove(at: idx))
+                }
+            }
+            while combat.hand.count + innateCards.count > 10,
+                  let nonInnateIdx = combat.hand.firstIndex(where: { !$0.isInnate }) {
+                let removed = combat.hand.remove(at: nonInnateIdx)
+                combat.drawPile.append(removed)
+            }
+            combat.hand.append(contentsOf: innateCards)
+        }
 
         let metallicize = store.player.buffStacks(.metallicize)
         if metallicize > 0 {
             store.player.combatBlock += metallicize
+        }
+
+        // Plated Armor: gain block at turn start
+        let platedArmor = store.player.buffStacks(.platedArmor)
+        if platedArmor > 0 {
+            store.player.combatBlock += platedArmor
+        }
+
+        // Regenerate: heal at turn start
+        let regenStacks = store.player.buffStacks(.regenerate)
+        if regenStacks > 0 {
+            let healed = min(regenStacks, store.player.maxHP - store.player.currentHP)
+            store.player.currentHP += healed
         }
 
         // Frost: gain block at turn start
@@ -115,6 +149,11 @@ enum CombatEngine {
         guard let combat = store.combatState,
               let card = combat.hand.first(where: { $0.id == cardID }) else { return }
 
+        // Normality: block if 3+ cards played this turn
+        if combat.hand.contains(where: { $0.templateKey == "normality" }) && combat.cardsPlayedThisTurn >= 3 {
+            return
+        }
+
         guard store.player.combatEnergy >= card.cost, card.cost >= 0 else { return }
 
         store.player.combatEnergy -= card.cost
@@ -127,6 +166,11 @@ enum CombatEngine {
         }
 
         CardEvaluator.resolve(card.resolvedEffects, card: card, targetEnemyIndex: targetIndex, store: store)
+
+        // Pain: take 1 damage when playing any card while Pain is in hand
+        if combat.hand.contains(where: { $0.templateKey == "pain" }) {
+            store.player.takeDamage(1)
+        }
 
         // Track attack cards for relic counters
         if card.type == .attack {
@@ -179,6 +223,21 @@ enum CombatEngine {
         combat.combatPhase = .enemyTurn
         combat.selectedCardID = nil
         combat.selectedTargetID = nil
+
+        // Curse card end-of-turn effects (before hand is cleared)
+        var curseCards: [Card] = []
+        for card in combat.hand where card.type == .curse {
+            curseCards.append(card)
+        }
+        for card in curseCards {
+            switch card.templateKey {
+            case "decay": store.player.takeDamage(2)
+            case "doubt": store.player.addBuff(BuffInstance(type: .weak, stacks: 1, isDurationBased: true))
+            case "regret": store.player.takeDamage(combat.hand.count)
+            case "shame": store.player.addBuff(BuffInstance(type: .frail, stacks: 1, isDurationBased: true))
+            default: break
+            }
+        }
 
         for card in combat.hand {
             if card.isEthereal || card.isExhaust {
@@ -243,10 +302,25 @@ enum CombatEngine {
                         let finalDamage = amount + strength
                         store.player.takeDamage(finalDamage)
                         triggerRelics(.onDamageTaken, store: store)
+                        // Thorns: reflect damage back to attacker
+                        let thornsStacks = store.player.buffStacks(.thorns)
+                        if thornsStacks > 0 {
+                            combat.enemies[i].currentHP -= thornsStacks
+                        }
                     case .gainBlock(let amount):
                         combat.enemies[i].block += amount
                     case .applyDebuff(let type, let stacks):
-                        store.player.addBuff(BuffInstance(type: type, stacks: stacks, isDurationBased: true))
+                        // Artifact: block debuff if player has stacks
+                        if store.player.buffStacks(.artifact) > 0 {
+                            if let aIdx = store.player.buffs.firstIndex(where: { $0.type == .artifact }) {
+                                store.player.buffs[aIdx].stacks -= 1
+                                if store.player.buffs[aIdx].stacks <= 0 {
+                                    store.player.buffs.remove(at: aIdx)
+                                }
+                            }
+                        } else {
+                            store.player.addBuff(BuffInstance(type: type, stacks: stacks, isDurationBased: true))
+                        }
                     case .applyBuff(let type, let stacks):
                         combat.enemies[i].addBuff(BuffInstance(type: type, stacks: stacks))
                     default:
@@ -516,6 +590,13 @@ enum CombatEngine {
                     if curseCount > 0 {
                         player.addBuff(BuffInstance(type: .strength, stacks: curseCount))
                     }
+                // Boss relics
+                case "philosophers_stone":
+                    player.combatEnergy += 1
+                case "fusion_hammer":
+                    player.combatEnergy += 1
+                case "cursed_key":
+                    player.combatEnergy += 1
                 default:
                     // Generic: resolve effect through CardEvaluator
                     CardEvaluator.resolve(

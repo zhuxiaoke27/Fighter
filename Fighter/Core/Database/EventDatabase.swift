@@ -72,7 +72,7 @@ enum EventDatabase {
             icon: "chest.lefthalf.filled.badge.xmark",
             choices: [
                 EventChoice(textKey: "event_cursed_chest_choice1", effects: [.gainRandomRelic, .loseHP(12)]),
-                EventChoice(textKey: "event_cursed_chest_choice2", effects: [.nothing])
+                EventChoice(textKey: "event_cursed_chest_choice2", effects: [.addCardToDeck("decay")])
             ],
             act: 1, weight: 0.5
         ),
@@ -163,7 +163,8 @@ enum EventDatabase {
             icon: "music.note",
             choices: [
                 EventChoice(textKey: "event_music_box_choice1", effects: [.gainHP(20)]),
-                EventChoice(textKey: "event_music_box_choice2", effects: [.gainGold(50), .randomDebuff])
+                EventChoice(textKey: "event_music_box_choice2", effects: [.gainGold(50), .randomDebuff]),
+                EventChoice(textKey: "event_music_box_choice3", effects: [.gainGold(100), .addCardToDeck("doubt")])
             ],
             act: 1, weight: 0.8
         ),
@@ -232,7 +233,8 @@ enum EventDatabase {
             icon: "sparkles",
             choices: [
                 EventChoice(textKey: "event_captive_spirit_choice1", effects: [.upgradeRandomCards(3)]),
-                EventChoice(textKey: "event_captive_spirit_choice2", effects: [.gainGold(100), .randomDebuff])
+                EventChoice(textKey: "event_captive_spirit_choice2", effects: [.gainGold(100), .randomDebuff]),
+                EventChoice(textKey: "event_captive_spirit_choice3", effects: [.gainRandomRelic, .addCardToDeck("pain")])
             ],
             act: 2, weight: 0.5
         ),
@@ -312,7 +314,8 @@ enum EventDatabase {
             icon: "exclamationmark.triangle.fill",
             choices: [
                 EventChoice(textKey: "event_forbidden_altar_choice1", effects: [.loseHP(12), .upgradeRandomCard, .upgradeRandomCard]),
-                EventChoice(textKey: "event_forbidden_altar_choice2", effects: [.loseGold(60), .gainMaxHP(6)])
+                EventChoice(textKey: "event_forbidden_altar_choice2", effects: [.loseGold(60), .gainMaxHP(6)]),
+                EventChoice(textKey: "event_forbidden_altar_choice3", effects: [.gainStrength(3), .addCardToDeck("shame")])
             ],
             act: 3, weight: 1.0
         ),
@@ -334,7 +337,8 @@ enum EventDatabase {
             icon: "bell.and.waves.fill",
             choices: [
                 EventChoice(textKey: "event_doom_bell_choice1", effects: [.loseMaxHP(5), .gainStrength(3)]),
-                EventChoice(textKey: "event_doom_bell_choice2", effects: [.nothing])
+                EventChoice(textKey: "event_doom_bell_choice2", effects: [.gainStrength(2), .addCardToDeck("regret")]),
+                EventChoice(textKey: "event_doom_bell_choice3", effects: [.nothing])
             ],
             act: 3, weight: 0.5
         ),
