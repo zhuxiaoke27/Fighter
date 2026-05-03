@@ -9,6 +9,8 @@ struct MapView: View {
     @Environment(GameStore.self) private var store
     @State private var showDeck = false
     @State private var hasAppeared = false
+    @State private var showQuitConfirm = false
+    @State private var showTutorial = false
 
     var body: some View {
         ZStack {
@@ -30,19 +32,35 @@ struct MapView: View {
                     mapContent(mapState: mapState)
                 }
             }
+
+            if showTutorial {
+                TutorialOverlay(text: String(localized: "tutorial_map")) {
+                    showTutorial = false
+                    store.settings.hasSeenMapTutorial = true
+                    SaveManager.shared.saveSettings(store.settings)
+                }
+            }
         }
         .sheet(isPresented: $showDeck) {
             DeckView(deck: store.player.deck)
+        }
+        .alert(String(localized: "label_quit_confirm_title"), isPresented: $showQuitConfirm) {
+            Button(String(localized: "btn_quit"), role: .destructive) {
+                store.quitToMenu()
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
+        } message: {
+            Text(String(localized: "label_quit_confirm_message"))
         }
     }
 
     private var mapHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Act \(store.currentAct)")
+                Text(String(localized: "label_act \(store.currentAct)"))
                     .font(.system(size: 18, weight: .bold, design: .rounded))
                     .foregroundStyle(Theme.textPrimary)
-                Text("Floor \(store.currentFloor)")
+                Text(String(localized: "label_floor \(store.currentFloor)"))
                     .font(Theme.captionFont)
                     .foregroundStyle(Theme.textSecondary)
             }
@@ -69,6 +87,16 @@ struct MapView: View {
             }
             .foregroundStyle(Theme.energyColor)
             .padding(.leading, 8)
+
+            Button {
+                showQuitConfirm = true
+            } label: {
+                Image(systemName: "xmark.circle")
+                    .font(.system(size: 18))
+                    .foregroundStyle(Theme.textSecondary)
+            }
+            .buttonStyle(.plain)
+            .padding(.leading, 6)
         }
         .padding(.horizontal, Theme.padding)
     }
@@ -87,6 +115,9 @@ struct MapView: View {
             .onAppear {
                 guard !hasAppeared else { return }
                 hasAppeared = true
+                if !store.settings.hasSeenMapTutorial {
+                    showTutorial = true
+                }
                 // First time: scroll to boss (top), then animate down to current position
                 let targetFloor = mapState.currentFloor
                 // Start at the boss floor (top of reversed list)
@@ -123,12 +154,12 @@ struct MapView: View {
         VStack(spacing: 0) {
             // Floor label
             if floorIndex == MapGenerator.bossFloor {
-                Text("BOSS")
+                Text(String(localized: "label_boss"))
                     .font(.system(size: 11, weight: .heavy, design: .rounded))
                     .foregroundStyle(Color(red: 0.70, green: 0.35, blue: 0.90))
                     .padding(.bottom, 4)
             } else if floorIndex == MapGenerator.restBeforeBoss {
-                Text("REST")
+                Text(String(localized: "label_rest"))
                     .font(.system(size: 10, weight: .bold, design: .rounded))
                     .foregroundStyle(Color(red: 0.30, green: 0.72, blue: 0.42))
                     .padding(.bottom, 4)

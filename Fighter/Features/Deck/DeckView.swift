@@ -87,7 +87,7 @@ struct DeckView: View {
     private var tagFilterBar: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 6) {
-                tagChip(label: "All", isSelected: selectedTag == nil) {
+                tagChip(label: String(localized: "label_all"), isSelected: selectedTag == nil) {
                     selectedTag = nil
                 }
                 ForEach(Array(CardTag.allCases.enumerated()), id: \.offset) { _, tag in
@@ -121,19 +121,19 @@ struct DeckView: View {
 
     private func tagLabel(_ tag: CardTag) -> String {
         switch tag {
-        case .exhaust: return "Exhaust"
-        case .strength: return "STR"
-        case .poison: return "Poison"
-        case .energy: return "Energy"
-        case .block: return "Block"
-        case .draw: return "Draw"
-        case .multiHit: return "Multi"
-        case .selfDamage: return "Self"
-        case .cardGen: return "Generate"
-        case .starter: return "Starter"
-        case .offensive: return "ATK"
-        case .defensive: return "DEF"
-        case .utility: return "Util"
+        case .exhaust: return String(localized: "tag_exhaust")
+        case .strength: return String(localized: "tag_str")
+        case .poison: return String(localized: "tag_poison")
+        case .energy: return String(localized: "tag_energy")
+        case .block: return String(localized: "tag_block")
+        case .draw: return String(localized: "tag_draw")
+        case .multiHit: return String(localized: "tag_multi")
+        case .selfDamage: return String(localized: "tag_self")
+        case .cardGen: return String(localized: "tag_generate")
+        case .starter: return String(localized: "tag_starter")
+        case .offensive: return String(localized: "tag_atk")
+        case .defensive: return String(localized: "tag_def")
+        case .utility: return String(localized: "tag_util")
         }
     }
 }

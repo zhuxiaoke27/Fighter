@@ -8,6 +8,7 @@ import SwiftUI
 struct ShopView: View {
     @Environment(GameStore.self) private var store
     @State private var showRemoveSheet = false
+    @State private var showTutorial: Bool = false
 
     var body: some View {
         ZStack {
@@ -107,7 +108,7 @@ struct ShopView: View {
                                 .font(.system(size: 20))
                             Text(String(localized: "btn_remove_card"))
                                 .font(.system(size: 12, weight: .bold, design: .rounded))
-                            Text("75g")
+                            Text(String(localized: "label_price_75g"))
                                 .font(.system(size: 11, weight: .medium, design: .rounded))
                         }
                         .foregroundStyle(store.player.gold >= 75 ? Color(red: 0.90, green: 0.30, blue: 0.25) : Theme.textSecondary.opacity(0.5))
@@ -150,6 +151,20 @@ struct ShopView: View {
         }
         .sheet(isPresented: $showRemoveSheet) {
             removeCardSheet
+        }
+        .onAppear {
+            if !store.settings.hasSeenShopTutorial {
+                showTutorial = true
+            }
+        }
+        .overlay {
+            if showTutorial {
+                TutorialOverlay(text: String(localized: "tutorial_shop")) {
+                    showTutorial = false
+                    store.settings.hasSeenShopTutorial = true
+                    SaveManager.shared.saveSettings(store.settings)
+                }
+            }
         }
     }
 

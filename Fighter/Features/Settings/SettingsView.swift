@@ -33,7 +33,7 @@ struct SettingsView: View {
                             set: { store.settings.language = $0 }
                         )) {
                             ForEach(AppLanguage.allCases, id: \.self) { lang in
-                                Text(lang.rawValue == "system" ? String(localized: "settings_lang_system") : lang.rawValue.uppercased())
+                                Text(lang == .system ? String(localized: "settings_lang_system") : (lang == .en ? "English" : "中文"))
                                     .font(.system(size: 14, design: .rounded))
                                     .tag(lang)
                             }

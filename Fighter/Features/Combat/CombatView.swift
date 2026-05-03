@@ -35,6 +35,9 @@ struct CombatView: View {
 
     // Potion usage
     @State private var showPotionMenu: Bool = false
+
+    // Tutorial
+    @State private var showTutorial: Bool = false
     @State private var potionTargetingIndex: Int? = nil
 
     var body: some View {
@@ -281,11 +284,26 @@ struct CombatView: View {
                 let newHP = newHPs[i]
                 if newHP < oldHP {
                     let damage = oldHP - newHP
-                    addLogEntry(icon: "sword", text: "-\(damage) → \(combat.enemies[i].templateID)", color: Color(red: 0.95, green: 0.30, blue: 0.20))
+                    let enemyName = String(localized: LocalizedStringResource(stringLiteral: combat.enemies[i].templateID))
+                    addLogEntry(icon: "sword", text: String(localized: "log_damage_enemy \(damage) \(enemyName)"), color: Color(red: 0.95, green: 0.30, blue: 0.20))
                 }
             }
         }
         .gesture(dragGesture)
+        .onAppear {
+            if !store.settings.hasSeenCombatTutorial {
+                showTutorial = true
+            }
+        }
+        .overlay {
+            if showTutorial {
+                TutorialOverlay(text: String(localized: "tutorial_combat")) {
+                    showTutorial = false
+                    store.settings.hasSeenCombatTutorial = true
+                    SaveManager.shared.saveSettings(store.settings)
+                }
+            }
+        }
     }
 
     // MARK: - Floating Drag Card

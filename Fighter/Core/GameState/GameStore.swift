@@ -28,6 +28,9 @@ struct GameSettings: Codable, Sendable, Equatable {
     var language: AppLanguage = .system
     var hapticFeedback: Bool = true
     var showDamageNumbers: Bool = true
+    var hasSeenMapTutorial: Bool = false
+    var hasSeenCombatTutorial: Bool = false
+    var hasSeenShopTutorial: Bool = false
 }
 
 @Observable
@@ -69,6 +72,14 @@ final class GameStore {
     }
 
     // MARK: - Run Lifecycle
+
+    func quitToMenu() {
+        gameState = .menu
+        combatState = nil
+        mapState = nil
+        currentEvent = nil
+        combatVictory = nil
+    }
 
     func startNewRun(characterClass: CharacterClass) {
         player = PlayerState(characterClass: characterClass)

@@ -44,7 +44,7 @@ struct MainMenuView: View {
                         .shadow(color: Theme.energyGlow, radius: 12)
                         .padding(.bottom, 8)
 
-                    Text("FIGHTER")
+                    Text(String(localized: "label_game_title"))
                         .font(.system(size: 38, weight: .heavy, design: .rounded))
                         .foregroundStyle(Theme.textPrimary)
                         .shadow(color: .black.opacity(0.3), radius: 4, y: 2)
