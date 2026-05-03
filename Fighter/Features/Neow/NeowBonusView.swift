@@ -122,7 +122,7 @@ struct NeowBonusView: View {
     private func applyBonus(_ bonus: NeowBonus) {
         switch bonus.titleKey {
         case "neow_remove_card":
-            let removable = store.player.deck.indices.filter { store.player.deck[$0].rarity != .starter }
+            let removable = store.player.deck.indices
             if let idx = removable.randomElement() {
                 store.player.deck.remove(at: idx)
             }

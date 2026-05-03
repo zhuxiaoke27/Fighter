@@ -8,6 +8,7 @@ import SwiftUI
 struct RewardView: View {
     @Environment(GameStore.self) private var store
     @State private var selectedCardIndex: Int? = nil
+    @State private var bossRelicSelected: Bool = false
 
     var body: some View {
         ZStack {
@@ -50,6 +51,7 @@ struct RewardView: View {
                             ForEach(Array(store.rewardBossRelics.enumerated()), id: \.offset) { index, relic in
                                 Button {
                                     store.takeBossRelic(at: index)
+                                    bossRelicSelected = true
                                 } label: {
                                     VStack(spacing: 4) {
                                         Image(systemName: "crown.fill")
@@ -60,9 +62,14 @@ struct RewardView: View {
                                             .foregroundStyle(Theme.textPrimary)
                                             .lineLimit(2)
                                             .multilineTextAlignment(.center)
+                                        Text(String(localized: LocalizedStringResource(stringLiteral: relic.descriptionKey)))
+                                            .font(.system(size: 8, weight: .regular, design: .rounded))
+                                            .foregroundStyle(Theme.textSecondary)
+                                            .lineLimit(2)
+                                            .multilineTextAlignment(.center)
                                     }
                                     .padding(10)
-                                    .frame(width: 90, height: 70)
+                                    .frame(width: 90, height: 90)
                                     .background(
                                         RoundedRectangle(cornerRadius: 10)
                                             .fill(Color(red: 0.70, green: 0.35, blue: 0.90).opacity(0.1))
@@ -147,6 +154,7 @@ struct RewardView: View {
 
                 VStack(spacing: 12) {
                     if let idx = selectedCardIndex, idx < store.rewardCards.count {
+                        if bossRelicSelected || store.rewardBossRelics.isEmpty {
                         Button {
                             let card = store.rewardCards[idx]
                             store.completeReward(addedCard: card)
@@ -170,9 +178,10 @@ struct RewardView: View {
                             .shadow(color: Color(red: 0.30, green: 0.58, blue: 0.88).opacity(0.35), radius: 8, y: 3)
                         }
                         .buttonStyle(.plain)
+                        }
                     }
 
-                    if store.rewardBossRelics.isEmpty {
+                    if bossRelicSelected || store.rewardBossRelics.isEmpty {
                         Button {
                             store.completeReward(addedCard: nil)
                         } label: {

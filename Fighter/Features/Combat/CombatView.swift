@@ -41,6 +41,7 @@ struct CombatView: View {
     @State private var showRelics: Bool = false
     @State private var potionTargetingIndex: Int? = nil
     @State private var confirmPotionIndex: Int? = nil
+    @State private var showForfeitConfirm: Bool = false
 
     var body: some View {
         ZStack {
@@ -177,6 +178,17 @@ struct CombatView: View {
                                 }
                                 .buttonStyle(.plain)
                             }
+
+                            Button {
+                                showForfeitConfirm = true
+                            } label: {
+                                Image(systemName: "xmark.circle")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundStyle(Color(red: 0.85, green: 0.30, blue: 0.25))
+                                    .padding(8)
+                                    .background(Circle().fill(Color(red: 0.85, green: 0.30, blue: 0.25).opacity(0.12)))
+                            }
+                            .buttonStyle(.plain)
                         }
                         .padding(.top, 50)
                         .padding(.trailing, 12)
@@ -236,6 +248,15 @@ struct CombatView: View {
         }
         .sheet(isPresented: $showRelics) {
             RelicListView(relics: store.player.relics)
+        }
+        .alert(String(localized: "label_forfeit_title"), isPresented: $showForfeitConfirm) {
+            Button(String(localized: "btn_forfeit_confirm"), role: .destructive) {
+                SaveManager.shared.deleteSave()
+                store.gameState = .menu
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
+        } message: {
+            Text(String(localized: "label_forfeit_message"))
         }
         .onChange(of: store.combatState?.isPlayerTurn ?? true) { _, isPlayerTurn in
             if !isPlayerTurn && !previousTurnFlag {
@@ -821,21 +842,24 @@ struct CombatView: View {
 
             Divider().background(Color.white.opacity(0.06))
 
-            let recentLogs = Array(combatLog.suffix(5))
-            ForEach(recentLogs) { entry in
-                HStack(spacing: 6) {
-                    Image(systemName: entry.icon)
-                        .font(.system(size: 10))
-                        .foregroundStyle(entry.color)
-                        .frame(width: 16)
-                    Text(entry.text)
-                        .font(.system(size: 11, weight: .medium, design: .rounded))
-                        .foregroundStyle(Theme.textPrimary)
-                    Spacer()
+            let recentLogs = Array(combatLog.suffix(20))
+            ScrollView {
+                ForEach(recentLogs) { entry in
+                    HStack(spacing: 6) {
+                        Image(systemName: entry.icon)
+                            .font(.system(size: 10))
+                            .foregroundStyle(entry.color)
+                            .frame(width: 16)
+                        Text(entry.text)
+                            .font(.system(size: 11, weight: .medium, design: .rounded))
+                            .foregroundStyle(Theme.textPrimary)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
             }
+            .frame(maxHeight: 280)
         }
         .frame(width: 220)
         .background(

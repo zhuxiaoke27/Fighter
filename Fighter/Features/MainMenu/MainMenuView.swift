@@ -104,37 +104,6 @@ struct MainMenuView: View {
                     .padding(.horizontal, 50)
 
                     Button {
-                        store.player = PlayerState(characterClass: .warrior)
-                        store.player.deck = CardDatabase.startingDeck(for: .warrior)
-                        store.mapState = MapGenerator.generate(act: 1)
-                        store.startCombat(enemies: EnemyDatabase.randomBattle(act: 1))
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: "bolt.fill")
-                                .font(.system(size: 14, weight: .semibold))
-                            Text(String(localized: "btn_quick_battle"))
-                                .font(Theme.buttonFont)
-                        }
-                        .foregroundStyle(Theme.energyColor)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(Color.clear)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 14)
-                                .stroke(
-                                    LinearGradient(
-                                        colors: [Theme.energyColor.opacity(0.6), Theme.energyColor.opacity(0.2)],
-                                        startPoint: .top,
-                                        endPoint: .bottom
-                                    ),
-                                    lineWidth: 1.5
-                                )
-                        )
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.horizontal, 50)
-
-                    Button {
                         showSettings = true
                     } label: {
                         HStack(spacing: 6) {

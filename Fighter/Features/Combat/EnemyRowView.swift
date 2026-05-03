@@ -128,9 +128,9 @@ struct EnemyView: View {
                         // Buffs
                         if !enemy.buffs.isEmpty {
                             HStack(spacing: 3) {
-                                ForEach(enemy.buffs.prefix(3)) { buff in
-                                    Text("\(buff.stacks)")
-                                        .font(.system(size: 9, weight: .bold, design: .rounded))
+                                ForEach(enemy.buffs.prefix(4)) { buff in
+                                    Text("\(buff.type.abbreviation) \(buff.stacks)")
+                                        .font(.system(size: 8, weight: .bold, design: .rounded))
                                         .foregroundStyle(buff.type.isDebuff ? .red : .green)
                                         .padding(.horizontal, 4)
                                         .padding(.vertical, 2)
@@ -158,9 +158,19 @@ struct EnemyView: View {
         switch enemy.templateID {
         case "cultist": return "person.fill"
         case "jaw_worm": return "ant.fill"
-        case "slime": return "drop.fill"
+        case "slime", "blue_slime": return "drop.fill"
         case "gremlin_nob": return "figure.strengthtraining.functional"
         case "slime_boss": return "snowflake"
+        case "fungus_beast": return "leaf.fill"
+        case "spheric_guardian": return "shield.fill"
+        case "chosen": return "eye.fill"
+        case "book_of_stabbing": return "book.fill"
+        case "gremlin_leader": return "flag.fill"
+        case "spire_growth": return "arrow.up.backward.and.arrow.down.forward"
+        case "transmogrifier": return "wand.and.stars"
+        case "darkling": return "moon.fill"
+        case "giant_head": return "person.fill"
+        case "giant_worm": return "ant.fill"
         default: return "skull"
         }
     }

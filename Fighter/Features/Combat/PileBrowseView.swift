@@ -14,6 +14,7 @@ struct PileBrowseView: View {
     let pileType: PileType
     let cards: [Card]
     @Environment(\.dismiss) private var dismiss
+    @State private var detailCard: Card? = nil
 
     var body: some View {
         NavigationStack {
@@ -31,7 +32,12 @@ struct PileBrowseView: View {
                 } else {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                         ForEach(cards) { card in
-                            pileCardView(card)
+                            Button {
+                                detailCard = card
+                            } label: {
+                                pileCardView(card)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     .padding()
@@ -44,6 +50,13 @@ struct PileBrowseView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(localized: "btn_done")) { dismiss() }
                         .foregroundStyle(Theme.energyColor)
+                }
+            }
+        }
+        .overlay {
+            if let card = detailCard {
+                CardDetailView(card: card) {
+                    detailCard = nil
                 }
             }
         }

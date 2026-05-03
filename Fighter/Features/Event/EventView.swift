@@ -108,6 +108,8 @@ struct EventView: View {
                                 )
                             }
                             .buttonStyle(.plain)
+                            .disabled(!canAfford(choice))
+                            .opacity(canAfford(choice) ? 1.0 : 0.4)
                         }
                     }
                     .padding(.horizontal, 30)
@@ -189,7 +191,23 @@ struct EventView: View {
 
     // MARK: - Resolve Choice
 
+    private func canAfford(_ choice: EventChoice) -> Bool {
+        for effect in choice.effects {
+            if case .loseGold(let amount) = effect {
+                if store.player.gold < amount { return false }
+            }
+        }
+        return true
+    }
+
     private func resolveChoice(_ choice: EventChoice) {
+        // Pre-validate gold costs
+        guard canAfford(choice) else {
+            resultMessage = String(localized: "event_result_not_enough_gold")
+            resultColor = Color(red: 0.95, green: 0.30, blue: 0.20)
+            return
+        }
+
         var results: [String] = []
         let player = store.player
 
@@ -210,10 +228,6 @@ struct EventView: View {
                 player.gold += amount
                 results.append(String(localized: "event_result_gain_gold \(amount)"))
             case .loseGold(let amount):
-                guard player.gold >= amount else {
-                    results.append(String(localized: "event_result_not_enough_gold"))
-                    continue
-                }
                 player.gold -= amount
                 results.append(String(localized: "event_result_lose_gold \(amount)"))
             case .gainMaxHP(let amount):
@@ -227,6 +241,7 @@ struct EventView: View {
             case .addCardToDeck(let templateKey):
                 if let card = CardDatabase.card(byKey: templateKey) {
                     player.deck.append(card.copy())
+                    CombatEngine.triggerOnCardAdded(store: store)
                     results.append(String(localized: "event_result_card_added"))
                 }
             case .removeRandomCard:
@@ -312,6 +327,7 @@ struct EventView: View {
                 if !player.deck.isEmpty {
                     let idx = Int.random(in: 0..<player.deck.count)
                     player.deck.append(player.deck[idx].copy())
+                    CombatEngine.triggerOnCardAdded(store: store)
                     results.append(String(localized: "event_result_card_duplicated"))
                 }
             case .removeAllStrikes:
@@ -329,6 +345,12 @@ struct EventView: View {
             case .nothing:
                 break
             }
+        }
+
+        // Accumulated death check after all effects
+        if store.player.currentHP <= 0 {
+            store.endRun(victory: false)
+            return
         }
 
         if results.isEmpty {

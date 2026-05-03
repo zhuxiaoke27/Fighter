@@ -204,9 +204,9 @@ final class GameStore {
             }
         case "cursed_key":
             // Add a random curse card to deck
-            let curseCard = CardDatabase.randomCards(count: 1, rarity: .common, for: player.characterClass).first
-            if let curse = curseCard {
+            if let curse = CardDatabase.randomCurse() {
                 player.deck.append(curse)
+                CombatEngine.triggerOnCardAdded(store: self)
             }
         default:
             break
@@ -264,6 +264,7 @@ final class GameStore {
     func completeReward(addedCard: Card?, tookRelic: Bool = false, tookPotion: Bool = false) {
         if let card = addedCard {
             player.deck.append(card)
+            CombatEngine.triggerOnCardAdded(store: self)
         }
         if tookRelic, let relic = rewardRelic {
             player.relics.append(relic)
