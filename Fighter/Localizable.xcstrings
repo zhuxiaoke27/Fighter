@@ -7,6 +7,16 @@
     "—" : {
 
     },
+    "%@ %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$lld"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -680,6 +690,22 @@
         }
       }
     },
+    "btn_forfeit_confirm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forfeit"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放弃"
+          }
+        }
+      }
+    },
     "btn_leave_shop" : {
       "localizations" : {
         "en" : {
@@ -713,6 +739,7 @@
       }
     },
     "btn_quick_battle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1646,6 +1673,42 @@
             "value" : "高生命值，强力打击"
           }
         }
+      }
+    },
+    "shrug_it_off_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shrug It Off" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "耸肩" } }
+      }
+    },
+    "shrug_it_off_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 8 Block. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得8护甲。抽1张牌。" } }
+      }
+    },
+    "battle_trance_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Battle Trance" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗恍惚" } }
+      }
+    },
+    "battle_trance_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 3 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽3张牌。" } }
+      }
+    },
+    "offering_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Offering" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "献祭" } }
+      }
+    },
+    "offering_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lose 4 HP. Gain 2 Energy. Draw 1 card. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "失去4HP。获得2能量。抽1张牌。消耗。" } }
       }
     },
     "clash_warrior" : {
@@ -2701,6 +2764,7 @@
       }
     },
     "effect_duplicate_skill" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2860,6 +2924,9 @@
         }
       }
     },
+    "effect_gain_maxhp_on_kill %lld" : {
+
+    },
     "effect_heal %lld" : {
       "localizations" : {
         "en" : {
@@ -2940,6 +3007,9 @@
         }
       }
     },
+    "effect_self_damage %lld" : {
+
+    },
     "endless_agony_assassin" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3004,22 +3074,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "刺击之书"
-          }
-        }
-      }
-    },
-    "enemy_giant_worm" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Giant Worm"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "巨虫"
           }
         }
       }
@@ -3173,6 +3227,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "巨首"
+          }
+        }
+      }
+    },
+    "enemy_giant_worm" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giant Worm"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巨虫"
           }
         }
       }
@@ -7234,38 +7305,6 @@
         }
       }
     },
-    "btn_forfeit_confirm" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forfeit"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "放弃"
-          }
-        }
-      }
-    },
-    "btn_cancel" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "取消"
-          }
-        }
-      }
-    },
     "label_full" : {
       "localizations" : {
         "en" : {
@@ -7281,6 +7320,12 @@
           }
         }
       }
+    },
+    "label_fusion_hammer_blocked" : {
+
+    },
+    "label_game_title" : {
+
     },
     "label_heal_amount %lld" : {
       "localizations" : {
@@ -11074,22 +11119,6 @@
         }
       }
     },
-    "stat_relics %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld relics"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld 遗物"
-          }
-        }
-      }
-    },
     "stat_cards %lld" : {
       "localizations" : {
         "en" : {
@@ -11150,6 +11179,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld 出牌"
+          }
+        }
+      }
+    },
+    "stat_relics %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld relics"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 遗物"
           }
         }
       }
