@@ -23,6 +23,8 @@ struct RootView: View {
                 MainMenuView()
             case .characterSelect:
                 CharacterSelectView()
+            case .neow:
+                NeowBonusView()
             case .map:
                 MapView()
             case .combat:

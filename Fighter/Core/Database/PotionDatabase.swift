@@ -74,6 +74,79 @@ struct PotionDatabase {
             effects: [.applyDebuff(.vulnerable, stacks: 3), .applyDebuff(.weak, stacks: 3)],
             target: .enemy,
             rarity: .rare
+        ),
+
+        // MARK: - New Common Potions
+
+        PotionTemplate(
+            id: "fear_potion",
+            nameKey: "potion_fear_potion",
+            descriptionKey: "potion_fear_potion_desc",
+            effects: [.applyDebuff(.vulnerable, stacks: 3)],
+            target: .enemy,
+            rarity: .common
+        ),
+        PotionTemplate(
+            id: "swift_potion",
+            nameKey: "potion_swift_potion",
+            descriptionKey: "potion_swift_potion_desc",
+            effects: [.drawCards(3)],
+            target: .none,
+            rarity: .common
+        ),
+
+        // MARK: - New Uncommon Potions
+
+        PotionTemplate(
+            id: "regen_potion",
+            nameKey: "potion_regen_potion",
+            descriptionKey: "potion_regen_potion_desc",
+            effects: [.heal(5)],
+            target: .selfTarget,
+            rarity: .uncommon
+        ),
+        PotionTemplate(
+            id: "dual_energy",
+            nameKey: "potion_dual_energy",
+            descriptionKey: "potion_dual_energy_desc",
+            effects: [.gainEnergy(2)],
+            target: .none,
+            rarity: .uncommon
+        ),
+        PotionTemplate(
+            id: "gamblers_brew",
+            nameKey: "potion_gamblers_brew",
+            descriptionKey: "potion_gamblers_brew_desc",
+            effects: [.drawCards(2), .discardCards(2)],
+            target: .none,
+            rarity: .uncommon
+        ),
+        PotionTemplate(
+            id: "essence_of_steel",
+            nameKey: "potion_essence_of_steel",
+            descriptionKey: "potion_essence_of_steel_desc",
+            effects: [.gainBlock(12)],
+            target: .selfTarget,
+            rarity: .uncommon
+        ),
+
+        // MARK: - New Rare Potions
+
+        PotionTemplate(
+            id: "fire_potion_large",
+            nameKey: "potion_fire_potion_large",
+            descriptionKey: "potion_fire_potion_large_desc",
+            effects: [.dealDamageToAll(20)],
+            target: .allEnemies,
+            rarity: .rare
+        ),
+        PotionTemplate(
+            id: "ghost_in_a_jar",
+            nameKey: "potion_ghost_in_a_jar",
+            descriptionKey: "potion_ghost_in_a_jar_desc",
+            effects: [.preventNextDamage],
+            target: .selfTarget,
+            rarity: .rare
         )
     ]
 

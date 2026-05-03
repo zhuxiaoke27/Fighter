@@ -48,6 +48,18 @@ enum CardDatabase {
 
     // MARK: - Warrior Common Cards
 
+    static let swordBoomerang = Card.newInstance(
+        templateKey: "sword_boomerang_warrior",
+        type: .attack,
+        rarity: .common,
+        cost: 1,
+        target: .enemy,
+        characterClass: .warrior,
+        effects: [.dealDamageMulti(3, hits: 3)],
+        upgradedEffects: [.dealDamageMulti(4, hits: 3)],
+        tags: [.offensive, .multiHit]
+    )
+
     static let angrier = Card.newInstance(
         templateKey: "anger_warrior",
         type: .attack,
@@ -134,6 +146,43 @@ enum CardDatabase {
     )
 
     // MARK: - Warrior Uncommon Cards
+
+    static let powerThrough = Card.newInstance(
+        templateKey: "power_through_warrior",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 1,
+        target: .none,
+        characterClass: .warrior,
+        effects: [.composite([.gainBlock(15), .addCardToDiscard(templateKey: "wound"), .addCardToDiscard(templateKey: "wound")])],
+        upgradedEffects: [.composite([.gainBlock(20), .addCardToDiscard(templateKey: "wound"), .addCardToDiscard(templateKey: "wound")])],
+        tags: [.defensive, .block]
+    )
+
+    static let severFlesh = Card.newInstance(
+        templateKey: "sever_flesh_warrior",
+        type: .attack,
+        rarity: .uncommon,
+        cost: 2,
+        target: .enemy,
+        characterClass: .warrior,
+        effects: [.dealDamage(8)],
+        upgradedEffects: [.dealDamage(12)],
+        isExhaust: true,
+        tags: [.offensive, .exhaust]
+    )
+
+    static let bloodletting = Card.newInstance(
+        templateKey: "bloodletting_warrior",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 0,
+        target: .none,
+        characterClass: .warrior,
+        effects: [.gainEnergy(2)],
+        upgradedEffects: [.gainEnergy(3)],
+        tags: [.energy, .utility]
+    )
 
     static let uppercut = Card.newInstance(
         templateKey: "uppercut_warrior",
@@ -469,7 +518,81 @@ enum CardDatabase {
         tags: [.offensive, .defensive, .block]
     )
 
+    // MARK: - Assassin Additional Common Cards
+
+    static let bladeFury = Card.newInstance(
+        templateKey: "blade_fury_assassin",
+        type: .attack,
+        rarity: .common,
+        cost: 0,
+        target: .enemy,
+        characterClass: .assassin,
+        effects: [.dealDamageMulti(4, hits: 3)],
+        upgradedEffects: [.dealDamageMulti(6, hits: 3)],
+        tags: [.offensive, .multiHit]
+    )
+
     // MARK: - Assassin Uncommon Cards
+
+    static let noxiousFumes = Card.newInstance(
+        templateKey: "noxious_fumes_assassin",
+        type: .power,
+        rarity: .uncommon,
+        cost: 1,
+        target: .none,
+        characterClass: .assassin,
+        effects: [.applyDebuffToAll(.poison, stacks: 2)],
+        upgradedEffects: [.applyDebuffToAll(.poison, stacks: 3)],
+        tags: [.poison, .utility]
+    )
+
+    static let bouncingFlask = Card.newInstance(
+        templateKey: "bouncing_flask_assassin",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 2,
+        target: .allEnemies,
+        characterClass: .assassin,
+        effects: [.applyDebuffToAll(.poison, stacks: 3)],
+        upgradedEffects: [.applyDebuffToAll(.poison, stacks: 5)],
+        tags: [.poison]
+    )
+
+    static let escapePlan = Card.newInstance(
+        templateKey: "escape_plan_assassin",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 0,
+        target: .none,
+        characterClass: .assassin,
+        effects: [.drawCards(1)],
+        upgradedEffects: [.drawCards(2)],
+        tags: [.draw, .utility]
+    )
+
+    static let expertise = Card.newInstance(
+        templateKey: "expertise_assassin",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 0,
+        target: .none,
+        characterClass: .assassin,
+        effects: [.drawCards(3)],
+        upgradedEffects: [.drawCards(4)],
+        tags: [.draw, .utility]
+    )
+
+    static let infiniteBlades = Card.newInstance(
+        templateKey: "infinite_blades_assassin",
+        type: .power,
+        rarity: .uncommon,
+        cost: 1,
+        target: .none,
+        characterClass: .assassin,
+        effects: [.applyBuff(.drawModifier, stacks: 1)],
+        upgradedEffects: [.applyBuff(.drawModifier, stacks: 2)],
+        tags: [.draw, .utility]
+    )
 
     static let catalyst = Card.newInstance(
         templateKey: "catalyst_assassin",
@@ -532,6 +655,21 @@ enum CardDatabase {
         effects: [.dealDamage(12)],
         upgradedEffects: [.dealDamage(16)],
         tags: [.offensive]
+    )
+
+    // MARK: - Assassin Additional Rare Cards
+
+    static let stormOfSteel = Card.newInstance(
+        templateKey: "storm_of_steel_assassin",
+        type: .attack,
+        rarity: .rare,
+        cost: -1,
+        target: .allEnemies,
+        characterClass: .assassin,
+        effects: [.dealDamageToAll(4)],
+        upgradedEffects: [.dealDamageToAll(7)],
+        isExhaust: true,
+        tags: [.offensive, .exhaust]
     )
 
     // MARK: - Assassin Archetype Cards
@@ -602,6 +740,54 @@ enum CardDatabase {
 
     // MARK: - Mage Common Cards
 
+    static let glacier = Card.newInstance(
+        templateKey: "glacier_mage",
+        type: .skill,
+        rarity: .common,
+        cost: 1,
+        target: .none,
+        characterClass: .mage,
+        effects: [.composite([.applyFrost(2), .gainBlock(5)])],
+        upgradedEffects: [.composite([.applyFrost(3), .gainBlock(8)])],
+        tags: [.defensive, .block]
+    )
+
+    static let coldSnap = Card.newInstance(
+        templateKey: "cold_snap_mage",
+        type: .attack,
+        rarity: .common,
+        cost: 0,
+        target: .enemy,
+        characterClass: .mage,
+        effects: [.composite([.dealDamage(3), .applyDebuff(.vulnerable, stacks: 1), .applyFrost(1)])],
+        upgradedEffects: [.composite([.dealDamage(5), .applyDebuff(.vulnerable, stacks: 2), .applyFrost(1)])],
+        tags: [.offensive]
+    )
+
+    static let freezeRay = Card.newInstance(
+        templateKey: "freeze_ray_mage",
+        type: .attack,
+        rarity: .common,
+        cost: 1,
+        target: .enemy,
+        characterClass: .mage,
+        effects: [.composite([.dealDamage(4), .applyFrost(1)])],
+        upgradedEffects: [.composite([.dealDamage(7), .applyFrost(2)])],
+        tags: [.offensive]
+    )
+
+    static let steamBarrier = Card.newInstance(
+        templateKey: "steam_barrier_mage",
+        type: .skill,
+        rarity: .common,
+        cost: 1,
+        target: .none,
+        characterClass: .mage,
+        effects: [.gainBlock(6)],
+        upgradedEffects: [.gainBlock(9)],
+        tags: [.defensive, .block]
+    )
+
     static let arcaneBolt = Card.newInstance(
         templateKey: "arcane_bolt_mage",
         type: .attack,
@@ -663,6 +849,54 @@ enum CardDatabase {
     )
 
     // MARK: - Mage Uncommon Cards
+
+    static let doomAndGloom = Card.newInstance(
+        templateKey: "doom_and_gloom_mage",
+        type: .attack,
+        rarity: .uncommon,
+        cost: 1,
+        target: .enemy,
+        characterClass: .mage,
+        effects: [.composite([.dealDamage(4), .applyDark(1)])],
+        upgradedEffects: [.composite([.dealDamage(7), .applyDark(2)])],
+        tags: [.offensive]
+    )
+
+    static let sweepingBeam = Card.newInstance(
+        templateKey: "sweeping_beam_mage",
+        type: .attack,
+        rarity: .uncommon,
+        cost: 4,
+        target: .allEnemies,
+        characterClass: .mage,
+        effects: [.composite([.dealDamageToAll(6), .drawCards(1)])],
+        upgradedEffects: [.composite([.dealDamageToAll(9), .drawCards(1)])],
+        tags: [.offensive, .draw]
+    )
+
+    static let recur = Card.newInstance(
+        templateKey: "recur_mage",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 1,
+        target: .none,
+        characterClass: .mage,
+        effects: [.returnFromDiscard(count: 1)],
+        upgradedEffects: [.returnFromDiscard(count: 2)],
+        tags: [.utility]
+    )
+
+    static let windblast = Card.newInstance(
+        templateKey: "windblast_mage",
+        type: .attack,
+        rarity: .uncommon,
+        cost: 2,
+        target: .enemy,
+        characterClass: .mage,
+        effects: [.dealDamage(12)],
+        upgradedEffects: [.dealDamage(18)],
+        tags: [.offensive]
+    )
 
     static let thunder = Card.newInstance(
         templateKey: "thunder_mage",
@@ -929,6 +1163,19 @@ enum CardDatabase {
         tags: [.strength, .exhaust, .utility]
     )
 
+    static let discovery = Card.newInstance(
+        templateKey: "discovery_neutral",
+        type: .skill,
+        rarity: .rare,
+        cost: 1,
+        target: .none,
+        characterClass: nil,
+        effects: [.drawCards(3)],
+        upgradedEffects: [.drawCards(5)],
+        isExhaust: true,
+        tags: [.draw, .exhaust, .utility]
+    )
+
     // MARK: - Status Cards
 
     static let wound = Card.newInstance(
@@ -1061,26 +1308,32 @@ enum CardDatabase {
     static let allCards: [Card] = [
         // Warrior
         strikeWarrior, defendWarrior, bashWarrior,
+        swordBoomerang,
         angrier, clash, cleave, ironWave, armaments, shoutWarrior, warcryWarrior,
+        powerThrough, severFlesh, bloodletting,
         uppercut, inflame, metallicize,
         bludgeon, feed, trueGrit, fiendFire, sentinel,
         reaper, demonForm, bodySlam, impervious, limitBreak,
         // Assassin
         strikeAssassin, defendAssassin, neutralizeAssassin,
-        backstab, poisonStab, dodgeAssassin, bladeDance, setupAssassin, dashAssassin,
+        backstab, bladeFury, poisonStab, dodgeAssassin, bladeDance, setupAssassin, dashAssassin,
+        noxiousFumes, bouncingFlask, escapePlan, expertise, infiniteBlades,
         catalyst, burstAssassin, phantom,
+        stormOfSteel,
         endlessAgony, coupDeGrace,
         corpseExplosion, adrenaline, toolsOfTheTrade, catalystPlus, burstSkill,
         // Mage
         strikeMage, defendMage, castMage, survivorMage,
+        glacier, coldSnap, freezeRay, steamBarrier,
         arcaneBolt, frostShield, fireball, channelMage, meditate,
+        doomAndGloom, sweepingBeam, recur, windblast,
         thunder, blizzard, barrier,
         meteor, inferno,
         echoForm, coolheaded, darkness, defragment, meteorStrike, buffer,
         // Neutral
         deepBreath, bandageUp, darkShackles, swiftStrike,
         safeGuard, flashOfSteel, panacea,
-        enlightenment, handOfGreed, metamorphosis,
+        enlightenment, handOfGreed, metamorphosis, discovery,
         // Status
         wound, daze, burn, slimed, voidCard, writhe,
         // Curse

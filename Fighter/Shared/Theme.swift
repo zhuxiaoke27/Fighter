@@ -161,6 +161,14 @@ extension Theme {
         case "elixir_potion":     return Color(red: 0.30, green: 0.85, blue: 0.40)
         case "liquid_memories":   return Color(red: 0.40, green: 0.70, blue: 0.90)
         case "bottled_void":      return Color(red: 0.50, green: 0.30, blue: 0.70)
+        case "fear_potion":       return Color(red: 0.60, green: 0.30, blue: 0.80)
+        case "swift_potion":      return Color(red: 0.30, green: 0.80, blue: 0.90)
+        case "regen_potion":      return Color(red: 0.30, green: 0.85, blue: 0.40)
+        case "dual_energy":       return Color(red: 1.0,  green: 0.82, blue: 0.15)
+        case "gamblers_brew":     return Color(red: 0.90, green: 0.60, blue: 0.20)
+        case "essence_of_steel":  return Color(red: 0.45, green: 0.68, blue: 0.92)
+        case "fire_potion_large": return Color(red: 0.90, green: 0.35, blue: 0.15)
+        case "ghost_in_a_jar":    return Color(red: 0.70, green: 0.80, blue: 0.95)
         default:                  return textSecondary
         }
     }

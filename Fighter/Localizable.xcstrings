@@ -369,6 +369,72 @@
         }
       }
     },
+    "btn_begin_adventure" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Begin Adventure" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "开始冒险" } }
+      }
+    },
+    "neow_title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neow's Gift" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "尼奥的馈赠" } }
+      }
+    },
+    "neow_subtitle" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose a blessing to start your journey..." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择一个祝福来开始你的旅程……" } }
+      }
+    },
+    "neow_remove_card" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove a Card" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "移除一张牌" } }
+      }
+    },
+    "neow_remove_card_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove a random non-Starter card from your deck." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "从牌组中随机移除一张非初始牌。" } }
+      }
+    },
+    "neow_bonus_gold" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "100 Gold" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "100 金币" } }
+      }
+    },
+    "neow_bonus_gold_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 100 Gold." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 100 金币。" } }
+      }
+    },
+    "neow_random_relic" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Random Relic" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "随机遗物" } }
+      }
+    },
+    "neow_random_relic_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Obtain a random relic." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得一个随机遗物。" } }
+      }
+    },
+    "neow_bonus_maxhp" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "+5 Max HP" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "+5 最大生命值" } }
+      }
+    },
+    "neow_bonus_maxhp_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Increase your Max HP by 5." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "最大生命值增加 5。" } }
+      }
+    },
     "btn_continue_run" : {
       "localizations" : {
         "en" : {
@@ -3653,6 +3719,54 @@
         "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "力量值翻倍。" } }
       }
     },
+    "sword_boomerang_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sword Boomerang" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回旋剑" } }
+      }
+    },
+    "sword_boomerang_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 3 damage 3 times." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "连续攻击 3 次，每次 3 点伤害。" } }
+      }
+    },
+    "power_through_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Power Through" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "硬撑" } }
+      }
+    },
+    "power_through_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add 2 Wounds to your discard pile. Gain 15 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "将 2 张伤口洗入弃牌堆。获得 15 点格挡。" } }
+      }
+    },
+    "sever_flesh_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sever Flesh" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "裂肉" } }
+      }
+    },
+    "sever_flesh_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 8 damage. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 8 点伤害。消耗。" } }
+      }
+    },
+    "bloodletting_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bloodletting" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "放血" } }
+      }
+    },
+    "bloodletting_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lose 2 HP. Gain 2 Energy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "失去 2 点生命。获得 2 点能量。" } }
+      }
+    },
     "strike_assassin" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Strike" } },
@@ -3879,6 +3993,90 @@
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Your next Skill is played twice." } },
         "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "你的下一张技能牌打出两次。" } }
+      }
+    },
+    "blade_fury_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Blade Fury" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "刀锋狂怒" } }
+      }
+    },
+    "blade_fury_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage 3 times." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "连续攻击 3 次，每次 4 点伤害。" } }
+      }
+    },
+    "noxious_fumes_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Noxious Fumes" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "毒雾" } }
+      }
+    },
+    "noxious_fumes_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At the start of each turn, apply 2 Poison to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每回合开始时，对所有敌人施加 2 层中毒。" } }
+      }
+    },
+    "bouncing_flask_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bouncing Flask" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "弹跳药瓶" } }
+      }
+    },
+    "bouncing_flask_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 3 Poison to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人施加 3 层中毒。" } }
+      }
+    },
+    "escape_plan_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Escape Plan" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "逃脱计划" } }
+      }
+    },
+    "escape_plan_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽 1 张牌。" } }
+      }
+    },
+    "expertise_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Expertise" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "精通" } }
+      }
+    },
+    "expertise_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 3 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽 3 张牌。" } }
+      }
+    },
+    "infinite_blades_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Infinite Blades" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无尽之刃" } }
+      }
+    },
+    "infinite_blades_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 extra draw per turn." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每回合额外抽 1 张牌。" } }
+      }
+    },
+    "storm_of_steel_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Storm of Steel" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "钢铁风暴" } }
+      }
+    },
+    "storm_of_steel_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage to ALL enemies. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 4 点伤害。消耗。" } }
       }
     },
     "strike_mage" : {
@@ -4121,6 +4319,102 @@
         "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "防止下一次受到的伤害。" } }
       }
     },
+    "glacier_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Glacier" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冰川" } }
+      }
+    },
+    "glacier_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Channel 2 Frost. Gain 5 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "引导 2 冰霜。获得 5 点格挡。" } }
+      }
+    },
+    "cold_snap_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cold Snap" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "寒流" } }
+      }
+    },
+    "cold_snap_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 3 damage. Apply 1 Vulnerable. Channel 1 Frost." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 3 点伤害。施加 1 层易伤。引导 1 冰霜。" } }
+      }
+    },
+    "freeze_ray_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Freeze Ray" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冰冻射线" } }
+      }
+    },
+    "freeze_ray_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage. Channel 1 Frost." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 4 点伤害。引导 1 冰霜。" } }
+      }
+    },
+    "steam_barrier_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Steam Barrier" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "蒸汽屏障" } }
+      }
+    },
+    "steam_barrier_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 6 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 6 点格挡。" } }
+      }
+    },
+    "doom_and_gloom_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Doom and Gloom" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "末日阴霾" } }
+      }
+    },
+    "doom_and_gloom_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage. Channel 1 Dark." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 4 点伤害。引导 1 暗影。" } }
+      }
+    },
+    "sweeping_beam_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sweeping Beam" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "横扫光束" } }
+      }
+    },
+    "sweeping_beam_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 6 damage to ALL enemies. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 6 点伤害。抽 1 张牌。" } }
+      }
+    },
+    "recur_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recur" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回溯" } }
+      }
+    },
+    "recur_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Return a card from your discard pile to your hand." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "从弃牌堆回收一张牌到手牌。" } }
+      }
+    },
+    "windblast_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Windblast" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "疾风爆" } }
+      }
+    },
+    "windblast_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 12 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 12 点伤害。" } }
+      }
+    },
     "deep_breath_neutral" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Deep Breath" } },
@@ -4239,6 +4533,18 @@
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Strength. Gain 1 Dexterity." } },
         "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点力量。获得 1 点敏捷。" } }
+      }
+    },
+    "discovery_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Discovery" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "发现" } }
+      }
+    },
+    "discovery_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 3 cards. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽 3 张牌。消耗。" } }
       }
     },
     "wound" : {
@@ -4979,6 +5285,150 @@
         "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "精英怪出现概率增加。" } }
       }
     },
+    "relic_juzu_bracelet" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Juzu Bracelet" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "念珠手链" } }
+      }
+    },
+    "relic_juzu_bracelet_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Normal enemies no longer attack first." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "普通敌人不再先手攻击。" } }
+      }
+    },
+    "relic_orichalcum_heavy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Orichalcum Heavy" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "重质秘银" } }
+      }
+    },
+    "relic_orichalcum_heavy_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "If you end your turn with 0 Block, gain 4 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回合结束时如果没有格挡，获得 4 点格挡。" } }
+      }
+    },
+    "relic_champion_belt" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Champion Belt" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冠军腰带" } }
+      }
+    },
+    "relic_champion_belt_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "When you apply Vulnerable, also apply 1 Weak." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "给敌人施加易伤时，同时施加 1 层虚弱。" } }
+      }
+    },
+    "relic_fire_breathing" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fire Breathing" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "火焰吐息" } }
+      }
+    },
+    "relic_fire_breathing_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "When you play a Curse or Status card, deal 2 damage to all enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打出诅咒或状态牌时，对所有敌人造成 2 点伤害。" } }
+      }
+    },
+    "relic_paper_krane" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Paper Krane" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "纸鹤" } }
+      }
+    },
+    "relic_paper_krane_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enemies with Weak deal 25% less damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "有虚弱的敌人造成的伤害减少 25%。" } }
+      }
+    },
+    "relic_thread_and_needle" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Thread and Needle" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "针线" } }
+      }
+    },
+    "relic_thread_and_needle_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of combat, gain 4 Plated Armor." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时，获得 4 层护甲。" } }
+      }
+    },
+    "relic_snecko_eye" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Snecko Eye" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "蛇眼" } }
+      }
+    },
+    "relic_snecko_eye_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 2 extra cards at combat start. All card costs become random (0-3)." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时额外抽 2 张牌，所有卡牌费用变为随机 (0-3)。" } }
+      }
+    },
+    "relic_runic_pyramid" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Runic Pyramid" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "符文金字塔" } }
+      }
+    },
+    "relic_runic_pyramid_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retain your hand at the end of each turn." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每回合结束时保留手牌。" } }
+      }
+    },
+    "relic_empty_cage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Empty Cage" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "空笼" } }
+      }
+    },
+    "relic_empty_cage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove 2 cards from your deck at the start of the run." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "开局时从卡组中移除 2 张牌。" } }
+      }
+    },
+    "relic_busted_crown" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Busted Crown" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "破损王冠" } }
+      }
+    },
+    "relic_busted_crown_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy per turn, but card rewards show only 2 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每回合获得 1 点额外能量，但卡牌奖励只显示 2 张牌。" } }
+      }
+    },
+    "relic_astrolabe" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Astrolabe" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "星盘" } }
+      }
+    },
+    "relic_astrolabe_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose 3 cards to transform into random cards of the same rarity." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择 3 张牌变为同品质的随机牌。" } }
+      }
+    },
+    "relic_fusion_hammer_rework" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fusion Hammer" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "聚变锤" } }
+      }
+    },
+    "relic_fusion_hammer_rework_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy per turn, but you cannot upgrade cards at Rest Sites." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每回合获得 1 点额外能量，但无法在篝火处升级卡牌。" } }
+      }
+    },
     "potion_fire_potion" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Fire Potion" } },
@@ -5073,6 +5523,102 @@
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 4 Poison to ALL enemies." } },
         "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人施加 4 层中毒。" } }
+      }
+    },
+    "potion_fear_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fear Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "恐惧药水" } }
+      }
+    },
+    "potion_fear_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 3 Vulnerable to an enemy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对一名敌人施加 3 层易伤。" } }
+      }
+    },
+    "potion_swift_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Swift Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "迅捷药水" } }
+      }
+    },
+    "potion_swift_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 3 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽 3 张牌。" } }
+      }
+    },
+    "potion_regen_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Regen Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "再生药水" } }
+      }
+    },
+    "potion_regen_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Heal 5 HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回复 5 点生命。" } }
+      }
+    },
+    "potion_dual_energy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dual Energy" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "双重能量" } }
+      }
+    },
+    "potion_dual_energy_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 2 Energy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 2 点能量。" } }
+      }
+    },
+    "potion_gamblers_brew" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gambler's Brew" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "赌徒酿造" } }
+      }
+    },
+    "potion_gamblers_brew_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 2 cards, then discard 2 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽 2 张牌，然后弃 2 张牌。" } }
+      }
+    },
+    "potion_essence_of_steel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Essence of Steel" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "钢铁精华" } }
+      }
+    },
+    "potion_essence_of_steel_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 12 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 12 点格挡。" } }
+      }
+    },
+    "potion_fire_potion_large" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fire Bomb" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "火焰炸弹" } }
+      }
+    },
+    "potion_fire_potion_large_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 20 damage to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 20 点伤害。" } }
+      }
+    },
+    "potion_ghost_in_a_jar" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ghost in a Jar" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "瓶中幽灵" } }
+      }
+    },
+    "potion_ghost_in_a_jar_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Prevent the next damage you would take." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "防止下一次受到的伤害。" } }
       }
     },
     "event_abandoned_alchemy" : {

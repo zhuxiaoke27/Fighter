@@ -207,6 +207,15 @@ enum CombatEngine {
         // Run statistics
         store.player.cardsPlayed += 1
 
+        // Fire Breathing: deal 2 damage to all enemies when playing a Curse or Status card
+        if store.player.relics.contains(where: { $0.id == "fire_breathing" }) {
+            if card.type == .curse || card.type == .status {
+                for i in combat.enemies.indices where combat.enemies[i].isAlive {
+                    combat.enemies[i].currentHP -= 2
+                }
+            }
+        }
+
         triggerRelics(.onCardPlayed(card.type), store: store)
 
         if card.isExhaust || card.type == .power {
@@ -254,14 +263,28 @@ enum CombatEngine {
             }
         }
 
-        for card in combat.hand {
-            if card.isEthereal || card.isExhaust {
-                combat.exhaustPile.append(card)
-            } else {
-                combat.discardPile.append(card)
+        // Runic Pyramid: retain hand at end of turn (only exhaust ethereal/exhaust cards)
+        let hasRunicPyramid = store.player.relics.contains(where: { $0.id == "runic_pyramid" })
+        if hasRunicPyramid {
+            var retained: [Card] = []
+            for card in combat.hand {
+                if card.isEthereal || card.isExhaust {
+                    combat.exhaustPile.append(card)
+                } else {
+                    retained.append(card)
+                }
             }
+            combat.hand = retained
+        } else {
+            for card in combat.hand {
+                if card.isEthereal || card.isExhaust {
+                    combat.exhaustPile.append(card)
+                } else {
+                    combat.discardPile.append(card)
+                }
+            }
+            combat.hand = []
         }
-        combat.hand = []
 
         // Trigger exhaust relics for ethereal/exhaust cards that were discarded
         let hasExhaustPileCards = !combat.exhaustPile.isEmpty
@@ -316,11 +339,24 @@ enum CombatEngine {
 
             // Execute enemy action
             if let action = combat.enemies[i].nextAction {
+                // Juzu Bracelet: normal enemies skip their first attack
+                let isNormalEnemy = !combat.enemies[i].isBoss && !combat.enemies[i].isElite
+                let hasJuzuBracelet = store.player.relics.contains(where: { $0.id == "juzu_bracelet" })
+                if isNormalEnemy && hasJuzuBracelet && combat.turnNumber == 1 {
+                    // Skip attack action for normal enemies on turn 1
+                    determineNextIntent(for: &combat.enemies[i])
+                    continue
+                }
                 for effect in action.effects {
                     switch effect {
                     case .dealDamage(let amount):
                         let strength = combat.enemies[i].buffStacks(.strength)
-                        let finalDamage = amount + strength
+                        var finalDamage = amount + strength
+                        // Paper Krane: enemies with Weak deal 25% less damage
+                        if store.player.relics.contains(where: { $0.id == "paper_krane" })
+                            && combat.enemies[i].buffStacks(.weak) > 0 {
+                            finalDamage = max(1, finalDamage * 3 / 4)
+                        }
                         store.player.takeDamage(finalDamage)
                         triggerRelics(.onDamageTaken, store: store)
                         // Thorns: reflect damage back to attacker
@@ -599,6 +635,50 @@ enum CombatEngine {
                     if player.currentHP <= player.maxHP / 2 {
                         player.currentHP = min(player.currentHP + 5, player.maxHP)
                     }
+                // New common relics
+                case "juzu_bracelet":
+                    break // handled in executeEnemyTurn — normal enemies skip first attack
+                case "orichalcum_heavy":
+                    if player.combatBlock == 0 {
+                        player.combatBlock += 4
+                    }
+                // New uncommon relics
+                case "champion_belt":
+                    break // handled in CardEvaluator — when applying vulnerable, also apply 1 weak
+                case "fire_breathing":
+                    if let lastPlayed = combat.discardPile.last, lastPlayed.type == .curse || lastPlayed.type == .status {
+                        for i in combat.enemies.indices where combat.enemies[i].isAlive {
+                            combat.enemies[i].currentHP -= 2
+                        }
+                    }
+                case "paper_krane":
+                    break // handled in takeDamage — enemies with weak deal 25% less damage
+                case "thread_and_needle":
+                    player.addBuff(BuffInstance(type: .platedArmor, stacks: 4))
+                // New rare relics
+                case "snecko_eye":
+                    CardEvaluator.drawCards(2, combat: combat)
+                    // Randomize all card costs in hand to 0-3
+                    for i in combat.hand.indices {
+                        combat.hand[i].cost = Int.random(in: 0...3)
+                    }
+                    // Also randomize draw pile
+                    for i in combat.drawPile.indices {
+                        combat.drawPile[i].cost = Int.random(in: 0...3)
+                    }
+                case "runic_pyramid":
+                    break // handled in endPlayerTurn — skip discarding hand
+                // New boss relics
+                case "empty_cage":
+                    break // handled in GameStore — remove 2 cards from deck at run start
+                case "busted_crown":
+                    player.combatEnergy += 1
+                    // Card rewards show only 2 cards — handled in RewardView
+                case "astrolabe":
+                    break // handled in GameStore — transform 3 cards at run start
+                case "fusion_hammer_rework":
+                    player.combatEnergy += 1
+                    // Cannot upgrade at rest sites — handled in RestSiteView
                 case "paper_crane":
                     for i in combat.enemies.indices where combat.enemies[i].isAlive {
                         if combat.enemies[i].buffStacks(.strength) > 0 {

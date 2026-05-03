@@ -9,6 +9,7 @@ import SwiftUI
 enum GameState: Sendable, Equatable {
     case menu
     case characterSelect
+    case neow
     case map
     case combat
     case reward
@@ -104,7 +105,7 @@ final class GameStore {
             }
         }
 
-        gameState = .map
+        gameState = .neow
     }
 
     func startCombat(enemies: [EnemyTemplate]) {
@@ -364,10 +365,28 @@ final class GameStore {
         return bossVisited
     }
 
+    // Rarity gauge: consecutive misses increase rare chance
+    var consecutiveNonRareRolls: Int = 0
+
     private func weightedRarityRoll() -> CardRarity {
         let roll = Double.random(in: 0...1)
-        if roll < 0.60 { return .common }
-        if roll < 0.90 { return .uncommon }
+        let rareThreshold = min(0.10 + Double(consecutiveNonRareRolls) * 0.05, 0.33)
+        if roll < 0.60 - rareThreshold * 0.5 {
+            consecutiveNonRareRolls += 1
+            return .common
+        }
+        if roll < 0.90 - rareThreshold {
+            consecutiveNonRareRolls += 1
+            return .uncommon
+        }
+        consecutiveNonRareRolls = 0
         return .rare
+    }
+
+    // MARK: - Neow Bonus
+
+    func completeNeow() {
+        gameState = .map
+        SaveManager.shared.save(store: self)
     }
 }

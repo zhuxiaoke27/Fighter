@@ -60,11 +60,30 @@ struct EventView: View {
                             .transition(.opacity.combined(with: .move(edge: .top)))
                     }
 
-                    VStack(spacing: 12) {
-                        ForEach(event.choices) { choice in
-                            Button {
-                                resolveChoice(choice)
-                            } label: {
+                    if resultMessage != nil {
+                        Button {
+                            store.completeEvent()
+                        } label: {
+                            HStack(spacing: 6) {
+                                Image(systemName: "arrow.right")
+                                Text(String(localized: "btn_continue"))
+                                    .font(Theme.buttonFont)
+                            }
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 36)
+                            .padding(.vertical, 14)
+                            .background(Theme.buttonPrimaryGradient)
+                            .clipShape(Capsule())
+                            .shadow(color: Color(red: 0.30, green: 0.58, blue: 0.88).opacity(0.35), radius: 8, y: 3)
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.top, 16)
+                    } else {
+                        VStack(spacing: 12) {
+                            ForEach(event.choices) { choice in
+                                Button {
+                                    resolveChoice(choice)
+                                } label: {
                                 HStack(spacing: 10) {
                                     Image(systemName: "arrow.right.circle")
                                         .font(.system(size: 14))
@@ -93,6 +112,7 @@ struct EventView: View {
                     }
                     .padding(.horizontal, 30)
                     .padding(.top, 16)
+                    }
 
                     Spacer().frame(height: 40)
                 }
@@ -318,9 +338,6 @@ struct EventView: View {
             resultColor = results.contains(where: { $0.hasPrefix("-") }) ? Color(red: 0.95, green: 0.60, blue: 0.40) : Color(red: 0.30, green: 0.85, blue: 0.50)
             withAnimation(.spring(response: 0.3)) {
                 resultMessage = msg
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                store.completeEvent()
             }
         }
     }
