@@ -231,7 +231,7 @@ struct CardEvaluator {
             player.addBuff(BuffInstance(type: .negate, stacks: 1))
 
         case .doubleNextCard:
-            player.addBuff(BuffInstance(type: .negate, stacks: -1)) // reuse as marker (hacky but works)
+            player.addBuff(BuffInstance(type: .nextCardDoubled, stacks: 1))
 
         case .randomEnemyDamage(let amount):
             let alive = combat.enemies.indices.filter { combat.enemies[$0].isAlive }

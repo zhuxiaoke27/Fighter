@@ -2753,6 +2753,22 @@
         }
       }
     },
+    "event_result_not_enough_gold" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not enough gold"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "金币不足"
+          }
+        }
+      }
+    },
     "event_result_lose_gold %lld" : {
       "localizations" : {
         "en" : {

@@ -190,9 +190,12 @@ struct EventView: View {
                 player.gold += amount
                 results.append(String(localized: "event_result_gain_gold \(amount)"))
             case .loseGold(let amount):
-                let lost = min(amount, player.gold)
-                player.gold -= lost
-                results.append(String(localized: "event_result_lose_gold \(lost)"))
+                guard player.gold >= amount else {
+                    results.append(String(localized: "event_result_not_enough_gold"))
+                    continue
+                }
+                player.gold -= amount
+                results.append(String(localized: "event_result_lose_gold \(amount)"))
             case .gainMaxHP(let amount):
                 player.maxHP += amount
                 player.currentHP += amount

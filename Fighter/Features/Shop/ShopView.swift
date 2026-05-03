@@ -111,14 +111,14 @@ struct ShopView: View {
                             Text(String(localized: "label_price_75g"))
                                 .font(.system(size: 11, weight: .medium, design: .rounded))
                         }
-                        .foregroundStyle(store.player.gold >= 75 ? Color(red: 0.90, green: 0.30, blue: 0.25) : Theme.textSecondary.opacity(0.5))
+                        .foregroundStyle((store.player.gold >= 75 && !store.hasRemovedCardThisShopVisit) ? Color(red: 0.90, green: 0.30, blue: 0.25) : Theme.textSecondary.opacity(0.5))
                         .padding(16)
                         .frame(width: 110)
                         .background(RoundedRectangle(cornerRadius: 12).fill(Color(red: 0.14, green: 0.13, blue: 0.22)))
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color(red: 0.90, green: 0.30, blue: 0.25).opacity(0.2), lineWidth: 1))
                     }
                     .buttonStyle(.plain)
-                    .disabled(store.player.gold < 75)
+                    .disabled(store.player.gold < 75 || store.hasRemovedCardThisShopVisit)
                 }
                 .padding(.horizontal, Theme.padding)
 
@@ -182,7 +182,7 @@ struct ShopView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Theme.cardColor(for: card.type).opacity(0.2))
                         .frame(width: 80, height: 50)
-                    Image(systemName: typeIcon(for: card.type))
+                    Image(systemName: card.type.icon)
                         .font(.system(size: 20))
                         .foregroundStyle(Theme.cardColor(for: card.type).opacity(0.6))
                 }
@@ -219,11 +219,12 @@ struct ShopView: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                     ForEach(store.player.deck) { card in
                         Button {
-                            guard store.player.gold >= 75 else { return }
+                            guard store.player.gold >= 75 && !store.hasRemovedCardThisShopVisit else { return }
                             if let idx = store.player.deck.firstIndex(where: { $0.id == card.id }) {
                                 store.player.deck.remove(at: idx)
                             }
                             store.player.gold -= 75
+                            store.hasRemovedCardThisShopVisit = true
                             showRemoveSheet = false
                         } label: {
                             VStack(spacing: 4) {
@@ -261,15 +262,6 @@ struct ShopView: View {
         }
     }
 
-    private func typeIcon(for type: CardType) -> String {
-        switch type {
-        case .attack: return "sword"
-        case .skill:  return "shield"
-        case .power:  return "bolt.fill"
-        case .status: return "exclamationmark.triangle"
-        case .curse:  return "flame"
-        }
-    }
 
     // MARK: - Shop Relic View
 
@@ -327,11 +319,11 @@ struct ShopView: View {
             VStack(spacing: 4) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(potionColor(for: potion.id).opacity(0.15))
+                        .fill(Theme.potionColor(for: potion.id).opacity(0.15))
                         .frame(width: 80, height: 50)
                     Image(systemName: "drop.fill")
                         .font(.system(size: 20))
-                        .foregroundStyle(potionColor(for: potion.id).opacity(0.7))
+                        .foregroundStyle(Theme.potionColor(for: potion.id).opacity(0.7))
                 }
                 Text(String(localized: LocalizedStringResource(stringLiteral: potion.nameKey)))
                     .font(Theme.cardTitleFont)
@@ -360,23 +352,10 @@ struct ShopView: View {
             .padding(8)
             .frame(width: 90, height: 140)
             .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 0.14, green: 0.13, blue: 0.22)))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(canAfford && hasEmptySlot ? potionColor(for: potion.id).opacity(0.3) : Color.white.opacity(0.06), lineWidth: 1))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(canAfford && hasEmptySlot ? Theme.potionColor(for: potion.id).opacity(0.3) : Color.white.opacity(0.06), lineWidth: 1))
         }
         .buttonStyle(.plain)
         .opacity(canAfford && hasEmptySlot ? 1.0 : 0.5)
     }
 
-    private func potionColor(for id: String) -> Color {
-        switch id {
-        case "fire_potion":       return Color(red: 0.90, green: 0.30, blue: 0.25)
-        case "block_potion":      return Theme.blockColor
-        case "strength_potion":   return Color(red: 0.85, green: 0.55, blue: 0.20)
-        case "weakness_potion":   return Color(red: 0.60, green: 0.40, blue: 0.80)
-        case "energy_potion":     return Theme.energyColor
-        case "elixir_potion":     return Color(red: 0.30, green: 0.85, blue: 0.40)
-        case "liquid_memories":   return Color(red: 0.40, green: 0.70, blue: 0.90)
-        case "bottled_void":      return Color(red: 0.50, green: 0.30, blue: 0.70)
-        default:                  return Theme.textSecondary
-        }
-    }
 }

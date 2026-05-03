@@ -133,3 +133,35 @@ struct GlowBorder: ViewModifier {
             )
     }
 }
+
+// MARK: - CardType Icon Extension
+
+extension CardType {
+    var icon: String {
+        switch self {
+        case .attack: return "sword"
+        case .skill:  return "shield"
+        case .power:  return "bolt.fill"
+        case .status: return "exclamationmark.triangle"
+        case .curse:  return "flame"
+        }
+    }
+}
+
+// MARK: - Potion Color Extension
+
+extension Theme {
+    static func potionColor(for id: String) -> Color {
+        switch id {
+        case "fire_potion":       return Color(red: 0.90, green: 0.30, blue: 0.25)
+        case "block_potion":      return blockColor
+        case "strength_potion":   return Color(red: 0.85, green: 0.55, blue: 0.20)
+        case "weakness_potion":   return Color(red: 0.60, green: 0.40, blue: 0.80)
+        case "energy_potion":     return energyColor
+        case "elixir_potion":     return Color(red: 0.30, green: 0.85, blue: 0.40)
+        case "liquid_memories":   return Color(red: 0.40, green: 0.70, blue: 0.90)
+        case "bottled_void":      return Color(red: 0.50, green: 0.30, blue: 0.70)
+        default:                  return textSecondary
+        }
+    }
+}

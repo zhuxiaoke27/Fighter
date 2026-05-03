@@ -84,7 +84,7 @@ struct CardView: View {
                 .frame(height: 48)
 
             // Type icon in center
-            Image(systemName: typeIcon)
+            Image(systemName: card.type.icon)
                 .font(.system(size: 18, weight: .medium))
                 .foregroundStyle(Theme.cardColor(for: card.type).opacity(0.6))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -115,15 +115,6 @@ struct CardView: View {
         }
     }
 
-    private var typeIcon: String {
-        switch card.type {
-        case .attack: return "sword"
-        case .skill:  return "shield"
-        case .power:  return "bolt.fill"
-        case .status: return "exclamationmark.triangle"
-        case .curse:  return "flame"
-        }
-    }
 
     @ViewBuilder
     private var borderOverlay: some View {

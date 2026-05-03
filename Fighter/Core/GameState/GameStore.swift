@@ -57,6 +57,7 @@ final class GameStore {
     var shopRelicPrices: [Int] = []
     var shopPotions: [PotionTemplate] = []
     var shopPotionPrices: [Int] = []
+    var hasRemovedCardThisShopVisit: Bool = false
 
     // Event state
     var currentEvent: EventTemplate?
@@ -283,6 +284,7 @@ final class GameStore {
     // MARK: - Shop Preparation
 
     private func prepareShop() {
+        hasRemovedCardThisShopVisit = false
         let characterClass = player.characterClass
         let pool = CardDatabase.cards(for: characterClass).filter { $0.rarity != .starter }
         shopCards = Array(pool.shuffled().prefix(5))
