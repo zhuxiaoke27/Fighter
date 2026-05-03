@@ -157,6 +157,7 @@ enum CombatEngine {
             let aliveIndices = combat.enemies.indices.filter { combat.enemies[$0].isAlive }
             if let idx = aliveIndices.randomElement() {
                 combat.enemies[idx].currentHP -= damage
+                store.player.totalDamageDealt += damage
             }
         }
 
@@ -303,6 +304,7 @@ enum CombatEngine {
                 if hasCurseOrStatus {
                     for i in combat.enemies.indices where combat.enemies[i].isAlive {
                         combat.enemies[i].currentHP -= 2
+                        store.player.totalDamageDealt += 2
                     }
                 }
             }
@@ -376,6 +378,7 @@ enum CombatEngine {
                         let thornsStacks = store.player.buffStacks(.thorns)
                         if thornsStacks > 0 {
                             combat.enemies[i].currentHP -= thornsStacks
+                            store.player.totalDamageDealt += thornsStacks
                         }
                     case .gainBlock(let amount):
                         combat.enemies[i].block += amount
@@ -409,6 +412,7 @@ enum CombatEngine {
             let poisonStacks = combat.enemies[i].buffStacks(.poison)
             if poisonStacks > 0 {
                 combat.enemies[i].currentHP -= poisonStacks
+                store.player.totalDamageDealt += poisonStacks
                 if let poisonIdx = combat.enemies[i].buffs.firstIndex(where: { $0.type == .poison }) {
                     combat.enemies[i].buffs[poisonIdx].stacks -= 1
                     if combat.enemies[i].buffs[poisonIdx].stacks <= 0 {

@@ -208,14 +208,14 @@ struct EventView: View {
             return
         }
 
-        var results: [String] = []
+        var results: [(text: String, isNegative: Bool)] = []
         let player = store.player
 
         for effect in choice.effects {
             switch effect {
             case .loseHP(let amount):
                 player.currentHP = max(0, player.currentHP - amount)
-                results.append(String(localized: "event_result_lose_hp \(amount)"))
+                results.append((String(localized: "event_result_lose_hp \(amount)"), true))
                 if player.currentHP <= 0 {
                     store.endRun(victory: false)
                     return
@@ -223,42 +223,42 @@ struct EventView: View {
             case .gainHP(let amount):
                 let healed = min(amount, player.maxHP - player.currentHP)
                 player.currentHP += healed
-                results.append(String(localized: "event_result_gain_hp \(healed)"))
+                results.append((String(localized: "event_result_gain_hp \(healed)"), false))
             case .gainGold(let amount):
                 player.gold += amount
-                results.append(String(localized: "event_result_gain_gold \(amount)"))
+                results.append((String(localized: "event_result_gain_gold \(amount)"), false))
             case .loseGold(let amount):
                 player.gold -= amount
-                results.append(String(localized: "event_result_lose_gold \(amount)"))
+                results.append((String(localized: "event_result_lose_gold \(amount)"), true))
             case .gainMaxHP(let amount):
                 player.maxHP += amount
                 player.currentHP += amount
-                results.append(String(localized: "event_result_gain_maxhp \(amount)"))
+                results.append((String(localized: "event_result_gain_maxhp \(amount)"), false))
             case .loseMaxHP(let amount):
                 player.maxHP = max(1, player.maxHP - amount)
                 player.currentHP = min(player.currentHP, player.maxHP)
-                results.append(String(localized: "event_result_lose_maxhp \(amount)"))
+                results.append((String(localized: "event_result_lose_maxhp \(amount)"), true))
             case .addCardToDeck(let templateKey):
                 if let card = CardDatabase.card(byKey: templateKey) {
                     player.deck.append(card.copy())
                     CombatEngine.triggerOnCardAdded(store: store)
-                    results.append(String(localized: "event_result_card_added"))
+                    results.append((String(localized: "event_result_card_added"), false))
                 }
             case .removeRandomCard:
                 if !player.deck.isEmpty {
                     player.deck.remove(at: Int.random(in: 0..<player.deck.count))
-                    results.append(String(localized: "event_result_card_removed"))
+                    results.append((String(localized: "event_result_card_removed"), true))
                 }
             case .removeSpecificCard(let templateKey):
                 if let idx = player.deck.firstIndex(where: { $0.templateKey == templateKey }) {
                     player.deck.remove(at: idx)
-                    results.append(String(localized: "event_result_card_removed"))
+                    results.append((String(localized: "event_result_card_removed"), true))
                 }
             case .upgradeRandomCard:
                 let upgradable = player.deck.indices.filter { !player.deck[$0].isUpgraded }
                 if let idx = upgradable.randomElement() {
                     player.deck[idx] = player.deck[idx].withUpgrade()
-                    results.append(String(localized: "event_result_card_upgraded"))
+                    results.append((String(localized: "event_result_card_upgraded"), false))
                 }
             case .upgradeRandomCards(let count):
                 var upgraded = 0
@@ -269,58 +269,58 @@ struct EventView: View {
                         upgraded += 1
                     }
                 }
-                if upgraded > 0 { results.append(String(localized: "event_result_cards_upgraded \(upgraded)")) }
+                if upgraded > 0 { results.append((String(localized: "event_result_cards_upgraded \(upgraded)"), false)) }
             case .gainStrength(let amount):
                 player.permanentStrengthBonus += amount
-                results.append(String(localized: "event_result_gain_strength \(amount)"))
+                results.append((String(localized: "event_result_gain_strength \(amount)"), false))
             case .gainDexterity(let amount):
                 player.permanentDexterityBonus += amount
-                results.append(String(localized: "event_result_gain_dexterity \(amount)"))
+                results.append((String(localized: "event_result_gain_dexterity \(amount)"), false))
             case .gainBlockPermanent(let amount):
                 player.permanentBlockBonus += amount
-                results.append(String(localized: "event_result_gain_block \(amount)"))
+                results.append((String(localized: "event_result_gain_block \(amount)"), false))
             case .healPercent(let percent):
                 if percent >= 0 {
                     let amount = Int(Double(player.maxHP) * percent)
                     let healed = min(amount, player.maxHP - player.currentHP)
                     player.currentHP += healed
-                    results.append(String(localized: "event_result_gain_hp \(healed)"))
+                    results.append((String(localized: "event_result_gain_hp \(healed)"), false))
                 } else {
                     let targetHP = Int(Double(player.maxHP) * -percent)
                     let damage = player.currentHP - max(1, player.currentHP - targetHP)
                     player.currentHP = max(1, player.currentHP - targetHP)
-                    results.append(String(localized: "event_result_hp_reduced \(Int((1.0 + percent) * 100))"))
+                    results.append((String(localized: "event_result_hp_reduced \(Int((1.0 + percent) * 100))"), true))
                 }
             case .gainRelic(let relicID):
                 if let relic = RelicDatabase.allRelics.first(where: { $0.id == relicID }) {
                     player.relics.append(relic)
-                    results.append(String(localized: "event_result_relic_acquired"))
+                    results.append((String(localized: "event_result_relic_acquired"), false))
                 }
             case .gainRandomRelic:
                 let relic = RelicDatabase.randomRelic(excluding: player.relics)
                 player.relics.append(relic)
-                results.append(String(localized: "event_result_random_relic"))
+                results.append((String(localized: "event_result_random_relic"), false))
             case .gainPotion(let potionID):
                 if let potion = PotionDatabase.allPotions.first(where: { $0.id == potionID }) {
                     store.receivePotion(potion)
-                    results.append(String(localized: "event_result_potion_acquired"))
+                    results.append((String(localized: "event_result_potion_acquired"), false))
                 }
             case .gainRandomPotion:
                 let potion = PotionDatabase.randomPotion()
                 store.receivePotion(potion)
-                results.append(String(localized: "event_result_random_potion"))
+                results.append((String(localized: "event_result_random_potion"), false))
             case .randomDebuff:
                 let debuffs: [BuffType] = [.vulnerable, .weak, .frail]
                 if let debuff = debuffs.randomElement() {
                     player.addBuff(BuffInstance(type: debuff, stacks: 2, isDurationBased: true))
-                    results.append(String(localized: "event_result_debuffed"))
+                    results.append((String(localized: "event_result_debuffed"), true))
                 }
             case .transformRandomStrike:
                 if let idx = player.deck.firstIndex(where: { $0.templateKey.contains("strike") }) {
                     let attackCards = CardDatabase.allCards.filter { $0.type == .attack && $0.rarity != .starter && ($0.characterClass == player.characterClass || $0.characterClass == nil) }
                     if let newCard = attackCards.randomElement() {
                         player.deck[idx] = newCard.copy()
-                        results.append(String(localized: "event_result_strike_transformed"))
+                        results.append((String(localized: "event_result_strike_transformed"), false))
                     }
                 }
             case .duplicateRandomCard:
@@ -328,20 +328,20 @@ struct EventView: View {
                     let idx = Int.random(in: 0..<player.deck.count)
                     player.deck.append(player.deck[idx].copy())
                     CombatEngine.triggerOnCardAdded(store: store)
-                    results.append(String(localized: "event_result_card_duplicated"))
+                    results.append((String(localized: "event_result_card_duplicated"), false))
                 }
             case .removeAllStrikes:
                 let before = player.deck.count
                 player.deck.removeAll { $0.templateKey.contains("strike") }
                 let removed = before - player.deck.count
-                if removed > 0 { results.append(String(localized: "event_result_strikes_removed \(removed)")) }
+                if removed > 0 { results.append((String(localized: "event_result_strikes_removed \(removed)"), true)) }
             case .gainEnergyNextCombat(let amount):
                 player.energyNextTurnBonus += amount
-                results.append(String(localized: "event_result_energy_next \(amount)"))
+                results.append((String(localized: "event_result_energy_next \(amount)"), false))
             case .gainGoldPerCard(let amount):
                 let gold = player.deck.count * amount
                 player.gold += gold
-                results.append(String(localized: "event_result_gain_gold \(gold)"))
+                results.append((String(localized: "event_result_gain_gold \(gold)"), false))
             case .nothing:
                 break
             }
@@ -356,8 +356,8 @@ struct EventView: View {
         if results.isEmpty {
             store.completeEvent()
         } else {
-            let msg = results.joined(separator: ", ")
-            resultColor = results.contains(where: { $0.hasPrefix("-") }) ? Color(red: 0.95, green: 0.60, blue: 0.40) : Color(red: 0.30, green: 0.85, blue: 0.50)
+            let msg = results.map(\.text).joined(separator: ", ")
+            resultColor = results.contains(where: \.isNegative) ? Color(red: 0.95, green: 0.60, blue: 0.40) : Color(red: 0.30, green: 0.85, blue: 0.50)
             withAnimation(.spring(response: 0.3)) {
                 resultMessage = msg
             }

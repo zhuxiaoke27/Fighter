@@ -25,6 +25,13 @@ struct CombatView: View {
     @State private var isEnemyTurnTransition = false
     @State private var previousTurnFlag = false
 
+    // Card fly animation
+    @State private var flyCard: Card? = nil
+    @State private var flyFrom: CGPoint = .zero
+    @State private var flyTo: CGPoint = .zero
+    @State private var flyProgress: CGFloat = 0
+    @State private var flyCompletion: (() -> Void)? = nil
+
     // Combat log
     @State private var combatLog: [CombatLogEntry] = []
     @State private var showCombatLog = false
@@ -247,6 +254,11 @@ struct CombatView: View {
                     .shadow(color: .black.opacity(0.5), radius: 4)
                     .transition(.opacity.combined(with: .scale(scale: 0.8)))
             }
+
+            // Flying card animation overlay
+            if let card = flyCard {
+                flyingCardView(card)
+            }
         }
         .sheet(item: $browsePile) { pile in
             if let combat = store.combatState {
@@ -352,6 +364,77 @@ struct CombatView: View {
                     SaveManager.shared.saveSettings(store.settings)
                 }
             }
+        }
+    }
+
+    // MARK: - Flying Card Animation
+
+    private func flyingCardView(_ card: Card) -> some View {
+        let t = flyProgress
+        // Ease-out curve
+        let eased = 1 - (1 - t) * (1 - t)
+        let pos = CGPoint(
+            x: flyFrom.x + (flyTo.x - flyFrom.x) * eased,
+            y: flyFrom.y + (flyTo.y - flyFrom.y) * eased
+        )
+        let scale = 1.0 - 0.3 * eased
+        let rotation = Double(eased) * 15.0
+        let opacity = 1.0 - 0.5 * eased
+
+        return VStack(spacing: 0) {
+            ZStack {
+                RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Theme.cardColor(for: card.type).opacity(0.5),
+                                Color(red: 0.10, green: 0.09, blue: 0.16)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .frame(width: Theme.cardWidth, height: Theme.cardHeight)
+
+                VStack(spacing: 4) {
+                    Text(String(localized: LocalizedStringResource(stringLiteral: card.nameKey)))
+                        .font(Theme.cardTitleFont)
+                        .foregroundStyle(Theme.textPrimary)
+                        .lineLimit(1)
+                    Image(systemName: card.type.icon)
+                        .font(.system(size: 20))
+                        .foregroundStyle(Theme.cardColor(for: card.type).opacity(0.6))
+                }
+            }
+            .overlay(
+                RoundedRectangle(cornerRadius: Theme.cardCornerRadius)
+                    .stroke(Theme.energyColor.opacity(0.6), lineWidth: 2)
+            )
+            .shadow(color: Theme.energyGlow, radius: 12, y: 4)
+        }
+        .scaleEffect(scale)
+        .rotationEffect(.degrees(rotation))
+        .opacity(opacity)
+        .position(pos)
+        .allowsHitTesting(false)
+    }
+
+    private func startFlyAnimation(card: Card, from start: CGPoint, to end: CGPoint, completion: @escaping () -> Void) {
+        flyCard = card
+        flyFrom = start
+        flyTo = end
+        flyProgress = 0
+        flyCompletion = completion
+
+        withAnimation(.easeOut(duration: 0.25)) {
+            flyProgress = 1.0
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [flyCompletion] in
+            self.flyCard = nil
+            self.flyProgress = 0
+            flyCompletion?()
+            self.flyCompletion = nil
         }
     }
 
@@ -485,18 +568,32 @@ struct CombatView: View {
                 switch card.target {
                 case .enemy:
                     if inEnemyZone, let targetID = dragTargetEnemyID {
-                        CombatEngine.playCard(cardID: card.id, targetEnemyID: targetID, store: store)
-                        if let combat = store.combatState {
-                            combat.selectedCardID = nil
-                            combat.combatPhase = .playerAction
+                        let targetFrame = enemyFrames[targetID]
+                        let endPt = targetFrame.map { CGPoint(x: $0.midX, y: $0.midY) } ?? finalPoint
+                        startFlyAnimation(card: card, from: finalPoint, to: endPt) {
+                            CombatEngine.playCard(cardID: card.id, targetEnemyID: targetID, store: store)
+                            if let combat = store.combatState {
+                                combat.selectedCardID = nil
+                                combat.combatPhase = .playerAction
+                            }
                         }
                     } else if inEnemyZone {
                         handleDropOnEnemyZone(card)
                     }
                 case .allEnemies:
-                    if inEnemyZone { handleDropOnAllEnemies(card) }
+                    if inEnemyZone {
+                        let endPt = CGPoint(x: UIScreen.main.bounds.midX, y: enemyZoneFrame.midY)
+                        startFlyAnimation(card: card, from: finalPoint, to: endPt) {
+                            handleDropOnAllEnemies(card)
+                        }
+                    }
                 case .selfTarget, .none:
-                    if inPlayerZone { handleDropOnSelf(card) }
+                    if inPlayerZone {
+                        let endPt = CGPoint(x: UIScreen.main.bounds.midX, y: playerZoneFrame.midY)
+                        startFlyAnimation(card: card, from: finalPoint, to: endPt) {
+                            handleDropOnSelf(card)
+                        }
+                    }
                 }
 
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
@@ -718,18 +815,27 @@ struct CombatView: View {
             if alive.count == 1 {
                 let enemy = alive[0]
                 combat.selectedTargetID = enemy.id
-                if card.target == .allEnemies {
-                    CombatEngine.playCard(cardID: card.id, targetEnemyID: nil, store: store)
-                } else {
-                    CombatEngine.playCard(cardID: card.id, targetEnemyID: enemy.id, store: store)
+                let targetFrame = enemyFrames[enemy.id]
+                let endPt = targetFrame.map { CGPoint(x: $0.midX, y: $0.midY) } ?? CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.height * 0.25)
+                let startPt = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.height * 0.78)
+                startFlyAnimation(card: card, from: startPt, to: endPt) {
+                    if card.target == .allEnemies {
+                        CombatEngine.playCard(cardID: card.id, targetEnemyID: nil, store: store)
+                    } else {
+                        CombatEngine.playCard(cardID: card.id, targetEnemyID: enemy.id, store: store)
+                    }
+                    combat.selectedCardID = nil
+                    combat.combatPhase = .playerAction
                 }
+            }
+        case .selfTarget, .none:
+            let endPt = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.height * 0.55)
+            let startPt = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.height * 0.78)
+            startFlyAnimation(card: card, from: startPt, to: endPt) {
+                CombatEngine.playCard(cardID: card.id, targetEnemyID: nil, store: store)
                 combat.selectedCardID = nil
                 combat.combatPhase = .playerAction
             }
-        case .selfTarget, .none:
-            CombatEngine.playCard(cardID: card.id, targetEnemyID: nil, store: store)
-            combat.selectedCardID = nil
-            combat.combatPhase = .playerAction
         }
     }
 
@@ -747,12 +853,18 @@ struct CombatView: View {
         }
 
         // Card targeting mode
-        guard let cardID = combat.selectedCardID else { return }
+        guard let cardID = combat.selectedCardID,
+              let card = combat.hand.first(where: { $0.id == cardID }) else { return }
         combat.selectedTargetID = enemy.id
-        CombatEngine.playCard(cardID: cardID, targetEnemyID: enemy.id, store: store)
-        combat.selectedCardID = nil
-        combat.selectedTargetID = nil
-        combat.combatPhase = .playerAction
+        let targetFrame = enemyFrames[enemy.id]
+        let endPt = targetFrame.map { CGPoint(x: $0.midX, y: $0.midY) } ?? CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.height * 0.25)
+        let startPt = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.height * 0.78)
+        startFlyAnimation(card: card, from: startPt, to: endPt) {
+            CombatEngine.playCard(cardID: cardID, targetEnemyID: enemy.id, store: store)
+            combat.selectedCardID = nil
+            combat.selectedTargetID = nil
+            combat.combatPhase = .playerAction
+        }
     }
 
     // MARK: - Helpers

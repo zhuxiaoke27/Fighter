@@ -51,7 +51,7 @@ struct CardEvaluator {
                 finalDamage *= 2
                 player.penNibActive = false
             }
-            applyDamage(finalDamage, toEnemyAtIndex: idx, combat: combat)
+            applyDamage(finalDamage, toEnemyAtIndex: idx, combat: combat, store: store)
 
         case .dealDamageMulti(let amount, let hits):
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
@@ -67,7 +67,7 @@ struct CardEvaluator {
                     dmg *= 2
                     player.penNibActive = false
                 }
-                applyDamage(dmg, toEnemyAtIndex: idx, combat: combat)
+                applyDamage(dmg, toEnemyAtIndex: idx, combat: combat, store: store)
                 guard combat.enemies[idx].isAlive else { break }
             }
 
@@ -79,7 +79,7 @@ struct CardEvaluator {
                     targetVulnerable: combat.enemies[i].buffs.contains(where: { $0.type == .vulnerable && $0.stacks > 0 }),
                     playerWeak: player.hasDebuff(.weak)
                 )
-                applyDamage(finalDamage, toEnemyAtIndex: i, combat: combat)
+                applyDamage(finalDamage, toEnemyAtIndex: i, combat: combat, store: store)
             }
 
         case .gainBlock(let amount):
@@ -226,7 +226,7 @@ struct CardEvaluator {
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
             let blockDamage = player.combatBlock
             let finalDamage = calculateDamage(base: blockDamage, strength: player.buffStacks(.strength), targetVulnerable: combat.enemies[idx].buffs.contains(where: { $0.type == .vulnerable && $0.stacks > 0 }), playerWeak: player.hasDebuff(.weak))
-            applyDamage(finalDamage, toEnemyAtIndex: idx, combat: combat)
+            applyDamage(finalDamage, toEnemyAtIndex: idx, combat: combat, store: store)
 
         case .healOnKill(let amount):
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
@@ -262,7 +262,7 @@ struct CardEvaluator {
         case .randomEnemyDamage(let amount):
             let alive = combat.enemies.indices.filter { combat.enemies[$0].isAlive }
             if let idx = alive.randomElement() {
-                applyDamage(amount, toEnemyAtIndex: idx, combat: combat)
+                applyDamage(amount, toEnemyAtIndex: idx, combat: combat, store: store)
             }
 
         case .composite(let innerEffects):
@@ -272,7 +272,7 @@ struct CardEvaluator {
 
     // MARK: - Damage Calculation
 
-    private static func calculateDamage(
+    static func calculateDamage(
         base: Int,
         strength: Int,
         targetVulnerable: Bool,
@@ -284,7 +284,7 @@ struct CardEvaluator {
         return max(0, damage)
     }
 
-    private static func calculateBlock(
+    static func calculateBlock(
         base: Int,
         dexterity: Int,
         frail: Bool
@@ -294,7 +294,7 @@ struct CardEvaluator {
         return max(0, block)
     }
 
-    private static func applyDamage(_ damage: Int, toEnemyAtIndex idx: Int, combat: CombatState) {
+    private static func applyDamage(_ damage: Int, toEnemyAtIndex idx: Int, combat: CombatState, store: GameStore) {
         var remaining = damage
         if combat.enemies[idx].block > 0 {
             if combat.enemies[idx].block >= remaining {
@@ -306,6 +306,7 @@ struct CardEvaluator {
             }
         }
         combat.enemies[idx].currentHP -= remaining
+        store.player.totalDamageDealt += damage
     }
 
     static func drawCards(_ count: Int, combat: CombatState, store: GameStore? = nil) {

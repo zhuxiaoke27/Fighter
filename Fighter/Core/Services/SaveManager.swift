@@ -31,9 +31,12 @@ final class SaveManager {
         let permanentStrengthBonus: Int
         let permanentDexterityBonus: Int
         let permanentBlockBonus: Int
+        let activeModifier: RunModifier?
+        let consecutiveNonRareRolls: Int
+        let lastBattleWasEliteOrBoss: Bool
     }
 
-    private static let currentVersion = 3
+    private static let currentVersion = 4
 
     // MARK: - Save
 
@@ -58,7 +61,10 @@ final class SaveManager {
             settings: store.settings,
             permanentStrengthBonus: store.player.permanentStrengthBonus,
             permanentDexterityBonus: store.player.permanentDexterityBonus,
-            permanentBlockBonus: store.player.permanentBlockBonus
+            permanentBlockBonus: store.player.permanentBlockBonus,
+            activeModifier: store.activeModifier,
+            consecutiveNonRareRolls: store.consecutiveNonRareRolls,
+            lastBattleWasEliteOrBoss: store.lastBattleWasEliteOrBoss
         )
 
         if let data = try? encoder.encode(run) {
@@ -104,6 +110,9 @@ final class SaveManager {
         store.player = player
         store.mapState = MapState(from: run.mapState)
         store.settings = run.settings
+        store.activeModifier = run.activeModifier
+        store.consecutiveNonRareRolls = run.consecutiveNonRareRolls
+        store.lastBattleWasEliteOrBoss = run.lastBattleWasEliteOrBoss
         store.combatState = nil
         store.gameState = .map
 
