@@ -136,9 +136,9 @@ struct CardDetailView: View {
 
                 if card.isExhaust || card.isEthereal || card.isInnate {
                     HStack(spacing: 6) {
-                        if card.isExhaust { tagView("Exhaust", color: .orange) }
-                        if card.isEthereal { tagView("Ethereal", color: .purple) }
-                        if card.isInnate { tagView("Innate", color: Theme.energyColor) }
+                        if card.isExhaust { tagView(String(localized: "tag_exhaust"), color: .orange) }
+                        if card.isEthereal { tagView(String(localized: "tag_ethereal"), color: .purple) }
+                        if card.isInnate { tagView(String(localized: "tag_innate"), color: Theme.energyColor) }
                     }
                 }
             }

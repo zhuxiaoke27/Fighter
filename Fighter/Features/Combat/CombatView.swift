@@ -294,7 +294,7 @@ struct CombatView: View {
                     color: Theme.blockColor,
                     isCrit: false
                 )
-                addLogEntry(icon: "shield", text: "+\(newBlock) Block", color: Theme.blockColor)
+                addLogEntry(icon: "shield", text: String(localized: "log_gain_block \(newBlock)"), color: Theme.blockColor)
             }
         }
         .onChange(of: store.combatState?.enemies.map(\.currentHP) ?? []) { oldHPs, newHPs in
