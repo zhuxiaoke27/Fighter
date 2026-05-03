@@ -3008,6 +3008,22 @@
         }
       }
     },
+    "enemy_giant_worm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giant Worm"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巨虫"
+          }
+        }
+      }
+    },
     "enemy_bronze_automaton" : {
       "extractionState" : "stale",
       "localizations" : {

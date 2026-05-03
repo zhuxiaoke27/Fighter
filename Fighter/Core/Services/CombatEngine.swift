@@ -279,6 +279,18 @@ enum CombatEngine {
             }
             combat.hand = retained
         } else {
+            // Status card end-of-turn effects (process from hand before discarding)
+            for card in combat.hand where card.type == .status {
+                switch card.templateKey {
+                case "burn":
+                    store.player.takeDamage(2)
+                case "void_card":
+                    store.player.combatEnergy = max(0, store.player.combatEnergy - 1)
+                default:
+                    break
+                }
+            }
+
             for card in combat.hand {
                 if card.isEthereal || card.isExhaust {
                     combat.exhaustPile.append(card)
@@ -293,24 +305,6 @@ enum CombatEngine {
         let hasExhaustPileCards = !combat.exhaustPile.isEmpty
         if hasExhaustPileCards {
             triggerRelics(.onExhaust, store: store)
-        }
-
-        // Status card end-of-turn effects
-        var statusCardsToProcess: [Card] = []
-        for card in combat.discardPile {
-            if card.type == .status {
-                statusCardsToProcess.append(card)
-            }
-        }
-        for card in statusCardsToProcess {
-            switch card.templateKey {
-            case "burn":
-                store.player.takeDamage(2)
-            case "void_card":
-                store.player.combatEnergy = max(0, store.player.combatEnergy - 1)
-            default:
-                break
-            }
         }
 
         // Check player death from status effects

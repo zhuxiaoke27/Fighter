@@ -204,8 +204,7 @@ final class GameStore {
             }
         case "cursed_key":
             // Add a random curse card to deck
-            let curseCard = CardDatabase.randomCards(count: 1, rarity: .common, for: player.characterClass).first
-            if let curse = curseCard {
+            if let curse = CardDatabase.randomCurse() {
                 player.deck.append(curse)
                 CombatEngine.triggerOnCardAdded(store: self)
             }

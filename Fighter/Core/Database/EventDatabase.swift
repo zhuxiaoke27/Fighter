@@ -382,7 +382,7 @@ enum EventDatabase {
             descriptionKey: "event_fallen_guardian_desc",
             icon: "shield.lefthalf.filled.badge.xmark",
             choices: [
-                EventChoice(textKey: "event_fallen_guardian_choice1", effects: [.gainStrength(5), .loseHP(999)]),
+                EventChoice(textKey: "event_fallen_guardian_choice1", effects: [.gainStrength(3), .loseHP(30)]),
                 EventChoice(textKey: "event_fallen_guardian_choice2", effects: [.gainMaxHP(20)])
             ],
             act: 3, weight: 0.3

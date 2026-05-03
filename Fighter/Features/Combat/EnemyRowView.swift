@@ -170,6 +170,7 @@ struct EnemyView: View {
         case "transmogrifier": return "wand.and.stars"
         case "darkling": return "moon.fill"
         case "giant_head": return "person.fill"
+        case "giant_worm": return "ant.fill"
         default: return "skull"
         }
     }

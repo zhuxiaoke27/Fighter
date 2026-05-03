@@ -303,6 +303,23 @@ enum EnemyDatabase {
         pattern: .conditional
     )
 
+    static let giantWorm = EnemyTemplate(
+        id: "giant_worm",
+        nameKey: "enemy_giant_worm",
+        minHP: 110,
+        maxHP: 116,
+        isBoss: false,
+        isElite: true,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(16), effects: [.dealDamage(16)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(20), effects: [.gainBlock(20)]), weight: 0.7),
+            WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10), .applyDebuff(.weak, stacks: 2)]), weight: 0.5),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.3),
+        ],
+        pattern: .conditional
+    )
+
     // MARK: - Act 2 Bosses
 
     static let theChamp = EnemyTemplate(
@@ -549,7 +566,7 @@ enum EnemyDatabase {
         slimeBoss, hexaghost, guardian,
         // Act 2
         byrd, chokeOrb, shellParasite, sphericGuardian, chosen,
-        bronzeAutomaton, bookOfStabbing,
+        bronzeAutomaton, bookOfStabbing, giantWorm,
         theChamp, collector, bronzeAutomatonPrime,
         // Act 3
         darkling, orbWalker, spiker, spireGrowth, transmogrifier,

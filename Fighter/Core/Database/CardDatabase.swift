@@ -527,8 +527,8 @@ enum CardDatabase {
         cost: 0,
         target: .enemy,
         characterClass: .assassin,
-        effects: [.dealDamageMulti(4, hits: 3)],
-        upgradedEffects: [.dealDamageMulti(6, hits: 3)],
+        effects: [.dealDamageMulti(3, hits: 3)],
+        upgradedEffects: [.dealDamageMulti(4, hits: 3)],
         tags: [.offensive, .multiHit]
     )
 
@@ -663,11 +663,11 @@ enum CardDatabase {
         templateKey: "storm_of_steel_assassin",
         type: .attack,
         rarity: .rare,
-        cost: -1,
+        cost: 1,
         target: .allEnemies,
         characterClass: .assassin,
-        effects: [.dealDamageToAll(4)],
-        upgradedEffects: [.dealDamageToAll(7)],
+        effects: [.dealDamageToAll(11)],
+        upgradedEffects: [.dealDamageToAll(15)],
         isExhaust: true,
         tags: [.offensive, .exhaust]
     )
@@ -1357,6 +1357,11 @@ enum CardDatabase {
 
     static func randomCard() -> Card? {
         allCards.randomElement()?.copy()
+    }
+
+    static func randomCurse() -> Card? {
+        let curses = allCards.filter { $0.type == .curse }
+        return curses.randomElement()?.copy()
     }
 
     static func startingDeck(for character: CharacterClass) -> [Card] {
