@@ -55,14 +55,19 @@ struct CardEvaluator {
 
         case .dealDamageMulti(let amount, let hits):
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
-            let finalDamage = calculateDamage(
+            let baseDamage = calculateDamage(
                 base: amount,
                 strength: player.buffStacks(.strength),
                 targetVulnerable: combat.enemies[idx].buffs.contains(where: { $0.type == .vulnerable && $0.stacks > 0 }),
                 playerWeak: player.hasDebuff(.weak)
             )
-            for _ in 0..<hits {
-                applyDamage(finalDamage, toEnemyAtIndex: idx, combat: combat)
+            for i in 0..<hits {
+                var dmg = baseDamage
+                if i == 0 && player.penNibActive {
+                    dmg *= 2
+                    player.penNibActive = false
+                }
+                applyDamage(dmg, toEnemyAtIndex: idx, combat: combat)
                 guard combat.enemies[idx].isAlive else { break }
             }
 
@@ -127,7 +132,7 @@ struct CardEvaluator {
             }
 
         case .drawCards(let count):
-            drawCards(count, combat: combat)
+            drawCards(count, combat: combat, store: store)
 
         case .discardCards(let count):
             for _ in 0..<count where !combat.hand.isEmpty {
@@ -303,11 +308,11 @@ struct CardEvaluator {
         combat.enemies[idx].currentHP -= remaining
     }
 
-    static func drawCards(_ count: Int, combat: CombatState) {
+    static func drawCards(_ count: Int, combat: CombatState, store: GameStore? = nil) {
         for _ in 0..<count {
             guard combat.hand.count < 10 else { break }
             if combat.drawPile.isEmpty {
-                shuffleDiscardIntoDraw(combat: combat)
+                shuffleDiscardIntoDraw(combat: combat, store: store)
             }
             if let c = combat.drawPile.popLast() {
                 combat.hand.append(c)
@@ -315,9 +320,12 @@ struct CardEvaluator {
         }
     }
 
-    static func shuffleDiscardIntoDraw(combat: CombatState) {
+    static func shuffleDiscardIntoDraw(combat: CombatState, store: GameStore? = nil) {
         combat.drawPile = combat.discardPile.shuffled()
         combat.discardPile = []
+        if let store {
+            CombatEngine.triggerRelics(.onShuffle, store: store)
+        }
     }
 }
 

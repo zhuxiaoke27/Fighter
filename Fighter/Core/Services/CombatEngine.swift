@@ -86,12 +86,12 @@ enum CombatEngine {
         store.player.combatEnergy = baseEnergyPerTurn + store.player.energyNextTurnBonus
         store.player.energyNextTurnBonus = 0
 
-        CardEvaluator.drawCards(cardsToDrawPerTurn, combat: combat)
+        CardEvaluator.drawCards(cardsToDrawPerTurn, combat: combat, store: store)
 
         // Draw modifier buff: draw extra cards
         let drawMod = store.player.buffStacks(.drawModifier)
         if drawMod > 0 {
-            CardEvaluator.drawCards(drawMod, combat: combat)
+            CardEvaluator.drawCards(drawMod, combat: combat, store: store)
         }
 
         triggerRelics(.onDraw, store: store)
@@ -577,7 +577,7 @@ enum CombatEngine {
     // MARK: - Relic Triggers
 
     static func triggerRelics(_ event: RelicTrigger, store: GameStore) {
-        guard let combat = store.combatState else { return }
+        let combat = store.combatState
         let player = store.player
 
         for relic in player.relics {
@@ -619,7 +619,7 @@ enum CombatEngine {
                     player.combatBlock += 5
                 // New relics
                 case "happy_flower":
-                    if combat.turnNumber % 3 == 0 {
+                    if let combat, combat.turnNumber % 3 == 0 {
                         player.combatEnergy += 1
                     }
                 case "red_skull":
@@ -631,9 +631,7 @@ enum CombatEngine {
                         player.addBuff(BuffInstance(type: .dexterity, stacks: 1))
                     }
                 case "wrist_blade":
-                    if player.attackCardsPlayedThisCombat % 5 == 0 {
-                        player.penNibActive = true
-                    }
+                    player.combatBlock += 2
                 case "pantograph":
                     if player.currentHP <= player.maxHP / 2 {
                         player.currentHP = min(player.currentHP + 5, player.maxHP)
@@ -649,7 +647,7 @@ enum CombatEngine {
                 case "champion_belt":
                     break // handled in CardEvaluator — when applying vulnerable, also apply 1 weak
                 case "fire_breathing":
-                    if let lastPlayed = combat.discardPile.last, lastPlayed.type == .curse || lastPlayed.type == .status {
+                    if let combat, let lastPlayed = combat.discardPile.last, lastPlayed.type == .curse || lastPlayed.type == .status {
                         for i in combat.enemies.indices where combat.enemies[i].isAlive {
                             combat.enemies[i].currentHP -= 2
                         }
@@ -660,14 +658,16 @@ enum CombatEngine {
                     player.addBuff(BuffInstance(type: .platedArmor, stacks: 4))
                 // New rare relics
                 case "snecko_eye":
-                    CardEvaluator.drawCards(2, combat: combat)
-                    // Randomize all card costs in hand to 0-3
-                    for i in combat.hand.indices {
-                        combat.hand[i].cost = Int.random(in: 0...3)
-                    }
-                    // Also randomize draw pile
-                    for i in combat.drawPile.indices {
-                        combat.drawPile[i].cost = Int.random(in: 0...3)
+                    if let combat {
+                        CardEvaluator.drawCards(2, combat: combat, store: store)
+                        // Randomize all card costs in hand to 0-3
+                        for i in combat.hand.indices {
+                            combat.hand[i].cost = Int.random(in: 0...3)
+                        }
+                        // Also randomize draw pile
+                        for i in combat.drawPile.indices {
+                            combat.drawPile[i].cost = Int.random(in: 0...3)
+                        }
                     }
                 case "runic_pyramid":
                     break // handled in endPlayerTurn — skip discarding hand
@@ -683,13 +683,15 @@ enum CombatEngine {
                     player.combatEnergy += 1
                     // Cannot upgrade at rest sites — handled in RestSiteView
                 case "paper_crane":
-                    for i in combat.enemies.indices where combat.enemies[i].isAlive {
-                        if combat.enemies[i].buffStacks(.strength) > 0 {
-                            combat.enemies[i].addBuff(BuffInstance(type: .weak, stacks: 1, isDurationBased: true))
+                    if let combat {
+                        for i in combat.enemies.indices where combat.enemies[i].isAlive {
+                            if combat.enemies[i].buffStacks(.strength) > 0 {
+                                combat.enemies[i].addBuff(BuffInstance(type: .weak, stacks: 1, isDurationBased: true))
+                            }
                         }
                     }
                 case "strange_spoon":
-                    if Double.random(in: 0...1) < 0.5, !combat.exhaustPile.isEmpty {
+                    if let combat, Double.random(in: 0...1) < 0.5, !combat.exhaustPile.isEmpty {
                         let card = combat.exhaustPile.removeLast()
                         combat.discardPile.append(card)
                     }
@@ -700,8 +702,6 @@ enum CombatEngine {
                     }
                 // Boss relics
                 case "philosophers_stone":
-                    player.combatEnergy += 1
-                case "fusion_hammer":
                     player.combatEnergy += 1
                 case "cursed_key":
                     player.combatEnergy += 1
@@ -716,6 +716,27 @@ enum CombatEngine {
                         targetEnemyIndex: nil,
                         store: store
                     )
+                }
+            }
+        }
+    }
+
+    // MARK: - Card Added Trigger (works outside combat)
+
+    static func triggerOnCardAdded(store: GameStore) {
+        let player = store.player
+        for relic in player.relics {
+            for relicEffect in relic.effects {
+                guard matchesTrigger(relicEffect.trigger, event: .onCardAdded) else { continue }
+                switch relic.id {
+                case "ceramic_fish":
+                    player.combatEnergy += 1
+                case "darkstone_periapt":
+                    player.currentHP = min(player.currentHP + 5, player.maxHP)
+                case "peace_pipe":
+                    player.currentHP = min(player.currentHP + 3, player.maxHP)
+                default:
+                    break
                 }
             }
         }

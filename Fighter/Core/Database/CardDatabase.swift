@@ -116,7 +116,7 @@ enum CardDatabase {
         target: .selfTarget,
         characterClass: .warrior,
         effects: [.gainBlock(5)],
-        upgradedEffects: [.gainBlock(5)],
+        upgradedEffects: [.gainBlock(5), .applyBuff(.strength, stacks: 1)],
         tags: [.defensive, .block]
     )
 

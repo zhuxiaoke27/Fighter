@@ -55,6 +55,38 @@ enum EnemyDatabase {
         pattern: .random
     )
 
+    static let fungusBeast = EnemyTemplate(
+        id: "fungus_beast",
+        nameKey: "enemy_fungus_beast",
+        minHP: 44,
+        maxHP: 50,
+        isBoss: false,
+        isElite: false,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(6), effects: [.dealDamage(6)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10)]), weight: 0.5),
+        ],
+        pattern: .conditional
+    )
+
+    static let blueSlime = EnemyTemplate(
+        id: "blue_slime",
+        nameKey: "enemy_blue_slime",
+        minHP: 22,
+        maxHP: 26,
+        isBoss: false,
+        isElite: false,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(5), effects: [.dealDamage(5)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 1), effects: [.applyDebuff(.weak, stacks: 1)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .debuff(.frail, stacks: 1), effects: [.applyDebuff(.frail, stacks: 1)]), weight: 0.5),
+        ],
+        pattern: .random
+    )
+
     // MARK: - Act 1 Elite
 
     static let gremlinNob = EnemyTemplate(
@@ -205,6 +237,38 @@ enum EnemyDatabase {
         pattern: .random
     )
 
+    static let sphericGuardian = EnemyTemplate(
+        id: "spheric_guardian",
+        nameKey: "enemy_spheric_guardian",
+        minHP: 55,
+        maxHP: 60,
+        isBoss: false,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .defend(12), effects: [.gainBlock(12)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attack(9), effects: [.dealDamage(9)]), weight: 0.8),
+            WeightedAction(action: EnemyAction(intent: .debuff(.vulnerable, stacks: 2), effects: [.applyDebuff(.vulnerable, stacks: 2)]), weight: 0.5),
+        ],
+        pattern: .sequential
+    )
+
+    static let chosen = EnemyTemplate(
+        id: "chosen",
+        nameKey: "enemy_chosen",
+        minHP: 50,
+        maxHP: 56,
+        isBoss: false,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(12), effects: [.dealDamage(12)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.5),
+        ],
+        pattern: .random
+    )
+
     // MARK: - Act 2 Elite
 
     static let bronzeAutomaton = EnemyTemplate(
@@ -232,7 +296,7 @@ enum EnemyDatabase {
         isElite: true,
         act: 2,
         actions: [
-            WeightedAction(action: EnemyAction(intent: .attack(6), effects: [.dealDamage(6)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attackMulti(damages: [(3, 5)]), effects: [.dealDamage(3), .dealDamage(3), .dealDamage(3), .dealDamage(3), .dealDamage(3)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .attack(20), effects: [.dealDamage(20)]), weight: 0.6),
             WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.45),
         ],
@@ -337,6 +401,38 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .attack(12), effects: [.dealDamage(12)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.6),
             WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2)]), weight: 0.4),
+        ],
+        pattern: .random
+    )
+
+    static let spireGrowth = EnemyTemplate(
+        id: "spire_growth",
+        nameKey: "enemy_spire_growth",
+        minHP: 68,
+        maxHP: 74,
+        isBoss: false,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(16), effects: [.dealDamage(16)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .attack(22), effects: [.dealDamage(22)]), weight: 0.4),
+        ],
+        pattern: .conditional
+    )
+
+    static let transmogrifier = EnemyTemplate(
+        id: "transmogrifier",
+        nameKey: "enemy_transmogrifier",
+        minHP: 60,
+        maxHP: 66,
+        isBoss: false,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(14), effects: [.dealDamage(14)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .debuff(.vulnerable, stacks: 2), effects: [.applyDebuff(.vulnerable, stacks: 2)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .debuff(.poison, stacks: 4), effects: [.applyDebuff(.poison, stacks: 4)]), weight: 0.5),
         ],
         pattern: .random
     )
@@ -448,15 +544,15 @@ enum EnemyDatabase {
 
     static let allEnemies: [EnemyTemplate] = [
         // Act 1
-        cultist, jawWorm, slime,
+        cultist, jawWorm, slime, fungusBeast, blueSlime,
         gremlinNob, lagavulin, gremlinLeader,
         slimeBoss, hexaghost, guardian,
         // Act 2
-        byrd, chokeOrb, shellParasite,
+        byrd, chokeOrb, shellParasite, sphericGuardian, chosen,
         bronzeAutomaton, bookOfStabbing,
         theChamp, collector, bronzeAutomatonPrime,
         // Act 3
-        darkling, orbWalker, spiker,
+        darkling, orbWalker, spiker, spireGrowth, transmogrifier,
         giantHead, nemesis, reptomancer,
         timeEater, corruptHeart, awakenedOne
     ]

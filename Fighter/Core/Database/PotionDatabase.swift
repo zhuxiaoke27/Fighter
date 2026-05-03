@@ -101,7 +101,7 @@ struct PotionDatabase {
             id: "regen_potion",
             nameKey: "potion_regen_potion",
             descriptionKey: "potion_regen_potion_desc",
-            effects: [.heal(5)],
+            effects: [.applyBuff(.regenerate, stacks: 5)],
             target: .selfTarget,
             rarity: .uncommon
         ),
@@ -117,7 +117,7 @@ struct PotionDatabase {
             id: "gamblers_brew",
             nameKey: "potion_gamblers_brew",
             descriptionKey: "potion_gamblers_brew_desc",
-            effects: [.drawCards(2), .discardCards(2)],
+            effects: [.drawCards(3)],
             target: .none,
             rarity: .uncommon
         ),
