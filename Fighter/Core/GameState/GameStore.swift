@@ -9,6 +9,7 @@ import SwiftUI
 enum GameState: Sendable, Equatable {
     case menu
     case characterSelect
+    case neow
     case map
     case combat
     case reward
@@ -57,6 +58,7 @@ final class GameStore {
     var shopRelicPrices: [Int] = []
     var shopPotions: [PotionTemplate] = []
     var shopPotionPrices: [Int] = []
+    var hasRemovedCardThisShopVisit: Bool = false
 
     // Event state
     var currentEvent: EventTemplate?
@@ -103,7 +105,7 @@ final class GameStore {
             }
         }
 
-        gameState = .map
+        gameState = .neow
     }
 
     func startCombat(enemies: [EnemyTemplate]) {
@@ -283,6 +285,7 @@ final class GameStore {
     // MARK: - Shop Preparation
 
     private func prepareShop() {
+        hasRemovedCardThisShopVisit = false
         let characterClass = player.characterClass
         let pool = CardDatabase.cards(for: characterClass).filter { $0.rarity != .starter }
         shopCards = Array(pool.shuffled().prefix(5))
@@ -362,10 +365,28 @@ final class GameStore {
         return bossVisited
     }
 
+    // Rarity gauge: consecutive misses increase rare chance
+    var consecutiveNonRareRolls: Int = 0
+
     private func weightedRarityRoll() -> CardRarity {
         let roll = Double.random(in: 0...1)
-        if roll < 0.60 { return .common }
-        if roll < 0.90 { return .uncommon }
+        let rareThreshold = min(0.10 + Double(consecutiveNonRareRolls) * 0.05, 0.33)
+        if roll < 0.60 - rareThreshold * 0.5 {
+            consecutiveNonRareRolls += 1
+            return .common
+        }
+        if roll < 0.90 - rareThreshold {
+            consecutiveNonRareRolls += 1
+            return .uncommon
+        }
+        consecutiveNonRareRolls = 0
         return .rare
+    }
+
+    // MARK: - Neow Bonus
+
+    func completeNeow() {
+        gameState = .map
+        SaveManager.shared.save(store: self)
     }
 }

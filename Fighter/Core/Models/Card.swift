@@ -31,7 +31,7 @@ struct Card: Identifiable, Codable, Sendable, Equatable {
     let templateKey: String
     let type: CardType
     let rarity: CardRarity
-    let cost: Int
+    var cost: Int
     let target: CardTarget
     let characterClass: CharacterClass?
     let effects: [Effect]

@@ -29,6 +29,7 @@ enum BuffType: String, Codable, Sendable, CaseIterable {
     case dark
     case focus
     case negate
+    case nextCardDoubled
 
     var isDebuff: Bool {
         switch self {

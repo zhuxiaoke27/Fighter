@@ -224,6 +224,68 @@ struct RelicDatabase {
             tags: [.uncommon, .defensive]
         ),
 
+        // MARK: - Uncommon relics (new)
+        RelicTemplate(
+            id: "juzu_bracelet",
+            nameKey: "relic_juzu_bracelet",
+            descriptionKey: "relic_juzu_bracelet_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .common,
+            tags: [.common, .utility]
+        ),
+        RelicTemplate(
+            id: "orichalcum_heavy",
+            nameKey: "relic_orichalcum_heavy",
+            descriptionKey: "relic_orichalcum_heavy_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnEnd, effect: .composite([]))
+            ],
+            rarity: .common,
+            tags: [.common, .defensive]
+        ),
+        RelicTemplate(
+            id: "champion_belt",
+            nameKey: "relic_champion_belt",
+            descriptionKey: "relic_champion_belt_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .offensive]
+        ),
+        RelicTemplate(
+            id: "fire_breathing",
+            nameKey: "relic_fire_breathing",
+            descriptionKey: "relic_fire_breathing_desc",
+            effects: [
+                RelicEffect(trigger: .onCardPlayed(.curse), effect: .composite([]))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .offensive]
+        ),
+        RelicTemplate(
+            id: "paper_krane",
+            nameKey: "relic_paper_krane",
+            descriptionKey: "relic_paper_krane_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .defensive]
+        ),
+        RelicTemplate(
+            id: "thread_and_needle",
+            nameKey: "relic_thread_and_needle",
+            descriptionKey: "relic_thread_and_needle_desc",
+            effects: [
+                RelicEffect(trigger: .onCombatStart, effect: .composite([]))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .defensive]
+        ),
+
         // MARK: - Rare relics
         RelicTemplate(
             id: "dead_branch",
@@ -315,6 +377,26 @@ struct RelicDatabase {
             rarity: .rare,
             tags: [.rare, .utility]
         ),
+        RelicTemplate(
+            id: "snecko_eye",
+            nameKey: "relic_snecko_eye",
+            descriptionKey: "relic_snecko_eye_desc",
+            effects: [
+                RelicEffect(trigger: .onCombatStart, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.rare, .boss, .utility]
+        ),
+        RelicTemplate(
+            id: "runic_pyramid",
+            nameKey: "relic_runic_pyramid",
+            descriptionKey: "relic_runic_pyramid_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.rare, .boss, .utility]
+        ),
 
         // MARK: - Boss relics
         RelicTemplate(
@@ -376,6 +458,46 @@ struct RelicDatabase {
             ],
             rarity: .rare,
             tags: [.boss, .offensive]
+        ),
+        RelicTemplate(
+            id: "empty_cage",
+            nameKey: "relic_empty_cage",
+            descriptionKey: "relic_empty_cage_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .rare]
+        ),
+        RelicTemplate(
+            id: "busted_crown",
+            nameKey: "relic_busted_crown",
+            descriptionKey: "relic_busted_crown_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .rare]
+        ),
+        RelicTemplate(
+            id: "astrolabe",
+            nameKey: "relic_astrolabe",
+            descriptionKey: "relic_astrolabe_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .rare]
+        ),
+        RelicTemplate(
+            id: "fusion_hammer_rework",
+            nameKey: "relic_fusion_hammer_rework",
+            descriptionKey: "relic_fusion_hammer_rework_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.boss, .rare]
         )
     ]
 

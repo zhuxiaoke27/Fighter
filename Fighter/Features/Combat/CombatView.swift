@@ -264,6 +264,8 @@ struct CombatView: View {
                         color: Color(red: 0.95, green: 0.30, blue: 0.20),
                         isCrit: isCrit
                     )
+                    let enemyName = String(localized: LocalizedStringResource(stringLiteral: combat.enemies[i].templateID))
+                    addLogEntry(icon: "sword", text: String(localized: "log_damage_enemy \(damage) \(enemyName)"), color: Color(red: 0.95, green: 0.30, blue: 0.20))
                 }
             }
         }
@@ -295,18 +297,6 @@ struct CombatView: View {
                     isCrit: false
                 )
                 addLogEntry(icon: "shield", text: String(localized: "log_gain_block \(newBlock)"), color: Theme.blockColor)
-            }
-        }
-        .onChange(of: store.combatState?.enemies.map(\.currentHP) ?? []) { oldHPs, newHPs in
-            guard let combat = store.combatState else { return }
-            for i in 0..<min(oldHPs.count, newHPs.count) {
-                let oldHP = oldHPs[i]
-                let newHP = newHPs[i]
-                if newHP < oldHP {
-                    let damage = oldHP - newHP
-                    let enemyName = String(localized: LocalizedStringResource(stringLiteral: combat.enemies[i].templateID))
-                    addLogEntry(icon: "sword", text: String(localized: "log_damage_enemy \(damage) \(enemyName)"), color: Color(red: 0.95, green: 0.30, blue: 0.20))
-                }
             }
         }
         .gesture(dragGesture)
@@ -356,7 +346,7 @@ struct CombatView: View {
                         .font(Theme.cardTitleFont)
                         .foregroundStyle(Theme.textPrimary)
                         .lineLimit(1)
-                    Image(systemName: typeIcon(for: card.type))
+                    Image(systemName: card.type.icon)
                         .font(.system(size: 20))
                         .foregroundStyle(Theme.cardColor(for: card.type).opacity(0.6))
                 }
@@ -462,6 +452,7 @@ struct CombatView: View {
 
     private func findCardAt(location: CGPoint, in hand: [Card]) -> Card? {
         guard let combat = store.combatState else { return nil }
+        guard !hand.isEmpty else { return nil }
         // Prefer the selected card
         if let selectedID = combat.selectedCardID,
            let selected = hand.first(where: { $0.id == selectedID }) {
@@ -695,15 +686,6 @@ struct CombatView: View {
         }
     }
 
-    private func typeIcon(for type: CardType) -> String {
-        switch type {
-        case .attack: return "sword"
-        case .skill:  return "shield"
-        case .power:  return "bolt.fill"
-        case .status: return "exclamationmark.triangle"
-        case .curse:  return "flame"
-        }
-    }
 
     // MARK: - Potion Bar
 
@@ -718,12 +700,12 @@ struct CombatView: View {
                 } label: {
                     ZStack {
                         Circle()
-                            .fill(potion != nil ? potionCircleColor(for: potion.map { $0.id } ?? "").opacity(0.2) : Color.white.opacity(0.04))
+                            .fill(potion != nil ? Theme.potionColor(for: potion.map { $0.id } ?? "").opacity(0.2) : Color.white.opacity(0.04))
                             .frame(width: 32, height: 32)
                         if let p = potion {
                             Image(systemName: "drop.fill")
                                 .font(.system(size: 14))
-                                .foregroundStyle(potionCircleColor(for: p.id))
+                                .foregroundStyle(Theme.potionColor(for: p.id))
                         } else {
                             Circle()
                                 .stroke(Color.white.opacity(0.1), lineWidth: 1)
@@ -789,7 +771,7 @@ struct CombatView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(potionCircleColor(for: potion.id).opacity(0.3), lineWidth: 1)
+                .stroke(Theme.potionColor(for: potion.id).opacity(0.3), lineWidth: 1)
         )
         .offset(y: -60)
     }
@@ -812,19 +794,6 @@ struct CombatView: View {
         }
     }
 
-    private func potionCircleColor(for id: String) -> Color {
-        switch id {
-        case "fire_potion":       return Color(red: 0.90, green: 0.30, blue: 0.25)
-        case "block_potion":      return Theme.blockColor
-        case "strength_potion":   return Color(red: 0.85, green: 0.55, blue: 0.20)
-        case "weakness_potion":   return Color(red: 0.60, green: 0.40, blue: 0.80)
-        case "energy_potion":     return Theme.energyColor
-        case "elixir_potion":     return Color(red: 0.30, green: 0.85, blue: 0.40)
-        case "liquid_memories":   return Color(red: 0.40, green: 0.70, blue: 0.90)
-        case "bottled_void":      return Color(red: 0.50, green: 0.30, blue: 0.70)
-        default:                  return Theme.textSecondary
-        }
-    }
 
     // MARK: - Combat Log
 

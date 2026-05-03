@@ -197,7 +197,7 @@ struct RewardView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Theme.cardColor(for: card.type).opacity(0.2))
                         .frame(width: 80, height: 50)
-                    Image(systemName: typeIcon(for: card.type))
+                    Image(systemName: card.type.icon)
                         .font(.system(size: 20))
                         .foregroundStyle(Theme.cardColor(for: card.type).opacity(0.6))
                 }
@@ -233,15 +233,6 @@ struct RewardView: View {
         .buttonStyle(.plain)
     }
 
-    private func typeIcon(for type: CardType) -> String {
-        switch type {
-        case .attack: return "sword"
-        case .skill:  return "shield"
-        case .power:  return "bolt.fill"
-        case .status: return "exclamationmark.triangle"
-        case .curse:  return "flame"
-        }
-    }
 
     private func rarityText(_ rarity: CardRarity) -> String {
         switch rarity {

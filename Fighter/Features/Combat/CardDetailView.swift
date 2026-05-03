@@ -52,7 +52,7 @@ struct CardDetailView: View {
                     )
                     .frame(height: 80)
 
-                Image(systemName: typeIcon)
+                Image(systemName: card.type.icon)
                     .font(.system(size: 30, weight: .medium))
                     .foregroundStyle(Theme.cardColor(for: card.type).opacity(0.6))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -100,7 +100,7 @@ struct CardDetailView: View {
                 }
 
                 HStack(spacing: 4) {
-                    Image(systemName: typeIcon)
+                    Image(systemName: card.type.icon)
                         .font(.system(size: 10))
                     Text(typeLabel)
                         .font(.system(size: 11, weight: .medium, design: .rounded))
@@ -158,15 +158,6 @@ struct CardDetailView: View {
 
     // MARK: - Helpers
 
-    private var typeIcon: String {
-        switch card.type {
-        case .attack: return "sword"
-        case .skill:  return "shield"
-        case .power:  return "bolt.fill"
-        case .status: return "exclamationmark.triangle"
-        case .curse:  return "flame"
-        }
-    }
 
     private var typeLabel: String {
         switch card.type {
