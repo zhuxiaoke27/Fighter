@@ -84,6 +84,43 @@ enum CardDatabase {
         tags: [.offensive]
     )
 
+    static let shrugItOff = Card.newInstance(
+        templateKey: "shrug_it_off_warrior",
+        type: .skill,
+        rarity: .common,
+        cost: 1,
+        target: .none,
+        characterClass: .warrior,
+        effects: [.gainBlock(8), .drawCards(1)],
+        upgradedEffects: [.gainBlock(11), .drawCards(1)],
+        tags: [.defensive, .draw]
+    )
+
+    static let battleTrance = Card.newInstance(
+        templateKey: "battle_trance_warrior",
+        type: .skill,
+        rarity: .uncommon,
+        cost: 0,
+        target: .none,
+        characterClass: .warrior,
+        effects: [.drawCards(3)],
+        upgradedEffects: [.drawCards(4)],
+        tags: [.draw]
+    )
+
+    static let offering = Card.newInstance(
+        templateKey: "offering_warrior",
+        type: .skill,
+        rarity: .rare,
+        cost: 0,
+        target: .none,
+        characterClass: .warrior,
+        effects: [.selfDamage(4), .gainEnergy(2), .drawCards(1)],
+        upgradedEffects: [.selfDamage(2), .gainEnergy(2), .drawCards(1)],
+        isExhaust: true,
+        tags: [.energy, .draw, .exhaust]
+    )
+
     static let cleave = Card.newInstance(
         templateKey: "cleave_warrior",
         type: .attack,
@@ -1309,11 +1346,12 @@ enum CardDatabase {
         // Warrior
         strikeWarrior, defendWarrior, bashWarrior,
         swordBoomerang,
-        angrier, clash, cleave, ironWave, armaments, shoutWarrior, warcryWarrior,
+        angrier, clash, shrugItOff, cleave, ironWave, armaments, shoutWarrior, warcryWarrior,
         powerThrough, severFlesh, bloodletting,
         uppercut, inflame, metallicize,
         bludgeon, feed, trueGrit, fiendFire, sentinel,
         reaper, demonForm, bodySlam, impervious, limitBreak,
+        battleTrance, offering,
         // Assassin
         strikeAssassin, defendAssassin, neutralizeAssassin,
         backstab, bladeFury, poisonStab, dodgeAssassin, bladeDance, setupAssassin, dashAssassin,

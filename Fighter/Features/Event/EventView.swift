@@ -158,7 +158,7 @@ struct EventView: View {
             case .upgradeRandomCards(let v): tags.append((String(localized: "tag_upgrade_n \(v)"), Theme.energyColor))
             case .removeRandomCard: tags.append((String(localized: "tag_remove"), Color(red: 0.90, green: 0.30, blue: 0.25)))
             case .addCardToDeck:    tags.append((String(localized: "tag_add_card"), Theme.energyColor))
-            case .healPercent(let v): tags.append((String(localized: "tag_heal_pct \(Int(v * 100))"), Color(red: 0.30, green: 0.85, blue: 0.40)))
+            case .healPercent(let v): tags.append((String(localized: "tag_heal_pct \(Int(v * 100))"), v >= 0 ? Color(red: 0.30, green: 0.85, blue: 0.40) : Color(red: 0.95, green: 0.30, blue: 0.20)))
             case .randomDebuff:     tags.append((String(localized: "tag_debuff"), Color(red: 0.90, green: 0.30, blue: 0.25)))
             case .transformRandomStrike: tags.append((String(localized: "tag_transform"), Theme.energyColor))
             case .duplicateRandomCard: tags.append((String(localized: "tag_copy"), Theme.energyColor))

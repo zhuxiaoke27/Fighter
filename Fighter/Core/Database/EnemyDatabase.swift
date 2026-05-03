@@ -535,7 +535,7 @@ enum EnemyDatabase {
             WeightedAction(action: EnemyAction(intent: .attack(25), effects: [.dealDamage(25)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .attack(40), effects: [.dealDamage(40)]), weight: 0.3),
             WeightedAction(action: EnemyAction(intent: .debuff(.vulnerable, stacks: 3), effects: [.applyDebuff(.vulnerable, stacks: 3)]), weight: 0.4),
-            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 5), effects: [.applyBuff(.strength, stacks: 5)]), weight: 0.3),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.3),
         ],
         pattern: .sequential
     )

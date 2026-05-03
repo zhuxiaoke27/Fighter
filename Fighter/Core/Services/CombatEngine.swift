@@ -176,6 +176,12 @@ enum CombatEngine {
 
         guard store.player.combatEnergy >= card.cost, card.cost >= 0 else { return }
 
+        // Clash restriction: can only play if all cards in hand are attacks
+        if card.templateKey == "clash_warrior" {
+            let allAttacks = combat.hand.allSatisfy { $0.type == .attack }
+            guard allAttacks else { return }
+        }
+
         store.player.combatEnergy -= card.cost
         combat.removeCardFromHand(id: card.id)
 
@@ -288,6 +294,16 @@ enum CombatEngine {
                     store.player.combatEnergy = max(0, store.player.combatEnergy - 1)
                 default:
                     break
+                }
+            }
+
+            // Fire Breathing: deal damage if hand contains curse/status
+            if store.player.relics.contains(where: { $0.id == "fire_breathing" }) {
+                let hasCurseOrStatus = combat.hand.contains(where: { $0.type == .curse || $0.type == .status })
+                if hasCurseOrStatus {
+                    for i in combat.enemies.indices where combat.enemies[i].isAlive {
+                        combat.enemies[i].currentHP -= 2
+                    }
                 }
             }
 
@@ -581,11 +597,11 @@ enum CombatEngine {
                 // Special-case relics that need combat counters
                 switch relic.id {
                 case "shuriken":
-                    if player.attackCardsPlayedThisCombat % 3 == 0 {
+                    if player.attackCardsPlayedThisCombat > 0 && player.attackCardsPlayedThisCombat % 3 == 0 {
                         player.addBuff(BuffInstance(type: .strength, stacks: 1))
                     }
                 case "pen_nib":
-                    if player.attackCardsPlayedThisCombat % 5 == 0 {
+                    if player.attackCardsPlayedThisCombat > 0 && player.attackCardsPlayedThisCombat % 5 == 0 {
                         player.penNibActive = true
                     }
                 case "orichalcum":
@@ -621,7 +637,7 @@ enum CombatEngine {
                         player.addBuff(BuffInstance(type: .strength, stacks: 1))
                     }
                 case "kunai":
-                    if player.attackCardsPlayedThisCombat % 3 == 0 {
+                    if player.attackCardsPlayedThisCombat > 0 && player.attackCardsPlayedThisCombat % 3 == 0 {
                         player.addBuff(BuffInstance(type: .dexterity, stacks: 1))
                     }
                 case "wrist_blade":
@@ -641,11 +657,7 @@ enum CombatEngine {
                 case "champion_belt":
                     break // handled in CardEvaluator — when applying vulnerable, also apply 1 weak
                 case "fire_breathing":
-                    if let combat, let lastPlayed = combat.discardPile.last, lastPlayed.type == .curse || lastPlayed.type == .status {
-                        for i in combat.enemies.indices where combat.enemies[i].isAlive {
-                            combat.enemies[i].currentHP -= 2
-                        }
-                    }
+                    break // handled in endPlayerTurn — checks hand for curse/status cards
                 case "paper_krane":
                     break // handled in takeDamage — enemies with weak deal 25% less damage
                 case "thread_and_needle":
@@ -724,7 +736,7 @@ enum CombatEngine {
                 guard matchesTrigger(relicEffect.trigger, event: .onCardAdded) else { continue }
                 switch relic.id {
                 case "ceramic_fish":
-                    player.combatEnergy += 1
+                    player.gold += 5
                 case "darkstone_periapt":
                     player.currentHP = min(player.currentHP + 5, player.maxHP)
                 case "peace_pipe":
