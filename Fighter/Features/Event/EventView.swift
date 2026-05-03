@@ -239,7 +239,7 @@ struct EventView: View {
                 player.permanentDexterityBonus += amount
                 results.append(String(localized: "event_result_gain_dexterity \(amount)"))
             case .gainBlockPermanent(let amount):
-                player.combatBlock += amount
+                player.permanentBlockBonus += amount
                 results.append(String(localized: "event_result_gain_block \(amount)"))
             case .healPercent(let percent):
                 if percent >= 0 {

@@ -593,6 +593,22 @@
         }
       }
     },
+    "btn_use" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用"
+          }
+        }
+      }
+    },
     "btn_upgrade" : {
       "localizations" : {
         "en" : {
@@ -1213,6 +1229,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "升级一张卡牌"
+          }
+        }
+      }
+    },
+    "label_no_relics" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No relics yet"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无遗物"
+          }
+        }
+      }
+    },
+    "label_relics_count %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relics (%lld)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遗物 (%lld)"
+          }
+        }
+      }
+    },
+    "label_upgraded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UPGRADED"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已升级"
           }
         }
       }

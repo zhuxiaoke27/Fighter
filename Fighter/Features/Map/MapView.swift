@@ -8,6 +8,7 @@ import SwiftUI
 struct MapView: View {
     @Environment(GameStore.self) private var store
     @State private var showDeck = false
+    @State private var showRelics = false
     @State private var hasAppeared = false
     @State private var showQuitConfirm = false
     @State private var showTutorial = false
@@ -44,6 +45,9 @@ struct MapView: View {
         .sheet(isPresented: $showDeck) {
             DeckView(deck: store.player.deck)
         }
+        .sheet(isPresented: $showRelics) {
+            RelicListView(relics: store.player.relics)
+        }
         .alert(String(localized: "label_quit_confirm_title"), isPresented: $showQuitConfirm) {
             Button(String(localized: "btn_quit"), role: .destructive) {
                 store.quitToMenu()
@@ -78,6 +82,24 @@ struct MapView: View {
             .padding(.vertical, 6)
             .background(Capsule().fill(Color.white.opacity(0.06)))
             .onTapGesture { showDeck = true }
+
+            if !store.player.relics.isEmpty {
+                Button {
+                    showRelics = true
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "gem")
+                            .font(.system(size: 12))
+                        Text("\(store.player.relics.count)")
+                            .font(.system(size: 12, weight: .bold, design: .rounded))
+                    }
+                    .foregroundStyle(Color(red: 0.70, green: 0.50, blue: 0.90))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Capsule().fill(Color(red: 0.70, green: 0.50, blue: 0.90).opacity(0.1)))
+                }
+                .buttonStyle(.plain)
+            }
 
             HStack(spacing: 3) {
                 Image(systemName: "coins")

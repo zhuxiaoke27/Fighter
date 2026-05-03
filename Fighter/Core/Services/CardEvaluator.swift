@@ -30,12 +30,16 @@ struct CardEvaluator {
         switch effect {
         case .dealDamage(let amount):
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
-            let finalDamage = calculateDamage(
+            var finalDamage = calculateDamage(
                 base: amount,
                 strength: player.buffStacks(.strength),
                 targetVulnerable: combat.enemies[idx].buffs.contains(where: { $0.type == .vulnerable && $0.stacks > 0 }),
                 playerWeak: player.hasDebuff(.weak)
             )
+            if player.penNibActive {
+                finalDamage *= 2
+                player.penNibActive = false
+            }
             applyDamage(finalDamage, toEnemyAtIndex: idx, combat: combat)
 
         case .dealDamageMulti(let amount, let hits):
@@ -117,7 +121,11 @@ struct CardEvaluator {
             }
 
         case .exhaustFromHand:
-            break
+            if let idx = combat.hand.firstIndex(where: { $0.id == card.id }) {
+                let c = combat.hand.remove(at: idx)
+                combat.exhaustPile.append(c)
+                CombatEngine.triggerRelics(.onExhaust, store: store)
+            }
 
         case .exhaustRandomFromHand(let count):
             for _ in 0..<count {

@@ -38,7 +38,9 @@ struct CombatView: View {
 
     // Tutorial
     @State private var showTutorial: Bool = false
+    @State private var showRelics: Bool = false
     @State private var potionTargetingIndex: Int? = nil
+    @State private var confirmPotionIndex: Int? = nil
 
     var body: some View {
         ZStack {
@@ -149,18 +151,33 @@ struct CombatView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
-                            withAnimation(.spring(response: 0.3)) {
-                                showCombatLog.toggle()
+                        VStack(spacing: 8) {
+                            Button {
+                                withAnimation(.spring(response: 0.3)) {
+                                    showCombatLog.toggle()
+                                }
+                            } label: {
+                                Image(systemName: "list.bullet.clipboard")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundStyle(Theme.textSecondary)
+                                    .padding(8)
+                                    .background(Circle().fill(Color.white.opacity(0.08)))
                             }
-                        } label: {
-                            Image(systemName: "list.bullet.clipboard")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(Theme.textSecondary)
-                                .padding(8)
-                                .background(Circle().fill(Color.white.opacity(0.08)))
+                            .buttonStyle(.plain)
+
+                            if !store.player.relics.isEmpty {
+                                Button {
+                                    showRelics = true
+                                } label: {
+                                    Image(systemName: "gem")
+                                        .font(.system(size: 14, weight: .semibold))
+                                        .foregroundStyle(Color(red: 0.70, green: 0.50, blue: 0.90))
+                                        .padding(8)
+                                        .background(Circle().fill(Color(red: 0.70, green: 0.50, blue: 0.90).opacity(0.12)))
+                                }
+                                .buttonStyle(.plain)
+                            }
                         }
-                        .buttonStyle(.plain)
                         .padding(.top, 50)
                         .padding(.trailing, 12)
                     }
@@ -216,6 +233,9 @@ struct CombatView: View {
                     }()
                 )
             }
+        }
+        .sheet(isPresented: $showRelics) {
+            RelicListView(relics: store.player.relics)
         }
         .onChange(of: store.combatState?.isPlayerTurn ?? true) { _, isPlayerTurn in
             if !isPlayerTurn && !previousTurnFlag {
@@ -693,12 +713,12 @@ struct CombatView: View {
                 let potion = store.player.potions[index]
                 Button {
                     if potion != nil {
-                        handlePotionTap(index: index, combat: combat)
+                        confirmPotionIndex = index
                     }
                 } label: {
                     ZStack {
                         Circle()
-                            .fill(potion != nil ? potionCircleColor(for: potion!.id).opacity(0.2) : Color.white.opacity(0.04))
+                            .fill(potion != nil ? potionCircleColor(for: potion.map { $0.id } ?? "").opacity(0.2) : Color.white.opacity(0.04))
                             .frame(width: 32, height: 32)
                         if let p = potion {
                             Image(systemName: "drop.fill")
@@ -716,6 +736,62 @@ struct CombatView: View {
             }
         }
         .padding(.vertical, 4)
+        .overlay {
+            if let idx = confirmPotionIndex,
+               let potion = store.player.potions[idx] {
+                potionConfirmTooltip(potion: potion, index: idx)
+            }
+        }
+    }
+
+    private func potionConfirmTooltip(potion: PotionTemplate, index: Int) -> some View {
+        VStack(spacing: 6) {
+            Text(String(localized: LocalizedStringResource(stringLiteral: potion.nameKey)))
+                .font(.system(size: 12, weight: .bold, design: .rounded))
+                .foregroundStyle(Theme.textPrimary)
+
+            Text(String(localized: LocalizedStringResource(stringLiteral: potion.descriptionKey)))
+                .font(.system(size: 10, weight: .regular, design: .rounded))
+                .foregroundStyle(Theme.textSecondary)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+
+            Button {
+                confirmPotionIndex = nil
+                if let combat = store.combatState {
+                    handlePotionTap(index: index, combat: combat)
+                }
+            } label: {
+                Text(String(localized: "btn_use"))
+                    .font(.system(size: 11, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 6)
+                    .background(Capsule().fill(Color(red: 0.30, green: 0.58, blue: 0.88)))
+            }
+            .buttonStyle(.plain)
+
+            Button {
+                confirmPotionIndex = nil
+            } label: {
+                Text(String(localized: "btn_cancel"))
+                    .font(.system(size: 10, weight: .medium, design: .rounded))
+                    .foregroundStyle(Theme.textSecondary)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(12)
+        .frame(width: 160)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(red: 0.12, green: 0.11, blue: 0.20))
+                .shadow(color: .black.opacity(0.5), radius: 8, y: 4)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(potionCircleColor(for: potion.id).opacity(0.3), lineWidth: 1)
+        )
+        .offset(y: -60)
     }
 
     private func handlePotionTap(index: Int, combat: CombatState) {

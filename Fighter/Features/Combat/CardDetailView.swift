@@ -85,6 +85,14 @@ struct CardDetailView: View {
                     Text(String(localized: LocalizedStringResource(stringLiteral: card.nameKey)))
                         .font(.system(size: 16, weight: .bold, design: .rounded))
                         .foregroundStyle(Theme.textPrimary)
+                    if card.isUpgraded {
+                        Text(String(localized: "label_upgraded"))
+                            .font(.system(size: 9, weight: .bold, design: .rounded))
+                            .foregroundStyle(Theme.energyColor)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 2)
+                            .background(Capsule().fill(Theme.energyColor.opacity(0.15)))
+                    }
                     Spacer()
                     Text(rarityLabel)
                         .font(.system(size: 11, weight: .bold, design: .rounded))
