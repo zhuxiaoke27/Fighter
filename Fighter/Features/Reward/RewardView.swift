@@ -244,9 +244,9 @@ struct RewardView: View {
     private func rarityText(_ rarity: CardRarity) -> String {
         switch rarity {
         case .starter:  return ""
-        case .common:   return "Common"
-        case .uncommon: return "Uncommon"
-        case .rare:     return "Rare"
+        case .common:   return String(localized: "rarity_common")
+        case .uncommon: return String(localized: "rarity_uncommon")
+        case .rare:     return String(localized: "rarity_rare")
         }
     }
 

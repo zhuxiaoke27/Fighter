@@ -34,7 +34,7 @@ struct RelicDatabase {
             nameKey: "relic_cracked_core",
             descriptionKey: "relic_cracked_core_desc",
             effects: [
-                RelicEffect(trigger: .onCombatStart, effect: .applyBuffToAll(.strength, stacks: 1))
+                RelicEffect(trigger: .onCombatStart, effect: .applyBuff(.strength, stacks: 1))
             ],
             rarity: .starter,
             tags: [.starter, .mage, .offensive]
@@ -387,9 +387,9 @@ struct RelicDatabase {
 
     static func startingRelic(for characterClass: CharacterClass) -> RelicTemplate {
         switch characterClass {
-        case .warrior:  return allRelics.first { $0.id == "burning_blood" }!
-        case .assassin: return allRelics.first { $0.id == "ring_of_snakes" }!
-        case .mage:     return allRelics.first { $0.id == "cracked_core" }!
+        case .warrior:  return allRelics.first { $0.id == "burning_blood" } ?? allRelics[0]
+        case .assassin: return allRelics.first { $0.id == "ring_of_snakes" } ?? allRelics[1]
+        case .mage:     return allRelics.first { $0.id == "cracked_core" } ?? allRelics[2]
         }
     }
 

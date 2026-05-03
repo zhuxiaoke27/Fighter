@@ -162,20 +162,20 @@ struct CardDetailView: View {
 
     private var typeLabel: String {
         switch card.type {
-        case .attack: return "Attack"
-        case .skill:  return "Skill"
-        case .power:  return "Power"
-        case .status: return "Status"
-        case .curse:  return "Curse"
+        case .attack: return String(localized: "card_type_attack")
+        case .skill:  return String(localized: "card_type_skill")
+        case .power:  return String(localized: "card_type_power")
+        case .status: return String(localized: "card_type_status")
+        case .curse:  return String(localized: "card_type_curse")
         }
     }
 
     private var targetLabel: String {
         switch card.target {
-        case .enemy:       return "Single Enemy"
-        case .allEnemies:  return "All Enemies"
-        case .selfTarget:  return "Self"
-        case .none:        return "None"
+        case .enemy:       return String(localized: "target_single_enemy")
+        case .allEnemies:  return String(localized: "target_all_enemies")
+        case .selfTarget:  return String(localized: "target_self")
+        case .none:        return String(localized: "target_none")
         }
     }
 
@@ -190,10 +190,10 @@ struct CardDetailView: View {
 
     private var rarityLabel: String {
         switch card.rarity {
-        case .starter:  return "Starter"
-        case .common:   return "Common"
-        case .uncommon: return "Uncommon"
-        case .rare:     return "Rare"
+        case .starter:  return String(localized: "rarity_starter")
+        case .common:   return String(localized: "rarity_common")
+        case .uncommon: return String(localized: "rarity_uncommon")
+        case .rare:     return String(localized: "rarity_rare")
         }
     }
 
@@ -217,64 +217,45 @@ struct CardDetailView: View {
 
     private func effectDescription(_ effect: Effect) -> String {
         switch effect {
-        case .dealDamage(let n):              return "Deal \(n) damage"
-        case .dealDamageMulti(let n, let h):  return "Deal \(n) damage \(h)x"
-        case .dealDamageToAll(let n):         return "Deal \(n) damage to all"
-        case .gainBlock(let n):               return "Gain \(n) block"
-        case .applyBuff(let t, let s):        return "Gain \(s) \(buffName(t))"
-        case .applyBuffToAll(let t, let s):   return "All gain \(s) \(buffName(t))"
-        case .applyDebuff(let t, let s):      return "Apply \(s) \(buffName(t))"
-        case .applyDebuffToAll(let t, let s): return "Apply \(s) \(buffName(t)) to all"
-        case .drawCards(let n):               return "Draw \(n) cards"
-        case .discardCards(let n):            return "Discard \(n) cards"
-        case .exhaustFromHand:                return "Exhaust"
-        case .exhaustRandomFromHand(let n):   return "Exhaust \(n) random card(s)"
-        case .returnFromDiscard(let n):       return "Return \(n) from discard"
-        case .gainEnergy(let n):              return "Gain \(n) energy"
-        case .gainEnergyNextTurn(let n):      return "Gain \(n) energy next turn"
-        case .heal(let n):                    return "Heal \(n) HP"
-        case .addCardToHand(let k):           return "Add \(k) to hand"
-        case .addCardToDiscard(let k):        return "Add \(k) to discard"
-        case .addCardToDrawPile(let k):       return "Add \(k) to draw pile"
-        case .removeFromCombat:               return "Remove from combat"
-        case .ifHasDebuff(_, let e):          return e.map { effectDescription($0) }.joined(separator: " + ") + " (if debuffed)"
-        case .ifHPBelow(_, let e):            return e.map { effectDescription($0) }.joined(separator: " + ") + " (if low HP)"
-        case .ifCardInHand(_, let e):         return e.map { effectDescription($0) }.joined(separator: " + ") + " (if card in hand)"
-        case .doubleStrength:                   return "Double strength"
-        case .doublePoison:                     return "Double poison on target"
-        case .duplicateNextSkill:               return "Next skill plays twice"
-        case .damageEqualToBlock:               return "Deal damage equal to block"
-        case .healOnKill(let n):                return "Heal \(n) on kill"
-        case .applyFrost(let n):                return "Gain \(n) Frost"
-        case .applyDark(let n):                 return "Gain \(n) Dark"
-        case .applyFocus(let n):                return "Gain \(n) Focus"
-        case .preventNextDamage:                return "Block next attack"
-        case .doubleNextCard:                   return "Next card plays twice"
-        case .randomEnemyDamage(let n):         return "Deal \(n) to random enemy"
+        case .dealDamage(let n):              return String(localized: "effect_deal_damage \(n)")
+        case .dealDamageMulti(let n, let h):  return String(localized: "effect_deal_damage_multi \(n) \(h)")
+        case .dealDamageToAll(let n):         return String(localized: "effect_deal_damage_all \(n)")
+        case .gainBlock(let n):               return String(localized: "effect_gain_block \(n)")
+        case .applyBuff(let t, let s):        return String(localized: "effect_gain_buff \(s) \(buffName(t))")
+        case .applyBuffToAll(let t, let s):   return String(localized: "effect_all_gain_buff \(s) \(buffName(t))")
+        case .applyDebuff(let t, let s):      return String(localized: "effect_apply_debuff \(s) \(buffName(t))")
+        case .applyDebuffToAll(let t, let s): return String(localized: "effect_apply_debuff_all \(s) \(buffName(t))")
+        case .drawCards(let n):               return String(localized: "effect_draw_cards \(n)")
+        case .discardCards(let n):            return String(localized: "effect_discard_cards \(n)")
+        case .exhaustFromHand:                return String(localized: "effect_exhaust")
+        case .exhaustRandomFromHand(let n):   return String(localized: "effect_exhaust_random \(n)")
+        case .returnFromDiscard(let n):       return String(localized: "effect_return_discard \(n)")
+        case .gainEnergy(let n):              return String(localized: "effect_gain_energy \(n)")
+        case .gainEnergyNextTurn(let n):      return String(localized: "effect_gain_energy_next \(n)")
+        case .heal(let n):                    return String(localized: "effect_heal \(n)")
+        case .addCardToHand(let k):           return String(localized: "effect_add_to_hand \(k)")
+        case .addCardToDiscard(let k):        return String(localized: "effect_add_to_discard \(k)")
+        case .addCardToDrawPile(let k):       return String(localized: "effect_add_to_draw \(k)")
+        case .removeFromCombat:               return String(localized: "effect_remove_combat")
+        case .ifHasDebuff(_, let e):          return e.map { effectDescription($0) }.joined(separator: " + ") + " (\(String(localized: "effect_cond_debuffed")))"
+        case .ifHPBelow(_, let e):            return e.map { effectDescription($0) }.joined(separator: " + ") + " (\(String(localized: "effect_cond_low_hp")))"
+        case .ifCardInHand(_, let e):         return e.map { effectDescription($0) }.joined(separator: " + ") + " (\(String(localized: "effect_cond_card_in_hand")))"
+        case .doubleStrength:                   return String(localized: "effect_double_strength")
+        case .doublePoison:                     return String(localized: "effect_double_poison")
+        case .duplicateNextSkill:               return String(localized: "effect_duplicate_skill")
+        case .damageEqualToBlock:               return String(localized: "effect_damage_equal_block")
+        case .healOnKill(let n):                return String(localized: "effect_heal_on_kill \(n)")
+        case .applyFrost(let n):                return String(localized: "effect_gain_frost \(n)")
+        case .applyDark(let n):                 return String(localized: "effect_gain_dark \(n)")
+        case .applyFocus(let n):                return String(localized: "effect_gain_focus \(n)")
+        case .preventNextDamage:                return String(localized: "effect_block_next")
+        case .doubleNextCard:                   return String(localized: "effect_double_next")
+        case .randomEnemyDamage(let n):         return String(localized: "effect_random_damage \(n)")
         case .composite(let effects):         return effects.map { effectDescription($0) }.joined(separator: " + ")
         }
     }
 
     private func buffName(_ type: BuffType) -> String {
-        switch type {
-        case .strength:     return "Strength"
-        case .dexterity:    return "Dexterity"
-        case .vulnerable:   return "Vulnerable"
-        case .weak:         return "Weak"
-        case .frail:        return "Frail"
-        case .poison:       return "Poison"
-        case .metallicize:  return "Metallicize"
-        case .barricade:    return "Barricade"
-        case .artifact:     return "Artifact"
-        case .regenerate:   return "Regenerate"
-        case .platedArmor:  return "Plated Armor"
-        case .thorns:       return "Thorns"
-        case .drawModifier: return "Draw+"
-        case .burn:         return "Burn"
-        case .frost:    return "Frost"
-        case .dark:     return "Dark"
-        case .focus:    return "Focus"
-        case .negate:   return "Negate"
-        }
+        String(localized: LocalizedStringResource(stringLiteral: type.localizationKey))
     }
 }

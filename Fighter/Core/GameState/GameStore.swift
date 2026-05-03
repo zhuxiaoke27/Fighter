@@ -28,6 +28,9 @@ struct GameSettings: Codable, Sendable, Equatable {
     var language: AppLanguage = .system
     var hapticFeedback: Bool = true
     var showDamageNumbers: Bool = true
+    var hasSeenMapTutorial: Bool = false
+    var hasSeenCombatTutorial: Bool = false
+    var hasSeenShopTutorial: Bool = false
 }
 
 @Observable
@@ -70,6 +73,14 @@ final class GameStore {
 
     // MARK: - Run Lifecycle
 
+    func quitToMenu() {
+        gameState = .menu
+        combatState = nil
+        mapState = nil
+        currentEvent = nil
+        combatVictory = nil
+    }
+
     func startNewRun(characterClass: CharacterClass) {
         player = PlayerState(characterClass: characterClass)
         player.deck = CardDatabase.startingDeck(for: characterClass)
@@ -100,6 +111,14 @@ final class GameStore {
         combatState = combat
         combat.enemies = enemies.map { CombatEnemy(template: $0) }
         player.resetForCombat()
+
+        // Safety: ensure deck is not empty
+        if player.deck.isEmpty {
+            if let strike = CardDatabase.card(byKey: "strike_warrior")?.copy() {
+                player.deck.append(strike)
+            }
+        }
+
         CombatEngine.startCombat(store: self)
         gameState = .combat
     }
@@ -109,6 +128,12 @@ final class GameStore {
         rewardRelic = nil
         rewardPotion = nil
         if victory {
+            // Inserter relic: gain 1 max HP on combat victory
+            if player.relics.contains(where: { $0.id == "inserter" }) {
+                player.maxHP += 1
+                player.currentHP = min(player.currentHP + 1, player.maxHP)
+            }
+
             if lastBattleWasEliteOrBoss {
                 // Elite/Boss: better gold + guaranteed uncommon/rare cards
                 rewardGold = Int.random(in: 30...50) + currentFloor * 3

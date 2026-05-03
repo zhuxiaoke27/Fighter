@@ -8,6 +8,14 @@ import SwiftUI
 struct RootView: View {
     @State private var store = GameStore()
 
+    private var currentLocale: Locale {
+        switch store.settings.language {
+        case .system: return Locale.current
+        case .en: return Locale(identifier: "en")
+        case .zhHans: return Locale(identifier: "zh-Hans")
+        }
+    }
+
     var body: some View {
         Group {
             switch store.gameState {
@@ -32,6 +40,7 @@ struct RootView: View {
             }
         }
         .background(Theme.background)
+        .environment(\.locale, currentLocale)
         .environment(store)
     }
 }

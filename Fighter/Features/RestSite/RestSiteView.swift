@@ -32,7 +32,7 @@ struct RestSiteView: View {
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                     .foregroundStyle(Theme.textPrimary)
 
-                Text("HP: \(store.player.currentHP)/\(store.player.maxHP)")
+                Text(String(localized: "label_hp \(store.player.currentHP) \(store.player.maxHP)"))
                     .font(.system(size: 14, weight: .medium, design: .rounded))
                     .foregroundStyle(Theme.textSecondary)
 
@@ -55,7 +55,7 @@ struct RestSiteView: View {
                             Text(String(localized: "btn_rest"))
                                 .font(.system(size: 14, weight: .bold, design: .rounded))
                                 .foregroundStyle(Theme.textPrimary)
-                            Text("+\(store.player.maxHP / 3) HP")
+                            Text(String(localized: "label_heal_amount \(store.player.maxHP / 3)"))
                                 .font(.system(size: 11, weight: .medium, design: .rounded))
                                 .foregroundStyle(Color(red: 0.30, green: 0.72, blue: 0.42))
                         }

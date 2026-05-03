@@ -31,6 +31,10 @@ final class PlayerState {
     var totalDamageDealt: Int = 0
     var floorsVisited: Int = 0
 
+    // Permanent stat bonuses from events (persist across combats)
+    var permanentStrengthBonus: Int = 0
+    var permanentDexterityBonus: Int = 0
+
     init(characterClass: CharacterClass) {
         self.characterClass = characterClass
         self.maxHP = characterClass.baseHP
@@ -46,6 +50,14 @@ final class PlayerState {
         energyNextTurnBonus = 0
         attackCardsPlayedThisCombat = 0
         penNibActive = false
+
+        // Apply permanent stat bonuses from events
+        if permanentStrengthBonus > 0 {
+            buffs.append(BuffInstance(type: .strength, stacks: permanentStrengthBonus))
+        }
+        if permanentDexterityBonus > 0 {
+            buffs.append(BuffInstance(type: .dexterity, stacks: permanentDexterityBonus))
+        }
     }
 
     func buffStacks(_ type: BuffType) -> Int {

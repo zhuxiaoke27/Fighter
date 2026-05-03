@@ -1,0 +1,7048 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "app_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card Battle Roguelike"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡牌肉鸽对战"
+          }
+        }
+      }
+    },
+    "buff_artifact" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artifact"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人工制品"
+          }
+        }
+      }
+    },
+    "buff_barricade" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barricade"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "壁垒"
+          }
+        }
+      }
+    },
+    "buff_burn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Burn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "灼烧"
+          }
+        }
+      }
+    },
+    "buff_dark" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暗影"
+          }
+        }
+      }
+    },
+    "buff_dexterity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dexterity"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敏捷"
+          }
+        }
+      }
+    },
+    "buff_drawModifier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draw+"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "额外抽牌"
+          }
+        }
+      }
+    },
+    "buff_focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "专注"
+          }
+        }
+      }
+    },
+    "buff_frail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frail"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "脆弱"
+          }
+        }
+      }
+    },
+    "buff_frost" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frost"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冰霜"
+          }
+        }
+      }
+    },
+    "buff_metallicize" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metallicize"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "金属化"
+          }
+        }
+      }
+    },
+    "buff_negate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Negate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抵消"
+          }
+        }
+      }
+    },
+    "buff_platedArmor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plated Armor"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "板甲"
+          }
+        }
+      }
+    },
+    "buff_poison" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poison"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中毒"
+          }
+        }
+      }
+    },
+    "buff_regenerate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regenerate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生"
+          }
+        }
+      }
+    },
+    "buff_strength" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strength"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "力量"
+          }
+        }
+      }
+    },
+    "buff_thorns" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thorns"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "荆棘"
+          }
+        }
+      }
+    },
+    "buff_vulnerable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vulnerable"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "易伤"
+          }
+        }
+      }
+    },
+    "buff_weak" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weak"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "虚弱"
+          }
+        }
+      }
+    },
+    "btn_back" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回"
+          }
+        }
+      }
+    },
+    "btn_done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        }
+      }
+    },
+    "btn_back_menu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main Menu"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主菜单"
+          }
+        }
+      }
+    },
+    "btn_continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        }
+      }
+    },
+    "btn_continue_run" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        }
+      }
+    },
+    "btn_end_turn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End Turn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "结束回合"
+          }
+        }
+      }
+    },
+    "btn_leave_shop" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave Shop"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开商店"
+          }
+        }
+      }
+    },
+    "btn_new_run" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Run"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新游戏"
+          }
+        }
+      }
+    },
+    "btn_quick_battle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Battle"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速战斗"
+          }
+        }
+      }
+    },
+    "btn_remove_card" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Card"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除卡牌"
+          }
+        }
+      }
+    },
+    "btn_rest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "休息"
+          }
+        }
+      }
+    },
+    "btn_settings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
+        }
+      }
+    },
+    "btn_cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        }
+      }
+    },
+    "btn_quit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出"
+          }
+        }
+      }
+    },
+    "btn_skip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过"
+          }
+        }
+      }
+    },
+    "btn_start_run" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Run"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始冒险"
+          }
+        }
+      }
+    },
+    "btn_take" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拿取"
+          }
+        }
+      }
+    },
+    "btn_take_card" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take Card"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拿取卡牌"
+          }
+        }
+      }
+    },
+    "btn_upgrade" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "升级"
+          }
+        }
+      }
+    },
+    "card_type_attack" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attack"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "攻击"
+          }
+        }
+      }
+    },
+    "card_type_curse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Curse"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "诅咒"
+          }
+        }
+      }
+    },
+    "card_type_power" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Power"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "能力"
+          }
+        }
+      }
+    },
+    "card_type_skill" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skill"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "技能"
+          }
+        }
+      }
+    },
+    "card_type_status" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态"
+          }
+        }
+      }
+    },
+    "character_assassin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assassin"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刺客"
+          }
+        }
+      }
+    },
+    "character_assassin_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poison and agility"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剧毒与敏捷"
+          }
+        }
+      }
+    },
+    "character_mage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mage"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "法师"
+          }
+        }
+      }
+    },
+    "character_mage_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frost and dark magic"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冰霜与暗影魔法"
+          }
+        }
+      }
+    },
+    "character_warrior" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warrior"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "战士"
+          }
+        }
+      }
+    },
+    "character_warrior_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High HP, powerful strikes"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高生命值，强力打击"
+          }
+        }
+      }
+    },
+    "label_all" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部"
+          }
+        }
+      }
+    },
+    "label_boss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BOSS"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BOSS"
+          }
+        }
+      }
+    },
+    "label_cards" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cards"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡牌"
+          }
+        }
+      }
+    },
+    "label_choose_boss_relic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a Boss Relic"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择一个Boss遗物"
+          }
+        }
+      }
+    },
+    "label_choose_card" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a Card"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择一张卡牌"
+          }
+        }
+      }
+    },
+    "label_combat_log" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combat Log"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "战斗日志"
+          }
+        }
+      }
+    },
+    "label_deck" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deck"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "牌组"
+          }
+        }
+      }
+    },
+    "label_defeat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defeat"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "失败"
+          }
+        }
+      }
+    },
+    "label_discard_pile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discard Pile"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弃牌堆"
+          }
+        }
+      }
+    },
+    "label_draw_pile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draw Pile"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽牌堆"
+          }
+        }
+      }
+    },
+    "label_enemy_turn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enemy Turn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敌人回合"
+          }
+        }
+      }
+    },
+    "label_exhaust_pile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exhaust Pile"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "消耗堆"
+          }
+        }
+      }
+    },
+    "label_full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已满"
+          }
+        }
+      }
+    },
+    "label_quit_confirm_message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress from this run will be lost."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本次冒险的进度将会丢失。"
+          }
+        }
+      }
+    },
+    "label_quit_confirm_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abandon Run?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放弃本次冒险？"
+          }
+        }
+      }
+    },
+    "label_game_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FIGHTER"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "格斗家"
+          }
+        }
+      }
+    },
+    "label_pile_empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空"
+          }
+        }
+      }
+    },
+    "label_potions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potions"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "药水"
+          }
+        }
+      }
+    },
+    "label_price_75g" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "75g"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "75金币"
+          }
+        }
+      }
+    },
+    "label_relics" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relics"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遗物"
+          }
+        }
+      }
+    },
+    "label_rest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "REST"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "休息"
+          }
+        }
+      }
+    },
+    "label_rest_site" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest Site"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "休息处"
+          }
+        }
+      }
+    },
+    "label_select_character" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Character"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择角色"
+          }
+        }
+      }
+    },
+    "label_select_remove" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Card to Remove"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要移除的卡牌"
+          }
+        }
+      }
+    },
+    "label_select_upgrade" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Card to Upgrade"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要升级的卡牌"
+          }
+        }
+      }
+    },
+    "label_shop" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "商店"
+          }
+        }
+      }
+    },
+    "label_upgrade_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade a card"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "升级一张卡牌"
+          }
+        }
+      }
+    },
+    "label_victory" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Victory!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "胜利！"
+          }
+        }
+      }
+    },
+    "map_node_battle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battle"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "战斗"
+          }
+        }
+      }
+    },
+    "map_node_boss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boss"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boss"
+          }
+        }
+      }
+    },
+    "map_node_elite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elite"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "精英"
+          }
+        }
+      }
+    },
+    "map_node_event" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Event"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "事件"
+          }
+        }
+      }
+    },
+    "map_node_hardBattle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hard Battle"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "精英战斗"
+          }
+        }
+      }
+    },
+    "map_node_mystery" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mystery"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "神秘"
+          }
+        }
+      }
+    },
+    "map_node_restSite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest Site"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "休息处"
+          }
+        }
+      }
+    },
+    "map_node_shop" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "商店"
+          }
+        }
+      }
+    },
+    "rarity_common" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Common"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "普通"
+          }
+        }
+      }
+    },
+    "rarity_rare" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rare"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稀有"
+          }
+        }
+      }
+    },
+    "rarity_starter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starter"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "初始"
+          }
+        }
+      }
+    },
+    "rarity_uncommon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uncommon"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "罕见"
+          }
+        }
+      }
+    },
+    "settings_damage_numbers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Damage Numbers"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伤害数字"
+          }
+        }
+      }
+    },
+    "settings_haptic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptic Feedback"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "触觉反馈"
+          }
+        }
+      }
+    },
+    "settings_lang_system" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随系统"
+          }
+        }
+      }
+    },
+    "settings_language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语言"
+          }
+        }
+      }
+    },
+    "log_damage_enemy %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%1$lld → %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%1$lld → %2$@"
+          }
+        }
+      }
+    },
+    "log_gain_block %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld Block"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 格挡"
+          }
+        }
+      }
+    },
+    "stat_cards %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld cards"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 张牌"
+          }
+        }
+      }
+    },
+    "stat_floors %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld floors"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 层"
+          }
+        }
+      }
+    },
+    "stat_killed %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld killed"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 击杀"
+          }
+        }
+      }
+    },
+    "stat_played %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld played"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 出牌"
+          }
+        }
+      }
+    },
+    "label_tap_to_continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap anywhere to continue"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击任意位置继续"
+          }
+        }
+      }
+    },
+    "tutorial_combat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag or tap a card to play it. Tap an enemy to target it. Use the End Turn button when done."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拖拽或点击卡牌出牌，点击敌人选择目标。出完牌后点击结束回合。"
+          }
+        }
+      }
+    },
+    "tutorial_map" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a reachable node to begin your adventure. Follow the path downward."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择一个可达的节点开始冒险，沿着路径向下探索。"
+          }
+        }
+      }
+    },
+    "tutorial_shop" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy cards and relics to strengthen your deck. Remove unwanted cards to slim it down."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买卡牌和遗物强化你的牌组。移除不需要的卡牌来精简牌组。"
+          }
+        }
+      }
+    },
+    "tag_atk" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ATK"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "攻击"
+          }
+        }
+      }
+    },
+    "tag_block" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "格挡"
+          }
+        }
+      }
+    },
+    "tag_def" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DEF"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "防御"
+          }
+        }
+      }
+    },
+    "tag_draw" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draw"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽牌"
+          }
+        }
+      }
+    },
+    "tag_energy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energy"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "能量"
+          }
+        }
+      }
+    },
+    "tag_exhaust" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exhaust"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "消耗"
+          }
+        }
+      }
+    },
+    "tag_generate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生成"
+          }
+        }
+      }
+    },
+    "tag_multi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "多段"
+          }
+        }
+      }
+    },
+    "tag_poison" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poison"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中毒"
+          }
+        }
+      }
+    },
+    "tag_self" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Self"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自伤"
+          }
+        }
+      }
+    },
+    "tag_starter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starter"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "初始"
+          }
+        }
+      }
+    },
+    "tag_str" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STR"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "力量"
+          }
+        }
+      }
+    },
+    "tag_util" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Util"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用"
+          }
+        }
+      }
+    },
+    "target_all_enemies" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Enemies"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有敌人"
+          }
+        }
+      }
+    },
+    "target_none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无"
+          }
+        }
+      }
+    },
+    "target_self" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Self"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自身"
+          }
+        }
+      }
+    },
+    "target_single_enemy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single Enemy"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "单体敌人"
+          }
+        }
+      }
+    },
+    "effect_deal_damage %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deal %lld damage"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "造成 %lld 点伤害"
+          }
+        }
+      }
+    },
+    "effect_deal_damage_multi %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deal %1$lld damage %2$lldx"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "造成 %1$lld 点伤害 ×%2$lld"
+          }
+        }
+      }
+    },
+    "effect_deal_damage_all %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deal %lld damage to all"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对所有敌人造成 %lld 点伤害"
+          }
+        }
+      }
+    },
+    "effect_gain_block %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %lld block"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得 %lld 点格挡"
+          }
+        }
+      }
+    },
+    "effect_gain_buff %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %1$lld %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得 %1$lld 层 %2$@"
+          }
+        }
+      }
+    },
+    "effect_all_gain_buff %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All gain %1$lld %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全体获得 %1$lld 层 %2$@"
+          }
+        }
+      }
+    },
+    "effect_apply_debuff %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply %1$lld %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "施加 %1$lld 层 %2$@"
+          }
+        }
+      }
+    },
+    "effect_apply_debuff_all %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply %1$lld %2$@ to all"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对所有敌人施加 %1$lld 层 %2$@"
+          }
+        }
+      }
+    },
+    "effect_draw_cards %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draw %lld cards"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽取 %lld 张牌"
+          }
+        }
+      }
+    },
+    "effect_discard_cards %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discard %lld cards"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弃掉 %lld 张牌"
+          }
+        }
+      }
+    },
+    "effect_exhaust_random %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exhaust %lld random card(s)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "随机消耗 %lld 张牌"
+          }
+        }
+      }
+    },
+    "effect_return_discard %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Return %lld from discard"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从弃牌堆回收 %lld 张"
+          }
+        }
+      }
+    },
+    "effect_gain_energy %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %lld energy"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得 %lld 点能量"
+          }
+        }
+      }
+    },
+    "effect_gain_energy_next %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %lld energy next turn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下回合获得 %lld 点能量"
+          }
+        }
+      }
+    },
+    "effect_heal %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heal %lld HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回复 %lld 点生命"
+          }
+        }
+      }
+    },
+    "effect_heal_on_kill %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heal %lld on kill"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "击杀时回复 %lld"
+          }
+        }
+      }
+    },
+    "effect_gain_frost %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %lld Frost"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得 %lld 层冰霜"
+          }
+        }
+      }
+    },
+    "effect_gain_dark %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %lld Dark"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得 %lld 层暗影"
+          }
+        }
+      }
+    },
+    "effect_gain_focus %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %lld Focus"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得 %lld 层专注"
+          }
+        }
+      }
+    },
+    "effect_random_damage %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deal %lld to random enemy"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对随机敌人造成 %lld 点伤害"
+          }
+        }
+      }
+    },
+    "event_result_lose_hp %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld 生命"
+          }
+        }
+      }
+    },
+    "event_result_gain_hp %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 生命"
+          }
+        }
+      }
+    },
+    "event_result_gain_gold %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld Gold"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 金币"
+          }
+        }
+      }
+    },
+    "event_result_lose_gold %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld Gold"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld 金币"
+          }
+        }
+      }
+    },
+    "event_result_gain_maxhp %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld Max HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 最大生命"
+          }
+        }
+      }
+    },
+    "event_result_lose_maxhp %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld Max HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld 最大生命"
+          }
+        }
+      }
+    },
+    "event_result_cards_upgraded %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld cards upgraded"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 张卡牌已升级"
+          }
+        }
+      }
+    },
+    "event_result_gain_strength %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld Strength"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 力量"
+          }
+        }
+      }
+    },
+    "event_result_gain_dexterity %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld Dexterity"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 敏捷"
+          }
+        }
+      }
+    },
+    "event_result_gain_block %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld Block"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 格挡"
+          }
+        }
+      }
+    },
+    "event_result_hp_reduced %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HP reduced to %lld%%"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生命降至 %lld%%"
+          }
+        }
+      }
+    },
+    "event_result_strikes_removed %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Strikes removed"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除了 %lld 张打击"
+          }
+        }
+      }
+    },
+    "event_result_energy_next %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld Energy next combat"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下场战斗 +%lld 能量"
+          }
+        }
+      }
+    },
+    "effect_add_to_hand %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add %@ to hand"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将 %@ 加入手牌"
+          }
+        }
+      }
+    },
+    "effect_add_to_discard %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add %@ to discard"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将 %@ 加入弃牌堆"
+          }
+        }
+      }
+    },
+    "effect_add_to_draw %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add %@ to draw pile"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将 %@ 加入抽牌堆"
+          }
+        }
+      }
+    },
+    "label_act %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Act %lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第 %lld 幕"
+          }
+        }
+      }
+    },
+    "label_floor %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Floor %lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第 %lld 层"
+          }
+        }
+      }
+    },
+    "label_hp %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HP: %1$lld/%2$lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生命: %1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "label_heal_amount %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld 生命"
+          }
+        }
+      }
+    },
+    "effect_exhaust" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exhaust"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "消耗"
+          }
+        }
+      }
+    },
+    "effect_remove_combat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from combat"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从战斗中移除"
+          }
+        }
+      }
+    },
+    "effect_cond_debuffed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "if debuffed"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "若有减益"
+          }
+        }
+      }
+    },
+    "effect_cond_low_hp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "if low HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "若生命值低"
+          }
+        }
+      }
+    },
+    "effect_cond_card_in_hand" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "if card in hand"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "若手牌中有"
+          }
+        }
+      }
+    },
+    "effect_double_strength" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double strength"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "力量翻倍"
+          }
+        }
+      }
+    },
+    "effect_double_poison" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double poison on target"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目标中毒层数翻倍"
+          }
+        }
+      }
+    },
+    "effect_duplicate_skill" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next skill plays twice"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下个技能打两次"
+          }
+        }
+      }
+    },
+    "effect_damage_equal_block" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deal damage equal to block"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "造成等同于格挡的伤害"
+          }
+        }
+      }
+    },
+    "effect_block_next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block next attack"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抵挡下次攻击"
+          }
+        }
+      }
+    },
+    "effect_double_next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next card plays twice"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下张牌打两次"
+          }
+        }
+      }
+    },
+    "event_result_card_added" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card added"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡牌已添加"
+          }
+        }
+      }
+    },
+    "event_result_card_removed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card removed"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡牌已移除"
+          }
+        }
+      }
+    },
+    "event_result_card_upgraded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card upgraded"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡牌已升级"
+          }
+        }
+      }
+    },
+    "event_result_relic_acquired" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relic acquired"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得遗物"
+          }
+        }
+      }
+    },
+    "event_result_random_relic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random relic"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "随机遗物"
+          }
+        }
+      }
+    },
+    "event_result_potion_acquired" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potion acquired"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得药水"
+          }
+        }
+      }
+    },
+    "event_result_random_potion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random potion"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "随机药水"
+          }
+        }
+      }
+    },
+    "event_result_debuffed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debuffed!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得减益！"
+          }
+        }
+      }
+    },
+    "event_result_strike_transformed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strike transformed!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打击已转化！"
+          }
+        }
+      }
+    },
+    "event_result_card_duplicated" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card duplicated"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡牌已复制"
+          }
+        }
+      }
+    },
+    "strike_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Strike" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打击" } }
+      }
+    },
+    "strike_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 6 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 6 点伤害。" } }
+      }
+    },
+    "defend_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Defend" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "防御" } }
+      }
+    },
+    "defend_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 5 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 5 点格挡。" } }
+      }
+    },
+    "bash_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bash" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "猛击" } }
+      }
+    },
+    "bash_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 8 damage. Apply 2 Vulnerable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 8 点伤害。施加 2 层易伤。" } }
+      }
+    },
+    "anger_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Anger" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "怒火" } }
+      }
+    },
+    "anger_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 6 damage. Add a copy to hand." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 6 点伤害。将一张复制品加入手牌。" } }
+      }
+    },
+    "clash_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Clash" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冲撞" } }
+      }
+    },
+    "clash_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Can only be played if all cards in hand are Attacks. Deal 14 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "仅当手牌全部为攻击牌时可出。造成 14 点伤害。" } }
+      }
+    },
+    "cleave_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cleave" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "横扫" } }
+      }
+    },
+    "cleave_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 8 damage to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 8 点伤害。" } }
+      }
+    },
+    "iron_wave_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Iron Wave" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "铁波" } }
+      }
+    },
+    "iron_wave_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 5 damage. Gain 5 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 5 点伤害。获得 5 点格挡。" } }
+      }
+    },
+    "armaments_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Armaments" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "武装" } }
+      }
+    },
+    "armaments_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 5 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 5 点格挡。" } }
+      }
+    },
+    "shout_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shout" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战吼" } }
+      }
+    },
+    "shout_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 1 Weak to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人施加 1 层虚弱。" } }
+      }
+    },
+    "warcry_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Warcry" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "呐喊" } }
+      }
+    },
+    "warcry_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 1 card. Gain 1 Energy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽 1 张牌。获得 1 点能量。" } }
+      }
+    },
+    "uppercut_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Uppercut" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "上勾拳" } }
+      }
+    },
+    "uppercut_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 13 damage. Apply 1 Weak. Apply 1 Vulnerable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 13 点伤害。施加 1 层虚弱。施加 1 层易伤。" } }
+      }
+    },
+    "inflame_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Inflame" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "燃烧" } }
+      }
+    },
+    "inflame_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 2 Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 2 点力量。" } }
+      }
+    },
+    "metallicize_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Metallicize" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "金属化" } }
+      }
+    },
+    "metallicize_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At end of turn, gain 3 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回合结束时，获得 3 点格挡。" } }
+      }
+    },
+    "bludgeon_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bludgeon" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "重击" } }
+      }
+    },
+    "bludgeon_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 32 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 32 点伤害。" } }
+      }
+    },
+    "feed_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Feed" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "吞噬" } }
+      }
+    },
+    "feed_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 10 damage. If this kills, gain 3 Max HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 10 点伤害。若击杀敌人，获得 3 点最大生命值。" } }
+      }
+    },
+    "true_grit_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "True Grit" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "坚韧" } }
+      }
+    },
+    "true_grit_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 7 Block. Exhaust a random card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 7 点格挡。随机消耗一张牌。" } }
+      }
+    },
+    "fiend_fire_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fiend Fire" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "魔焰" } }
+      }
+    },
+    "fiend_fire_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Exhaust hand. Deal 7 damage for each." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "消耗所有手牌。每张造成 7 点伤害。" } }
+      }
+    },
+    "sentinel_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sentinel" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "哨兵" } }
+      }
+    },
+    "sentinel_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 12 Block. If exhausted, gain 2 Energy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 12 点格挡。若被消耗，获得 2 点能量。" } }
+      }
+    },
+    "reaper_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reaper" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "收割者" } }
+      }
+    },
+    "reaper_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage to ALL. Heal HP equal to damage dealt." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 4 点伤害。回复等同于伤害值的生命。" } }
+      }
+    },
+    "demon_form_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Demon Form" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "恶魔形态" } }
+      }
+    },
+    "demon_form_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of turn, gain 2 Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回合开始时，获得 2 点力量。" } }
+      }
+    },
+    "body_slam_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Body Slam" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "体重压制" } }
+      }
+    },
+    "body_slam_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal damage equal to your Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成等同于你格挡值的伤害。" } }
+      }
+    },
+    "impervious_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Impervious" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无懈" } }
+      }
+    },
+    "impervious_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 30 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 30 点格挡。" } }
+      }
+    },
+    "limit_break_warrior" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Limit Break" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "突破极限" } }
+      }
+    },
+    "limit_break_warrior_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Double your Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "力量值翻倍。" } }
+      }
+    },
+    "strike_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Strike" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打击" } }
+      }
+    },
+    "strike_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 6 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 6 点伤害。" } }
+      }
+    },
+    "defend_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Defend" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "防御" } }
+      }
+    },
+    "defend_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 5 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 5 点格挡。" } }
+      }
+    },
+    "neutralize_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Neutralize" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "中和" } }
+      }
+    },
+    "neutralize_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 3 damage. Apply 1 Weak." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 3 点伤害。施加 1 层虚弱。" } }
+      }
+    },
+    "backstab_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Backstab" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "背刺" } }
+      }
+    },
+    "backstab_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 11 damage. Innate. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 11 点伤害。固有。消耗。" } }
+      }
+    },
+    "poison_stab_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Poison Stab" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "毒刃" } }
+      }
+    },
+    "poison_stab_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage. Apply 3 Poison." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 4 点伤害。施加 3 层中毒。" } }
+      }
+    },
+    "dodge_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dodge" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "闪避" } }
+      }
+    },
+    "dodge_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 4 Block. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 4 点格挡。抽 1 张牌。" } }
+      }
+    },
+    "blade_dance_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Blade Dance" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "刃舞" } }
+      }
+    },
+    "blade_dance_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage 3 times." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 4 点伤害，攻击 3 次。" } }
+      }
+    },
+    "setup_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Setup" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "布局" } }
+      }
+    },
+    "setup_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy. Draw 2 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点能量。抽 2 张牌。" } }
+      }
+    },
+    "dash_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dash" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冲刺" } }
+      }
+    },
+    "dash_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 10 Block. Deal 10 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 10 点格挡。造成 10 点伤害。" } }
+      }
+    },
+    "catalyst_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Catalyst" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "催化剂" } }
+      }
+    },
+    "catalyst_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Double Poison on an enemy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "使一名敌人的中毒层数翻倍。" } }
+      }
+    },
+    "burst_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Burst" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "爆发" } }
+      }
+    },
+    "burst_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your next 2 Skills are played twice." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "你的下 2 张技能牌打出两次。" } }
+      }
+    },
+    "phantom_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Phantom" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "幻影" } }
+      }
+    },
+    "phantom_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy. Gain 15 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点能量。获得 15 点格挡。" } }
+      }
+    },
+    "endless_agony_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Endless Agony" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无尽苦痛" } }
+      }
+    },
+    "endless_agony_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage. Exhaust. When drawn, add a copy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 4 点伤害。消耗。抽到时加入一张复制品。" } }
+      }
+    },
+    "coup_de_grace_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Coup de Grace" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "致命一击" } }
+      }
+    },
+    "coup_de_grace_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 20 damage if enemy is Vulnerable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "若敌人处于易伤，造成 20 点伤害。" } }
+      }
+    },
+    "corpse_explosion_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Corpse Explosion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "尸体爆炸" } }
+      }
+    },
+    "corpse_explosion_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 6 Poison. On death, deal damage to ALL." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "施加 6 层中毒。死亡时对所有敌人造成伤害。" } }
+      }
+    },
+    "adrenaline_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Adrenaline" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "肾上腺素" } }
+      }
+    },
+    "adrenaline_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy. Draw 2 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点能量。抽 2 张牌。" } }
+      }
+    },
+    "tools_of_the_trade_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tools of the Trade" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "职业工具" } }
+      }
+    },
+    "tools_of_the_trade_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At end of turn, draw 1 card. Discard 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回合结束时，抽 1 张牌并弃 1 张牌。" } }
+      }
+    },
+    "catalyst_plus_assassin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Catalyst+" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "催化剂+" } }
+      }
+    },
+    "catalyst_plus_assassin_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Triple Poison on an enemy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "使一名敌人的中毒层数变为三倍。" } }
+      }
+    },
+    "burst_assassin_skill" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Burst Skill" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "技能爆发" } }
+      }
+    },
+    "burst_assassin_skill_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your next Skill is played twice." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "你的下一张技能牌打出两次。" } }
+      }
+    },
+    "strike_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Strike" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打击" } }
+      }
+    },
+    "strike_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 6 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 6 点伤害。" } }
+      }
+    },
+    "defend_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Defend" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "防御" } }
+      }
+    },
+    "defend_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 5 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 5 点格挡。" } }
+      }
+    },
+    "cast_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cast" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "施法" } }
+      }
+    },
+    "cast_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage. Gain 1 Frost." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 4 点伤害。获得 1 层冰霜。" } }
+      }
+    },
+    "survivor_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Survivor" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "幸存者" } }
+      }
+    },
+    "survivor_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 5 Block. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 5 点格挡。抽 1 张牌。" } }
+      }
+    },
+    "arcane_bolt_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Arcane Bolt" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "奥术飞弹" } }
+      }
+    },
+    "arcane_bolt_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 7 damage to a random enemy 2 times." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对随机敌人造成 7 点伤害，攻击 2 次。" } }
+      }
+    },
+    "frost_shield_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Frost Shield" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冰霜之盾" } }
+      }
+    },
+    "frost_shield_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 6 Block. Gain 1 Frost." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 6 点格挡。获得 1 层冰霜。" } }
+      }
+    },
+    "fireball_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fireball" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "火球术" } }
+      }
+    },
+    "fireball_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 12 damage to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 12 点伤害。" } }
+      }
+    },
+    "channel_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Channel" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "引导" } }
+      }
+    },
+    "channel_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 2 Focus." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 2 点专注。" } }
+      }
+    },
+    "meditate_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Meditate" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冥想" } }
+      }
+    },
+    "meditate_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy. Gain 4 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点能量。获得 4 点格挡。" } }
+      }
+    },
+    "thunder_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Thunder" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "雷霆" } }
+      }
+    },
+    "thunder_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 7 damage. Gain 1 Dark." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 7 点伤害。获得 1 层暗影。" } }
+      }
+    },
+    "blizzard_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Blizzard" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暴风雪" } }
+      }
+    },
+    "blizzard_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 4 damage to ALL. Gain 1 Frost." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 4 点伤害。获得 1 层冰霜。" } }
+      }
+    },
+    "barrier_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Barrier" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "屏障" } }
+      }
+    },
+    "barrier_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 12 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 12 点格挡。" } }
+      }
+    },
+    "meteor_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Meteor" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "陨石" } }
+      }
+    },
+    "meteor_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 24 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 24 点伤害。" } }
+      }
+    },
+    "inferno_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Inferno" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "炼狱" } }
+      }
+    },
+    "inferno_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 15 damage to ALL." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人造成 15 点伤害。" } }
+      }
+    },
+    "echo_form_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Echo Form" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回响形态" } }
+      }
+    },
+    "echo_form_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your next card is played twice." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "你的下一张牌打出两次。" } }
+      }
+    },
+    "coolheaded_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Coolheaded" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冷静" } }
+      }
+    },
+    "coolheaded_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Frost. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 层冰霜。抽 1 张牌。" } }
+      }
+    },
+    "darkness_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Darkness" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "黑暗" } }
+      }
+    },
+    "darkness_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Dark. Deal 6 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 层暗影。造成 6 点伤害。" } }
+      }
+    },
+    "defragment_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Defragment" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "碎片整理" } }
+      }
+    },
+    "defragment_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Focus. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点专注。抽 1 张牌。" } }
+      }
+    },
+    "meteor_strike_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Meteor Strike" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "陨石打击" } }
+      }
+    },
+    "meteor_strike_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 30 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 30 点伤害。" } }
+      }
+    },
+    "buffer_mage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Buffer" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "缓冲" } }
+      }
+    },
+    "buffer_mage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Prevent next damage taken." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "防止下一次受到的伤害。" } }
+      }
+    },
+    "deep_breath_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deep Breath" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "深呼吸" } }
+      }
+    },
+    "deep_breath_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 2 cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽 2 张牌。" } }
+      }
+    },
+    "bandage_up_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bandage Up" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "包扎" } }
+      }
+    },
+    "bandage_up_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Heal 4 HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回复 4 点生命。" } }
+      }
+    },
+    "dark_shackles_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dark Shackles" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暗黑枷锁" } }
+      }
+    },
+    "dark_shackles_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 2 Weak. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "施加 2 层虚弱。消耗。" } }
+      }
+    },
+    "swift_strike_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Swift Strike" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "迅捷打击" } }
+      }
+    },
+    "swift_strike_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 7 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 7 点伤害。" } }
+      }
+    },
+    "safeguard_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safeguard" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "保障" } }
+      }
+    },
+    "safeguard_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 8 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 8 点格挡。" } }
+      }
+    },
+    "flash_of_steel_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Flash of Steel" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "钢铁闪光" } }
+      }
+    },
+    "flash_of_steel_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 6 damage. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 6 点伤害。抽 1 张牌。" } }
+      }
+    },
+    "panacea_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Panacea" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "万灵药" } }
+      }
+    },
+    "panacea_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Strength. Gain 1 Dexterity. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点力量。获得 1 点敏捷。消耗。" } }
+      }
+    },
+    "enlightenment_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enlightenment" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "启蒙" } }
+      }
+    },
+    "enlightenment_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy. Draw 1 card." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点能量。抽 1 张牌。" } }
+      }
+    },
+    "hand_of_greed_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hand of Greed" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "贪婪之手" } }
+      }
+    },
+    "hand_of_greed_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 10 damage. If kills, gain 20 gold." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "造成 10 点伤害。若击杀，获得 20 金币。" } }
+      }
+    },
+    "metamorphosis_neutral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Metamorphosis" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "蜕变" } }
+      }
+    },
+    "metamorphosis_neutral_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Strength. Gain 1 Dexterity." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 1 点力量。获得 1 点敏捷。" } }
+      }
+    },
+    "wound" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wound" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "伤口" } }
+      }
+    },
+    "wound_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "daze" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daze" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "眩晕" } }
+      }
+    },
+    "daze_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "burn" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Burn" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "灼烧" } }
+      }
+    },
+    "burn_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable. At end of turn, take 2 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。回合结束时，受到 2 点伤害。" } }
+      }
+    },
+    "slimed" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Slimed" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "粘液" } }
+      }
+    },
+    "slimed_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable. Exhaust." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。消耗。" } }
+      }
+    },
+    "void_card" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Void" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "虚空" } }
+      }
+    },
+    "void_card_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "writhe" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Writhe" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "挣扎" } }
+      }
+    },
+    "writhe_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "decay" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Decay" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "腐朽" } }
+      }
+    },
+    "decay_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable. At end of turn, take 2 damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。回合结束时，受到 2 点伤害。" } }
+      }
+    },
+    "doubt" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Doubt" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "疑虑" } }
+      }
+    },
+    "doubt_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "normality" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Normality" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "常态" } }
+      }
+    },
+    "normality_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "pain" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pain" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "痛苦" } }
+      }
+    },
+    "pain_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "regret" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Regret" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "悔恨" } }
+      }
+    },
+    "regret_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "shame" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shame" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "耻辱" } }
+      }
+    },
+    "shame_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unplayable." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "不可打出。" } }
+      }
+    },
+    "enemy_cultist" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cultist" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "邪教徒" } }
+      }
+    },
+    "enemy_jaw_worm" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Jaw Worm" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "颚虫" } }
+      }
+    },
+    "enemy_slime" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Slime" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "史莱姆" } }
+      }
+    },
+    "enemy_gremlin_nob" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gremlin Nob" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "哥布林首领" } }
+      }
+    },
+    "enemy_lagavulin" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lagavulin" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "拉格瓦林" } }
+      }
+    },
+    "enemy_gremlin_leader" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gremlin Leader" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "哥布林首领" } }
+      }
+    },
+    "enemy_slime_boss" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Slime Boss" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "史莱姆Boss" } }
+      }
+    },
+    "enemy_hexaghost" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hexaghost" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "六火灵" } }
+      }
+    },
+    "enemy_guardian" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Guardian" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "守卫者" } }
+      }
+    },
+    "enemy_byrd" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Byrd" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "鸟人" } }
+      }
+    },
+    "enemy_choke_orb" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choke Orb" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "窒息球" } }
+      }
+    },
+    "enemy_shell_parasite" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shell Parasite" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "壳寄生虫" } }
+      }
+    },
+    "enemy_bronze_automaton" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bronze Automaton" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "青铜自动机" } }
+      }
+    },
+    "enemy_book_of_stabbing" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Book of Stabbing" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "刺击之书" } }
+      }
+    },
+    "enemy_the_champ" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The Champ" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "冠军" } }
+      }
+    },
+    "enemy_collector" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Collector" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "收集者" } }
+      }
+    },
+    "enemy_bronze_automaton_prime" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bronze Automaton Prime" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "青铜自动机·改" } }
+      }
+    },
+    "enemy_darkling" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Darkling" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暗灵" } }
+      }
+    },
+    "enemy_orb_walker" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Orb Walker" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "宝珠行者" } }
+      }
+    },
+    "enemy_spiker" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Spiker" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "尖刺怪" } }
+      }
+    },
+    "enemy_giant_head" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Giant Head" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "巨首" } }
+      }
+    },
+    "enemy_nemesis" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nemesis" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "复仇女神" } }
+      }
+    },
+    "enemy_reptomancer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reptomancer" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "蜥蜴法师" } }
+      }
+    },
+    "enemy_time_eater" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Time Eater" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "噬时者" } }
+      }
+    },
+    "enemy_corrupt_heart" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Corrupt Heart" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "腐化之心" } }
+      }
+    },
+    "enemy_awakened_one" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Awakened One" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "觉醒者" } }
+      }
+    },
+    "enemy_slime_boss_split" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Split Slime" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "分裂史莱姆" } }
+      }
+    },
+    "relic_burning_blood" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Burning Blood" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "燃烧之血" } }
+      }
+    },
+    "relic_burning_blood_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At end of combat, heal 6 HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗结束时，回复 6 点生命。" } }
+      }
+    },
+    "relic_ring_of_snakes" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ring of Snakes" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "蛇环" } }
+      }
+    },
+    "relic_ring_of_snakes_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of combat, draw 2 extra cards." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时，额外抽 2 张牌。" } }
+      }
+    },
+    "relic_cracked_core" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cracked Core" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "破碎核心" } }
+      }
+    },
+    "relic_cracked_core_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of combat, gain 1 Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时，获得 1 点力量。" } }
+      }
+    },
+    "relic_anchor" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Anchor" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "锚" } }
+      }
+    },
+    "relic_anchor_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start each combat with 10 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每场战斗开始时获得 10 点格挡。" } }
+      }
+    },
+    "relic_bag_of_marbles" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bag of Marbles" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "弹珠袋" } }
+      }
+    },
+    "relic_bag_of_marbles_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of combat, apply 1 Vulnerable to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时，对所有敌人施加 1 层易伤。" } }
+      }
+    },
+    "relic_ceramic_fish" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ceramic Fish" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "陶瓷鱼" } }
+      }
+    },
+    "relic_ceramic_fish_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Whenever you add a card, gain 9 gold." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每次添加卡牌时，获得 9 金币。" } }
+      }
+    },
+    "relic_darkstone_periapt" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Darkstone Periapt" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暗石护身符" } }
+      }
+    },
+    "relic_darkstone_periapt_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Whenever you gain Max HP, gain 10 gold." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每次获得最大生命值时，获得 10 金币。" } }
+      }
+    },
+    "relic_happy_flower" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Happy Flower" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "快乐花" } }
+      }
+    },
+    "relic_happy_flower_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Every 3 combats, gain 1 Max HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每 3 场战斗，获得 1 点最大生命值。" } }
+      }
+    },
+    "relic_lantern" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lantern" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "灯笼" } }
+      }
+    },
+    "relic_lantern_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 extra Energy the first turn of combat." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗的第一回合获得 1 点额外能量。" } }
+      }
+    },
+    "relic_vajra" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Vajra" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "金刚杵" } }
+      }
+    },
+    "relic_vajra_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of combat, gain 1 Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时，获得 1 点力量。" } }
+      }
+    },
+    "relic_sundial" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sundial" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "日晷" } }
+      }
+    },
+    "relic_sundial_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Every 3 shuffles, gain 2 gold." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每 3 次洗牌，获得 2 金币。" } }
+      }
+    },
+    "relic_red_skull" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Red Skull" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "红骷髅" } }
+      }
+    },
+    "relic_red_skull_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "While HP is below 50%, gain 3 Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "生命值低于 50% 时，获得 3 点力量。" } }
+      }
+    },
+    "relic_orichalcum" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Orichalcum" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "山铜" } }
+      }
+    },
+    "relic_orichalcum_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "If you end turn with 0 Block, gain 6 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回合结束时若格挡为 0，获得 6 点格挡。" } }
+      }
+    },
+    "relic_shuriken" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shuriken" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "手里剑" } }
+      }
+    },
+    "relic_shuriken_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Every 3 Attacks played, gain 1 Dexterity." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每打出 3 张攻击牌，获得 1 点敏捷。" } }
+      }
+    },
+    "relic_pen_nib" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pen Nib" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "笔尖" } }
+      }
+    },
+    "relic_pen_nib_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Every 5 Attacks played, next attack deals double damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每打出 5 张攻击牌，下一次攻击伤害翻倍。" } }
+      }
+    },
+    "relic_meat_on_the_bone" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Meat on the Bone" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "骨头上的肉" } }
+      }
+    },
+    "relic_meat_on_the_bone_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "If HP is below 50% at end of combat, heal 12 HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗结束时若生命值低于 50%，回复 12 点生命。" } }
+      }
+    },
+    "relic_kunai" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Kunai" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "苦无" } }
+      }
+    },
+    "relic_kunai_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Every 3 Attacks played, gain 1 Dexterity." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每打出 3 张攻击牌，获得 1 点敏捷。" } }
+      }
+    },
+    "relic_wrist_blade" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wrist Blade" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "腕刃" } }
+      }
+    },
+    "relic_wrist_blade_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Attacks deal 4 extra damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "攻击牌额外造成 4 点伤害。" } }
+      }
+    },
+    "relic_pantograph" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pantograph" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "缩放仪" } }
+      }
+    },
+    "relic_pantograph_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At end of combat, heal 5 HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗结束时，回复 5 点生命。" } }
+      }
+    },
+    "relic_peace_pipe" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Peace Pipe" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "和平烟斗" } }
+      }
+    },
+    "relic_peace_pipe_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At rest sites, can remove 2 cards instead of 1." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在休息点可以移除 2 张牌而非 1 张。" } }
+      }
+    },
+    "relic_paper_crane" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Paper Crane" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "纸鹤" } }
+      }
+    },
+    "relic_paper_crane_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enemies with Weak deal 25% less damage." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "处于虚弱的敌人伤害额外降低 25%。" } }
+      }
+    },
+    "relic_dead_branch" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dead Branch" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "枯枝" } }
+      }
+    },
+    "relic_dead_branch_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Whenever you Exhaust a card, add a random card to hand." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每次消耗一张牌时，将一张随机牌加入手牌。" } }
+      }
+    },
+    "relic_calipers" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calipers" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "卡尺" } }
+      }
+    },
+    "relic_calipers_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of turn, lose 15 Block instead of all." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回合开始时，仅失去 15 点格挡而非全部。" } }
+      }
+    },
+    "relic_torsion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Torsion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "扭转" } }
+      }
+    },
+    "relic_torsion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Every 3 turns, gain 1 Energy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每 3 个回合，获得 1 点能量。" } }
+      }
+    },
+    "relic_fossilized_helix" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fossilized Helix" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "化石螺旋" } }
+      }
+    },
+    "relic_fossilized_helix_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start each combat with 1 Artifact." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每场战斗开始时获得 1 层人工物。" } }
+      }
+    },
+    "relic_chemical_x" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Chemical X" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "化学X" } }
+      }
+    },
+    "relic_chemical_x_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Potions are 50% more effective." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "药水效果提升 50%。" } }
+      }
+    },
+    "relic_strange_spoon" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Strange Spoon" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "奇异勺子" } }
+      }
+    },
+    "relic_strange_spoon_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cards with Exhaust instead Discard 50% of the time." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "有消耗效果的牌有 50% 几率改为弃牌。" } }
+      }
+    },
+    "relic_du_vu_doll" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Du-Vu Doll" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "巫毒娃娃" } }
+      }
+    },
+    "relic_du_vu_doll_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Strength for each Curse in deck." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "牌组中每张诅咒牌获得 1 点力量。" } }
+      }
+    },
+    "relic_mummified_hand" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mummified Hand" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "木乃伊之手" } }
+      }
+    },
+    "relic_mummified_hand_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Whenever you play a Power, gain 1 Energy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每次打出能力牌时，获得 1 点能量。" } }
+      }
+    },
+    "relic_gambling_chip" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gambling Chip" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "赌博筹码" } }
+      }
+    },
+    "relic_gambling_chip_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "At start of combat, can discard hand and draw same amount." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时，可以弃掉手牌并抽回同等数量的牌。" } }
+      }
+    },
+    "relic_philosophers_stone" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Philosopher's Stone" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "贤者之石" } }
+      }
+    },
+    "relic_philosophers_stone_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 2 Energy at start of combat. Enemies start with 1 Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时获得 2 点能量。敌人获得 1 点力量。" } }
+      }
+    },
+    "relic_fusion_hammer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fusion Hammer" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "聚合锤" } }
+      }
+    },
+    "relic_fusion_hammer_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy at start of combat. Cannot add cards at rest sites." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时获得 1 点能量。休息点不能添加卡牌。" } }
+      }
+    },
+    "relic_cursed_key" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cursed Key" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "诅咒之钥" } }
+      }
+    },
+    "relic_cursed_key_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Energy at start of combat. Open chests with a Curse." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时获得 1 点能量。开宝箱获得一张诅咒牌。" } }
+      }
+    },
+    "relic_ring_of_the_serpent" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ring of the Serpent" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "蛇之戒" } }
+      }
+    },
+    "relic_ring_of_the_serpent_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 1 extra card at start of combat." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗开始时额外抽 1 张牌。" } }
+      }
+    },
+    "relic_inserter" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Inserter" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "插入器" } }
+      }
+    },
+    "relic_inserter_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 1 Max HP after each combat." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每场战斗结束后获得 1 点最大生命值。" } }
+      }
+    },
+    "relic_sling_of_courage" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sling of Courage" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "勇气之索" } }
+      }
+    },
+    "relic_sling_of_courage_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Elites appear more often." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "精英怪出现概率增加。" } }
+      }
+    },
+    "potion_fire_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fire Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "火焰药水" } }
+      }
+    },
+    "potion_fire_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deal 20 damage to an enemy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对一名敌人造成 20 点伤害。" } }
+      }
+    },
+    "potion_block_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Block Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "格挡药水" } }
+      }
+    },
+    "potion_block_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 12 Block." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 12 点格挡。" } }
+      }
+    },
+    "potion_strength_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Strength Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "力量药水" } }
+      }
+    },
+    "potion_strength_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 2 Strength." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 2 点力量。" } }
+      }
+    },
+    "potion_weakness_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weakness Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "虚弱药水" } }
+      }
+    },
+    "potion_weakness_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 3 Weak to an enemy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对一名敌人施加 3 层虚弱。" } }
+      }
+    },
+    "potion_energy_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Energy Potion" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "能量药水" } }
+      }
+    },
+    "potion_energy_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 2 Energy." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得 2 点能量。" } }
+      }
+    },
+    "potion_elixir_potion" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Elixir" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "万能药" } }
+      }
+    },
+    "potion_elixir_potion_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Heal 20 HP." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回复 20 点生命。" } }
+      }
+    },
+    "potion_liquid_memories" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Liquid Memories" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "液态记忆" } }
+      }
+    },
+    "potion_liquid_memories_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Return 2 random cards from discard pile." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "从弃牌堆随机取回 2 张牌。" } }
+      }
+    },
+    "potion_bottled_void" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bottled Void" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "瓶装虚空" } }
+      }
+    },
+    "potion_bottled_void_desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Apply 4 Poison to ALL enemies." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "对所有敌人施加 4 层中毒。" } }
+      }
+    },
+    "event_abandoned_alchemy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abandoned Alchemy"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "废弃炼金室"
+          }
+        }
+      }
+    },
+    "event_abandoned_alchemy_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Experiment"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "实验"
+          }
+        }
+      }
+    },
+    "event_abandoned_alchemy_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_abandoned_alchemy_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abandoned alchemical equipment still has useful potions."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "废弃的炼金设备中仍有有用的药水。"
+          }
+        }
+      }
+    },
+    "event_abyss_gate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abyss Gate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深渊之门"
+          }
+        }
+      }
+    },
+    "event_abyss_gate_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进入"
+          }
+        }
+      }
+    },
+    "event_abyss_gate_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seal it"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "封印它"
+          }
+        }
+      }
+    },
+    "event_abyss_gate_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A gate to the void yawns before you."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一扇通向虚空的大门在你面前张开。"
+          }
+        }
+      }
+    },
+    "event_ancient_forge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ancient Forge"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "古老锻造炉"
+          }
+        }
+      }
+    },
+    "event_ancient_forge_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade a card"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "升级一张卡牌"
+          }
+        }
+      }
+    },
+    "event_ancient_forge_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignore"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无视"
+          }
+        }
+      }
+    },
+    "event_ancient_forge_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ancient flames still burn in this forgotten forge."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "被遗忘的锻造炉中古老的火焰仍在燃烧。"
+          }
+        }
+      }
+    },
+    "event_ancient_library" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ancient Library"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "古老图书馆"
+          }
+        }
+      }
+    },
+    "event_ancient_library_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Study"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "研读"
+          }
+        }
+      }
+    },
+    "event_ancient_library_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_ancient_library_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dusty tomes line the walls of this forgotten place."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "布满灰尘的书典排列在被遗忘之地的墙上。"
+          }
+        }
+      }
+    },
+    "event_blood_ritual" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blood Ritual"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鲜血仪式"
+          }
+        }
+      }
+    },
+    "event_blood_ritual_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Participate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参与"
+          }
+        }
+      }
+    },
+    "event_blood_ritual_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refuse"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拒绝"
+          }
+        }
+      }
+    },
+    "event_blood_ritual_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An altar stained with blood pulses with power."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个染血的祭坛散发着力量。"
+          }
+        }
+      }
+    },
+    "event_broken_throne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Broken Throne"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "破碎王座"
+          }
+        }
+      }
+    },
+    "event_broken_throne_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sit"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "坐下"
+          }
+        }
+      }
+    },
+    "event_broken_throne_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索"
+          }
+        }
+      }
+    },
+    "event_broken_throne_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A ruined throne emanates residual power."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一座毁坏的王座散发着残余的力量。"
+          }
+        }
+      }
+    },
+    "event_captive_spirit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Captive Spirit"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "被困的灵魂"
+          }
+        }
+      }
+    },
+    "event_captive_spirit_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free it"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "释放它"
+          }
+        }
+      }
+    },
+    "event_captive_spirit_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absorb its power"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "吸收它的力量"
+          }
+        }
+      }
+    },
+    "event_captive_spirit_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignore"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无视"
+          }
+        }
+      }
+    },
+    "event_captive_spirit_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A spirit trapped in a crystal calls for help."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个被困在水晶中的灵魂在呼救。"
+          }
+        }
+      }
+    },
+    "event_collapsed_bridge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collapsed Bridge"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "坍塌的桥"
+          }
+        }
+      }
+    },
+    "event_collapsed_bridge_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump across"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过去"
+          }
+        }
+      }
+    },
+    "event_collapsed_bridge_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find another way"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "找另一条路"
+          }
+        }
+      }
+    },
+    "event_collapsed_bridge_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The bridge ahead has crumbled."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前方的桥已经坍塌。"
+          }
+        }
+      }
+    },
+    "event_cursed_chest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cursed Chest"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "诅咒宝箱"
+          }
+        }
+      }
+    },
+    "event_cursed_chest_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开"
+          }
+        }
+      }
+    },
+    "event_cursed_chest_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_cursed_chest_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An ornate chest pulses with dark energy."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个华丽的宝箱散发着黑暗能量。"
+          }
+        }
+      }
+    },
+    "event_dark_alley" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark Alley"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑暗小巷"
+          }
+        }
+      }
+    },
+    "event_dark_alley_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investigate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调查"
+          }
+        }
+      }
+    },
+    "event_dark_alley_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avoid"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "避开"
+          }
+        }
+      }
+    },
+    "event_dark_alley_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shadows conceal unknown dangers."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阴影中隐藏着未知的危险。"
+          }
+        }
+      }
+    },
+    "event_doom_bell" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doom Bell"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "末日之钟"
+          }
+        }
+      }
+    },
+    "event_doom_bell_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ring it"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敲响它"
+          }
+        }
+      }
+    },
+    "event_doom_bell_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silence it"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使它安静"
+          }
+        }
+      }
+    },
+    "event_doom_bell_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walk away"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "走开"
+          }
+        }
+      }
+    },
+    "event_doom_bell_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A bell tolls ominously."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一口钟不祥地鸣响。"
+          }
+        }
+      }
+    },
+    "event_eye_of_abyss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eye of the Abyss"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深渊之眼"
+          }
+        }
+      }
+    },
+    "event_eye_of_abyss_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stare back"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回望"
+          }
+        }
+      }
+    },
+    "event_eye_of_abyss_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look away"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移开视线"
+          }
+        }
+      }
+    },
+    "event_eye_of_abyss_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A colossal eye stares from the void."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一只巨大的眼睛从虚空中凝视。"
+          }
+        }
+      }
+    },
+    "event_fallen_guardian" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fallen Guardian"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "陨落守卫"
+          }
+        }
+      }
+    },
+    "event_fallen_guardian_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take equipment"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拿走装备"
+          }
+        }
+      }
+    },
+    "event_fallen_guardian_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay respects"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "致敬"
+          }
+        }
+      }
+    },
+    "event_fallen_guardian_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A fallen guardian's equipment remains."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个陨落守卫的装备遗留着。"
+          }
+        }
+      }
+    },
+    "event_final_gate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Final Gate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最终之门"
+          }
+        }
+      }
+    },
+    "event_final_gate_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pray"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈祷"
+          }
+        }
+      }
+    },
+    "event_final_gate_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force open"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "强行打开"
+          }
+        }
+      }
+    },
+    "event_final_gate_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The final gate stands before you."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最终之门矗立在你面前。"
+          }
+        }
+      }
+    },
+    "event_flower_girl" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flower Girl"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "花之少女"
+          }
+        }
+      }
+    },
+    "event_flower_girl_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accept"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接受"
+          }
+        }
+      }
+    },
+    "event_flower_girl_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay 30 gold"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支付 30 金币"
+          }
+        }
+      }
+    },
+    "event_flower_girl_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decline"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拒绝"
+          }
+        }
+      }
+    },
+    "event_flower_girl_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A girl offers a shimmering flower."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个女孩递出一朵闪耀的花。"
+          }
+        }
+      }
+    },
+    "event_forbidden_altar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forbidden Altar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁忌祭坛"
+          }
+        }
+      }
+    },
+    "event_forbidden_altar_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offer HP"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "献出生命"
+          }
+        }
+      }
+    },
+    "event_forbidden_altar_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offer gold"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "献出金币"
+          }
+        }
+      }
+    },
+    "event_forbidden_altar_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_forbidden_altar_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An altar radiates forbidden power."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个祭坛散发着禁忌的力量。"
+          }
+        }
+      }
+    },
+    "event_forgotten_shrine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgotten Shrine"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "被遗忘的神殿"
+          }
+        }
+      }
+    },
+    "event_forgotten_shrine_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pray"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈祷"
+          }
+        }
+      }
+    },
+    "event_forgotten_shrine_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desecrate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "亵渎"
+          }
+        }
+      }
+    },
+    "event_forgotten_shrine_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An ancient shrine forgotten by time."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一座被时间遗忘的古老神殿。"
+          }
+        }
+      }
+    },
+    "event_gambler" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gambler"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赌徒"
+          }
+        }
+      }
+    },
+    "event_gambler_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gamble (30 gold)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赌博（30 金币）"
+          }
+        }
+      }
+    },
+    "event_gambler_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pass"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过"
+          }
+        }
+      }
+    },
+    "event_gambler_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A masked figure shuffles cards."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个戴面具的人在洗牌。"
+          }
+        }
+      }
+    },
+    "event_ghost_crossroads" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ghost Crossroads"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幽灵十字路"
+          }
+        }
+      }
+    },
+    "event_ghost_crossroads_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Follow the light"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随光明"
+          }
+        }
+      }
+    },
+    "event_ghost_crossroads_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Follow the dark"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随黑暗"
+          }
+        }
+      }
+    },
+    "event_ghost_crossroads_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_ghost_crossroads_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spirits hover at the crossroads."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幽灵在十字路口徘徊。"
+          }
+        }
+      }
+    },
+    "event_ghost_ship" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ghost Ship"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幽灵船"
+          }
+        }
+      }
+    },
+    "event_ghost_ship_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Board"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登船"
+          }
+        }
+      }
+    },
+    "event_ghost_ship_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stay ashore"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "留在岸上"
+          }
+        }
+      }
+    },
+    "event_ghost_ship_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A ghostly vessel materializes from the fog."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一艘幽灵般的船从雾中显现。"
+          }
+        }
+      }
+    },
+    "event_last_merchant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last Merchant"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最后的商人"
+          }
+        }
+      }
+    },
+    "event_last_merchant_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy (50 gold)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买（50 金币）"
+          }
+        }
+      }
+    },
+    "event_last_merchant_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "休息"
+          }
+        }
+      }
+    },
+    "event_last_merchant_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_last_merchant_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The final merchant offers wares."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最后的商人出售他的商品。"
+          }
+        }
+      }
+    },
+    "event_merchant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traveling Merchant"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行商"
+          }
+        }
+      }
+    },
+    "event_merchant_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy card (50 gold)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买卡牌（50 金币）"
+          }
+        }
+      }
+    },
+    "event_merchant_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decline"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拒绝"
+          }
+        }
+      }
+    },
+    "event_merchant_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A merchant offers wares at curious prices."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个商人以奇特的价格出售商品。"
+          }
+        }
+      }
+    },
+    "event_music_box" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Music Box"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音乐盒"
+          }
+        }
+      }
+    },
+    "event_music_box_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listen"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聆听"
+          }
+        }
+      }
+    },
+    "event_music_box_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take it"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拿走"
+          }
+        }
+      }
+    },
+    "event_music_box_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignore"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无视"
+          }
+        }
+      }
+    },
+    "event_music_box_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A haunting melody drifts through the air."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一阵令人难以忘怀的旋律飘荡在空气中。"
+          }
+        }
+      }
+    },
+    "event_mysterious_rune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mysterious Rune"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "神秘符文"
+          }
+        }
+      }
+    },
+    "event_mysterious_rune_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "触摸"
+          }
+        }
+      }
+    },
+    "event_mysterious_rune_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Study"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "研究"
+          }
+        }
+      }
+    },
+    "event_mysterious_rune_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An intricate rune glows on the wall."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一面墙上有一个复杂的符文在发光。"
+          }
+        }
+      }
+    },
+    "event_old_beggar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Old Beggar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "老乞丐"
+          }
+        }
+      }
+    },
+    "event_old_beggar_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give 30 gold"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "给 30 金币"
+          }
+        }
+      }
+    },
+    "event_old_beggar_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walk away"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_old_beggar_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A hunched figure extends a withered hand."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个佝偻的身影伸出枯萎的手。"
+          }
+        }
+      }
+    },
+    "event_poison_swamp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poison Swamp"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "毒沼泽"
+          }
+        }
+      }
+    },
+    "event_poison_swamp_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wade through"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "涉水而过"
+          }
+        }
+      }
+    },
+    "event_poison_swamp_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find a way around"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绕路而行"
+          }
+        }
+      }
+    },
+    "event_poison_swamp_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toxic fumes rise from the murky water."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有毒的气体从浑浊的水面升起。"
+          }
+        }
+      }
+    },
+    "event_shadow_trade" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shadow Trade"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暗影交易"
+          }
+        }
+      }
+    },
+    "event_shadow_trade_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accept"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接受"
+          }
+        }
+      }
+    },
+    "event_shadow_trade_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refuse"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拒绝"
+          }
+        }
+      }
+    },
+    "event_shadow_trade_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A hooded figure offers a dark bargain."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个戴兜帽的人提供了黑暗交易。"
+          }
+        }
+      }
+    },
+    "event_shattered_spacetime" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shattered Spacetime"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "破碎时空"
+          }
+        }
+      }
+    },
+    "event_shattered_spacetime_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step through"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "穿过去"
+          }
+        }
+      }
+    },
+    "event_shattered_spacetime_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stabilize"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稳定"
+          }
+        }
+      }
+    },
+    "event_shattered_spacetime_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reality fractures around you."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "现实在你周围碎裂。"
+          }
+        }
+      }
+    },
+    "event_shrine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shrine"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "神殿"
+          }
+        }
+      }
+    },
+    "event_shrine_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pray"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈祷"
+          }
+        }
+      }
+    },
+    "event_shrine_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave offering (50 gold)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "供奉（50 金币）"
+          }
+        }
+      }
+    },
+    "event_shrine_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A mysterious shrine emanates power."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一座神秘的神殿散发着力量。"
+          }
+        }
+      }
+    },
+    "event_soul_burn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soul Burn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "灵魂燃烧"
+          }
+        }
+      }
+    },
+    "event_soul_burn_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Embrace the flames"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拥抱火焰"
+          }
+        }
+      }
+    },
+    "event_soul_burn_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resist"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抵抗"
+          }
+        }
+      }
+    },
+    "event_soul_burn_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark flames lick at your soul."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑暗的火焰舔舐着你的灵魂。"
+          }
+        }
+      }
+    },
+    "event_soul_exchange" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soul Exchange"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "灵魂交换"
+          }
+        }
+      }
+    },
+    "event_soul_exchange_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trade HP for power"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用生命换力量"
+          }
+        }
+      }
+    },
+    "event_soul_exchange_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decline"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拒绝"
+          }
+        }
+      }
+    },
+    "event_soul_exchange_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A spectral figure offers a trade."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个幽灵般的存在提出了交换。"
+          }
+        }
+      }
+    },
+    "event_treasure_chest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treasure Chest"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "宝箱"
+          }
+        }
+      }
+    },
+    "event_treasure_chest_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开"
+          }
+        }
+      }
+    },
+    "event_treasure_chest_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Careful inspection"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仔细检查"
+          }
+        }
+      }
+    },
+    "event_treasure_chest_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A heavy chest sits unguarded."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个沉重的宝箱无人看守。"
+          }
+        }
+      }
+    },
+    "event_two_headed_snake" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two-Headed Snake"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "双头蛇"
+          }
+        }
+      }
+    },
+    "event_two_headed_snake_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fight"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "战斗"
+          }
+        }
+      }
+    },
+    "event_two_headed_snake_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offer gold (50)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "献上金币（50）"
+          }
+        }
+      }
+    },
+    "event_two_headed_snake_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A massive snake with two heads blocks your path."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一条巨大的双头蛇挡住了你的去路。"
+          }
+        }
+      }
+    },
+    "event_wandering_smith" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wandering Smith"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "流浪铁匠"
+          }
+        }
+      }
+    },
+    "event_wandering_smith_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade a card"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "升级一张卡牌"
+          }
+        }
+      }
+    },
+    "event_wandering_smith_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove a card (75 gold)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除一张牌（75 金币）"
+          }
+        }
+      }
+    },
+    "event_wandering_smith_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_wandering_smith_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A blacksmith hammers at a portable forge."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个铁匠在便携锻造炉旁敲打。"
+          }
+        }
+      }
+    },
+    "event_wheel_of_fate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheel of Fate"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "命运之轮"
+          }
+        }
+      }
+    },
+    "event_wheel_of_fate_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spin it"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转动它"
+          }
+        }
+      }
+    },
+    "event_wheel_of_fate_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bless it (50 gold)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祝福它（50 金币）"
+          }
+        }
+      }
+    },
+    "event_wheel_of_fate_choice3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        }
+      }
+    },
+    "event_wheel_of_fate_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A massive wheel spins of its own accord."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个巨大的轮盘自行旋转。"
+          }
+        }
+      }
+    },
+    "event_wounded_traveler" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wounded Traveler"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受伤旅人"
+          }
+        }
+      }
+    },
+    "event_wounded_traveler_choice1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help (Lose 5 HP)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "帮助（失去 5 生命）"
+          }
+        }
+      }
+    },
+    "event_wounded_traveler_choice2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignore"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无视"
+          }
+        }
+      }
+    },
+    "event_wounded_traveler_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A traveler lies bleeding on the road."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一个旅人躺在路上流血。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

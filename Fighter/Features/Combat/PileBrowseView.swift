@@ -42,7 +42,7 @@ struct PileBrowseView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") { dismiss() }
+                    Button(String(localized: "btn_done")) { dismiss() }
                         .foregroundStyle(Theme.energyColor)
                 }
             }

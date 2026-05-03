@@ -24,7 +24,7 @@ struct CardEvaluator {
         targetEnemyIndex: Int?,
         store: GameStore
     ) {
-        let combat = store.combatState!
+        guard let combat = store.combatState else { return }
         let player = store.player
 
         switch effect {

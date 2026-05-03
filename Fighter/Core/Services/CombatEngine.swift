@@ -88,6 +88,14 @@ enum CombatEngine {
 
         CardEvaluator.drawCards(cardsToDrawPerTurn, combat: combat)
 
+        // Draw modifier buff: draw extra cards
+        let drawMod = store.player.buffStacks(.drawModifier)
+        if drawMod > 0 {
+            CardEvaluator.drawCards(drawMod, combat: combat)
+        }
+
+        triggerRelics(.onDraw, store: store)
+
         // Innate cards: ensure they are in the opening hand
         if combat.turnNumber == 1 {
             var innateCards: [Card] = []
@@ -203,8 +211,15 @@ enum CombatEngine {
 
         if card.isExhaust || card.type == .power {
             combat.exhaustPile.append(card)
+            triggerRelics(.onExhaust, store: store)
         } else {
             combat.discardPile.append(card)
+        }
+
+        // Check for enemy kills from card play
+        let hadKill = combat.enemies.contains { !$0.isAlive }
+        if hadKill {
+            triggerRelics(.onEnemyKilled, store: store)
         }
 
         if combat.isCombatOver {
@@ -247,6 +262,12 @@ enum CombatEngine {
             }
         }
         combat.hand = []
+
+        // Trigger exhaust relics for ethereal/exhaust cards that were discarded
+        let hasExhaustPileCards = !combat.exhaustPile.isEmpty
+        if hasExhaustPileCards {
+            triggerRelics(.onExhaust, store: store)
+        }
 
         // Status card end-of-turn effects
         var statusCardsToProcess: [Card] = []
@@ -355,6 +376,7 @@ enum CombatEngine {
 
         if combat.isCombatOver {
             combat.combatPhase = .combatEnd
+            triggerRelics(.onEnemyKilled, store: store)
             store.endCombat(victory: true)
             return
         }
@@ -424,8 +446,9 @@ enum CombatEngine {
                 combat.enemies.append(slime2)
             }
 
-            // Champ: enrage below 30% HP — gain strength and Metallicize
-            if enemy.templateID == "the_champ" && enemy.currentHP <= enemy.maxHP * 3 / 10 {
+            // Champ: enrage below 30% HP — gain strength and Metallicize (only once)
+            if enemy.templateID == "the_champ" && enemy.currentHP <= enemy.maxHP * 3 / 10
+               && !enemy.buffs.contains(where: { $0.type == .metallicize }) {
                 combat.enemies[i].addBuff(BuffInstance(type: .strength, stacks: 5))
                 combat.enemies[i].addBuff(BuffInstance(type: .metallicize, stacks: 6))
             }
@@ -483,13 +506,16 @@ enum CombatEngine {
     }
 
     private static func pickWeighted(_ actions: [WeightedAction]) -> EnemyAction {
+        guard let last = actions.last else {
+            return EnemyAction(intent: .attack(5), effects: [.dealDamage(5)])
+        }
         let totalWeight = actions.reduce(0.0) { $0 + $1.weight }
         var roll = Double.random(in: 0...totalWeight)
         for weighted in actions {
             roll -= weighted.weight
             if roll <= 0 { return weighted.action }
         }
-        return actions.last!.action
+        return last.action
     }
 
     private static func isAttackAction(_ action: EnemyAction) -> Bool {
@@ -597,6 +623,9 @@ enum CombatEngine {
                     player.combatEnergy += 1
                 case "cursed_key":
                     player.combatEnergy += 1
+                case "inserter":
+                    // Inserter: gain 1 max HP when combat ends with all enemies dead
+                    break // handled in GameStore.endCombat
                 default:
                     // Generic: resolve effect through CardEvaluator
                     CardEvaluator.resolve(

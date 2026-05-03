@@ -14,6 +14,7 @@ final class SaveManager {
     private let decoder = JSONDecoder()
 
     struct SavedRun: Codable, Sendable {
+        let version: Int
         let characterClass: CharacterClass
         let maxHP: Int
         let currentHP: Int
@@ -29,6 +30,8 @@ final class SaveManager {
         let settings: GameSettings
     }
 
+    private static let currentVersion = 2
+
     // MARK: - Save
 
     func save(store: GameStore) {
@@ -36,6 +39,7 @@ final class SaveManager {
               let mapState = store.mapState else { return }
 
         let run = SavedRun(
+            version: Self.currentVersion,
             characterClass: store.player.characterClass,
             maxHP: store.player.maxHP,
             currentHP: store.player.currentHP,
@@ -63,10 +67,18 @@ final class SaveManager {
     }
 
     func load(into store: GameStore) -> Bool {
-        guard let data = UserDefaults.standard.data(forKey: saveKey),
-              let run = try? decoder.decode(SavedRun.self, from: data) else {
+        guard let data = UserDefaults.standard.data(forKey: saveKey) else {
             return false
         }
+
+        // Try decoding with current version
+        guard let run = try? decoder.decode(SavedRun.self, from: data) else {
+            // Old save without version field — delete incompatible save
+            deleteSave()
+            return false
+        }
+
+        // Future: add migration logic here if version < currentVersion
 
         let player = PlayerState(characterClass: run.characterClass)
         player.maxHP = run.maxHP
