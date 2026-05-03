@@ -146,9 +146,9 @@ struct RewardView: View {
                 }
 
                 VStack(spacing: 12) {
-                    if selectedCardIndex != nil {
+                    if let idx = selectedCardIndex, idx < store.rewardCards.count {
                         Button {
-                            let card = store.rewardCards[selectedCardIndex!]
+                            let card = store.rewardCards[idx]
                             store.completeReward(addedCard: card)
                         } label: {
                             HStack(spacing: 6) {
@@ -172,14 +172,16 @@ struct RewardView: View {
                         .buttonStyle(.plain)
                     }
 
-                    Button {
-                        store.completeReward(addedCard: nil)
-                    } label: {
-                        Text(String(localized: "btn_skip"))
-                            .font(.system(size: 14, weight: .medium, design: .rounded))
-                            .foregroundStyle(Theme.textSecondary)
+                    if store.rewardBossRelics.isEmpty {
+                        Button {
+                            store.completeReward(addedCard: nil)
+                        } label: {
+                            Text(String(localized: "btn_skip"))
+                                .font(.system(size: 14, weight: .medium, design: .rounded))
+                                .foregroundStyle(Theme.textSecondary)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }

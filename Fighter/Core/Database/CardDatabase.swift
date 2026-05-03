@@ -1102,6 +1102,10 @@ enum CardDatabase {
         return Array(pool.shuffled().prefix(count))
     }
 
+    static func randomCard() -> Card? {
+        allCards.randomElement()?.copy()
+    }
+
     static func startingDeck(for character: CharacterClass) -> [Card] {
         character.startingDeckTemplateKeys.compactMap { key -> Card? in
             card(byKey: key)?.copy()

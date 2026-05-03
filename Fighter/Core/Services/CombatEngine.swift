@@ -403,6 +403,7 @@ enum CombatEngine {
 
     private static func checkBossMechanics(combat: CombatState, store: GameStore) {
         // Slime Boss: at 50% HP, split into two smaller slimes
+        var newEnemies: [CombatEnemy] = []
         for i in combat.enemies.indices {
             let enemy = combat.enemies[i]
             guard enemy.isAlive else { continue }
@@ -411,7 +412,6 @@ enum CombatEngine {
                 let slimeHP = enemy.currentHP / 2
                 combat.enemies[i].currentHP = 0 // Remove boss
 
-                let slimeTemplate1 = CombatEnemy(template: EnemyDatabase.cultist) // reuse as base
                 var slime1 = CombatEnemy(template: EnemyTemplate(
                     id: "slime_boss_split",
                     nameKey: "enemy_slime_boss_split",
@@ -442,8 +442,8 @@ enum CombatEngine {
 
                 determineNextIntent(for: &slime1)
                 determineNextIntent(for: &slime2)
-                combat.enemies.append(slime1)
-                combat.enemies.append(slime2)
+                newEnemies.append(slime1)
+                newEnemies.append(slime2)
             }
 
             // Champ: enrage below 30% HP — gain strength and Metallicize (only once)
@@ -453,6 +453,7 @@ enum CombatEngine {
                 combat.enemies[i].addBuff(BuffInstance(type: .metallicize, stacks: 6))
             }
         }
+        combat.enemies.append(contentsOf: newEnemies)
     }
 
     // MARK: - Enemy AI
@@ -564,12 +565,10 @@ enum CombatEngine {
                     }
                 // Rare relics
                 case "dead_branch":
-                    if let combat = store.combatState, combat.hand.count > 1,
-                       Double.random(in: 0...1) < 0.3 {
-                        if let idx = combat.hand.indices.randomElement() {
-                            let c = combat.hand.remove(at: idx)
-                            combat.exhaustPile.append(c)
-                        }
+                    if let combat = store.combatState,
+                       let randomCard = CardDatabase.randomCard() {
+                        let copy = randomCard.copy()
+                        combat.hand.append(copy)
                     }
                 case "calipers":
                     break

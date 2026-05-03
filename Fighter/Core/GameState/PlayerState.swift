@@ -34,6 +34,7 @@ final class PlayerState {
     // Permanent stat bonuses from events (persist across combats)
     var permanentStrengthBonus: Int = 0
     var permanentDexterityBonus: Int = 0
+    var permanentBlockBonus: Int = 0
 
     init(characterClass: CharacterClass) {
         self.characterClass = characterClass
@@ -57,6 +58,9 @@ final class PlayerState {
         }
         if permanentDexterityBonus > 0 {
             buffs.append(BuffInstance(type: .dexterity, stacks: permanentDexterityBonus))
+        }
+        if permanentBlockBonus > 0 {
+            combatBlock = permanentBlockBonus
         }
     }
 

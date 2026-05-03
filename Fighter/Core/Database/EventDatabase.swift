@@ -434,6 +434,6 @@ enum EventDatabase {
             roll -= event.weight
             if roll <= 0 { return event }
         }
-        return pool.last!
+        return pool.last ?? allEvents[0]
     }
 }

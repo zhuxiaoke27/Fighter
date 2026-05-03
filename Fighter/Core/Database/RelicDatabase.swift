@@ -230,7 +230,7 @@ struct RelicDatabase {
             nameKey: "relic_dead_branch",
             descriptionKey: "relic_dead_branch_desc",
             effects: [
-                RelicEffect(trigger: .onCardPlayed(.attack), effect: .composite([]))
+                RelicEffect(trigger: .onExhaust, effect: .composite([]))
             ],
             rarity: .rare,
             tags: [.rare, .utility]
