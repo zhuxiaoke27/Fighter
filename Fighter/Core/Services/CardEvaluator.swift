@@ -284,10 +284,11 @@ struct CardEvaluator {
 
     static func drawCards(_ count: Int, combat: CombatState) {
         for _ in 0..<count {
+            guard combat.hand.count < 10 else { break }
             if combat.drawPile.isEmpty {
                 shuffleDiscardIntoDraw(combat: combat)
             }
-            if let c = combat.drawPile.popLast(), combat.hand.count < 10 {
+            if let c = combat.drawPile.popLast() {
                 combat.hand.append(c)
             }
         }
