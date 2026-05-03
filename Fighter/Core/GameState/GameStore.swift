@@ -273,6 +273,10 @@ final class GameStore {
             receivePotion(potion)
         }
         combatState = nil
+        rewardBossRelics = []
+        rewardRelic = nil
+        rewardPotion = nil
+        rewardCards = []
 
         // Multi-act progression
         if isActComplete {
@@ -322,11 +326,14 @@ final class GameStore {
         let pool = CardDatabase.cards(for: characterClass).filter { $0.rarity != .starter }
         shopCards = Array(pool.shuffled().prefix(5))
 
-        // Relics: 1-2 random non-starter relics
+        // Relics: 1-2 random non-starter relics (no duplicates)
         let relicCount = Int.random(in: 1...2)
-        shopRelics = (0..<relicCount).map { _ in
-            RelicDatabase.randomRelic(excluding: player.relics)
+        var selectedRelics: [RelicTemplate] = []
+        for _ in 0..<relicCount {
+            let relic = RelicDatabase.randomRelic(excluding: player.relics + selectedRelics)
+            selectedRelics.append(relic)
         }
+        shopRelics = selectedRelics
         shopRelicPrices = shopRelics.map { relic in
             switch relic.rarity {
             case .common: return 150

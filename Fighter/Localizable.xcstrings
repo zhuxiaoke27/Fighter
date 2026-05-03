@@ -11272,6 +11272,22 @@
         }
       }
     },
+    "stat_damage %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld total damage"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "总伤害 %lld"
+          }
+        }
+      }
+    },
     "stat_killed %lld" : {
       "localizations" : {
         "en" : {

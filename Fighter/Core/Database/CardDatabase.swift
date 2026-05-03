@@ -358,7 +358,7 @@ enum CardDatabase {
         target: .allEnemies,
         characterClass: .warrior,
         effects: [.damageEqualToBlock],
-        upgradedEffects: [.damageEqualToBlock],
+        upgradedEffects: [.damageEqualToBlock, .gainBlock(3)],
         tags: [.offensive, .defensive, .block]
     )
 
@@ -1010,7 +1010,7 @@ enum CardDatabase {
         target: .selfTarget,
         characterClass: .mage,
         effects: [.doubleNextCard],
-        upgradedEffects: [.doubleNextCard],
+        upgradedEffects: [.doubleNextCard, .drawCards(1)],
         tags: [.utility]
     )
 

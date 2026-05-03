@@ -46,13 +46,14 @@ struct GameOverView: View {
                     statRow(icon: "skull.fill", value: String(localized: "stat_killed \(store.player.enemiesKilled)"), color: Color(red: 0.70, green: 0.35, blue: 0.90))
                     statRow(icon: "sword.fill", value: String(localized: "stat_played \(store.player.cardsPlayed)"), color: Color(red: 0.90, green: 0.35, blue: 0.30))
                     statRow(icon: "map.fill", value: String(localized: "stat_floors \(store.player.floorsVisited)"), color: Theme.textSecondary)
+                    statRow(icon: "flame.fill", value: String(localized: "stat_damage \(store.player.totalDamageDealt)"), color: Color(red: 0.90, green: 0.45, blue: 0.25))
                 }
                 .padding(.top, 8)
 
                 Spacer()
 
                 Button {
-                    store.gameState = .menu
+                    store.quitToMenu()
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "arrow.counterclockwise")

@@ -13,7 +13,7 @@ enum CombatEngine {
     // MARK: - Start Combat
 
     static func startCombat(store: GameStore) {
-        guard let combat = store.combatState else { return }
+        guard let combat = store.combatState, !combat.enemies.isEmpty else { return }
 
         combat.drawPile = store.player.deck.shuffled()
         combat.discardPile = []
@@ -332,10 +332,6 @@ enum CombatEngine {
             return
         }
 
-        if !store.player.hasDebuff(.barricade) {
-            store.player.combatBlock = 0
-        }
-
         store.player.tickBuffs()
 
         triggerRelics(.onTurnEnd, store: store)
@@ -399,7 +395,10 @@ enum CombatEngine {
                     default:
                         break
                     }
+                    // Stop if player died from this effect
+                    if store.player.isDead { break }
                 }
+                if store.player.isDead { break }
             }
 
             // Tick duration-based buffs
