@@ -44,6 +44,32 @@ enum BuffType: String, Codable, Sendable, CaseIterable {
         }
     }
 
+    var abbreviation: String {
+        switch self {
+        case .strength: return "STR"
+        case .dexterity: return "DEX"
+        case .artifact: return "ART"
+        case .barricade: return "BAR"
+        case .regenerate: return "REG"
+        case .metallicize: return "MET"
+        case .platedArmor: return "PLT"
+        case .thorns: return "THR"
+        case .drawModifier: return "DRW"
+        case .vulnerable: return "VUL"
+        case .weak: return "WEK"
+        case .frail: return "FRL"
+        case .poison: return "PSN"
+        case .burn: return "BRN"
+        case .frost: return "FRS"
+        case .dark: return "DRK"
+        case .focus: return "FOC"
+        case .negate: return "NEG"
+        case .nextCardDoubled: return "x2"
+        case .demonForm: return "DMN"
+        case .noxiousFumes: return "NOX"
+        }
+    }
+
     var localizationKey: String {
         "buff_\(rawValue)"
     }

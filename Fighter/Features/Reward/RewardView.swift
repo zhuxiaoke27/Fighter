@@ -62,9 +62,14 @@ struct RewardView: View {
                                             .foregroundStyle(Theme.textPrimary)
                                             .lineLimit(2)
                                             .multilineTextAlignment(.center)
+                                        Text(String(localized: LocalizedStringResource(stringLiteral: relic.descriptionKey)))
+                                            .font(.system(size: 8, weight: .regular, design: .rounded))
+                                            .foregroundStyle(Theme.textSecondary)
+                                            .lineLimit(2)
+                                            .multilineTextAlignment(.center)
                                     }
                                     .padding(10)
-                                    .frame(width: 90, height: 70)
+                                    .frame(width: 90, height: 90)
                                     .background(
                                         RoundedRectangle(cornerRadius: 10)
                                             .fill(Color(red: 0.70, green: 0.35, blue: 0.90).opacity(0.1))

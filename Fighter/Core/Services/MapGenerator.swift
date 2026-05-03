@@ -77,11 +77,12 @@ enum MapGenerator {
             if roll < 0.95 + eliteBonus { return .elite }
             return .restSite
         } else if floorIndex <= 9 {
-            if roll < 0.35 { return .battle }
-            if roll < 0.35 + hardBattleChance { return .hardBattle }
-            if roll < 0.55 { return .event }
-            if roll < 0.70 { return .shop }
-            if roll < 0.88 + eliteBonus { return .elite }
+            if roll < 0.30 { return .battle }
+            if roll < 0.30 + hardBattleChance { return .hardBattle }
+            if roll < 0.50 { return .event }
+            if roll < 0.58 { return .shop }
+            if roll < 0.66 { return .mystery }
+            if roll < 0.84 + eliteBonus { return .elite }
             return .restSite
         } else {
             if roll < 0.25 { return .battle }

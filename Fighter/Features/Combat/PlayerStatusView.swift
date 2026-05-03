@@ -83,7 +83,7 @@ struct BuffBadgeView: View {
     let buff: BuffInstance
 
     var body: some View {
-        Text("\(buff.stacks)")
+        Text("\(buff.type.abbreviation) \(buff.stacks)")
             .font(.system(size: 9, weight: .bold, design: .rounded))
             .foregroundStyle(buff.type.isDebuff ? .red : .green)
             .padding(.horizontal, 5)

@@ -7186,23 +7186,71 @@
         }
       }
     },
-    "label_full" : {
+    "label_forfeit_message" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Full"
+            "value" : "Abandon this run? All progress will be lost."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已满"
+            "value" : "放弃本次冒险？所有进度将丢失。"
           }
         }
       }
     },
-    "label_game_title" : {
+    "label_forfeit_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forfeit Run?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放弃本局？"
+          }
+        }
+      }
+    },
+    "btn_forfeit_confirm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forfeit"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放弃"
+          }
+        }
+      }
+    },
+    "btn_cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        }
+      }
+    },
+    "label_full" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -10990,6 +11038,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "不可打出。消耗。"
+          }
+        }
+      }
+    },
+    "stat_act %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Act %lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第 %lld 幕"
+          }
+        }
+      }
+    },
+    "stat_relics %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld relics"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 遗物"
           }
         }
       }

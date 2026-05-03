@@ -38,9 +38,11 @@ struct GameOverView: View {
                     .foregroundStyle(victory ? Theme.energyColor : Color(red: 0.90, green: 0.30, blue: 0.25))
 
                 VStack(spacing: 10) {
+                    statRow(icon: "person.fill", value: String(localized: "stat_act \(store.currentAct)"), color: Theme.energyColor)
                     statRow(icon: "heart.fill", value: "\(store.player.currentHP)/\(store.player.maxHP)", color: Color(red: 0.85, green: 0.22, blue: 0.18))
                     statRow(icon: "coins", value: "\(store.player.gold)g", color: Theme.energyColor)
                     statRow(icon: "rectangle.stack", value: String(localized: "stat_cards \(store.player.deck.count)"), color: Theme.textSecondary)
+                    statRow(icon: "gem", value: String(localized: "stat_relics \(store.player.relics.count)"), color: Color(red: 0.70, green: 0.50, blue: 0.90))
                     statRow(icon: "skull.fill", value: String(localized: "stat_killed \(store.player.enemiesKilled)"), color: Color(red: 0.70, green: 0.35, blue: 0.90))
                     statRow(icon: "sword.fill", value: String(localized: "stat_played \(store.player.cardsPlayed)"), color: Color(red: 0.90, green: 0.35, blue: 0.30))
                     statRow(icon: "map.fill", value: String(localized: "stat_floors \(store.player.floorsVisited)"), color: Theme.textSecondary)
