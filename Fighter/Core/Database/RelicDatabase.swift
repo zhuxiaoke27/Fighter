@@ -410,16 +410,6 @@ struct RelicDatabase {
             tags: [.boss, .utility]
         ),
         RelicTemplate(
-            id: "fusion_hammer",
-            nameKey: "relic_fusion_hammer",
-            descriptionKey: "relic_fusion_hammer_desc",
-            effects: [
-                RelicEffect(trigger: .onTurnStart, effect: .composite([]))
-            ],
-            rarity: .rare,
-            tags: [.boss, .utility]
-        ),
-        RelicTemplate(
             id: "cursed_key",
             nameKey: "relic_cursed_key",
             descriptionKey: "relic_cursed_key_desc",

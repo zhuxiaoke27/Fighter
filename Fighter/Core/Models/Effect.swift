@@ -51,9 +51,10 @@ enum Effect: Codable, Sendable, Equatable {
     // MARK: - New Mechanics
     case doubleStrength
     case doublePoison
-    case duplicateNextSkill
     case damageEqualToBlock
     case healOnKill(Int)
+    case selfDamage(Int)
+    case gainMaxHPOnKill(Int)
     case applyFrost(Int)
     case applyDark(Int)
     case applyFocus(Int)

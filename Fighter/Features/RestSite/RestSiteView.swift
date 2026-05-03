@@ -9,6 +9,10 @@ struct RestSiteView: View {
     @Environment(GameStore.self) private var store
     @State private var showUpgradeSheet = false
 
+    private var hasFusionHammer: Bool {
+        store.player.relics.contains(where: { $0.id == "fusion_hammer_rework" })
+    }
+
     var body: some View {
         ZStack {
             LinearGradient(
@@ -66,30 +70,32 @@ struct RestSiteView: View {
                     .buttonStyle(.plain)
 
                     Button {
+                        guard !hasFusionHammer else { return }
                         showUpgradeSheet = true
                     } label: {
                         VStack(spacing: 10) {
                             ZStack {
                                 Circle()
-                                    .fill(Theme.energyColor.opacity(0.2))
+                                    .fill((hasFusionHammer ? Color.gray : Theme.energyColor).opacity(0.2))
                                     .frame(width: 80, height: 80)
-                                    .overlay(Circle().stroke(Theme.energyColor.opacity(0.4), lineWidth: 1.5))
+                                    .overlay(Circle().stroke((hasFusionHammer ? Color.gray : Theme.energyColor).opacity(0.4), lineWidth: 1.5))
                                 Image(systemName: "arrow.up.circle.fill")
                                     .font(.system(size: 28))
-                                    .foregroundStyle(Theme.energyColor)
+                                    .foregroundStyle(hasFusionHammer ? .gray : Theme.energyColor)
                             }
                             Text(String(localized: "btn_upgrade"))
                                 .font(.system(size: 14, weight: .bold, design: .rounded))
-                                .foregroundStyle(Theme.textPrimary)
-                            Text(String(localized: "label_upgrade_desc"))
+                                .foregroundStyle(hasFusionHammer ? .gray : Theme.textPrimary)
+                            Text(hasFusionHammer ? String(localized: "label_fusion_hammer_blocked") : String(localized: "label_upgrade_desc"))
                                 .font(.system(size: 11, weight: .medium, design: .rounded))
-                                .foregroundStyle(Theme.energyColor.opacity(0.8))
+                                .foregroundStyle((hasFusionHammer ? Color.gray : Theme.energyColor).opacity(0.8))
                         }
                         .padding(16)
                         .frame(width: 130)
                         .background(RoundedRectangle(cornerRadius: 14).fill(Color(red: 0.14, green: 0.13, blue: 0.22)).shadow(color: .black.opacity(0.3), radius: 6, y: 3))
                     }
                     .buttonStyle(.plain)
+                    .disabled(hasFusionHammer)
                 }
                 .padding(.top, 20)
 

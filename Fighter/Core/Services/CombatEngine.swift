@@ -117,6 +117,18 @@ enum CombatEngine {
             store.player.combatBlock += metallicize
         }
 
+        // Persistent power buffs
+        let demonFormStacks = store.player.buffStacks(.demonForm)
+        if demonFormStacks > 0 {
+            store.player.addBuff(BuffInstance(type: .strength, stacks: demonFormStacks))
+        }
+        let noxiousFumesStacks = store.player.buffStacks(.noxiousFumes)
+        if noxiousFumesStacks > 0 {
+            for i in combat.enemies.indices where combat.enemies[i].isAlive {
+                combat.enemies[i].addBuff(BuffInstance(type: .poison, stacks: noxiousFumesStacks))
+            }
+        }
+
         // Plated Armor: gain block at turn start
         let platedArmor = store.player.buffStacks(.platedArmor)
         if platedArmor > 0 {
@@ -206,15 +218,6 @@ enum CombatEngine {
 
         // Run statistics
         store.player.cardsPlayed += 1
-
-        // Fire Breathing: deal 2 damage to all enemies when playing a Curse or Status card
-        if store.player.relics.contains(where: { $0.id == "fire_breathing" }) {
-            if card.type == .curse || card.type == .status {
-                for i in combat.enemies.indices where combat.enemies[i].isAlive {
-                    combat.enemies[i].currentHP -= 2
-                }
-            }
-        }
 
         triggerRelics(.onCardPlayed(card.type), store: store)
 

@@ -241,7 +241,8 @@ struct CardDetailView: View {
         case .ifCardInHand(_, let e):         return e.map { effectDescription($0) }.joined(separator: " + ") + " (\(String(localized: "effect_cond_card_in_hand")))"
         case .doubleStrength:                   return String(localized: "effect_double_strength")
         case .doublePoison:                     return String(localized: "effect_double_poison")
-        case .duplicateNextSkill:               return String(localized: "effect_duplicate_skill")
+        case .selfDamage(let n):                return String(localized: "effect_self_damage \(n)")
+        case .gainMaxHPOnKill(let n):           return String(localized: "effect_gain_maxhp_on_kill \(n)")
         case .damageEqualToBlock:               return String(localized: "effect_damage_equal_block")
         case .healOnKill(let n):                return String(localized: "effect_heal_on_kill \(n)")
         case .applyFrost(let n):                return String(localized: "effect_gain_frost \(n)")
