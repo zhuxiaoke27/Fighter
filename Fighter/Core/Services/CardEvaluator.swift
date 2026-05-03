@@ -13,8 +13,19 @@ struct CardEvaluator {
         targetEnemyIndex: Int?,
         store: GameStore
     ) {
+        // nextCardDoubled: if active, resolve all effects twice then consume
+        let player = store.player
+        let isDoubled = player.buffStacks(.nextCardDoubled) > 0
+        if isDoubled {
+            player.removeBuff(.nextCardDoubled)
+        }
         for effect in effects {
             resolveSingle(effect, card: card, targetEnemyIndex: targetEnemyIndex, store: store)
+        }
+        if isDoubled {
+            for effect in effects {
+                resolveSingle(effect, card: card, targetEnemyIndex: targetEnemyIndex, store: store)
+            }
         }
     }
 
@@ -94,6 +105,10 @@ struct CardEvaluator {
                 }
             } else {
                 combat.enemies[idx].addBuff(BuffInstance(type: type, stacks: stacks, isDurationBased: true))
+                // Champion Belt: also apply 1 Weak when applying Vulnerable
+                if type == .vulnerable && store.player.relics.contains(where: { $0.id == "champion_belt" }) {
+                    combat.enemies[idx].addBuff(BuffInstance(type: .weak, stacks: 1, isDurationBased: true))
+                }
             }
 
         case .applyDebuffToAll(let type, let stacks):
@@ -202,10 +217,6 @@ struct CardEvaluator {
                 combat.enemies[idx].addBuff(BuffInstance(type: .poison, stacks: currentPoison))
             }
 
-        case .duplicateNextSkill:
-            player.addBuff(BuffInstance(type: .drawModifier, stacks: 1)) // reuse as "duplicate next" marker
-            // Simplified: draws 1 extra card as benefit proxy
-
         case .damageEqualToBlock:
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
             let blockDamage = player.combatBlock
@@ -215,6 +226,16 @@ struct CardEvaluator {
         case .healOnKill(let amount):
             guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
             if !combat.enemies[idx].isAlive {
+                player.currentHP = min(player.currentHP + amount, player.maxHP)
+            }
+
+        case .selfDamage(let amount):
+            player.takeDamage(amount)
+
+        case .gainMaxHPOnKill(let amount):
+            guard let idx = targetEnemyIndex, combat.enemies.indices.contains(idx) else { return }
+            if !combat.enemies[idx].isAlive {
+                player.maxHP += amount
                 player.currentHP = min(player.currentHP + amount, player.maxHP)
             }
 

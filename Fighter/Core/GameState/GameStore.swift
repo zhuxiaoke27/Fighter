@@ -142,7 +142,8 @@ final class GameStore {
                 let characterClass = player.characterClass
                 let rarityRoll = Double.random(in: 0...1)
                 let rarity: CardRarity = rarityRoll < 0.4 ? .rare : .uncommon
-                rewardCards = CardDatabase.randomCards(count: 3, rarity: rarity, for: characterClass)
+                let cardCount = player.relics.contains(where: { $0.id == "busted_crown" }) ? 2 : 3
+                rewardCards = CardDatabase.randomCards(count: cardCount, rarity: rarity, for: characterClass)
 
                 // Guaranteed relic + potion
                 rewardRelic = RelicDatabase.randomRelic(excluding: player.relics)
@@ -151,7 +152,8 @@ final class GameStore {
                 rewardGold = Int.random(in: 20...30) + currentFloor * 2
                 let characterClass = player.characterClass
                 let rarity = weightedRarityRoll()
-                rewardCards = CardDatabase.randomCards(count: 3, rarity: rarity, for: characterClass)
+                let cardCount = player.relics.contains(where: { $0.id == "busted_crown" }) ? 2 : 3
+                rewardCards = CardDatabase.randomCards(count: cardCount, rarity: rarity, for: characterClass)
             }
             player.gold += rewardGold
         }
@@ -178,8 +180,37 @@ final class GameStore {
 
     func takeBossRelic(at index: Int) {
         guard index < rewardBossRelics.count else { return }
-        player.relics.append(rewardBossRelics[index])
+        let relic = rewardBossRelics[index]
+        player.relics.append(relic)
         rewardBossRelics = []
+
+        // Boss relic acquisition effects
+        switch relic.id {
+        case "empty_cage":
+            // Remove 2 random non-starter cards from deck
+            let removableIndices = player.deck.indices.filter { player.deck[$0].rarity != .starter }
+            let toRemove = Array(removableIndices.shuffled().prefix(2)).sorted(by: >)
+            for idx in toRemove {
+                player.deck.remove(at: idx)
+            }
+        case "astrolabe":
+            // Transform 3 random non-starter cards to same-rarity random cards
+            let transformableIndices = player.deck.indices.filter { player.deck[$0].rarity != .starter }
+            let toTransform = Array(transformableIndices.shuffled().prefix(3))
+            for idx in toTransform {
+                let oldCard = player.deck[idx]
+                let newCard = CardDatabase.randomCards(count: 1, rarity: oldCard.rarity, for: player.characterClass).first ?? oldCard
+                player.deck[idx] = newCard
+            }
+        case "cursed_key":
+            // Add a random curse card to deck
+            let curseCard = CardDatabase.randomCards(count: 1, rarity: .common, for: player.characterClass).first
+            if let curse = curseCard {
+                player.deck.append(curse)
+            }
+        default:
+            break
+        }
     }
 
     // MARK: - Encounter Routing

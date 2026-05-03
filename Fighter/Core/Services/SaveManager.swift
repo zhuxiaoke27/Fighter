@@ -28,9 +28,12 @@ final class SaveManager {
         let floorsVisited: Int
         let mapState: MapState.CodableDTO
         let settings: GameSettings
+        let permanentStrengthBonus: Int
+        let permanentDexterityBonus: Int
+        let permanentBlockBonus: Int
     }
 
-    private static let currentVersion = 2
+    private static let currentVersion = 3
 
     // MARK: - Save
 
@@ -52,7 +55,10 @@ final class SaveManager {
             totalDamageDealt: store.player.totalDamageDealt,
             floorsVisited: store.player.floorsVisited,
             mapState: mapState.dto,
-            settings: store.settings
+            settings: store.settings,
+            permanentStrengthBonus: store.player.permanentStrengthBonus,
+            permanentDexterityBonus: store.player.permanentDexterityBonus,
+            permanentBlockBonus: store.player.permanentBlockBonus
         )
 
         if let data = try? encoder.encode(run) {
@@ -91,6 +97,9 @@ final class SaveManager {
         player.cardsPlayed = run.cardsPlayed
         player.totalDamageDealt = run.totalDamageDealt
         player.floorsVisited = run.floorsVisited
+        player.permanentStrengthBonus = run.permanentStrengthBonus
+        player.permanentDexterityBonus = run.permanentDexterityBonus
+        player.permanentBlockBonus = run.permanentBlockBonus
 
         store.player = player
         store.mapState = MapState(from: run.mapState)

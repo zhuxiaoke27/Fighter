@@ -31,6 +31,10 @@ enum BuffType: String, Codable, Sendable, CaseIterable {
     case negate
     case nextCardDoubled
 
+    // Persistent power buffs (tick each turn)
+    case demonForm
+    case noxiousFumes
+
     var isDebuff: Bool {
         switch self {
         case .vulnerable, .weak, .frail, .poison, .burn:

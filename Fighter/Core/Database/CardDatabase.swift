@@ -179,8 +179,8 @@ enum CardDatabase {
         cost: 0,
         target: .none,
         characterClass: .warrior,
-        effects: [.gainEnergy(2)],
-        upgradedEffects: [.gainEnergy(3)],
+        effects: [.selfDamage(2), .gainEnergy(2)],
+        upgradedEffects: [.selfDamage(2), .gainEnergy(3)],
         tags: [.energy, .utility]
     )
 
@@ -241,8 +241,8 @@ enum CardDatabase {
         cost: 1,
         target: .enemy,
         characterClass: .warrior,
-        effects: [.dealDamage(10)],
-        upgradedEffects: [.dealDamage(12)],
+        effects: [.dealDamage(10), .gainMaxHPOnKill(3)],
+        upgradedEffects: [.dealDamage(12), .gainMaxHPOnKill(4)],
         tags: [.offensive, .utility]
     )
 
@@ -308,8 +308,8 @@ enum CardDatabase {
         cost: 3,
         target: .selfTarget,
         characterClass: .warrior,
-        effects: [.applyBuff(.strength, stacks: 2)],
-        upgradedEffects: [.applyBuff(.strength, stacks: 3)],
+        effects: [.applyBuff(.demonForm, stacks: 2)],
+        upgradedEffects: [.applyBuff(.demonForm, stacks: 3)],
         tags: [.strength, .utility]
     )
 
@@ -541,8 +541,8 @@ enum CardDatabase {
         cost: 1,
         target: .none,
         characterClass: .assassin,
-        effects: [.applyDebuffToAll(.poison, stacks: 2)],
-        upgradedEffects: [.applyDebuffToAll(.poison, stacks: 3)],
+        effects: [.applyBuff(.noxiousFumes, stacks: 2)],
+        upgradedEffects: [.applyBuff(.noxiousFumes, stacks: 3)],
         tags: [.poison, .utility]
     )
 
@@ -866,7 +866,7 @@ enum CardDatabase {
         templateKey: "sweeping_beam_mage",
         type: .attack,
         rarity: .uncommon,
-        cost: 4,
+        cost: 2,
         target: .allEnemies,
         characterClass: .mage,
         effects: [.composite([.dealDamageToAll(6), .drawCards(1)])],
