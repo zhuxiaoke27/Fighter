@@ -192,6 +192,7 @@ struct MapView: View {
                 ForEach(nodes) { node in
                     MapNodeView(node: node) {
                         guard node.isAccessible && !node.isVisited else { return }
+                        HapticManager.selection()
                         mapState.visitNode(id: node.id)
                         store.handleNodeEncounter(node)
                     }

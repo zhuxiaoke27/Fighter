@@ -50,6 +50,7 @@ struct RewardView: View {
                         HStack(spacing: 12) {
                             ForEach(Array(store.rewardBossRelics.enumerated()), id: \.offset) { index, relic in
                                 Button {
+                                    HapticManager.notification(.success)
                                     store.takeBossRelic(at: index)
                                     bossRelicSelected = true
                                 } label: {
@@ -85,6 +86,7 @@ struct RewardView: View {
                 // Elite/Boss relic reward
                 if let relic = store.rewardRelic {
                     Button {
+                        HapticManager.notification(.success)
                         store.player.relics.append(relic)
                         store.rewardRelic = nil
                     } label: {
@@ -113,6 +115,7 @@ struct RewardView: View {
                 // Elite/Boss potion reward
                 if let potion = store.rewardPotion {
                     Button {
+                        HapticManager.impact(.medium)
                         store.receivePotion(potion)
                         store.rewardPotion = nil
                     } label: {
@@ -156,6 +159,7 @@ struct RewardView: View {
                     if let idx = selectedCardIndex, idx < store.rewardCards.count {
                         if bossRelicSelected || store.rewardBossRelics.isEmpty {
                         Button {
+                            HapticManager.notification(.success)
                             let card = store.rewardCards[idx]
                             store.completeReward(addedCard: card)
                         } label: {

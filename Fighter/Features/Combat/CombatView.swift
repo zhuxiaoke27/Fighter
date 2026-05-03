@@ -295,6 +295,7 @@ struct CombatView: View {
                 if newHP < oldHP {
                     let damage = oldHP - newHP
                     let isCrit = damage >= 20
+                    HapticManager.impact(isCrit ? .heavy : .medium)
                     spawnFloatingText(
                         "\(damage)",
                         at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.28),
@@ -309,6 +310,7 @@ struct CombatView: View {
         .onChange(of: store.player.currentHP) { oldHP, newHP in
             if newHP < oldHP {
                 let damage = oldHP - newHP
+                HapticManager.impact(damage >= 15 ? .heavy : .light)
                 spawnFloatingText(
                     "\(damage)",
                     at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.55),
@@ -617,6 +619,7 @@ struct CombatView: View {
 
     private var endTurnButton: some View {
         Button {
+            HapticManager.impact(.light)
             CombatEngine.endPlayerTurn(store: store)
         } label: {
             HStack(spacing: 6) {
@@ -663,6 +666,8 @@ struct CombatView: View {
                 .foregroundStyle(victory ? Theme.energyColor : Color(red: 0.90, green: 0.30, blue: 0.25))
 
             Button {
+                let victory = store.combatVictory ?? true
+                HapticManager.notification(victory ? .success : .error)
                 store.confirmCombatEnd()
             } label: {
                 HStack(spacing: 6) {
@@ -778,6 +783,7 @@ struct CombatView: View {
     }
 
     private func spawnFloatingText(_ text: String, at position: CGPoint, color: Color, isCrit: Bool) {
+        guard store.settings.showDamageNumbers else { return }
         let id = UUID()
         let ft = FloatingText(id: id, text: text, position: position, color: color, isCrit: isCrit)
         floatingTexts.append(ft)

@@ -7,6 +7,9 @@
     "—" : {
 
     },
+    "·" : {
+
+    },
     "%@ %lld" : {
       "localizations" : {
         "en" : {
@@ -320,6 +323,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "造成 8 点伤害。施加 2 层易伤。"
+          }
+        }
+      }
+    },
+    "battle_trance_warrior" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battle Trance"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "战斗恍惚"
+          }
+        }
+      }
+    },
+    "battle_trance_warrior_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draw 3 cards."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽3张牌。"
           }
         }
       }
@@ -1675,42 +1712,6 @@
         }
       }
     },
-    "shrug_it_off_warrior" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shrug It Off" } },
-        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "耸肩" } }
-      }
-    },
-    "shrug_it_off_warrior_desc" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gain 8 Block. Draw 1 card." } },
-        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "获得8护甲。抽1张牌。" } }
-      }
-    },
-    "battle_trance_warrior" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Battle Trance" } },
-        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "战斗恍惚" } }
-      }
-    },
-    "battle_trance_warrior_desc" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw 3 cards." } },
-        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "抽3张牌。" } }
-      }
-    },
-    "offering_warrior" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Offering" } },
-        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "献祭" } }
-      }
-    },
-    "offering_warrior_desc" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Lose 4 HP. Gain 2 Energy. Draw 1 card. Exhaust." } },
-        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "失去4HP。获得2能量。抽1张牌。消耗。" } }
-      }
-    },
     "clash_warrior" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2925,7 +2926,20 @@
       }
     },
     "effect_gain_maxhp_on_kill %lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain %lld Max HP on Kill"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "击杀时获得 %lld 最大生命值"
+          }
+        }
+      }
     },
     "effect_heal %lld" : {
       "localizations" : {
@@ -3008,7 +3022,20 @@
       }
     },
     "effect_self_damage %lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take %lld Self Damage"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自身受到 %lld 点伤害"
+          }
+        }
+      }
     },
     "endless_agony_assassin" : {
       "extractionState" : "stale",
@@ -7322,10 +7349,36 @@
       }
     },
     "label_fusion_hammer_blocked" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fusion Hammer: Cannot upgrade at this rest site"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聚合锤：无法在此休息点升级"
+          }
+        }
+      }
     },
     "label_game_title" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fighter"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "战士"
+          }
+        }
+      }
     },
     "label_heal_amount %lld" : {
       "localizations" : {
@@ -8285,6 +8338,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "每回合开始时，对所有敌人施加 2 层中毒。"
+          }
+        }
+      }
+    },
+    "offering_warrior" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offering"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "献祭"
+          }
+        }
+      }
+    },
+    "offering_warrior_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lose 4 HP. Gain 2 Energy. Draw 1 card. Exhaust."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "失去4HP。获得2能量。抽1张牌。消耗。"
           }
         }
       }
@@ -11065,6 +11152,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "对所有敌人施加 1 层虚弱。"
+          }
+        }
+      }
+    },
+    "shrug_it_off_warrior" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shrug It Off"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "耸肩"
+          }
+        }
+      }
+    },
+    "shrug_it_off_warrior_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain 8 Block. Draw 1 card."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获得8护甲。抽1张牌。"
           }
         }
       }
