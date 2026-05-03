@@ -10,6 +10,7 @@ struct EnemyRowView: View {
     let isTargetSelection: Bool
     let selectedTargetID: UUID?
     let onEnemyTap: (CombatEnemy) -> Void
+    var onEnemyFrameUpdate: ((UUID, CGRect) -> Void)? = nil
 
     var body: some View {
         HStack(spacing: 24) {
@@ -21,6 +22,17 @@ struct EnemyRowView: View {
                 ) {
                     onEnemyTap(enemy)
                 }
+                .background(
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear {
+                                onEnemyFrameUpdate?(enemy.id, geo.frame(in: .global))
+                            }
+                            .onChange(of: geo.frame(in: .global)) { _, newFrame in
+                                onEnemyFrameUpdate?(enemy.id, newFrame)
+                            }
+                    }
+                )
             }
         }
     }

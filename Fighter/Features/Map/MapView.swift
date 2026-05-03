@@ -205,7 +205,7 @@ struct MapView: View {
             let nextFloorIndex = floorIndex - 1
             if nextFloorIndex >= 0 {
                 let nextFloor = mapState.floors[nextFloorIndex]
-                connectionLines(from: nodes, to: nextFloor, spacing: 36)
+                connectionLines(from: nodes, to: nextFloor, spacing: 36, mapState: mapState)
             } else {
                 Spacer().frame(height: 36)
             }
@@ -214,21 +214,18 @@ struct MapView: View {
 
     // MARK: - Connection Lines
 
-    private func connectionLines(from: [MapNode], to: [MapNode], spacing: CGFloat) -> some View {
+    private func connectionLines(from: [MapNode], to: [MapNode], spacing: CGFloat, mapState: MapState) -> some View {
         Canvas { context, canvasSize in
             let nodeSize: CGFloat = 44
             let halfNode = nodeSize / 2
             let lineTop: CGFloat = 0
             let lineBottom = spacing
 
-            // Calculate node centers within the HStack
-            // HStack spacing = 24, nodes are centered in the full width
             let totalNodes = CGFloat(from.count)
-            let nodeSpacing: CGFloat = 24 + nodeSize // 44 + 24 gap
+            let nodeSpacing: CGFloat = 24 + nodeSize
             let totalWidth = totalNodes * nodeSize + (totalNodes - 1) * 24
             let startX = (canvasSize.width - totalWidth) / 2 + halfNode
 
-            // Build position maps
             var fromPositions: [UUID: CGPoint] = [:]
             for (i, node) in from.enumerated() {
                 let x = startX + CGFloat(i) * nodeSpacing
@@ -246,20 +243,68 @@ struct MapView: View {
                 toPositions[node.id] = CGPoint(x: x, y: lineBottom)
             }
 
-            // Draw lines
+            // Build lookup for accessible node IDs
+            let accessibleNodeIDs = Set(to.filter { $0.isAccessible }.map(\.id))
+
+            // Draw lines with enhanced visibility
             for fromNode in from {
                 guard let fromPoint = fromPositions[fromNode.id] else { continue }
                 for connectionID in fromNode.connections {
                     guard let toPoint = toPositions[connectionID] else { continue }
+
+                    // Determine path state
+                    let isVisitedPath = fromNode.isVisited
+                    let isAccessiblePath = fromNode.isAccessible && accessibleNodeIDs.contains(connectionID)
+
+                    let color: Color
+                    let lineWidth: CGFloat
+                    if isVisitedPath {
+                        color = Color.white.opacity(0.45)
+                        lineWidth = 2.5
+                    } else if isAccessiblePath {
+                        color = Color(red: 0.30, green: 0.72, blue: 0.90)
+                        lineWidth = 2.5
+                    } else {
+                        color = Color.white.opacity(0.12)
+                        lineWidth = 1.5
+                    }
+
                     var path = Path()
                     path.move(to: fromPoint)
                     path.addLine(to: toPoint)
+                    context.stroke(path, with: .color(color), lineWidth: lineWidth)
 
-                    let isVisitedPath = fromNode.isVisited
-                    let color: Color = isVisitedPath
-                        ? Color.white.opacity(0.18)
-                        : Color.white.opacity(0.07)
-                    context.stroke(path, with: .color(color), lineWidth: 1)
+                    // Draw arrowhead near the bottom node
+                    let arrowSize: CGFloat = 5
+                    let dy = toPoint.y - fromPoint.y
+                    let dx = toPoint.x - fromPoint.x
+                    let length = sqrt(dx * dx + dy * dy)
+                    guard length > 0 else { continue }
+                    let ux = dx / length
+                    let uy = dy / length
+                    // Arrow tip at toPoint, offset up by halfNode so it doesn't overlap the node
+                    let tipY = toPoint.y - halfNode * 0.3
+                    let tipX = toPoint.x - ux * (toPoint.y - tipY) * (dx / max(abs(dx), 0.01))
+                    let actualTip = CGPoint(x: toPoint.x, y: tipY)
+                    let base1 = CGPoint(x: actualTip.x - ux * arrowSize + uy * arrowSize * 0.6,
+                                        y: actualTip.y - uy * arrowSize - ux * arrowSize * 0.6)
+                    let base2 = CGPoint(x: actualTip.x - ux * arrowSize - uy * arrowSize * 0.6,
+                                        y: actualTip.y - uy * arrowSize + ux * arrowSize * 0.6)
+
+                    var arrow = Path()
+                    arrow.move(to: actualTip)
+                    arrow.addLine(to: base1)
+                    arrow.addLine(to: base2)
+                    arrow.closeSubpath()
+                    context.fill(arrow, with: .color(color.opacity(0.8)))
+
+                    // Glow for accessible paths
+                    if isAccessiblePath {
+                        var glowPath = Path()
+                        glowPath.move(to: fromPoint)
+                        glowPath.addLine(to: toPoint)
+                        context.stroke(glowPath, with: .color(color.opacity(0.2)), lineWidth: lineWidth + 4)
+                    }
                 }
             }
         }

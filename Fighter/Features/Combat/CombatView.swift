@@ -32,6 +32,8 @@ struct CombatView: View {
     // Drop zone tracking
     @State private var enemyZoneFrame: CGRect = .zero
     @State private var playerZoneFrame: CGRect = .zero
+    @State private var enemyFrames: [UUID: CGRect] = [:]
+    @State private var dragTargetEnemyID: UUID? = nil
 
     // Potion usage
     @State private var showPotionMenu: Bool = false
@@ -47,30 +49,14 @@ struct CombatView: View {
         ZStack {
             VStack(spacing: 0) {
                 if let combat = store.combatState {
-                    // Player status zone — drop target for self-target cards
-                    PlayerStatusView(
-                        currentHP: store.player.currentHP,
-                        maxHP: store.player.maxHP,
-                        block: store.player.combatBlock,
+                    // Compact top bar — energy + gold + floor info
+                    CombatTopBar(
                         energy: store.player.combatEnergy,
                         gold: store.player.gold,
-                        buffs: store.player.buffs
+                        floor: store.currentFloor,
+                        act: store.currentAct
                     )
                     .padding(.top, 8)
-                    .background(
-                        GeometryReader { geo in
-                            Color.clear
-                                .onAppear { playerZoneFrame = geo.frame(in: .global) }
-                                .onChange(of: geo.size) { _, _ in playerZoneFrame = geo.frame(in: .global) }
-                        }
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(
-                                isDragging && dragCard?.target == .selfTarget ? Theme.energyColor.opacity(0.5) : Color.clear,
-                                lineWidth: 2
-                            )
-                    )
 
                     Spacer()
 
@@ -82,9 +68,11 @@ struct CombatView: View {
                             EnemyRowView(
                                 enemies: combat.enemies,
                                 isTargetSelection: combat.combatPhase == .targetSelection || (isDragging && dragCard?.target == .enemy),
-                                selectedTargetID: combat.selectedTargetID
+                                selectedTargetID: dragTargetEnemyID ?? combat.selectedTargetID
                             ) { enemy in
                                 handleEnemyTap(enemy)
+                            } onEnemyFrameUpdate: { enemyID, frame in
+                                enemyFrames[enemyID] = frame
                             }
                         }
                         .padding(.vertical, 8)
@@ -104,6 +92,29 @@ struct CombatView: View {
                         )
 
                         Spacer()
+
+                        // Player character area — facing enemies, drop target for self-target cards
+                        CombatPlayerAreaView(
+                            characterClass: store.player.characterClass,
+                            currentHP: store.player.currentHP,
+                            maxHP: store.player.maxHP,
+                            block: store.player.combatBlock,
+                            buffs: store.player.buffs
+                        )
+                        .background(
+                            GeometryReader { geo in
+                                Color.clear
+                                    .onAppear { playerZoneFrame = geo.frame(in: .global) }
+                                    .onChange(of: geo.size) { _, _ in playerZoneFrame = geo.frame(in: .global) }
+                            }
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(
+                                    isDragging && dragCard?.target == .selfTarget ? Theme.energyColor.opacity(0.5) : Color.clear,
+                                    lineWidth: 2
+                                )
+                        )
 
                         // Pile indicators (tappable)
                         pileIndicators(combat: combat)
@@ -145,6 +156,11 @@ struct CombatView: View {
             // Floating card during drag
             if isDragging, let card = dragCard {
                 floatingDragCard(card)
+            }
+
+            // Arrow pointer from card to target enemy during drag
+            if isDragging, let targetID = dragTargetEnemyID, let targetFrame = enemyFrames[targetID] {
+                dragArrowOverlay(cardPosition: dragStartPosition + dragOffset, targetCenter: CGPoint(x: targetFrame.midX, y: targetFrame.midY))
             }
 
             // Combat log toggle button
@@ -281,7 +297,7 @@ struct CombatView: View {
                     let isCrit = damage >= 20
                     spawnFloatingText(
                         "\(damage)",
-                        at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.32),
+                        at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.28),
                         color: Color(red: 0.95, green: 0.30, blue: 0.20),
                         isCrit: isCrit
                     )
@@ -295,7 +311,7 @@ struct CombatView: View {
                 let damage = oldHP - newHP
                 spawnFloatingText(
                     "\(damage)",
-                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.08),
+                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.55),
                     color: Color(red: 0.95, green: 0.30, blue: 0.20),
                     isCrit: damage >= 15
                 )
@@ -303,7 +319,7 @@ struct CombatView: View {
                 let heal = newHP - oldHP
                 spawnFloatingText(
                     "+\(heal)",
-                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.08),
+                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.55),
                     color: Color(red: 0.30, green: 0.85, blue: 0.40),
                     isCrit: false
                 )
@@ -313,7 +329,7 @@ struct CombatView: View {
             if newBlock > 0 {
                 spawnFloatingText(
                     "+\(newBlock)🛡",
-                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.12),
+                    at: CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.52),
                     color: Theme.blockColor,
                     isCrit: false
                 )
@@ -389,6 +405,44 @@ struct CombatView: View {
         .position(dragStartPosition)
     }
 
+    // MARK: - Drag Arrow Overlay
+
+    private func dragArrowOverlay(cardPosition: CGPoint, targetCenter: CGPoint) -> some View {
+        Canvas { context, _ in
+            let arrowColor = Color(red: 0.30, green: 0.72, blue: 0.90)
+            let dx = targetCenter.x - cardPosition.x
+            let dy = targetCenter.y - cardPosition.y
+            let length = sqrt(dx * dx + dy * dy)
+            guard length > 0 else { return }
+            let ux = dx / length
+            let uy = dy / length
+
+            // Draw dashed line from card to near target
+            var line = Path()
+            line.move(to: cardPosition)
+            line.addLine(to: targetCenter)
+            context.stroke(line, with: .color(arrowColor.opacity(0.6)), style: StrokeStyle(lineWidth: 2.5, dash: [8, 4]))
+
+            // Draw arrowhead at target
+            let arrowSize: CGFloat = 10
+            let tip = targetCenter
+            let base1 = CGPoint(x: tip.x - ux * arrowSize + uy * arrowSize * 0.5,
+                                y: tip.y - uy * arrowSize - ux * arrowSize * 0.5)
+            let base2 = CGPoint(x: tip.x - ux * arrowSize - uy * arrowSize * 0.5,
+                                y: tip.y - uy * arrowSize + ux * arrowSize * 0.5)
+            var arrow = Path()
+            arrow.move(to: tip)
+            arrow.addLine(to: base1)
+            arrow.addLine(to: base2)
+            arrow.closeSubpath()
+            context.fill(arrow, with: .color(arrowColor.opacity(0.9)))
+
+            // Glow around arrow
+            context.stroke(line, with: .color(arrowColor.opacity(0.15)), style: StrokeStyle(lineWidth: 8))
+        }
+        .allowsHitTesting(false)
+    }
+
     // MARK: - Drag Gesture
 
     private var dragGesture: some Gesture {
@@ -408,6 +462,12 @@ struct CombatView: View {
 
                 if dragCard != nil {
                     dragOffset = value.translation
+
+                    // Track nearest enemy for targeting
+                    if dragCard?.target == .enemy {
+                        let fingerPoint = dragStartPosition + dragOffset
+                        dragTargetEnemyID = nearestAliveEnemy(to: fingerPoint)
+                    }
                 }
             }
             .onEnded { _ in
@@ -422,7 +482,15 @@ struct CombatView: View {
 
                 switch card.target {
                 case .enemy:
-                    if inEnemyZone { handleDropOnEnemyZone(card) }
+                    if inEnemyZone, let targetID = dragTargetEnemyID {
+                        CombatEngine.playCard(cardID: card.id, targetEnemyID: targetID, store: store)
+                        if let combat = store.combatState {
+                            combat.selectedCardID = nil
+                            combat.combatPhase = .playerAction
+                        }
+                    } else if inEnemyZone {
+                        handleDropOnEnemyZone(card)
+                    }
                 case .allEnemies:
                     if inEnemyZone { handleDropOnAllEnemies(card) }
                 case .selfTarget, .none:
@@ -688,6 +756,25 @@ struct CombatView: View {
         dragCard = nil
         dragOffset = .zero
         isDragging = false
+        dragTargetEnemyID = nil
+    }
+
+    private func nearestAliveEnemy(to point: CGPoint) -> UUID? {
+        guard let combat = store.combatState else { return nil }
+        var bestID: UUID? = nil
+        var bestDist: CGFloat = .infinity
+        for enemy in combat.aliveEnemies {
+            guard let frame = enemyFrames[enemy.id] else { continue }
+            let center = CGPoint(x: frame.midX, y: frame.midY)
+            let dx = point.x - center.x
+            let dy = point.y - center.y
+            let dist = sqrt(dx * dx + dy * dy)
+            if dist < bestDist {
+                bestDist = dist
+                bestID = enemy.id
+            }
+        }
+        return bestID
     }
 
     private func spawnFloatingText(_ text: String, at position: CGPoint, color: Color, isCrit: Bool) {

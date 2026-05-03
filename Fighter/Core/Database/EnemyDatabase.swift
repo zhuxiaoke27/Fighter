@@ -587,14 +587,20 @@ enum EnemyDatabase {
         MultiEnemyEncounter(enemyIDs: ["slime", "slime"], act: 1, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["cultist", "jaw_worm"], act: 1, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["slime", "slime", "slime"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["cultist", "cultist"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["jaw_worm", "slime"], act: 1, isElite: false),
         // Act 2
         MultiEnemyEncounter(enemyIDs: ["byrd", "byrd"], act: 2, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["choke_orb", "shell_parasite"], act: 2, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["byrd", "choke_orb"], act: 2, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["chosen", "spheric_guardian"], act: 2, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["fungus_beast", "fungus_beast"], act: 2, isElite: false),
         // Act 3
         MultiEnemyEncounter(enemyIDs: ["darkling", "darkling"], act: 3, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["orb_walker", "spiker"], act: 3, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["darkling", "darkling", "darkling"], act: 3, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["giant_head", "spire_growth"], act: 3, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["orb_walker", "orb_walker"], act: 3, isElite: false),
     ]
 
     // MARK: - Accessors
@@ -604,8 +610,8 @@ enum EnemyDatabase {
     }
 
     static func randomBattle(act: Int) -> [EnemyTemplate] {
-        // 30% chance of multi-enemy encounter
-        if Double.random(in: 0...1) < 0.30 {
+        // 40% chance of multi-enemy encounter
+        if Double.random(in: 0...1) < 0.40 {
             let multis = multiEncounters.filter { $0.act == act && !$0.isElite }
             if let encounter = multis.randomElement() {
                 let templates = encounter.enemyIDs.compactMap { enemy(byID: $0) }
