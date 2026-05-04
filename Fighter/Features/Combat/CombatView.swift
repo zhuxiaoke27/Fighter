@@ -139,6 +139,7 @@ struct CombatView: View {
                             onCardTap: { card in handleCardTap(card) },
                             onCardLongPress: { card in detailCard = card }
                         )
+                        .zIndex(1)
                         .opacity(isDragging ? 0.3 : 1.0)
 
                         // End turn button

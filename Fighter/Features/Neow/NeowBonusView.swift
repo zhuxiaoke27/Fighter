@@ -43,7 +43,6 @@ struct NeowBonusView: View {
                 VStack(spacing: 14) {
                     ForEach(neowBonuses, id: \.self) { bonus in
                         Button {
-                            applyBonus(bonus)
                             selectedBonus = bonus
                         } label: {
                             HStack(spacing: 12) {
@@ -77,7 +76,6 @@ struct NeowBonusView: View {
                             )
                         }
                         .buttonStyle(.plain)
-                        .disabled(selectedBonus != nil)
                         .opacity(selectedBonus == nil || selectedBonus == bonus ? 1.0 : 0.4)
                     }
                 }
@@ -85,8 +83,9 @@ struct NeowBonusView: View {
 
                 Spacer()
 
-                if selectedBonus != nil {
+                if let bonus = selectedBonus {
                     Button {
+                        applyBonus(bonus)
                         store.completeNeow()
                     } label: {
                         HStack(spacing: 6) {
