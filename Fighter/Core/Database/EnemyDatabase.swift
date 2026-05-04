@@ -12,23 +12,23 @@ enum EnemyDatabase {
     static let cultist = EnemyTemplate(
         id: "cultist",
         nameKey: "enemy_cultist",
-        minHP: 48,
-        maxHP: 54,
+        minHP: 40,
+        maxHP: 46,
         isBoss: false,
         isElite: false,
         act: 1,
         actions: [
-            WeightedAction(action: EnemyAction(intent: .attack(11), effects: [.dealDamage(11)]), weight: 1.0),
-            WeightedAction(action: EnemyAction(intent: .attack(6), effects: [.dealDamage(6)]), weight: 0.7),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attack(6), effects: [.dealDamage(6)]), weight: 1.0),
         ],
-        pattern: .random
+        pattern: .sequential
     )
 
     static let jawWorm = EnemyTemplate(
         id: "jaw_worm",
         nameKey: "enemy_jaw_worm",
-        minHP: 40,
-        maxHP: 44,
+        minHP: 34,
+        maxHP: 40,
         isBoss: false,
         isElite: false,
         act: 1,
@@ -43,13 +43,13 @@ enum EnemyDatabase {
     static let slime = EnemyTemplate(
         id: "slime",
         nameKey: "enemy_slime",
-        minHP: 27,
-        maxHP: 31,
+        minHP: 24,
+        maxHP: 28,
         isBoss: false,
         isElite: false,
         act: 1,
         actions: [
-            WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attack(8), effects: [.dealDamage(8)]), weight: 1.0),
             WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 1), effects: [.applyDebuff(.weak, stacks: 1)]), weight: 0.5),
         ],
         pattern: .random
@@ -58,8 +58,8 @@ enum EnemyDatabase {
     static let fungusBeast = EnemyTemplate(
         id: "fungus_beast",
         nameKey: "enemy_fungus_beast",
-        minHP: 44,
-        maxHP: 50,
+        minHP: 36,
+        maxHP: 42,
         isBoss: false,
         isElite: false,
         act: 1,
@@ -74,8 +74,8 @@ enum EnemyDatabase {
     static let blueSlime = EnemyTemplate(
         id: "blue_slime",
         nameKey: "enemy_blue_slime",
-        minHP: 22,
-        maxHP: 26,
+        minHP: 20,
+        maxHP: 24,
         isBoss: false,
         isElite: false,
         act: 1,
@@ -584,11 +584,10 @@ enum EnemyDatabase {
 
     static let multiEncounters: [MultiEnemyEncounter] = [
         // Act 1
+        MultiEnemyEncounter(enemyIDs: ["blue_slime", "blue_slime"], act: 1, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["slime", "slime"], act: 1, isElite: false),
-        MultiEnemyEncounter(enemyIDs: ["cultist", "jaw_worm"], act: 1, isElite: false),
-        MultiEnemyEncounter(enemyIDs: ["slime", "slime", "slime"], act: 1, isElite: false),
-        MultiEnemyEncounter(enemyIDs: ["cultist", "cultist"], act: 1, isElite: false),
-        MultiEnemyEncounter(enemyIDs: ["jaw_worm", "slime"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["slime", "blue_slime"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["cultist", "blue_slime"], act: 1, isElite: false),
         // Act 2
         MultiEnemyEncounter(enemyIDs: ["byrd", "byrd"], act: 2, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["choke_orb", "shell_parasite"], act: 2, isElite: false),
@@ -610,8 +609,8 @@ enum EnemyDatabase {
     }
 
     static func randomBattle(act: Int) -> [EnemyTemplate] {
-        // 40% chance of multi-enemy encounter
-        if Double.random(in: 0...1) < 0.40 {
+        // 25% chance of multi-enemy encounter
+        if Double.random(in: 0...1) < 0.25 {
             let multis = multiEncounters.filter { $0.act == act && !$0.isElite }
             if let encounter = multis.randomElement() {
                 let templates = encounter.enemyIDs.compactMap { enemy(byID: $0) }
