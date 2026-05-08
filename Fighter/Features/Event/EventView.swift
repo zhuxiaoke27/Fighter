@@ -14,13 +14,24 @@ struct EventView: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color(red: 0.12, green: 0.08, blue: 0.18),
-                    Color(red: 0.08, green: 0.05, blue: 0.12)
+                    Color(red: 0.10, green: 0.06, blue: 0.14),
+                    Color(red: 0.07, green: 0.04, blue: 0.10),
+                    Color(red: 0.05, green: 0.03, blue: 0.08)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
             )
             .ignoresSafeArea()
+
+            // Subtle mist particles
+            ParticleField(
+                colors: [
+                    Color(red: 0.45, green: 0.55, blue: 0.90).opacity(0.3),
+                    Color.white.opacity(0.1)
+                ],
+                particleCount: 8,
+                speedMultiplier: 0.3
+            )
 
             if let event = store.currentEvent {
                 VStack(spacing: 0) {
@@ -30,7 +41,7 @@ struct EventView: View {
                     Image(systemName: event.icon)
                         .font(.system(size: 48, weight: .medium))
                         .foregroundStyle(eventIconColor(for: event.id))
-                        .shadow(color: eventIconColor(for: event.id).opacity(0.4), radius: 12)
+                        .modifier(PulsingGlow(color: eventIconColor(for: event.id).opacity(0.5), radius: 16, duration: 2.5))
                         .padding(.bottom, 16)
 
                     Text(String(localized: LocalizedStringResource(stringLiteral: event.titleKey)))
@@ -99,12 +110,19 @@ struct EventView: View {
                                 .frame(maxWidth: .infinity)
                                 .background(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color(red: 0.14, green: 0.13, blue: 0.22))
-                                        .shadow(color: .black.opacity(0.2), radius: 4, y: 2)
+                                        .fill(Color(red: 0.12, green: 0.10, blue: 0.18))
+                                        .shadow(color: .black.opacity(0.3), radius: 6, y: 2)
                                 )
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color(red: 0.45, green: 0.55, blue: 0.90).opacity(0.2), lineWidth: 1)
+                                        .stroke(
+                                            LinearGradient(
+                                                colors: [Color(red: 0.45, green: 0.55, blue: 0.90).opacity(0.4), Color(red: 0.45, green: 0.55, blue: 0.90).opacity(0.1)],
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            ),
+                                            lineWidth: 1
+                                        )
                                 )
                             }
                             .buttonStyle(.plain)

@@ -14,6 +14,7 @@ struct NeowBonusView: View {
             LinearGradient(
                 colors: [
                     Color(red: 0.06, green: 0.04, blue: 0.12),
+                    Color(red: 0.04, green: 0.02, blue: 0.09),
                     Color(red: 0.03, green: 0.02, blue: 0.06)
                 ],
                 startPoint: .top,
@@ -21,11 +22,22 @@ struct NeowBonusView: View {
             )
             .ignoresSafeArea()
 
+            // Cosmic particles
+            ParticleField(
+                colors: [
+                    Color(red: 0.60, green: 0.40, blue: 0.85).opacity(0.4),
+                    Color(red: 0.80, green: 0.50, blue: 1.0).opacity(0.3),
+                    Color.white.opacity(0.15)
+                ],
+                particleCount: 15,
+                speedMultiplier: 0.4
+            )
+
             VStack(spacing: 24) {
                 Image(systemName: "eye.circle")
                     .font(.system(size: 56, weight: .medium))
                     .foregroundStyle(Color(red: 0.60, green: 0.40, blue: 0.85))
-                    .shadow(color: Color(red: 0.60, green: 0.40, blue: 0.85).opacity(0.5), radius: 16)
+                    .modifier(PulsingGlow(color: Color(red: 0.60, green: 0.40, blue: 0.85).opacity(0.6), radius: 20, duration: 2.5))
                     .padding(.top, 40)
 
                 Text(String(localized: "neow_title"))

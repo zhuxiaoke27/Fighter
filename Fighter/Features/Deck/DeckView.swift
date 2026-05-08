@@ -28,7 +28,8 @@ struct DeckView: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color(red: 0.10, green: 0.08, blue: 0.18),
+                    Color(red: 0.10, green: 0.08, blue: 0.16),
+                    Color(red: 0.08, green: 0.06, blue: 0.12),
                     Color(red: 0.06, green: 0.05, blue: 0.10)
                 ],
                 startPoint: .top,
@@ -178,12 +179,13 @@ struct DeckCardRow: View {
         .padding(.vertical, 8)
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .fill(Color.white.opacity(0.04))
+                .fill(Color(red: 0.12, green: 0.11, blue: 0.18))
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(cardTypeColor.opacity(0.2), lineWidth: 0.5)
+                        .stroke(cardTypeColor.opacity(0.25), lineWidth: 0.5)
                 )
         )
+        .shadow(color: .black.opacity(0.2), radius: 2, y: 1)
     }
 
     private var cardTypeColor: Color {

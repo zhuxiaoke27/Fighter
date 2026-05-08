@@ -17,11 +17,24 @@ struct RestSiteView: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color(red: 0.08, green: 0.12, blue: 0.18),
-                    Color(red: 0.05, green: 0.08, blue: 0.12)
+                    Color(red: 0.10, green: 0.08, blue: 0.06),
+                    Color(red: 0.08, green: 0.06, blue: 0.04),
+                    Color(red: 0.06, green: 0.04, blue: 0.03)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
+            )
+            .ignoresSafeArea()
+
+            // Warm campfire radial glow from bottom center
+            RadialGradient(
+                colors: [
+                    Color(red: 0.90, green: 0.45, blue: 0.20).opacity(0.08),
+                    .clear
+                ],
+                center: .init(x: 0.5, y: 0.7),
+                startRadius: 0,
+                endRadius: 300
             )
             .ignoresSafeArea()
 
@@ -29,7 +42,7 @@ struct RestSiteView: View {
                 Image(systemName: "flame.fill")
                     .font(.system(size: 48, weight: .medium))
                     .foregroundStyle(Color(red: 0.90, green: 0.45, blue: 0.20))
-                    .shadow(color: Color(red: 0.90, green: 0.45, blue: 0.20).opacity(0.4), radius: 12)
+                    .modifier(PulsingGlow(color: Color(red: 0.90, green: 0.45, blue: 0.20).opacity(0.6), radius: 18, duration: 1.8))
                     .padding(.top, 40)
 
                 Text(String(localized: "label_rest_site"))

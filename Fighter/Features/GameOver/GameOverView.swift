@@ -14,15 +14,41 @@ struct GameOverView: View {
             LinearGradient(
                 colors: victory ? [
                     Color(red: 0.12, green: 0.10, blue: 0.06),
+                    Color(red: 0.10, green: 0.08, blue: 0.04),
                     Color(red: 0.08, green: 0.06, blue: 0.03)
                 ] : [
                     Color(red: 0.12, green: 0.06, blue: 0.06),
+                    Color(red: 0.10, green: 0.04, blue: 0.04),
                     Color(red: 0.08, green: 0.03, blue: 0.03)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
             )
             .ignoresSafeArea()
+
+            // Victory: golden particle rain
+            if victory {
+                ParticleField(
+                    colors: [
+                        Theme.energyColor.opacity(0.6),
+                        Theme.energyColor.opacity(0.3),
+                        Color.white.opacity(0.2)
+                    ],
+                    particleCount: 20,
+                    speedMultiplier: 0.6
+                )
+            }
+
+            // Defeat: red vignette
+            if !victory {
+                RadialGradient(
+                    colors: [.clear, Color(red: 0.30, green: 0.05, blue: 0.05).opacity(0.4)],
+                    center: .center,
+                    startRadius: 100,
+                    endRadius: 400
+                )
+                .ignoresSafeArea()
+            }
 
             VStack(spacing: 24) {
                 Spacer()
@@ -84,9 +110,18 @@ struct GameOverView: View {
             Image(systemName: icon)
                 .font(.system(size: 14))
                 .foregroundStyle(color)
+                .frame(width: 20)
             Text(value)
                 .font(.system(size: 14, weight: .medium, design: .rounded))
-                .foregroundStyle(Theme.textSecondary)
+                .foregroundStyle(Theme.textPrimary)
+            Spacer()
         }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 8)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.white.opacity(0.04))
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(color.opacity(0.15), lineWidth: 0.5))
+        )
     }
 }

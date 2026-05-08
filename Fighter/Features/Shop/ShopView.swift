@@ -14,8 +14,9 @@ struct ShopView: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color(red: 0.08, green: 0.12, blue: 0.08),
-                    Color(red: 0.05, green: 0.08, blue: 0.05)
+                    Color(red: 0.10, green: 0.12, blue: 0.08),
+                    Color(red: 0.08, green: 0.10, blue: 0.06),
+                    Color(red: 0.06, green: 0.08, blue: 0.04)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -26,7 +27,7 @@ struct ShopView: View {
                 HStack {
                     Image(systemName: "cart")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundStyle(Color(red: 0.25, green: 0.70, blue: 0.50))
+                        .foregroundStyle(Color(red: 0.90, green: 0.65, blue: 0.20))
                     Text(String(localized: "label_shop"))
                         .font(.system(size: 22, weight: .bold, design: .rounded))
                         .foregroundStyle(Theme.textPrimary)
@@ -38,6 +39,7 @@ struct ShopView: View {
                             .font(.system(size: 16, weight: .bold, design: .rounded))
                     }
                     .foregroundStyle(Theme.energyColor)
+                    .shadow(color: Theme.energyGlow, radius: 6)
                 }
                 .padding(.horizontal, Theme.padding)
                 .padding(.top, 20)
@@ -207,8 +209,9 @@ struct ShopView: View {
             }
             .padding(8)
             .frame(width: 90, height: 140)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 0.14, green: 0.13, blue: 0.22)))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(canAfford ? Theme.cardColor(for: card.type).opacity(0.3) : Color.white.opacity(0.06), lineWidth: 1))
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 0.14, green: 0.13, blue: 0.20)))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(canAfford ? Color(red: 0.85, green: 0.65, blue: 0.20).opacity(0.4) : Color.white.opacity(0.06), lineWidth: canAfford ? 1.5 : 1))
+            .shadow(color: canAfford ? Color(red: 0.85, green: 0.65, blue: 0.20).opacity(0.15) : .clear, radius: 6)
         }
         .buttonStyle(.plain)
         .opacity(canAfford ? 1.0 : 0.5)

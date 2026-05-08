@@ -14,19 +14,31 @@ struct RewardView: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color(red: 0.10, green: 0.08, blue: 0.18),
-                    Color(red: 0.06, green: 0.05, blue: 0.10)
+                    Color(red: 0.12, green: 0.10, blue: 0.06),
+                    Color(red: 0.08, green: 0.07, blue: 0.04),
+                    Color(red: 0.06, green: 0.05, blue: 0.03)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
             )
             .ignoresSafeArea()
 
+            // Gold shimmer particles
+            ParticleField(
+                colors: [
+                    Theme.energyColor.opacity(0.5),
+                    Theme.energyColor.opacity(0.3),
+                    Color.white.opacity(0.2)
+                ],
+                particleCount: 12,
+                speedMultiplier: 0.4
+            )
+
             VStack(spacing: 28) {
                 Image(systemName: "trophy.fill")
                     .font(.system(size: 44, weight: .medium))
                     .foregroundStyle(Theme.energyColor)
-                    .shadow(color: Theme.energyGlow, radius: 10)
+                    .modifier(PulsingGlow(color: Theme.energyGlow, radius: 16, duration: 2.0))
 
                 Text(String(localized: "label_victory"))
                     .font(.system(size: 26, weight: .bold, design: .rounded))
