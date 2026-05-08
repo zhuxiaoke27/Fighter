@@ -388,6 +388,14 @@ extension Theme {
         case "essence_of_steel":  return Color(red: 0.45, green: 0.68, blue: 0.92)
         case "fire_potion_large": return Color(red: 0.90, green: 0.35, blue: 0.15)
         case "ghost_in_a_jar":    return Color(red: 0.70, green: 0.80, blue: 0.95)
+        case "dexterity_potion":  return Color(red: 0.30, green: 0.75, blue: 0.50)
+        case "draw_potion":       return Color(red: 0.50, green: 0.70, blue: 0.95)
+        case "vulnerability_potion": return Color(red: 0.80, green: 0.50, blue: 0.30)
+        case "power_potion":      return Color(red: 0.70, green: 0.40, blue: 0.90)
+        case "poison_potion":     return Color(red: 0.25, green: 0.70, blue: 0.30)
+        case "buffer_potion":     return Color(red: 0.60, green: 0.80, blue: 0.60)
+        case "genocide_potion":   return Color(red: 0.85, green: 0.20, blue: 0.15)
+        case "ambrosia_potion":   return Color(red: 0.95, green: 0.85, blue: 0.30)
         default:                  return textSecondary
         }
     }

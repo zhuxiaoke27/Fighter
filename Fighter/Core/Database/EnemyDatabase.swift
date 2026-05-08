@@ -557,6 +557,173 @@ enum EnemyDatabase {
         pattern: .conditional
     )
 
+    // MARK: - Phase 5 — New Act 1 Enemies
+
+    static let ratKing = EnemyTemplate(
+        id: "rat_king",
+        nameKey: "enemy_rat_king",
+        minHP: 22,
+        maxHP: 26,
+        isBoss: false,
+        isElite: false,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(5), effects: [.dealDamage(5)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(4), effects: [.gainBlock(4)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 2), effects: [.applyBuff(.strength, stacks: 2)]), weight: 0.4),
+        ],
+        pattern: .random
+    )
+
+    static let skeleton = EnemyTemplate(
+        id: "skeleton",
+        nameKey: "enemy_skeleton",
+        minHP: 24,
+        maxHP: 28,
+        isBoss: false,
+        isElite: false,
+        act: 1,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(6), effects: [.dealDamage(6)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(8), effects: [.gainBlock(8)]), weight: 0.7),
+            WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 1), effects: [.applyDebuff(.weak, stacks: 1)]), weight: 0.5),
+        ],
+        pattern: .random
+    )
+
+    // MARK: - Phase 5 — New Act 2 Enemies
+
+    static let mageKnight = EnemyTemplate(
+        id: "mage_knight",
+        nameKey: "enemy_mage_knight",
+        minHP: 44,
+        maxHP: 50,
+        isBoss: false,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(10), effects: [.dealDamage(10)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(12), effects: [.gainBlock(12)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .debuff(.weak, stacks: 2), effects: [.applyDebuff(.weak, stacks: 2)]), weight: 0.5),
+        ],
+        pattern: .sequential
+    )
+
+    static let golem = EnemyTemplate(
+        id: "golem",
+        nameKey: "enemy_golem",
+        minHP: 55,
+        maxHP: 62,
+        isBoss: false,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(14), effects: [.dealDamage(14)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(15), effects: [.gainBlock(15)]), weight: 0.7),
+            WeightedAction(action: EnemyAction(intent: .attack(8), effects: [.dealDamage(8), .applyDebuff(.vulnerable, stacks: 1)]), weight: 0.4),
+        ],
+        pattern: .conditional
+    )
+
+    static let shadowLurker = EnemyTemplate(
+        id: "shadow_lurker",
+        nameKey: "enemy_shadow_lurker",
+        minHP: 30,
+        maxHP: 34,
+        isBoss: false,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(16), effects: [.dealDamage(16)]), weight: 0.3),
+            WeightedAction(action: EnemyAction(intent: .attack(8), effects: [.dealDamage(8)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(10), effects: [.gainBlock(10), .applyBuff(.strength, stacks: 1)]), weight: 0.5),
+        ],
+        pattern: .conditional
+    )
+
+    static let spider = EnemyTemplate(
+        id: "spider",
+        nameKey: "enemy_spider",
+        minHP: 28,
+        maxHP: 32,
+        isBoss: false,
+        isElite: false,
+        act: 2,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(4), effects: [.dealDamage(4), .applyDebuff(.poison, stacks: 3)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(6), effects: [.gainBlock(6), .applyDebuff(.weak, stacks: 1)]), weight: 0.6),
+        ],
+        pattern: .random
+    )
+
+    // MARK: - Phase 5 — New Act 3 Enemies
+
+    static let darkPaladin = EnemyTemplate(
+        id: "dark_paladin",
+        nameKey: "enemy_dark_paladin",
+        minHP: 70,
+        maxHP: 80,
+        isBoss: false,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(18), effects: [.dealDamage(18)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(20), effects: [.gainBlock(20)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .debuff(.vulnerable, stacks: 2), effects: [.applyDebuff(.vulnerable, stacks: 2), .applyDebuff(.weak, stacks: 2)]), weight: 0.4),
+        ],
+        pattern: .sequential
+    )
+
+    static let lich = EnemyTemplate(
+        id: "lich",
+        nameKey: "enemy_lich",
+        minHP: 55,
+        maxHP: 60,
+        isBoss: false,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(12), effects: [.dealDamage(12), .applyDebuff(.poison, stacks: 4)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .attack(8), effects: [.dealDamage(8), .heal(8)]), weight: 0.5),
+            WeightedAction(action: EnemyAction(intent: .buff(.strength, stacks: 3), effects: [.applyBuff(.strength, stacks: 3)]), weight: 0.3),
+        ],
+        pattern: .conditional
+    )
+
+    static let voidWalker = EnemyTemplate(
+        id: "void_walker",
+        nameKey: "enemy_void_walker",
+        minHP: 48,
+        maxHP: 52,
+        isBoss: false,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(15), effects: [.dealDamage(15)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(18), effects: [.gainBlock(18)]), weight: 0.6),
+            WeightedAction(action: EnemyAction(intent: .debuff(.vulnerable, stacks: 5), effects: [.applyDebuff(.vulnerable, stacks: 5)]), weight: 0.3),
+        ],
+        pattern: .random
+    )
+
+    // MARK: - Phase 5 — New Act 3 Boss
+
+    static let corruptedSpire = EnemyTemplate(
+        id: "corrupted_spire",
+        nameKey: "enemy_corrupted_spire",
+        minHP: 200,
+        maxHP: 220,
+        isBoss: true,
+        isElite: false,
+        act: 3,
+        actions: [
+            WeightedAction(action: EnemyAction(intent: .attack(25), effects: [.dealDamage(25)]), weight: 1.0),
+            WeightedAction(action: EnemyAction(intent: .defend(30), effects: [.gainBlock(30), .applyDebuff(.weak, stacks: 3)]), weight: 0.4),
+            WeightedAction(action: EnemyAction(intent: .attack(40), effects: [.dealDamage(40)]), weight: 0.2),
+        ],
+        pattern: .sequential
+    )
+
     // MARK: - All Enemies
 
     static let allEnemies: [EnemyTemplate] = [
@@ -564,14 +731,17 @@ enum EnemyDatabase {
         cultist, jawWorm, slime, fungusBeast, blueSlime,
         gremlinNob, lagavulin, gremlinLeader,
         slimeBoss, hexaghost, guardian,
+        ratKing, skeleton,
         // Act 2
         byrd, chokeOrb, shellParasite, sphericGuardian, chosen,
         bronzeAutomaton, bookOfStabbing, giantWorm,
         theChamp, collector, bronzeAutomatonPrime,
+        mageKnight, golem, shadowLurker, spider,
         // Act 3
         darkling, orbWalker, spiker, spireGrowth, transmogrifier,
         giantHead, nemesis, reptomancer,
-        timeEater, corruptHeart, awakenedOne
+        timeEater, corruptHeart, awakenedOne,
+        darkPaladin, lich, voidWalker, corruptedSpire
     ]
 
     // MARK: - Multi-Enemy Encounters
@@ -600,6 +770,15 @@ enum EnemyDatabase {
         MultiEnemyEncounter(enemyIDs: ["darkling", "darkling", "darkling"], act: 3, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["giant_head", "spire_growth"], act: 3, isElite: false),
         MultiEnemyEncounter(enemyIDs: ["orb_walker", "orb_walker"], act: 3, isElite: false),
+        // Phase 5 — New encounters
+        MultiEnemyEncounter(enemyIDs: ["rat_king", "blue_slime"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["skeleton", "skeleton"], act: 1, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["mage_knight", "spider"], act: 2, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["shadow_lurker", "shadow_lurker"], act: 2, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["golem", "mage_knight"], act: 2, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["dark_paladin", "lich"], act: 3, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["void_walker", "void_walker"], act: 3, isElite: false),
+        MultiEnemyEncounter(enemyIDs: ["dark_paladin", "void_walker", "lich"], act: 3, isElite: false),
     ]
 
     // MARK: - Accessors

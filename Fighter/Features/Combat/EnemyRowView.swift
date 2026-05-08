@@ -186,7 +186,7 @@ struct EnemyView: View {
     // MARK: - Per-Enemy Theming
 
     private var isBoss: Bool {
-        enemy.templateID.contains("boss")
+        enemy.isBoss
     }
 
     private var enemyThemeColor: Color {

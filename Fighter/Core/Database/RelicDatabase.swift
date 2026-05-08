@@ -488,6 +488,144 @@ struct RelicDatabase {
             ],
             rarity: .rare,
             tags: [.boss, .rare]
+        ),
+
+        // MARK: - New Common Relics (Phase 5)
+        RelicTemplate(
+            id: "red_guard_ring",
+            nameKey: "relic_red_guard_ring",
+            descriptionKey: "relic_red_guard_ring_desc",
+            effects: [
+                RelicEffect(trigger: .onCombatStart, effect: .gainBlock(5))
+            ],
+            rarity: .common,
+            tags: [.common, .defensive]
+        ),
+        RelicTemplate(
+            id: "bird_faced_urn",
+            nameKey: "relic_bird_faced_urn",
+            descriptionKey: "relic_bird_faced_urn_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnEnd, effect: .heal(2))
+            ],
+            rarity: .common,
+            tags: [.common, .defensive]
+        ),
+        RelicTemplate(
+            id: "potion_belt",
+            nameKey: "relic_potion_belt",
+            descriptionKey: "relic_potion_belt_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .common,
+            tags: [.common, .utility]
+        ),
+        RelicTemplate(
+            id: "war_paint",
+            nameKey: "relic_war_paint",
+            descriptionKey: "relic_war_paint_desc",
+            effects: [
+                RelicEffect(trigger: .onCombatStart, effect: .applyBuff(.strength, stacks: 1))
+            ],
+            rarity: .common,
+            tags: [.common, .offensive]
+        ),
+        RelicTemplate(
+            id: "lantern_turn",
+            nameKey: "relic_lantern_turn",
+            descriptionKey: "relic_lantern_turn_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnStart, effect: .gainEnergy(1))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .utility]
+        ),
+        RelicTemplate(
+            id: "bag_of_gems",
+            nameKey: "relic_bag_of_gems",
+            descriptionKey: "relic_bag_of_gems_desc",
+            effects: [
+                RelicEffect(trigger: .passive, effect: .composite([]))
+            ],
+            rarity: .common,
+            tags: [.common, .economic]
+        ),
+
+        // MARK: - New Uncommon Relics (Phase 5)
+        RelicTemplate(
+            id: "ink_bottle",
+            nameKey: "relic_ink_bottle",
+            descriptionKey: "relic_ink_bottle_desc",
+            effects: [
+                RelicEffect(trigger: .onCardPlayed(.attack), effect: .composite([]))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .utility]
+        ),
+        RelicTemplate(
+            id: "sundial_energy",
+            nameKey: "relic_sundial_energy",
+            descriptionKey: "relic_sundial_energy_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnStart, effect: .composite([]))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .utility]
+        ),
+        RelicTemplate(
+            id: "kunai_dex",
+            nameKey: "relic_kunai_dex",
+            descriptionKey: "relic_kunai_dex_desc",
+            effects: [
+                RelicEffect(trigger: .onCardPlayed(.skill), effect: .composite([]))
+            ],
+            rarity: .uncommon,
+            tags: [.uncommon, .offensive, .assassin]
+        ),
+
+        // MARK: - New Rare Relics (Phase 5)
+        RelicTemplate(
+            id: "runic_cube",
+            nameKey: "relic_runic_cube",
+            descriptionKey: "relic_runic_cube_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnStart, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.rare, .utility]
+        ),
+        RelicTemplate(
+            id: "tungsten_helm",
+            nameKey: "relic_tungsten_helm",
+            descriptionKey: "relic_tungsten_helm_desc",
+            effects: [
+                RelicEffect(trigger: .onBlockGained, effect: .composite([]))
+            ],
+            rarity: .rare,
+            tags: [.rare, .defensive]
+        ),
+
+        // MARK: - New Boss Relics (Phase 5)
+        RelicTemplate(
+            id: "ring_of_the_snake_plus",
+            nameKey: "relic_ring_of_the_snake_plus",
+            descriptionKey: "relic_ring_of_the_snake_plus_desc",
+            effects: [
+                RelicEffect(trigger: .onCombatStart, effect: .drawCards(2))
+            ],
+            rarity: .rare,
+            tags: [.boss, .utility]
+        ),
+        RelicTemplate(
+            id: "frozen_core",
+            nameKey: "relic_frozen_core",
+            descriptionKey: "relic_frozen_core_desc",
+            effects: [
+                RelicEffect(trigger: .onTurnEnd, effect: .gainBlock(4))
+            ],
+            rarity: .rare,
+            tags: [.boss, .defensive]
         )
     ]
 

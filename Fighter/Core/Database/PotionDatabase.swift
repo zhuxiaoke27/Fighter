@@ -147,6 +147,76 @@ struct PotionDatabase {
             effects: [.preventNextDamage],
             target: .selfTarget,
             rarity: .rare
+        ),
+
+        // MARK: - Phase 5 — New Common Potions
+        PotionTemplate(
+            id: "dexterity_potion",
+            nameKey: "potion_dexterity_potion",
+            descriptionKey: "potion_dexterity_potion_desc",
+            effects: [.applyBuff(.dexterity, stacks: 2)],
+            target: .selfTarget,
+            rarity: .common
+        ),
+        PotionTemplate(
+            id: "draw_potion",
+            nameKey: "potion_draw_potion",
+            descriptionKey: "potion_draw_potion_desc",
+            effects: [.drawCards(3)],
+            target: .selfTarget,
+            rarity: .common
+        ),
+        PotionTemplate(
+            id: "vulnerability_potion",
+            nameKey: "potion_vulnerability_potion",
+            descriptionKey: "potion_vulnerability_potion_desc",
+            effects: [.applyDebuff(.vulnerable, stacks: 3)],
+            target: .enemy,
+            rarity: .common
+        ),
+
+        // MARK: - Phase 5 — New Uncommon Potions
+        PotionTemplate(
+            id: "power_potion",
+            nameKey: "potion_power_potion",
+            descriptionKey: "potion_power_potion_desc",
+            effects: [.applyFocus(2)],
+            target: .selfTarget,
+            rarity: .uncommon
+        ),
+        PotionTemplate(
+            id: "poison_potion",
+            nameKey: "potion_poison_potion",
+            descriptionKey: "potion_poison_potion_desc",
+            effects: [.applyDebuff(.poison, stacks: 12)],
+            target: .enemy,
+            rarity: .uncommon
+        ),
+        PotionTemplate(
+            id: "buffer_potion",
+            nameKey: "potion_buffer_potion",
+            descriptionKey: "potion_buffer_potion_desc",
+            effects: [.preventNextDamage, .gainBlock(3)],
+            target: .selfTarget,
+            rarity: .uncommon
+        ),
+
+        // MARK: - Phase 5 — New Rare Potions
+        PotionTemplate(
+            id: "genocide_potion",
+            nameKey: "potion_genocide_potion",
+            descriptionKey: "potion_genocide_potion_desc",
+            effects: [.dealDamageToAll(40)],
+            target: .allEnemies,
+            rarity: .rare
+        ),
+        PotionTemplate(
+            id: "ambrosia_potion",
+            nameKey: "potion_ambrosia_potion",
+            descriptionKey: "potion_ambrosia_potion_desc",
+            effects: [.gainBlock(999)],
+            target: .selfTarget,
+            rarity: .rare
         )
     ]
 

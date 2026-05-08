@@ -469,6 +469,201 @@ def draw_giant_head(draw):
     rect(draw, 12, 22, 2, 4, skin); rect(draw, 34, 22, 2, 4, skin)
     rect(draw, 18, 40, 12, 2, (100, 90, 80, 60))
 
+# ──────────────────────────── PHASE 5 ENEMIES ────────────────────────────
+
+def draw_rat_king(draw):
+    fur = (140, 110, 70); fur_hi = (170, 140, 90); fur_dk = (100, 75, 45)
+    crown = (220, 190, 50); eye = (200, 50, 30); tooth = (240, 240, 220)
+
+    rect(draw, 18, 22, 12, 14, fur); outline_rect(draw, 18, 22, 12, 14)
+    rect(draw, 20, 24, 4, 2, fur_hi); rect(draw, 24, 24, 4, 2, fur_hi)
+
+    circle(draw, 24, 16, 6, fur); circle_outline(draw, 24, 16, 6)
+    px(draw, 18, 14, fur_dk); px(draw, 30, 14, fur_dk)
+    px(draw, 21, 15, eye); px(draw, 27, 15, eye)
+    rect(draw, 22, 20, 4, 2, fur_dk)
+    px(draw, 23, 22, tooth); px(draw, 25, 22, tooth)
+
+    rect(draw, 20, 8, 8, 3, crown); outline_rect(draw, 20, 8, 8, 3)
+    px(draw, 21, 7, crown); px(draw, 24, 6, crown); px(draw, 27, 7, crown)
+
+    rect(draw, 14, 14, 4, 6, fur_dk); rect(draw, 30, 14, 4, 6, fur_dk)
+    outline_rect(draw, 14, 14, 4, 6); outline_rect(draw, 30, 14, 4, 6)
+    rect(draw, 20, 36, 4, 6, fur_dk); rect(draw, 26, 36, 4, 6, fur_dk)
+
+def draw_skeleton(draw):
+    bone = (220, 215, 200); bone_dk = (180, 175, 160); eye = (60, 180, 60)
+    armor = (100, 100, 110); sword = (190, 200, 210)
+
+    rect(draw, 20, 20, 8, 16, bone); outline_rect(draw, 20, 20, 8, 16)
+    rect(draw, 22, 22, 4, 2, bone_dk); rect(draw, 24, 26, 2, 4, bone_dk)
+
+    circle(draw, 24, 14, 5, bone); circle_outline(draw, 24, 14, 5)
+    rect(draw, 20, 14, 2, 2, (30, 30, 30)); rect(draw, 26, 14, 2, 2, (30, 30, 30))
+    px(draw, 21, 14, eye); px(draw, 27, 14, eye)
+    rect(draw, 22, 18, 4, 2, bone_dk)
+    rect(draw, 21, 19, 6, 1, (30, 30, 30))
+
+    rect(draw, 17, 20, 3, 10, armor); outline_rect(draw, 17, 20, 3, 10)
+    rect(draw, 35, 10, 2, 16, sword); px(draw, 35, 9, OUTLINE)
+    rect(draw, 34, 26, 4, 2, (100, 80, 50))
+
+    rect(draw, 21, 36, 3, 6, bone_dk); rect(draw, 26, 36, 3, 6, bone_dk)
+    rect(draw, 20, 41, 4, 3, bone); rect(draw, 25, 41, 4, 3, bone)
+
+def draw_mage_knight(draw):
+    armor = (80, 60, 120); armor_hi = (110, 85, 160); robe = (60, 40, 100)
+    helm = (90, 70, 130); eye = (160, 100, 220); blade = (170, 130, 220)
+
+    rect(draw, 18, 22, 12, 16, armor); outline_rect(draw, 18, 22, 12, 16)
+    rect(draw, 20, 24, 8, 2, armor_hi)
+
+    circle(draw, 24, 16, 5, helm); circle_outline(draw, 24, 16, 5)
+    rect(draw, 20, 10, 8, 2, armor_hi)
+    px(draw, 21, 12, armor_hi); px(draw, 27, 12, armor_hi)
+    px(draw, 22, 16, eye); px(draw, 26, 16, eye)
+
+    rect(draw, 36, 10, 2, 14, blade); px(draw, 36, 9, OUTLINE)
+    rect(draw, 35, 24, 4, 2, (100, 80, 50))
+    circle(draw, 37, 8, 2, (180, 140, 240))
+
+    rect(draw, 14, 24, 4, 8, robe); outline_rect(draw, 14, 24, 4, 8)
+    rect(draw, 20, 38, 4, 6, robe); rect(draw, 26, 38, 4, 6, robe)
+
+def draw_golem(draw):
+    body = (140, 130, 120); body_hi = (180, 170, 160); body_dk = (100, 90, 80)
+    core = (100, 180, 200); core_glow = (140, 210, 240)
+
+    rect(draw, 14, 18, 20, 22, body); outline_rect(draw, 14, 18, 20, 22)
+    rect(draw, 16, 20, 16, 2, body_hi)
+    rect(draw, 20, 28, 8, 4, body_dk)
+
+    circle(draw, 24, 24, 3, core); circle_outline(draw, 24, 24, 3)
+    px(draw, 24, 24, core_glow)
+
+    rect(draw, 14, 12, 6, 6, body); outline_rect(draw, 14, 12, 6, 6)
+    px(draw, 17, 15, body_dk)
+    rect(draw, 28, 12, 6, 6, body); outline_rect(draw, 28, 12, 6, 6)
+    px(draw, 31, 15, body_dk)
+
+    rect(draw, 8, 24, 6, 10, body_dk); outline_rect(draw, 8, 24, 6, 10)
+    rect(draw, 34, 24, 6, 10, body_dk); outline_rect(draw, 34, 24, 6, 10)
+    rect(draw, 16, 40, 8, 4, body_dk); rect(draw, 24, 40, 8, 4, body_dk)
+
+def draw_shadow_lurker(draw):
+    cloak = (40, 30, 50); cloak_hi = (60, 45, 70); eye = (200, 50, 200)
+    blade = (190, 200, 210); shadow = (25, 18, 35)
+
+    rect(draw, 12, 42, 24, 3, shadow)
+    rect(draw, 20, 20, 8, 16, cloak); outline_rect(draw, 20, 20, 8, 16, cloak_hi)
+    circle(draw, 24, 16, 5, cloak); circle_outline(draw, 24, 16, 5, cloak_hi)
+
+    px(draw, 22, 16, eye); px(draw, 26, 16, eye)
+    rect(draw, 18, 10, 12, 3, cloak_hi); outline_rect(draw, 18, 10, 12, 3, cloak_hi)
+
+    rect(draw, 8, 18, 1, 12, blade); px(draw, 8, 17, OUTLINE)
+    rect(draw, 7, 30, 3, 2, (80, 60, 40))
+    rect(draw, 38, 20, 1, 10, blade); px(draw, 38, 19, OUTLINE)
+
+    px(draw, 16, 40, shadow); px(draw, 32, 38, shadow)
+    rect(draw, 20, 36, 3, 6, cloak); rect(draw, 25, 36, 3, 6, cloak)
+
+def draw_spider(draw):
+    body = (50, 40, 30); body_hi = (70, 55, 40); leg = (60, 50, 35)
+    eye = (200, 30, 30); venom = (100, 200, 50)
+
+    circle(draw, 24, 28, 6, body); circle_outline(draw, 24, 28, 6)
+    circle(draw, 24, 20, 5, body); circle_outline(draw, 24, 20, 5)
+    circle(draw, 24, 26, 3, body_hi)
+
+    px(draw, 22, 18, eye); px(draw, 26, 18, eye)
+    px(draw, 21, 20, eye); px(draw, 27, 20, (80, 20, 20))
+
+    for i in range(4):
+        px(draw, 14 - i*2, 24 + i*3, leg); px(draw, 12 - i*2, 25 + i*3, leg)
+        px(draw, 34 + i*2, 24 + i*3, leg); px(draw, 36 + i*2, 25 + i*3, leg)
+
+    px(draw, 23, 32, venom); px(draw, 25, 32, venom)
+
+def draw_dark_paladin(draw):
+    armor = (40, 30, 50); armor_hi = (70, 50, 80); cape = (80, 20, 30)
+    helm = (50, 40, 60); eye = (180, 40, 180); sword = (160, 140, 200)
+
+    rect(draw, 16, 16, 10, 22, cape)
+    rect(draw, 18, 18, 12, 18, armor); outline_rect(draw, 18, 18, 12, 18)
+    rect(draw, 20, 20, 8, 2, armor_hi)
+
+    circle(draw, 24, 12, 5, helm); circle_outline(draw, 24, 12, 5)
+    rect(draw, 20, 6, 8, 3, armor); outline_rect(draw, 20, 6, 8, 3)
+    px(draw, 22, 12, eye); px(draw, 26, 12, eye)
+    rect(draw, 22, 16, 4, 2, (100, 20, 30))
+
+    rect(draw, 36, 6, 2, 20, sword); px(draw, 36, 5, OUTLINE)
+    rect(draw, 35, 26, 4, 2, (100, 80, 60))
+    circle(draw, 37, 4, 2, (140, 60, 180))
+
+    rect(draw, 20, 36, 4, 8, armor_hi); rect(draw, 28, 36, 4, 8, armor_hi)
+    rect(draw, 19, 43, 5, 3, armor); rect(draw, 28, 43, 5, 3, armor)
+
+def draw_lich(draw):
+    bone = (200, 195, 180); bone_dk = (160, 155, 140); robe = (30, 40, 60)
+    eye = (100, 220, 100); orb = (80, 200, 160); orb_glow = (120, 240, 180)
+
+    rect(draw, 18, 24, 12, 14, robe); outline_rect(draw, 18, 24, 12, 14)
+
+    circle(draw, 24, 16, 5, bone); circle_outline(draw, 24, 16, 5)
+    rect(draw, 20, 14, 2, 2, (30, 30, 30)); rect(draw, 26, 14, 2, 2, (30, 30, 30))
+    px(draw, 21, 14, eye); px(draw, 27, 14, eye)
+    rect(draw, 22, 19, 4, 2, bone_dk)
+    rect(draw, 21, 20, 6, 1, (30, 30, 30))
+
+    rect(draw, 36, 8, 2, 30, (120, 100, 70))
+    circle(draw, 37, 6, 3, orb); circle_outline(draw, 37, 6, 3)
+    px(draw, 37, 6, orb_glow)
+
+    rect(draw, 14, 26, 4, 6, robe); rect(draw, 30, 26, 4, 6, robe)
+    rect(draw, 20, 38, 3, 6, bone_dk); rect(draw, 25, 38, 3, 6, bone_dk)
+
+def draw_void_walker(draw):
+    body = (30, 20, 50); body_hi = (60, 40, 90); void_col = (100, 50, 160)
+    eye = (160, 80, 220); portal = (140, 60, 200)
+
+    circle(draw, 24, 26, 10, (*body, 80))
+    rect(draw, 20, 22, 8, 14, body); outline_rect(draw, 20, 22, 8, 14, body_hi)
+    circle(draw, 24, 18, 4, body); circle_outline(draw, 24, 18, 4, body_hi)
+
+    px(draw, 22, 18, eye); px(draw, 26, 18, eye)
+    px(draw, 14, 16, void_col); px(draw, 34, 14, void_col)
+    px(draw, 12, 30, void_col); px(draw, 36, 28, void_col)
+    px(draw, 18, 10, portal); px(draw, 30, 34, portal)
+
+    rect(draw, 20, 36, 3, 6, body_hi); rect(draw, 25, 36, 3, 6, body_hi)
+    circle(draw, 14, 22, 2, portal); circle(draw, 34, 30, 2, portal)
+
+def draw_corrupted_spire(draw, size=64):
+    cx, cy = 32, 32
+    spire = (60, 50, 70); spire_hi = (90, 70, 100); spire_dk = (40, 30, 50)
+    eye = (200, 60, 60); glow = (180, 40, 40); crystal = (140, 80, 160)
+
+    for y in range(20):
+        w = max(2, 8 - y // 3)
+        rect(draw, cx - w//2, cy - y, w, 1, spire if y % 3 != 0 else spire_hi)
+
+    rect(draw, cx - 8, cy, 16, 16, spire); outline_rect(draw, cx - 8, cy, 16, 16)
+    rect(draw, cx - 6, cy + 2, 12, 2, spire_hi)
+
+    circle(draw, cx, cy + 6, 3, eye); circle_outline(draw, cx, cy + 6, 3)
+    px(draw, cx, cy + 6, glow)
+
+    for y in range(12):
+        w = max(1, 4 - y // 3)
+        rect(draw, cx - 12 - w//2, cy - y, w, 1, crystal)
+        rect(draw, cx + 12 - w//2, cy - y, w, 1, crystal)
+
+    rect(draw, cx - 4, cy + 16, 4, 6, spire_dk)
+    rect(draw, cx + 2, cy + 16, 4, 6, spire_dk)
+    px(draw, cx - 8, cy - 4, glow); px(draw, cx + 8, cy - 2, glow)
+
 # ──────────────────────────── MAIN ────────────────────────────
 
 ENEMIES = {
@@ -487,6 +682,16 @@ ENEMIES = {
     'spire_growth': draw_spire_growth,
     'transmogrifier': draw_transmogrifier,
     'giant_head': draw_giant_head,
+    'rat_king': draw_rat_king,
+    'skeleton': draw_skeleton,
+    'mage_knight': draw_mage_knight,
+    'golem': draw_golem,
+    'shadow_lurker': draw_shadow_lurker,
+    'spider': draw_spider,
+    'dark_paladin': draw_dark_paladin,
+    'lich': draw_lich,
+    'void_walker': draw_void_walker,
+    'corrupted_spire': draw_corrupted_spire,
 }
 
 CHARACTERS = {
@@ -527,6 +732,14 @@ def main():
 
     for enemy_id, draw_fn in ENEMIES.items():
         if enemy_id == 'slime_boss':
+            continue
+        if enemy_id == 'corrupted_spire':
+            folder = 'Sprites_corrupted_spire'
+            img, d = new_canvas(64, 64)
+            draw_fn(d, size=64)
+            save(img, folder, 'corrupted_spire.png')
+            write_xcassets(folder, ['corrupted_spire.png'])
+            print(f'  Generated {folder}')
             continue
         folder = f'Sprites_{enemy_id}'
         img, d = new_canvas(48, 48)
