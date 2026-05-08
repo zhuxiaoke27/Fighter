@@ -114,9 +114,10 @@ struct CharacterSelectView: View {
                         )
                         .shadow(color: isSelected ? characterColor(for: charClass).opacity(0.3) : .clear, radius: isSelected ? 12 : 0)
 
-                    Image(systemName: characterIcon(for: charClass))
-                        .font(.system(size: 26, weight: .medium))
-                        .foregroundStyle(characterColor(for: charClass))
+                    StaticSpriteView(
+                        imageName: SpriteAssets.staticFrame(for: charClass),
+                        size: 52
+                    )
                 }
                 .scaleEffect(isSelected ? 1.05 : 1.0)
 
@@ -189,14 +190,6 @@ struct CharacterSelectView: View {
         case .warrior: return Color(red: 0.90, green: 0.30, blue: 0.25)
         case .assassin: return Color(red: 0.60, green: 0.30, blue: 0.85)
         case .mage: return Color(red: 0.25, green: 0.58, blue: 0.90)
-        }
-    }
-
-    private func characterIcon(for charClass: CharacterClass) -> String {
-        switch charClass {
-        case .warrior: return "shield.fill"
-        case .assassin: return "bolt.fill"
-        case .mage: return "flame.fill"
         }
     }
 

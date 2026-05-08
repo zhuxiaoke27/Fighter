@@ -85,10 +85,12 @@ struct EnemyView: View {
                                 .font(.system(size: 28, weight: .heavy))
                                 .foregroundStyle(Color.red.opacity(0.5))
                         } else {
-                            // Enemy icon with theme color
-                            Image(systemName: enemyIcon)
-                                .font(.system(size: isBoss ? 32 : 26))
-                                .foregroundStyle(enemyThemeColor.opacity(0.7))
+                            // Enemy pixel art sprite
+                            let spriteSize: CGFloat = isBoss ? 64 : 48
+                            Image(SpriteAssets.enemySprite(for: enemy.templateID))
+                                .resizable()
+                                .interpolation(.none)
+                                .frame(width: spriteSize, height: spriteSize)
                         }
                     }
                     .offset(x: shakeOffset)
@@ -219,27 +221,6 @@ struct EnemyView: View {
             startPoint: .top,
             endPoint: .bottom
         )
-    }
-
-    private var enemyIcon: String {
-        switch enemy.templateID {
-        case "cultist": return "person.fill"
-        case "jaw_worm": return "ant.fill"
-        case "slime", "blue_slime": return "drop.fill"
-        case "gremlin_nob": return "figure.strengthtraining.functional"
-        case "slime_boss": return "snowflake"
-        case "fungus_beast": return "leaf.fill"
-        case "spheric_guardian": return "shield.fill"
-        case "chosen": return "eye.fill"
-        case "book_of_stabbing": return "book.fill"
-        case "gremlin_leader": return "flag.fill"
-        case "spire_growth": return "arrow.up.backward.and.arrow.down.forward"
-        case "transmogrifier": return "wand.and.stars"
-        case "darkling": return "moon.fill"
-        case "giant_head": return "person.fill"
-        case "giant_worm": return "ant.fill"
-        default: return "skull"
-        }
     }
 
     private var intentView: some View {

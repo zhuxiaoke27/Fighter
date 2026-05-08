@@ -127,14 +127,6 @@ struct CombatPlayerAreaView: View {
     let block: Int
     let buffs: [BuffInstance]
 
-    private var characterIcon: String {
-        switch characterClass {
-        case .warrior:  return "figure.strengthtraining.functional"
-        case .assassin: return "figure.run"
-        case .mage:     return "figure.wave"
-        }
-    }
-
     private var characterColor: Color {
         switch characterClass {
         case .warrior:  return Color(red: 0.85, green: 0.35, blue: 0.25)
@@ -145,7 +137,7 @@ struct CombatPlayerAreaView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            // Character avatar
+            // Character pixel art sprite
             ZStack {
                 Circle()
                     .fill(
@@ -155,16 +147,17 @@ struct CombatPlayerAreaView: View {
                             endPoint: .bottom
                         )
                     )
-                    .frame(width: 64, height: 64)
+                    .frame(width: 72, height: 72)
                     .overlay(
                         Circle()
                             .stroke(characterColor.opacity(0.5), lineWidth: 2)
                     )
                     .shadow(color: characterColor.opacity(0.3), radius: 8)
 
-                Image(systemName: characterIcon)
-                    .font(.system(size: 28, weight: .semibold))
-                    .foregroundStyle(characterColor)
+                IdleSpriteView(
+                    frames: SpriteAssets.idleFrames(for: characterClass),
+                    size: 72
+                )
             }
 
             // HP bar + block
