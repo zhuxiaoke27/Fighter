@@ -55,6 +55,13 @@ enum CombatEngine {
             }
         }
 
+        // Ascension 20 nightmare: enemies gain +1 strength
+        if store.ascensionLevel.rawValue >= 20 {
+            for i in combat.enemies.indices {
+                combat.enemies[i].addBuff(BuffInstance(type: .strength, stacks: 1))
+            }
+        }
+
         for i in combat.enemies.indices {
             determineNextIntent(for: &combat.enemies[i])
         }

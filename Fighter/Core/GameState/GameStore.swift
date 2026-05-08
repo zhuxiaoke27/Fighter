@@ -66,6 +66,9 @@ final class GameStore {
     // Run modifier (season rules)
     var activeModifier: RunModifier? = nil
 
+    // Ascension difficulty
+    var ascensionLevel: AscensionLevel = .none
+
     init() {
         self.player = PlayerState(characterClass: .warrior)
         if let savedSettings = SaveManager.shared.loadSettings() {
@@ -88,6 +91,17 @@ final class GameStore {
         player.deck = CardDatabase.startingDeck(for: characterClass)
         player.relics = [RelicDatabase.startingRelic(for: characterClass)]
         mapState = MapGenerator.generate(act: 1)
+
+        // Apply ascension modifiers
+        let asc = ascensionLevel.rawValue
+        if asc >= 1 { player.gold = max(0, player.gold - 15) }   // asc1: less starting gold
+        if asc >= 7 { player.maxHP -= 5; player.currentHP -= 5 } // asc7: less max HP
+        if asc >= 10 { // asc10: start with curse
+            if let curse = CardDatabase.randomCurse() {
+                player.deck.append(curse)
+            }
+        }
+        if asc >= 17 { player.maxHP -= 5; player.currentHP -= 5 } // asc17: even less max HP
 
         // Apply run modifier effects
         if let modifier = activeModifier {
@@ -113,6 +127,29 @@ final class GameStore {
         combatState = combat
         combat.enemies = enemies.map { CombatEnemy(template: $0) }
         player.resetForCombat()
+
+        // Apply ascension enemy HP scaling
+        let asc = ascensionLevel.rawValue
+        for i in combat.enemies.indices {
+            let enemy = combat.enemies[i]
+            var multiplier = 1.0
+            if enemy.isElite {
+                if asc >= 3 { multiplier += 0.15 }
+                if asc >= 13 { multiplier += 0.15 }
+            } else if enemy.isBoss {
+                if asc >= 6 { multiplier += 0.15 }
+                if asc >= 16 { multiplier += 0.15 }
+            } else {
+                if asc >= 9 { multiplier += 0.10 }
+                if asc >= 19 { multiplier += 0.15 }
+            }
+            if asc >= 20 { multiplier += 0.10 } // nightmare: all enemies +10%
+            if multiplier > 1.0 {
+                let scaled = Int(Double(enemy.maxHP) * multiplier)
+                combat.enemies[i].maxHP = scaled
+                combat.enemies[i].currentHP = scaled
+            }
+        }
 
         // Safety: ensure deck is not empty
         if player.deck.isEmpty {
@@ -156,6 +193,11 @@ final class GameStore {
                 rewardCards = CardDatabase.randomCards(count: cardCount, rarity: rarity, for: characterClass)
             }
             player.gold += rewardGold
+
+            // Ascension gold reduction
+            let asc = ascensionLevel.rawValue
+            if asc >= 1 { player.gold = max(0, player.gold - Int(Double(rewardGold) * 0.25)) }
+            if asc >= 11 { player.gold = max(0, player.gold - Int(Double(rewardGold) * 0.25)) }
         }
 
         // Boss relic choice after defeating a boss
@@ -172,6 +214,11 @@ final class GameStore {
         if combatVictory == true {
             gameState = .reward
         } else {
+            StatisticsStore.shared.recordRun(
+                character: player.characterClass.rawValue,
+                won: false,
+                ascension: ascensionLevel.rawValue
+            )
             gameState = .gameOver(victory: false)
             SaveManager.shared.deleteSave()
         }
@@ -282,6 +329,12 @@ final class GameStore {
         if isActComplete {
             let nextAct = currentAct + 1
             if nextAct > 3 {
+                StatisticsStore.shared.recordRun(
+                    character: player.characterClass.rawValue,
+                    won: true,
+                    ascension: ascensionLevel.rawValue
+                )
+                StatisticsStore.shared.addGoldEarned(player.gold)
                 gameState = .gameOver(victory: true)
                 SaveManager.shared.deleteSave()
             } else {

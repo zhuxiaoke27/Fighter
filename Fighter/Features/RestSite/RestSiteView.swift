@@ -55,7 +55,11 @@ struct RestSiteView: View {
 
                 HStack(spacing: 20) {
                     Button {
-                        let healAmount = store.player.maxHP / 3
+                        let baseHeal = store.player.maxHP / 3
+                        let asc = store.ascensionLevel.rawValue
+                        var healAmount = baseHeal
+                        if asc >= 2 { healAmount = max(1, Int(Double(healAmount) * 0.75)) }
+                        if asc >= 12 { healAmount = max(1, Int(Double(baseHeal) * 0.50)) }
                         store.player.currentHP = min(store.player.maxHP, store.player.currentHP + healAmount)
                         HapticManager.notification(.success)
                         store.completeRestSite()

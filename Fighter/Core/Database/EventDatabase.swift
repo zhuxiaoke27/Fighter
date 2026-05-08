@@ -420,6 +420,158 @@ enum EventDatabase {
                 EventChoice(textKey: "event_last_merchant_choice3", effects: [.loseGold(40), .removeRandomCard])
             ],
             act: 3, weight: 0.8
+        ),
+
+        // MARK: - Phase 6 — New Act 1 Events
+
+        EventTemplate(
+            id: "faerie_fountain",
+            titleKey: "event_faerie_fountain",
+            descriptionKey: "event_faerie_fountain_desc",
+            icon: "drop.fill",
+            choices: [
+                EventChoice(textKey: "event_faerie_fountain_choice1", effects: [.healPercent(0.30)]),
+                EventChoice(textKey: "event_faerie_fountain_choice2", effects: [.loseGold(10), .gainRandomPotion])
+            ],
+            act: 1, weight: 1.0
+        ),
+        EventTemplate(
+            id: "training_dummy",
+            titleKey: "event_training_dummy",
+            descriptionKey: "event_training_dummy_desc",
+            icon: "figure.boxing",
+            choices: [
+                EventChoice(textKey: "event_training_dummy_choice1", effects: [.gainDexterity(1)]),
+                EventChoice(textKey: "event_training_dummy_choice2", effects: [.gainHP(10)])
+            ],
+            act: 1, weight: 1.0
+        ),
+        EventTemplate(
+            id: "sealed_vault",
+            titleKey: "event_sealed_vault",
+            descriptionKey: "event_sealed_vault_desc",
+            icon: "lock.shield.fill",
+            choices: [
+                EventChoice(textKey: "event_sealed_vault_choice1", effects: [.loseHP(8), .gainGold(75)]),
+                EventChoice(textKey: "event_sealed_vault_choice2", effects: [.nothing])
+            ],
+            act: 1, weight: 0.8
+        ),
+        EventTemplate(
+            id: "spirit_guide",
+            titleKey: "event_spirit_guide",
+            descriptionKey: "event_spirit_guide_desc",
+            icon: "sparkle",
+            choices: [
+                EventChoice(textKey: "event_spirit_guide_choice1", effects: [.transformRandomStrike]),
+                EventChoice(textKey: "event_spirit_guide_choice2", effects: [.gainGold(20)])
+            ],
+            act: 1, weight: 0.6
+        ),
+
+        // MARK: - Phase 6 — New Act 2 Events
+
+        EventTemplate(
+            id: "alchemy_lab_event",
+            titleKey: "event_alchemy_lab_event",
+            descriptionKey: "event_alchemy_lab_event_desc",
+            icon: "flask.fill",
+            choices: [
+                EventChoice(textKey: "event_alchemy_lab_event_choice1", effects: [.gainRandomPotion, .randomDebuff]),
+                EventChoice(textKey: "event_alchemy_lab_event_choice2", effects: [.loseGold(30), .gainRandomRelic])
+            ],
+            act: 2, weight: 0.7
+        ),
+        EventTemplate(
+            id: "colosseum",
+            titleKey: "event_colosseum",
+            descriptionKey: "event_colosseum_desc",
+            icon: "shield.fill",
+            choices: [
+                EventChoice(textKey: "event_colosseum_choice1", effects: [.loseHP(15), .gainGold(100)]),
+                EventChoice(textKey: "event_colosseum_choice2", effects: [.nothing])
+            ],
+            act: 2, weight: 1.0
+        ),
+        EventTemplate(
+            id: "memory_merchant",
+            titleKey: "event_memory_merchant",
+            descriptionKey: "event_memory_merchant_desc",
+            icon: "brain.head.profile.fill",
+            choices: [
+                EventChoice(textKey: "event_memory_merchant_choice1", effects: [.removeRandomCard, .gainGold(50)]),
+                EventChoice(textKey: "event_memory_merchant_choice2", effects: [.loseGold(50), .duplicateRandomCard])
+            ],
+            act: 2, weight: 0.8
+        ),
+        EventTemplate(
+            id: "cursed_mirror",
+            titleKey: "event_cursed_mirror",
+            descriptionKey: "event_cursed_mirror_desc",
+            icon: "rectangle.portrait.fill",
+            choices: [
+                EventChoice(textKey: "event_cursed_mirror_choice1", effects: [.loseMaxHP(5), .gainStrength(1), .gainDexterity(1)]),
+                EventChoice(textKey: "event_cursed_mirror_choice2", effects: [.gainGold(20)])
+            ],
+            act: 2, weight: 0.7
+        ),
+        EventTemplate(
+            id: "dragon_hoard",
+            titleKey: "event_dragon_hoard",
+            descriptionKey: "event_dragon_hoard_desc",
+            icon: "scale.3d",
+            choices: [
+                EventChoice(textKey: "event_dragon_hoard_choice1", effects: [.gainGold(80), .loseHP(20)]),
+                EventChoice(textKey: "event_dragon_hoard_choice2", effects: [.gainGold(40)])
+            ],
+            act: 2, weight: 0.5
+        ),
+
+        // MARK: - Phase 6 — New Act 3 Events
+
+        EventTemplate(
+            id: "final_shrine",
+            titleKey: "event_final_shrine",
+            descriptionKey: "event_final_shrine_desc",
+            icon: "building.columns.fill",
+            choices: [
+                EventChoice(textKey: "event_final_shrine_choice1", effects: [.loseHP(10), .upgradeRandomCards(3)]),
+                EventChoice(textKey: "event_final_shrine_choice2", effects: [.healPercent(0.25)])
+            ],
+            act: 3, weight: 0.8
+        ),
+        EventTemplate(
+            id: "heart_of_darkness",
+            titleKey: "event_heart_of_darkness",
+            descriptionKey: "event_heart_of_darkness_desc",
+            icon: "heart.circle.fill",
+            choices: [
+                EventChoice(textKey: "event_heart_of_darkness_choice1", effects: [.gainStrength(2), .loseMaxHP(15)]),
+                EventChoice(textKey: "event_heart_of_darkness_choice2", effects: [.gainRandomRelic])
+            ],
+            act: 3, weight: 0.5
+        ),
+        EventTemplate(
+            id: "time_portal",
+            titleKey: "event_time_portal",
+            descriptionKey: "event_time_portal_desc",
+            icon: "clock.fill",
+            choices: [
+                EventChoice(textKey: "event_time_portal_choice1", effects: [.gainEnergyNextCombat(3), .randomDebuff]),
+                EventChoice(textKey: "event_time_portal_choice2", effects: [.gainGold(50)])
+            ],
+            act: 3, weight: 0.6
+        ),
+        EventTemplate(
+            id: "fallen_hero",
+            titleKey: "event_fallen_hero",
+            descriptionKey: "event_fallen_hero_desc",
+            icon: "figure.armor",
+            choices: [
+                EventChoice(textKey: "event_fallen_hero_choice1", effects: [.gainGoldPerCard(15)]),
+                EventChoice(textKey: "event_fallen_hero_choice2", effects: [.healPercent(0.30), .gainDexterity(1)])
+            ],
+            act: 3, weight: 0.7
         )
     ]
 

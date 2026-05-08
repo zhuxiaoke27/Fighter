@@ -8,6 +8,7 @@ import SwiftUI
 struct MainMenuView: View {
     @Environment(GameStore.self) private var store
     @State private var showSettings = false
+    @State private var showStatistics = false
     @State private var titleGlow = false
 
     var body: some View {
@@ -137,6 +138,19 @@ struct MainMenuView: View {
                     }
                     .buttonStyle(.plain)
                     .padding(.top, 8)
+
+                    Button {
+                        showStatistics = true
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: "chart.bar.fill")
+                                .font(.system(size: 14))
+                            Text(String(localized: "btn_statistics"))
+                                .font(.system(size: 14, weight: .medium, design: .rounded))
+                        }
+                        .foregroundStyle(Theme.textSecondary)
+                    }
+                    .buttonStyle(.plain)
                 }
 
                 Spacer().frame(height: 50)
@@ -144,6 +158,9 @@ struct MainMenuView: View {
         }
         .sheet(isPresented: $showSettings) {
             SettingsView()
+        }
+        .sheet(isPresented: $showStatistics) {
+            StatisticsView()
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {

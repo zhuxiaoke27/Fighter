@@ -8,6 +8,7 @@ import SwiftUI
 struct CharacterSelectView: View {
     @Environment(GameStore.self) private var store
     @State private var selectedClass: CharacterClass? = nil
+    @State private var ascension: AscensionLevel = .none
 
     var body: some View {
         ZStack {
@@ -37,9 +38,13 @@ struct CharacterSelectView: View {
 
                 Spacer()
 
+                // Ascension selector
+                ascensionSelector
+
                 if let selected = selectedClass {
                     Button {
                         HapticManager.impact(.medium)
+                        store.ascensionLevel = ascension
                         store.startNewRun(characterClass: selected)
                     } label: {
                         HStack(spacing: 8) {
@@ -201,5 +206,69 @@ struct CharacterSelectView: View {
         case .assassin: return "ring_of_snakes"
         case .mage: return "cracked_core"
         }
+    }
+
+    // MARK: - Ascension Selector
+
+    private var ascensionSelector: some View {
+        VStack(spacing: 8) {
+            Text(String(localized: "label_ascension"))
+                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .foregroundStyle(Theme.textSecondary)
+
+            HStack(spacing: 16) {
+                Button {
+                    HapticManager.selection()
+                    if let lower = AscensionLevel(rawValue: ascension.rawValue - 1) {
+                        ascension = lower
+                    }
+                } label: {
+                    Image(systemName: "minus.circle.fill")
+                        .font(.system(size: 22))
+                        .foregroundStyle(ascension == .none ? Theme.textSecondary.opacity(0.3) : Theme.energyColor)
+                }
+                .buttonStyle(.plain)
+                .disabled(ascension == .none)
+
+                Text(ascension == .none ? String(localized: "label_asc_none") : "Asc \(ascension.rawValue)")
+                    .font(.system(size: 18, weight: .heavy, design: .rounded))
+                    .foregroundStyle(ascension.isActive ? Theme.energyColor : Theme.textPrimary)
+                    .frame(minWidth: 80)
+
+                Button {
+                    HapticManager.selection()
+                    if let higher = AscensionLevel(rawValue: ascension.rawValue + 1) {
+                        ascension = higher
+                    }
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 22))
+                        .foregroundStyle(ascension == .asc20 ? Theme.textSecondary.opacity(0.3) : Theme.energyColor)
+                }
+                .buttonStyle(.plain)
+                .disabled(ascension == .asc20)
+            }
+
+            if ascension.isActive {
+                activeModifiers
+            }
+        }
+        .padding(.horizontal, 20)
+    }
+
+    private var activeModifiers: some View {
+        VStack(spacing: 4) {
+            ForEach(AscensionModifier.allCases.filter { $0.level <= ascension.rawValue }) { mod in
+                HStack(spacing: 6) {
+                    Circle()
+                        .fill(Theme.energyColor.opacity(0.6))
+                        .frame(width: 4, height: 4)
+                    Text(String(localized: LocalizedStringResource(stringLiteral: mod.descriptionKey)))
+                        .font(.system(size: 10, weight: .medium, design: .rounded))
+                        .foregroundStyle(Theme.textAccent)
+                }
+            }
+        }
+        .padding(.top, 2)
     }
 }
