@@ -9,6 +9,25 @@ struct CharacterSelectView: View {
     @Environment(GameStore.self) private var store
     @State private var selectedClass: CharacterClass? = nil
     @State private var ascension: AscensionLevel = .none
+    @State private var showUnlockBanner: UnlockableContent? = nil
+
+    private var unlockState: UnlockState { UnlockStore.shared.state }
+
+    private func isClassLocked(_ charClass: CharacterClass) -> Bool {
+        switch charClass {
+        case .warrior: return false
+        case .assassin: return !unlockState.isAssassinUnlocked
+        case .mage: return !unlockState.isMageUnlocked
+        }
+    }
+
+    private func lockRequirement(for charClass: CharacterClass) -> UnlockRequirement? {
+        switch charClass {
+        case .warrior: return nil
+        case .assassin: return UnlockableContent.characterAssassin.requirement
+        case .mage: return UnlockableContent.characterMage.requirement
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -38,8 +57,10 @@ struct CharacterSelectView: View {
 
                 Spacer()
 
-                // Ascension selector
-                ascensionSelector
+                // Ascension selector — only when unlocked
+                if unlockState.isAscensionUnlocked {
+                    ascensionSelector
+                }
 
                 if let selected = selectedClass {
                     Button {
@@ -93,8 +114,10 @@ struct CharacterSelectView: View {
 
     private func classCard(for charClass: CharacterClass) -> some View {
         let isSelected = selectedClass == charClass
+        let locked = isClassLocked(charClass)
 
         return Button {
+            guard !locked else { return }
             HapticManager.selection()
             withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
                 selectedClass = charClass
@@ -186,8 +209,25 @@ struct CharacterSelectView: View {
                         lineWidth: isSelected ? 2 : 1
                     )
             )
+            .overlay {
+                if locked {
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(Color.black.opacity(0.55))
+                    VStack(spacing: 4) {
+                        Image(systemName: "lock.fill")
+                            .font(.system(size: 18))
+                            .foregroundStyle(Theme.textSecondary)
+                        if let req = lockRequirement(for: charClass) {
+                            Text(String(localized: LocalizedStringResource(stringLiteral: req.descriptionKey)))
+                                .font(.system(size: 10, weight: .medium, design: .rounded))
+                                .foregroundStyle(Theme.textSecondary)
+                        }
+                    }
+                }
+            }
         }
         .buttonStyle(.plain)
+        .disabled(locked)
     }
 
     // MARK: - Helpers

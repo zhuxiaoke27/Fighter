@@ -8,6 +8,13 @@ import SwiftUI
 struct GameOverView: View {
     let victory: Bool
     @Environment(GameStore.self) private var store
+    @State private var newUnlocks: [UnlockableContent] = []
+    @State private var showShareSheet = false
+
+    private var shareText: String {
+        let result = victory ? "Victory!" : "Defeated"
+        return "\(result) — Act \(store.currentAct) | HP: \(store.player.currentHP)/\(store.player.maxHP) | Gold: \(store.player.gold)g | Cards: \(store.player.deck.count) | Relics: \(store.player.relics.count)"
+    }
 
     var body: some View {
         ZStack {
@@ -76,35 +83,98 @@ struct GameOverView: View {
                 }
                 .padding(.top, 8)
 
+                // Unlock notification
+                if !newUnlocks.isEmpty {
+                    VStack(spacing: 6) {
+                        Image(systemName: "lock.open.fill")
+                            .font(.system(size: 16))
+                            .foregroundStyle(Theme.energyColor)
+                        Text(String(localized: "label_new_unlocks"))
+                            .font(.system(size: 13, weight: .bold, design: .rounded))
+                            .foregroundStyle(Theme.energyColor)
+                        ForEach(newUnlocks) { unlock in
+                            Text(String(localized: LocalizedStringResource(stringLiteral: unlock.nameKey)))
+                                .font(.system(size: 11, weight: .medium, design: .rounded))
+                                .foregroundStyle(Theme.textAccent)
+                        }
+                    }
+                    .padding(12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Theme.energyColor.opacity(0.1))
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Theme.energyColor.opacity(0.3), lineWidth: 1))
+                    )
+                    .padding(.horizontal, 20)
+                }
+
                 Spacer()
 
-                Button {
-                    store.quitToMenu()
-                } label: {
-                    HStack(spacing: 6) {
-                        Image(systemName: "arrow.counterclockwise")
-                        Text(String(localized: "btn_back_menu"))
-                            .font(Theme.buttonFont)
-                    }
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 14)
-                    .background(
-                        LinearGradient(
-                            colors: [Color(red: 0.30, green: 0.58, blue: 0.88), Color(red: 0.20, green: 0.45, blue: 0.75)],
-                            startPoint: .top,
-                            endPoint: .bottom
+                HStack(spacing: 12) {
+                    Button {
+                        store.quitToMenu()
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: "arrow.counterclockwise")
+                            Text(String(localized: "btn_back_menu"))
+                                .font(Theme.buttonFont)
+                        }
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 14)
+                        .background(
+                            LinearGradient(
+                                colors: [Color(red: 0.30, green: 0.58, blue: 0.88), Color(red: 0.20, green: 0.45, blue: 0.75)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
                         )
-                    )
-                    .clipShape(Capsule())
-                    .shadow(color: Color(red: 0.30, green: 0.58, blue: 0.88).opacity(0.35), radius: 8, y: 3)
+                        .clipShape(Capsule())
+                        .shadow(color: Color(red: 0.30, green: 0.58, blue: 0.88).opacity(0.35), radius: 8, y: 3)
+                    }
+                    .buttonStyle(.plain)
+
+                    Button {
+                        showShareSheet = true
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .padding(14)
+                            .background(
+                                Capsule()
+                                    .fill(Color(red: 0.30, green: 0.58, blue: 0.88).opacity(0.3))
+                                    .overlay(Capsule().stroke(Color(red: 0.30, green: 0.58, blue: 0.88).opacity(0.5), lineWidth: 1))
+                            )
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
                 .padding(.bottom, 40)
             }
         }
         .onAppear {
             HapticManager.notification(victory ? .success : .error)
+            // Unlock checking already happened in GameStore before arriving here,
+            // but we can re-check to find what was newly unlocked
+            let stats = StatisticsStore.shared.stats
+            newUnlocks = UnlockableContent.allCases.filter {
+                UnlockStore.shared.isUnlocked($0) && $0.isSatisfied(by: stats)
+            }
+            // Only show recently unlocked (those whose requirement is just barely met)
+            let previousRuns = stats.totalRuns - 1
+            newUnlocks = newUnlocks.filter { content in
+                let req = content.requirement
+                switch req.type {
+                case .totalRuns: return previousRuns < req.value && stats.totalRuns >= req.value
+                case .totalWins: return stats.totalWins == req.value
+                case .bossesDefeated: return stats.bossesDefeated == req.value
+                case .highestAscension:
+                    let best = stats.highestAscension.values.max() ?? 0
+                    return best == req.value
+                }
+            }
+        }
+        .sheet(isPresented: $showShareSheet) {
+            UIActivityView(activityItems: [shareText])
         }
     }
 
@@ -127,4 +197,16 @@ struct GameOverView: View {
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(color.opacity(0.15), lineWidth: 0.5))
         )
     }
+}
+
+// MARK: - Share Sheet Wrapper
+
+struct UIActivityView: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

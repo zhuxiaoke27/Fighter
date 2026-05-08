@@ -74,6 +74,19 @@ struct MainMenuView: View {
                     Text(String(localized: "app_name"))
                         .font(.system(size: 13, weight: .medium, design: .rounded))
                         .foregroundStyle(Theme.textSecondary)
+
+                    let runs = StatisticsStore.shared.stats.totalRuns
+                    let unlockState = UnlockStore.shared.state
+                    if runs > 0 {
+                        HStack(spacing: 12) {
+                            Text(String(localized: "label_total_runs \(runs)"))
+                                .font(.system(size: 11, weight: .medium, design: .rounded))
+                                .foregroundStyle(Theme.textSecondary)
+                            Text(String(localized: "label_unlock_progress \(unlockState.unlockedCount) \(unlockState.totalCount)"))
+                                .font(.system(size: 11, weight: .medium, design: .rounded))
+                                .foregroundStyle(Theme.energyColor.opacity(0.8))
+                        }
+                    }
                 }
 
                 Spacer()

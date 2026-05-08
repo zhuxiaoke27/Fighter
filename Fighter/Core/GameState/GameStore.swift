@@ -219,6 +219,7 @@ final class GameStore {
                 won: false,
                 ascension: ascensionLevel.rawValue
             )
+            UnlockStore.shared.checkAndUnlock(statistics: StatisticsStore.shared.stats)
             gameState = .gameOver(victory: false)
             SaveManager.shared.deleteSave()
         }
@@ -335,6 +336,7 @@ final class GameStore {
                     ascension: ascensionLevel.rawValue
                 )
                 StatisticsStore.shared.addGoldEarned(player.gold)
+                UnlockStore.shared.checkAndUnlock(statistics: StatisticsStore.shared.stats)
                 gameState = .gameOver(victory: true)
                 SaveManager.shared.deleteSave()
             } else {

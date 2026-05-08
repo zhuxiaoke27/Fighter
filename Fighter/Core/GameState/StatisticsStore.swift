@@ -59,4 +59,11 @@ final class StatisticsStore {
         stats.totalGoldEarned += amount
         save()
     }
+
+    // MARK: - Reset
+
+    func reset() {
+        stats = GameStatistics()
+        save()
+    }
 }

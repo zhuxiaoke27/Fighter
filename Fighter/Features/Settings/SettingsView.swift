@@ -8,6 +8,8 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(GameStore.self) private var store
     @Environment(\.dismiss) private var dismiss
+    @State private var showResetStatsAlert = false
+    @State private var showResetUnlocksAlert = false
 
     var body: some View {
         NavigationStack {
@@ -73,6 +75,50 @@ struct SettingsView: View {
                     }
 
                     Spacer()
+
+                    // Destructive actions
+                    VStack(spacing: 12) {
+                        Button(role: .destructive) {
+                            showResetStatsAlert = true
+                        } label: {
+                            HStack(spacing: 8) {
+                                Image(systemName: "chart.bar.fill")
+                                    .font(.system(size: 14))
+                                Text(String(localized: "btn_reset_stats"))
+                                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                            }
+                            .foregroundStyle(Color(red: 0.85, green: 0.35, blue: 0.30))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color(red: 0.85, green: 0.22, blue: 0.18).opacity(0.1))
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.85, green: 0.22, blue: 0.18).opacity(0.3), lineWidth: 1))
+                            )
+                        }
+                        .buttonStyle(.plain)
+
+                        Button(role: .destructive) {
+                            showResetUnlocksAlert = true
+                        } label: {
+                            HStack(spacing: 8) {
+                                Image(systemName: "lock.fill")
+                                    .font(.system(size: 14))
+                                Text(String(localized: "btn_reset_unlocks"))
+                                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                            }
+                            .foregroundStyle(Color(red: 0.85, green: 0.35, blue: 0.30))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color(red: 0.85, green: 0.22, blue: 0.18).opacity(0.1))
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.85, green: 0.22, blue: 0.18).opacity(0.3), lineWidth: 1))
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .padding(.bottom, 20)
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 8)
@@ -93,6 +139,18 @@ struct SettingsView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .onChange(of: store.settings) { _, _ in
                 SaveManager.shared.saveSettings(store.settings)
+            }
+            .alert(String(localized: "label_reset_stats_confirm"), isPresented: $showResetStatsAlert) {
+                Button(String(localized: "btn_reset"), role: .destructive) {
+                    StatisticsStore.shared.reset()
+                }
+                Button(String(localized: "btn_cancel"), role: .cancel) {}
+            }
+            .alert(String(localized: "label_reset_unlocks_confirm"), isPresented: $showResetUnlocksAlert) {
+                Button(String(localized: "btn_reset"), role: .destructive) {
+                    UnlockStore.shared.reset()
+                }
+                Button(String(localized: "btn_cancel"), role: .cancel) {}
             }
         }
     }
