@@ -190,7 +190,7 @@ struct MapView: View {
             // Nodes row
             HStack(spacing: 24) {
                 ForEach(nodes) { node in
-                    MapNodeView(node: node) {
+                    MapNodeView(node: node, isCurrentFloor: floorIndex == mapState.currentFloor) {
                         guard node.isAccessible && !node.isVisited else { return }
                         HapticManager.selection()
                         mapState.visitNode(id: node.id)

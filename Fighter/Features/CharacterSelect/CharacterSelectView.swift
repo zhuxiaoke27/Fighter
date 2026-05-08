@@ -99,24 +99,26 @@ struct CharacterSelectView: View {
                         .fill(
                             RadialGradient(
                                 colors: [
-                                    characterColor(for: charClass).opacity(isSelected ? 0.5 : 0.3),
+                                    characterColor(for: charClass).opacity(isSelected ? 0.6 : 0.3),
                                     characterColor(for: charClass).opacity(0.08)
                                 ],
                                 center: .center,
                                 startRadius: 5,
-                                endRadius: 35
+                                endRadius: 40
                             )
                         )
-                        .frame(width: 64, height: 64)
+                        .frame(width: 80, height: 80)
                         .overlay(
                             Circle()
-                                .stroke(characterColor(for: charClass).opacity(isSelected ? 0.6 : 0.2), lineWidth: isSelected ? 2 : 1)
+                                .stroke(characterColor(for: charClass).opacity(isSelected ? 0.7 : 0.2), lineWidth: isSelected ? 2.5 : 1)
                         )
+                        .shadow(color: isSelected ? characterColor(for: charClass).opacity(0.3) : .clear, radius: isSelected ? 12 : 0)
 
                     Image(systemName: characterIcon(for: charClass))
-                        .font(.system(size: 22, weight: .medium))
+                        .font(.system(size: 26, weight: .medium))
                         .foregroundStyle(characterColor(for: charClass))
                 }
+                .scaleEffect(isSelected ? 1.05 : 1.0)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(String(localized: LocalizedStringResource(stringLiteral: charClass.localizationKey)))

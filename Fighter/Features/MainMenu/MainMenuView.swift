@@ -8,12 +8,14 @@ import SwiftUI
 struct MainMenuView: View {
     @Environment(GameStore.self) private var store
     @State private var showSettings = false
+    @State private var titleGlow = false
 
     var body: some View {
         ZStack {
             LinearGradient(
                 colors: [
                     Color(red: 0.10, green: 0.08, blue: 0.18),
+                    Color(red: 0.08, green: 0.06, blue: 0.14),
                     Color(red: 0.06, green: 0.05, blue: 0.10)
                 ],
                 startPoint: .top,
@@ -21,12 +23,30 @@ struct MainMenuView: View {
             )
             .ignoresSafeArea()
 
-            // Background orbs
+            // Atmospheric particles
+            ParticleField(
+                colors: [
+                    Theme.energyColor.opacity(0.4),
+                    Theme.energyColor.opacity(0.2),
+                    Color.white.opacity(0.15)
+                ],
+                particleCount: 25,
+                speedMultiplier: 0.5
+            )
+
+            // Background glow orbs with radial gradients
             VStack {
                 Spacer().frame(height: 80)
                 ForEach(0..<3, id: \.self) { i in
                     Circle()
-                        .fill(Theme.energyColor.opacity(0.03 + Double(i) * 0.01))
+                        .fill(
+                            RadialGradient(
+                                colors: [Theme.energyColor.opacity(0.06 + Double(i) * 0.02), .clear],
+                                center: .center,
+                                startRadius: 0,
+                                endRadius: CGFloat(100 + i * 40)
+                            )
+                        )
                         .frame(width: CGFloat(200 + i * 80), height: CGFloat(200 + i * 80))
                         .offset(y: CGFloat(-40 + i * 30))
                 }
@@ -36,18 +56,19 @@ struct MainMenuView: View {
             VStack(spacing: 0) {
                 Spacer()
 
-                // Title
+                // Title with pulsing glow
                 VStack(spacing: 8) {
                     Image(systemName: "bolt.ring.closed")
                         .font(.system(size: 44, weight: .medium))
                         .foregroundStyle(Theme.energyColor)
-                        .shadow(color: Theme.energyGlow, radius: 12)
+                        .modifier(PulsingGlow(color: Theme.energyGlow, radius: 20, duration: 2.5))
                         .padding(.bottom, 8)
 
                     Text(String(localized: "label_game_title"))
                         .font(.system(size: 38, weight: .heavy, design: .rounded))
                         .foregroundStyle(Theme.textPrimary)
                         .shadow(color: .black.opacity(0.3), radius: 4, y: 2)
+                        .shadow(color: Theme.energyColor.opacity(titleGlow ? 0.15 : 0.05), radius: titleGlow ? 16 : 8)
 
                     Text(String(localized: "app_name"))
                         .font(.system(size: 13, weight: .medium, design: .rounded))
@@ -123,6 +144,11 @@ struct MainMenuView: View {
         }
         .sheet(isPresented: $showSettings) {
             SettingsView()
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {
+                titleGlow = true
+            }
         }
     }
 }

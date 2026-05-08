@@ -82,6 +82,95 @@ enum Theme {
     static let enemyIntentBuff = Color(red: 0.45, green: 0.85, blue: 0.50)
     static let enemyIntentDebuff = Color(red: 0.70, green: 0.45, blue: 0.90)
 
+    // MARK: - Rich Card Gradients
+    static func cardRichGradient(for type: CardType) -> LinearGradient {
+        let color = cardColor(for: type)
+        return LinearGradient(
+            colors: [
+                color.opacity(0.45),
+                color.opacity(0.25),
+                color.opacity(0.10),
+                Color(red: 0.10, green: 0.09, blue: 0.16)
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+    }
+
+    // MARK: - Act-Themed Particle Colors
+    static func particleColors(for act: Int) -> [Color] {
+        switch act {
+        case 1: return [
+            Color(red: 1.0, green: 0.55, blue: 0.20).opacity(0.6),
+            Color(red: 0.95, green: 0.35, blue: 0.15).opacity(0.4),
+            Color(red: 1.0, green: 0.75, blue: 0.30).opacity(0.3)
+        ]
+        case 2: return [
+            Color(red: 0.50, green: 0.75, blue: 1.0).opacity(0.5),
+            Color(red: 0.70, green: 0.85, blue: 1.0).opacity(0.3),
+            Color.white.opacity(0.2)
+        ]
+        case 3: return [
+            Color(red: 0.60, green: 0.30, blue: 0.85).opacity(0.5),
+            Color(red: 0.40, green: 0.20, blue: 0.60).opacity(0.4),
+            Color(red: 0.80, green: 0.50, blue: 1.0).opacity(0.3)
+        ]
+        default: return [Color.white.opacity(0.2)]
+        }
+    }
+
+    // MARK: - Act-Themed Combat Background
+    static func combatBackground(for act: Int) -> LinearGradient {
+        switch act {
+        case 1: return LinearGradient(colors: [
+            Color(red: 0.12, green: 0.08, blue: 0.10),
+            Color(red: 0.08, green: 0.05, blue: 0.08),
+            Color(red: 0.06, green: 0.04, blue: 0.06)
+        ], startPoint: .top, endPoint: .bottom)
+        case 2: return LinearGradient(colors: [
+            Color(red: 0.08, green: 0.10, blue: 0.16),
+            Color(red: 0.05, green: 0.07, blue: 0.12),
+            Color(red: 0.04, green: 0.05, blue: 0.09)
+        ], startPoint: .top, endPoint: .bottom)
+        case 3: return LinearGradient(colors: [
+            Color(red: 0.10, green: 0.06, blue: 0.16),
+            Color(red: 0.07, green: 0.04, blue: 0.12),
+            Color(red: 0.05, green: 0.03, blue: 0.09)
+        ], startPoint: .top, endPoint: .bottom)
+        default: return backgroundGradient
+        }
+    }
+
+    // MARK: - Screen Backgrounds
+    static let shopBackground = LinearGradient(colors: [
+        Color(red: 0.10, green: 0.12, blue: 0.08),
+        Color(red: 0.08, green: 0.10, blue: 0.06),
+        Color(red: 0.06, green: 0.08, blue: 0.04)
+    ], startPoint: .top, endPoint: .bottom)
+
+    static let rewardBackground = LinearGradient(colors: [
+        Color(red: 0.12, green: 0.10, blue: 0.06),
+        Color(red: 0.08, green: 0.07, blue: 0.04),
+        Color(red: 0.06, green: 0.05, blue: 0.03)
+    ], startPoint: .top, endPoint: .bottom)
+
+    static let eventBackground = LinearGradient(colors: [
+        Color(red: 0.10, green: 0.06, blue: 0.14),
+        Color(red: 0.07, green: 0.04, blue: 0.10),
+        Color(red: 0.05, green: 0.03, blue: 0.08)
+    ], startPoint: .top, endPoint: .bottom)
+
+    static let restSiteBackground = LinearGradient(colors: [
+        Color(red: 0.10, green: 0.08, blue: 0.06),
+        Color(red: 0.08, green: 0.06, blue: 0.04),
+        Color(red: 0.06, green: 0.04, blue: 0.03)
+    ], startPoint: .top, endPoint: .bottom)
+
+    // MARK: - Rarity Glow Colors
+    static let rareGlow = Color(red: 1.0, green: 0.85, blue: 0.30)
+    static let uncommonGlow = Color(red: 0.35, green: 0.55, blue: 0.90)
+    static let upgradedGlow = Color(red: 0.30, green: 0.85, blue: 0.50)
+
     // MARK: - Shadows
     static let shadowColor = Color.black.opacity(0.5)
 
@@ -108,10 +197,140 @@ enum Theme {
 // MARK: - View Modifier for Card Shadow
 struct CardShadow: ViewModifier {
     let isSelected: Bool
+    let isUpgraded: Bool
+
+    init(isSelected: Bool, isUpgraded: Bool = false) {
+        self.isSelected = isSelected
+        self.isUpgraded = isUpgraded
+    }
+
     func body(content: Content) -> some View {
         content
             .shadow(color: Theme.shadowColor, radius: 4, y: 2)
             .shadow(color: isSelected ? Theme.energyGlow : .clear, radius: 12, y: -2)
+            .shadow(color: isUpgraded && !isSelected ? Theme.upgradedGlow.opacity(0.3) : .clear, radius: 8, y: 0)
+    }
+}
+
+// MARK: - Shimmer Effect
+struct ShimmerEffect: ViewModifier {
+    let color: Color
+    @State private var phase: CGFloat = 0
+
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                GeometryReader { geo in
+                    LinearGradient(
+                        colors: [.clear, color.opacity(0.3), .clear],
+                        startPoint: .init(x: phase - 0.3, y: 0),
+                        endPoint: .init(x: phase + 0.3, y: 0)
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.cardCornerRadius))
+                }
+            )
+            .onAppear {
+                withAnimation(.easeInOut(duration: 2.0).repeatForever(autoreverses: false)) {
+                    phase = 1.5
+                }
+            }
+    }
+}
+
+// MARK: - Particle System
+struct Particle: Identifiable {
+    let id = UUID()
+    var x: CGFloat
+    var y: CGFloat
+    var size: CGFloat
+    var speed: CGFloat
+    var opacity: Double
+    var drift: CGFloat
+    let colorIndex: Int
+}
+
+struct ParticleField: View {
+    let colors: [Color]
+    let particleCount: Int
+    let speedMultiplier: CGFloat
+    @State private var particles: [Particle] = []
+
+    init(colors: [Color], particleCount: Int = 20, speedMultiplier: CGFloat = 1.0) {
+        self.colors = colors
+        self.particleCount = particleCount
+        self.speedMultiplier = speedMultiplier
+    }
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { timeline in
+            Canvas { context, canvasSize in
+                for particle in particles {
+                    let color = colors[particle.colorIndex % colors.count]
+                    let rect = CGRect(
+                        x: particle.x * canvasSize.width,
+                        y: particle.y * canvasSize.height,
+                        width: particle.size,
+                        height: particle.size
+                    )
+                    context.opacity = particle.opacity
+                    context.fill(Circle().path(in: rect), with: .color(color))
+                    context.opacity = particle.opacity * 0.4
+                    let glowRect = rect.insetBy(dx: -particle.size, dy: -particle.size)
+                    context.fill(Circle().path(in: glowRect), with: .color(color.opacity(0.3)))
+                }
+            }
+            .onAppear { initializeParticles() }
+            .onChange(of: timeline.date) { _, _ in updateParticles() }
+        }
+        .allowsHitTesting(false)
+    }
+
+    private func initializeParticles() {
+        particles = (0..<particleCount).map { i in
+            Particle(
+                x: .random(in: 0...1), y: .random(in: 0...1),
+                size: .random(in: 2...5), speed: .random(in: 0.003...0.012) * speedMultiplier,
+                opacity: .random(in: 0.2...0.6), drift: .random(in: -0.002...0.002),
+                colorIndex: i % colors.count
+            )
+        }
+    }
+
+    private func updateParticles() {
+        for i in particles.indices {
+            particles[i].y -= particles[i].speed
+            particles[i].x += particles[i].drift
+            particles[i].opacity += Double.random(in: -0.02...0.02)
+            particles[i].opacity = max(0.1, min(0.6, particles[i].opacity))
+            if particles[i].y < -0.05 {
+                particles[i].y = 1.05
+                particles[i].x = .random(in: 0...1)
+            }
+        }
+    }
+}
+
+// MARK: - Pulsing Glow Modifier
+struct PulsingGlow: ViewModifier {
+    let color: Color
+    let radius: CGFloat
+    let duration: Double
+    @State private var isGlowing = false
+
+    init(color: Color, radius: CGFloat = 12, duration: Double = 2.0) {
+        self.color = color
+        self.radius = radius
+        self.duration = duration
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .shadow(color: isGlowing ? color : color.opacity(0.3), radius: isGlowing ? radius : radius * 0.5)
+            .onAppear {
+                withAnimation(.easeInOut(duration: duration).repeatForever(autoreverses: true)) {
+                    isGlowing = true
+                }
+            }
     }
 }
 

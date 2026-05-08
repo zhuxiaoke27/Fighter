@@ -45,6 +45,8 @@ struct EnemyView: View {
     let onTap: () -> Void
 
     @State private var hitFlash = false
+    @State private var shakeOffset: CGFloat = 0
+    @State private var deathOpacity: Double = 1.0
 
     var body: some View {
         Button(action: onTap) {
@@ -54,25 +56,28 @@ struct EnemyView: View {
 
                 // Enemy card
                 VStack(spacing: 6) {
-                    // Enemy body area
+                    // Enemy body area — larger with per-enemy theme
                     ZStack {
                         RoundedRectangle(cornerRadius: 14)
+                            .fill(enemyThemedGradient)
+                            .frame(width: 100, height: 80)
+
+                        // Glow overlay
+                        RoundedRectangle(cornerRadius: 14)
                             .fill(
-                                LinearGradient(
-                                    colors: [
-                                        Color(red: 0.22, green: 0.18, blue: 0.30),
-                                        Color(red: 0.16, green: 0.13, blue: 0.24)
-                                    ],
-                                    startPoint: .top,
-                                    endPoint: .bottom
+                                RadialGradient(
+                                    colors: [enemyThemeColor.opacity(0.15), .clear],
+                                    center: .center,
+                                    startRadius: 0,
+                                    endRadius: 40
                                 )
                             )
-                            .frame(width: 90, height: 70)
+                            .frame(width: 100, height: 80)
 
                         // Hit flash overlay
                         RoundedRectangle(cornerRadius: 14)
                             .fill(Color.white)
-                            .frame(width: 90, height: 70)
+                            .frame(width: 100, height: 80)
                             .opacity(hitFlash ? 0.6 : 0)
 
                         if !enemy.isAlive {
@@ -80,17 +85,27 @@ struct EnemyView: View {
                                 .font(.system(size: 28, weight: .heavy))
                                 .foregroundStyle(Color.red.opacity(0.5))
                         } else {
-                            // Enemy icon placeholder
+                            // Enemy icon with theme color
                             Image(systemName: enemyIcon)
-                                .font(.system(size: 26))
-                                .foregroundStyle(Theme.textSecondary.opacity(0.6))
+                                .font(.system(size: isBoss ? 32 : 26))
+                                .foregroundStyle(enemyThemeColor.opacity(0.7))
                         }
                     }
+                    .offset(x: shakeOffset)
                     .onChange(of: enemy.currentHP) { oldHP, newHP in
                         if newHP < oldHP {
                             hitFlash = true
-                            withAnimation(.easeOut(duration: 0.25)) {
-                                hitFlash = false
+                            withAnimation(.easeOut(duration: 0.08)) { shakeOffset = 8 }
+                            withAnimation(.easeOut(duration: 0.08).delay(0.08)) { shakeOffset = -6 }
+                            withAnimation(.easeOut(duration: 0.08).delay(0.16)) { shakeOffset = 4 }
+                            withAnimation(.easeOut(duration: 0.08).delay(0.24)) { shakeOffset = 0 }
+                            withAnimation(.easeOut(duration: 0.25)) { hitFlash = false }
+                        }
+                    }
+                    .onChange(of: enemy.isAlive) { wasAlive, isAlive in
+                        if wasAlive && !isAlive {
+                            withAnimation(.easeOut(duration: 0.6)) {
+                                deathOpacity = 0.2
                             }
                         }
                     }
@@ -99,11 +114,11 @@ struct EnemyView: View {
                             .stroke(
                                 isSelected ? Theme.energyColor :
                                     isTarget ? Theme.energyColor.opacity(0.4) :
-                                    Color.white.opacity(0.06),
+                                    enemyThemeColor.opacity(0.2),
                                 lineWidth: isSelected ? 2.5 : 1
                             )
                     )
-                    .shadow(color: isSelected ? Theme.energyGlow : .black.opacity(0.3), radius: isSelected ? 10 : 3, y: 2)
+                    .shadow(color: isSelected ? Theme.energyGlow : enemyThemeColor.opacity(0.15), radius: isSelected ? 10 : 3, y: 2)
 
                     // Name + HP section
                     VStack(spacing: 4) {
@@ -159,11 +174,51 @@ struct EnemyView: View {
                         }
                     }
                 }
-                .opacity(enemy.isAlive ? 1.0 : 0.3)
+                .opacity(deathOpacity)
             }
         }
         .buttonStyle(.plain)
         .disabled(!enemy.isAlive)
+    }
+
+    // MARK: - Per-Enemy Theming
+
+    private var isBoss: Bool {
+        enemy.templateID.contains("boss")
+    }
+
+    private var enemyThemeColor: Color {
+        switch enemy.templateID {
+        case "cultist":           return Color(red: 0.85, green: 0.25, blue: 0.20)
+        case "jaw_worm":          return Color(red: 0.70, green: 0.50, blue: 0.20)
+        case "slime", "blue_slime": return Color(red: 0.30, green: 0.65, blue: 0.85)
+        case "gremlin_nob":       return Color(red: 0.85, green: 0.40, blue: 0.20)
+        case "slime_boss":        return Color(red: 0.40, green: 0.75, blue: 0.50)
+        case "fungus_beast":      return Color(red: 0.40, green: 0.70, blue: 0.30)
+        case "spheric_guardian":  return Color(red: 0.50, green: 0.60, blue: 0.80)
+        case "chosen":            return Color(red: 0.60, green: 0.30, blue: 0.80)
+        case "book_of_stabbing":  return Color(red: 0.70, green: 0.20, blue: 0.20)
+        case "gremlin_leader":    return Color(red: 0.80, green: 0.55, blue: 0.20)
+        case "spire_growth":      return Color(red: 0.45, green: 0.75, blue: 0.40)
+        case "transmogrifier":    return Color(red: 0.65, green: 0.40, blue: 0.85)
+        case "darkling":          return Color(red: 0.40, green: 0.30, blue: 0.60)
+        case "giant_head":        return Color(red: 0.80, green: 0.60, blue: 0.30)
+        case "giant_worm":        return Color(red: 0.65, green: 0.35, blue: 0.20)
+        default:                  return Theme.textSecondary
+        }
+    }
+
+    private var enemyThemedGradient: LinearGradient {
+        let color = enemyThemeColor
+        return LinearGradient(
+            colors: [
+                color.opacity(0.25),
+                Color(red: 0.18, green: 0.15, blue: 0.26),
+                Color(red: 0.14, green: 0.12, blue: 0.22)
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 
     private var enemyIcon: String {

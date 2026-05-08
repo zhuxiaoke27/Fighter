@@ -7,11 +7,29 @@ import SwiftUI
 
 struct MapNodeView: View {
     let node: MapNode
+    let isCurrentFloor: Bool
     let onTap: () -> Void
+
+    @State private var pulse = false
+
+    init(node: MapNode, isCurrentFloor: Bool = false, onTap: @escaping () -> Void) {
+        self.node = node
+        self.isCurrentFloor = isCurrentFloor
+        self.onTap = onTap
+    }
 
     var body: some View {
         Button(action: onTap) {
             ZStack {
+                // Current floor pulsing ring
+                if isCurrentFloor && node.isAccessible && !node.isVisited {
+                    Circle()
+                        .stroke(typeColor.opacity(0.3), lineWidth: 3)
+                        .frame(width: 52, height: 52)
+                        .scaleEffect(pulse ? 1.15 : 1.0)
+                        .opacity(pulse ? 0.6 : 0.2)
+                }
+
                 Circle()
                     .fill(backgroundColor)
                     .frame(width: 44, height: 44)
@@ -34,6 +52,13 @@ struct MapNodeView: View {
         }
         .buttonStyle(.plain)
         .disabled(!node.isAccessible || node.isVisited)
+        .onAppear {
+            if isCurrentFloor && node.isAccessible && !node.isVisited {
+                withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
+                    pulse = true
+                }
+            }
+        }
     }
 
     private var backgroundColor: Color {

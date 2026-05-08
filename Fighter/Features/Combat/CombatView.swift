@@ -150,14 +150,10 @@ struct CombatView: View {
                 }
             }
             .background(
-                LinearGradient(
-                    colors: [
-                        Color(red: 0.10, green: 0.08, blue: 0.18),
-                        Color(red: 0.06, green: 0.05, blue: 0.10)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
+                ZStack {
+                    Theme.combatBackground(for: store.currentAct)
+                    ParticleField(colors: Theme.particleColors(for: store.currentAct), particleCount: 15, speedMultiplier: 0.8)
+                }
             )
             .ignoresSafeArea(.container, edges: .bottom)
 
