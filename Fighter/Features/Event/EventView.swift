@@ -93,6 +93,7 @@ struct EventView: View {
                         VStack(spacing: 12) {
                             ForEach(event.choices) { choice in
                                 Button {
+                                    HapticManager.selection()
                                     resolveChoice(choice)
                                 } label: {
                                 HStack(spacing: 10) {
@@ -376,6 +377,11 @@ struct EventView: View {
         } else {
             let msg = results.map(\.text).joined(separator: ", ")
             resultColor = results.contains(where: \.isNegative) ? Color(red: 0.95, green: 0.60, blue: 0.40) : Color(red: 0.30, green: 0.85, blue: 0.50)
+            if results.contains(where: \.isNegative) {
+                HapticManager.impact(.medium)
+            } else {
+                HapticManager.notification(.success)
+            }
             withAnimation(.spring(response: 0.3)) {
                 resultMessage = msg
             }

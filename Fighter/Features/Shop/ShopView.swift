@@ -174,8 +174,11 @@ struct ShopView: View {
         let price = cardPrice(card.rarity)
         let canAfford = store.player.gold >= price
         return Button {
-            guard canAfford else { return }
-            HapticManager.impact(.medium)
+            guard canAfford else {
+                HapticManager.notification(.warning)
+                return
+            }
+            HapticManager.notification(.success)
             store.player.gold -= price
             store.player.deck.append(card.copy())
             store.shopCards.remove(at: index)
@@ -224,6 +227,7 @@ struct ShopView: View {
                     ForEach(store.player.deck) { card in
                         Button {
                             guard store.player.gold >= 75 && !store.hasRemovedCardThisShopVisit else { return }
+                            HapticManager.impact(.medium)
                             if let idx = store.player.deck.firstIndex(where: { $0.id == card.id }) {
                                 store.player.deck.remove(at: idx)
                             }
@@ -273,7 +277,7 @@ struct ShopView: View {
         let price = index < store.shopRelicPrices.count ? store.shopRelicPrices[index] : 150
         let canAfford = store.player.gold >= price
         return Button {
-            HapticManager.impact(.medium)
+            HapticManager.notification(.success)
             store.purchaseRelic(at: index)
         } label: {
             VStack(spacing: 4) {
@@ -319,7 +323,7 @@ struct ShopView: View {
         let canAfford = store.player.gold >= price
         let hasEmptySlot = store.player.potions.contains(where: { $0 == nil })
         return Button {
-            HapticManager.impact(.medium)
+            HapticManager.notification(.success)
             store.purchasePotion(at: index)
         } label: {
             VStack(spacing: 4) {

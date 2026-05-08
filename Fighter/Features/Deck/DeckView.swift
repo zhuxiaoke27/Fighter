@@ -102,7 +102,10 @@ struct DeckView: View {
     }
 
     private func tagChip(label: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
+        Button(action: {
+            HapticManager.selection()
+            action()
+        }) {
             Text(label)
                 .font(.system(size: 11, weight: .bold, design: .rounded))
                 .foregroundStyle(isSelected ? Theme.textPrimary : Theme.textSecondary)

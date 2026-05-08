@@ -57,6 +57,7 @@ struct RestSiteView: View {
                     Button {
                         let healAmount = store.player.maxHP / 3
                         store.player.currentHP = min(store.player.maxHP, store.player.currentHP + healAmount)
+                        HapticManager.notification(.success)
                         store.completeRestSite()
                     } label: {
                         VStack(spacing: 10) {
@@ -129,6 +130,7 @@ struct RestSiteView: View {
                             if let idx = store.player.deck.firstIndex(where: { $0.id == card.id }) {
                                 store.player.deck[idx] = card.withUpgrade()
                             }
+                            HapticManager.impact(.medium)
                             showUpgradeSheet = false
                             store.completeRestSite()
                         } label: {

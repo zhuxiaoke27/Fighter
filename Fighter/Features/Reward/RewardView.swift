@@ -199,6 +199,7 @@ struct RewardView: View {
 
                     if bossRelicSelected || store.rewardBossRelics.isEmpty {
                         Button {
+                            HapticManager.selection()
                             store.completeReward(addedCard: nil)
                         } label: {
                             Text(String(localized: "btn_skip"))
@@ -215,6 +216,7 @@ struct RewardView: View {
     private func rewardCardView(card: Card, index: Int) -> some View {
         let isSelected = selectedCardIndex == index
         return Button {
+            HapticManager.selection()
             selectedCardIndex = isSelected ? nil : index
         } label: {
             VStack(spacing: 4) {

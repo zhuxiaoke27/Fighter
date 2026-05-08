@@ -193,6 +193,16 @@ struct MapView: View {
                     MapNodeView(node: node, isCurrentFloor: floorIndex == mapState.currentFloor) {
                         guard node.isAccessible && !node.isVisited else { return }
                         HapticManager.selection()
+                        switch node.type {
+                        case .battle, .hardBattle, .elite, .boss:
+                            HapticManager.impact(.heavy)
+                        case .shop:
+                            HapticManager.impact(.light)
+                        case .restSite:
+                            HapticManager.impact(.light)
+                        case .event, .mystery:
+                            break
+                        }
                         mapState.visitNode(id: node.id)
                         store.handleNodeEncounter(node)
                     }

@@ -39,6 +39,7 @@ struct CharacterSelectView: View {
 
                 if let selected = selectedClass {
                     Button {
+                        HapticManager.impact(.medium)
                         store.startNewRun(characterClass: selected)
                     } label: {
                         HStack(spacing: 8) {
@@ -89,6 +90,7 @@ struct CharacterSelectView: View {
         let isSelected = selectedClass == charClass
 
         return Button {
+            HapticManager.selection()
             withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
                 selectedClass = charClass
             }

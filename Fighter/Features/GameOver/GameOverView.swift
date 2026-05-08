@@ -103,6 +103,9 @@ struct GameOverView: View {
                 .padding(.bottom, 40)
             }
         }
+        .onAppear {
+            HapticManager.notification(victory ? .success : .error)
+        }
     }
 
     private func statRow(icon: String, value: String, color: Color) -> some View {
