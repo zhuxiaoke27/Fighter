@@ -17,6 +17,10 @@ final class PlayerState {
     var relics: [RelicTemplate] = []
     var potions: [PotionTemplate?] = [nil, nil, nil]
 
+    var potionSlots: Int {
+        relics.contains(where: { $0.id == "potion_belt" }) ? 5 : 3
+    }
+
     // Combat-level (reset each combat)
     var combatEnergy: Int = 0
     var combatBlock: Int = 0
@@ -51,6 +55,11 @@ final class PlayerState {
         energyNextTurnBonus = 0
         attackCardsPlayedThisCombat = 0
         penNibActive = false
+
+        // Expand potion slots if potion_belt relic is present
+        while potions.count < potionSlots {
+            potions.append(nil)
+        }
 
         // Apply permanent stat bonuses from events
         if permanentStrengthBonus > 0 {

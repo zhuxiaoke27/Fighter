@@ -203,8 +203,8 @@ enum CardDatabase {
         cost: 2,
         target: .enemy,
         characterClass: .warrior,
-        effects: [.dealDamage(8)],
-        upgradedEffects: [.dealDamage(12)],
+        effects: [.dealDamage(18)],
+        upgradedEffects: [.dealDamage(26)],
         isExhaust: true,
         tags: [.offensive, .exhaust]
     )

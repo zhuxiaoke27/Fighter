@@ -80,11 +80,13 @@ struct BuffInstance: Identifiable, Codable, Sendable {
     var type: BuffType
     var stacks: Int
     var isDurationBased: Bool
+    var isRedSkullBonus: Bool
 
-    init(type: BuffType, stacks: Int, isDurationBased: Bool = false) {
+    init(type: BuffType, stacks: Int, isDurationBased: Bool = false, isRedSkullBonus: Bool = false) {
         self.id = UUID()
         self.type = type
         self.stacks = stacks
         self.isDurationBased = isDurationBased
+        self.isRedSkullBonus = isRedSkullBonus
     }
 }

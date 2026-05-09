@@ -8,6 +8,7 @@ import SwiftUI
 struct NeowBonusView: View {
     @Environment(GameStore.self) private var store
     @State private var selectedBonus: NeowBonus? = nil
+    @State private var showConfirm = false
 
     var body: some View {
         ZStack {
@@ -97,8 +98,7 @@ struct NeowBonusView: View {
 
                 if let bonus = selectedBonus {
                     Button {
-                        applyBonus(bonus)
-                        store.completeNeow()
+                        showConfirm = true
                     } label: {
                         HStack(spacing: 6) {
                             Image(systemName: "arrow.right")
@@ -118,6 +118,15 @@ struct NeowBonusView: View {
                 }
             }
             .animation(.spring(response: 0.3), value: selectedBonus)
+        }
+        .alert(String(localized: "confirm_neow_bonus"), isPresented: $showConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                if let bonus = selectedBonus {
+                    applyBonus(bonus)
+                    store.completeNeow()
+                }
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
         }
     }
 

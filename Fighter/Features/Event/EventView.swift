@@ -9,6 +9,7 @@ struct EventView: View {
     @Environment(GameStore.self) private var store
     @State private var resultMessage: String? = nil
     @State private var resultColor: Color = .white
+    @State private var pendingChoice: EventChoice? = nil
 
     var body: some View {
         ZStack {
@@ -94,7 +95,7 @@ struct EventView: View {
                             ForEach(event.choices) { choice in
                                 Button {
                                     HapticManager.selection()
-                                    resolveChoice(choice)
+                                    pendingChoice = choice
                                 } label: {
                                 HStack(spacing: 10) {
                                     Image(systemName: "arrow.right.circle")
@@ -138,6 +139,18 @@ struct EventView: View {
                     Spacer().frame(height: 40)
                 }
             }
+        }
+        .alert(String(localized: "confirm_event_choice"), isPresented: Binding(
+            get: { pendingChoice != nil },
+            set: { if !$0 { pendingChoice = nil } }
+        )) {
+            Button(String(localized: "btn_confirm")) {
+                if let choice = pendingChoice {
+                    resolveChoice(choice)
+                }
+                pendingChoice = nil
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) { pendingChoice = nil }
         }
     }
 

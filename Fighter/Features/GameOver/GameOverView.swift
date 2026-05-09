@@ -10,6 +10,7 @@ struct GameOverView: View {
     @Environment(GameStore.self) private var store
     @State private var newUnlocks: [UnlockableContent] = []
     @State private var showShareSheet = false
+    @State private var showQuitConfirm = false
 
     private var shareText: String {
         let result = victory ? "Victory!" : "Defeated"
@@ -111,7 +112,7 @@ struct GameOverView: View {
 
                 HStack(spacing: 12) {
                     Button {
-                        store.quitToMenu()
+                        showQuitConfirm = true
                     } label: {
                         HStack(spacing: 6) {
                             Image(systemName: "arrow.counterclockwise")
@@ -175,6 +176,12 @@ struct GameOverView: View {
         }
         .sheet(isPresented: $showShareSheet) {
             UIActivityView(activityItems: [shareText])
+        }
+        .alert(String(localized: "confirm_quit_to_menu"), isPresented: $showQuitConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                store.quitToMenu()
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
         }
     }
 

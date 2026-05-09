@@ -9,6 +9,10 @@ struct RestSiteView: View {
     @Environment(GameStore.self) private var store
     @State private var showUpgradeSheet = false
 
+    // Confirmation states
+    @State private var showRestConfirm = false
+    @State private var pendingUpgradeCardID: String? = nil
+
     private var hasFusionHammer: Bool {
         store.player.relics.contains(where: { $0.id == "fusion_hammer_rework" })
     }
@@ -26,7 +30,6 @@ struct RestSiteView: View {
             )
             .ignoresSafeArea()
 
-            // Warm campfire radial glow from bottom center
             RadialGradient(
                 colors: [
                     Color(red: 0.90, green: 0.45, blue: 0.20).opacity(0.08),
@@ -55,14 +58,7 @@ struct RestSiteView: View {
 
                 HStack(spacing: 20) {
                     Button {
-                        let baseHeal = store.player.maxHP / 3
-                        let asc = store.ascensionLevel.rawValue
-                        var healAmount = baseHeal
-                        if asc >= 2 { healAmount = max(1, Int(Double(healAmount) * 0.75)) }
-                        if asc >= 12 { healAmount = max(1, Int(Double(baseHeal) * 0.50)) }
-                        store.player.currentHP = min(store.player.maxHP, store.player.currentHP + healAmount)
-                        HapticManager.notification(.success)
-                        store.completeRestSite()
+                        showRestConfirm = true
                     } label: {
                         VStack(spacing: 10) {
                             ZStack {
@@ -123,6 +119,39 @@ struct RestSiteView: View {
         .sheet(isPresented: $showUpgradeSheet) {
             upgradeSheet
         }
+        .alert(String(localized: "confirm_rest"), isPresented: $showRestConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                performRest()
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
+        }
+        .alert(String(localized: "confirm_upgrade"), isPresented: Binding(
+            get: { pendingUpgradeCardID != nil },
+            set: { if !$0 { pendingUpgradeCardID = nil } }
+        )) {
+            Button(String(localized: "btn_confirm")) {
+                if let cardID = pendingUpgradeCardID,
+                   let idx = store.player.deck.firstIndex(where: { $0.id == cardID }) {
+                    store.player.deck[idx] = store.player.deck[idx].withUpgrade()
+                    HapticManager.impact(.medium)
+                    showUpgradeSheet = false
+                    store.completeRestSite()
+                }
+                pendingUpgradeCardID = nil
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) { pendingUpgradeCardID = nil }
+        }
+    }
+
+    private func performRest() {
+        let baseHeal = store.player.maxHP / 3
+        let asc = store.ascensionLevel.rawValue
+        var healAmount = baseHeal
+        if asc >= 2 { healAmount = max(1, Int(Double(healAmount) * 0.75)) }
+        if asc >= 12 { healAmount = max(1, Int(Double(baseHeal) * 0.50)) }
+        store.player.currentHP = min(store.player.maxHP, store.player.currentHP + healAmount)
+        HapticManager.notification(.success)
+        store.completeRestSite()
     }
 
     private var upgradeSheet: some View {
@@ -131,12 +160,7 @@ struct RestSiteView: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                     ForEach(store.player.deck) { card in
                         Button {
-                            if let idx = store.player.deck.firstIndex(where: { $0.id == card.id }) {
-                                store.player.deck[idx] = card.withUpgrade()
-                            }
-                            HapticManager.impact(.medium)
-                            showUpgradeSheet = false
-                            store.completeRestSite()
+                            pendingUpgradeCardID = card.id
                         } label: {
                             VStack(spacing: 4) {
                                 Text(String(localized: LocalizedStringResource(stringLiteral: card.nameKey)))

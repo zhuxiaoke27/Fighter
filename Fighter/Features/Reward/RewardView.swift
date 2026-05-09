@@ -10,6 +10,13 @@ struct RewardView: View {
     @State private var selectedCardIndex: Int? = nil
     @State private var bossRelicSelected: Bool = false
 
+    // Confirmation states
+    @State private var pendingBossRelicIndex: Int? = nil
+    @State private var showRelicConfirm = false
+    @State private var showPotionConfirm = false
+    @State private var showTakeCardConfirm = false
+    @State private var showSkipConfirm = false
+
     var body: some View {
         ZStack {
             LinearGradient(
@@ -62,9 +69,8 @@ struct RewardView: View {
                         HStack(spacing: 12) {
                             ForEach(Array(store.rewardBossRelics.enumerated()), id: \.offset) { index, relic in
                                 Button {
-                                    HapticManager.notification(.success)
-                                    store.takeBossRelic(at: index)
-                                    bossRelicSelected = true
+                                    HapticManager.selection()
+                                    pendingBossRelicIndex = index
                                 } label: {
                                     VStack(spacing: 4) {
                                         Image(systemName: "crown.fill")
@@ -98,9 +104,7 @@ struct RewardView: View {
                 // Elite/Boss relic reward
                 if let relic = store.rewardRelic {
                     Button {
-                        HapticManager.notification(.success)
-                        store.player.relics.append(relic)
-                        store.rewardRelic = nil
+                        showRelicConfirm = true
                     } label: {
                         HStack(spacing: 8) {
                             Image(systemName: "gem")
@@ -127,9 +131,7 @@ struct RewardView: View {
                 // Elite/Boss potion reward
                 if let potion = store.rewardPotion {
                     Button {
-                        HapticManager.impact(.medium)
-                        store.receivePotion(potion)
-                        store.rewardPotion = nil
+                        showPotionConfirm = true
                     } label: {
                         HStack(spacing: 8) {
                             Image(systemName: "drop.fill")
@@ -171,9 +173,7 @@ struct RewardView: View {
                     if let idx = selectedCardIndex, idx < store.rewardCards.count {
                         if bossRelicSelected || store.rewardBossRelics.isEmpty {
                         Button {
-                            HapticManager.notification(.success)
-                            let card = store.rewardCards[idx]
-                            store.completeReward(addedCard: card)
+                            showTakeCardConfirm = true
                         } label: {
                             HStack(spacing: 6) {
                                 Image(systemName: "plus.circle.fill")
@@ -199,8 +199,7 @@ struct RewardView: View {
 
                     if bossRelicSelected || store.rewardBossRelics.isEmpty {
                         Button {
-                            HapticManager.selection()
-                            store.completeReward(addedCard: nil)
+                            showSkipConfirm = true
                         } label: {
                             Text(String(localized: "btn_skip"))
                                 .font(.system(size: 14, weight: .medium, design: .rounded))
@@ -210,6 +209,58 @@ struct RewardView: View {
                     }
                 }
             }
+        }
+        // Confirmation alerts
+        .alert(String(localized: "confirm_boss_relic"), isPresented: Binding(
+            get: { pendingBossRelicIndex != nil },
+            set: { if !$0 { pendingBossRelicIndex = nil } }
+        )) {
+            Button(String(localized: "btn_confirm")) {
+                if let index = pendingBossRelicIndex {
+                    HapticManager.notification(.success)
+                    store.takeBossRelic(at: index)
+                    bossRelicSelected = true
+                }
+                pendingBossRelicIndex = nil
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) { pendingBossRelicIndex = nil }
+        }
+        .alert(String(localized: "confirm_take_relic"), isPresented: $showRelicConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                if let relic = store.rewardRelic {
+                    HapticManager.notification(.success)
+                    store.player.relics.append(relic)
+                    store.rewardRelic = nil
+                }
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
+        }
+        .alert(String(localized: "confirm_take_potion"), isPresented: $showPotionConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                if let potion = store.rewardPotion {
+                    HapticManager.impact(.medium)
+                    store.receivePotion(potion)
+                    store.rewardPotion = nil
+                }
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
+        }
+        .alert(String(localized: "confirm_take_card"), isPresented: $showTakeCardConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                if let idx = selectedCardIndex, idx < store.rewardCards.count {
+                    HapticManager.notification(.success)
+                    let card = store.rewardCards[idx]
+                    store.completeReward(addedCard: card)
+                }
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
+        }
+        .alert(String(localized: "confirm_skip_reward"), isPresented: $showSkipConfirm) {
+            Button(String(localized: "btn_confirm"), role: .destructive) {
+                HapticManager.selection()
+                store.completeReward(addedCard: nil)
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
         }
     }
 

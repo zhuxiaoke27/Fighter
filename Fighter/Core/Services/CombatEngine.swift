@@ -81,6 +81,9 @@ enum CombatEngine {
         combat.selectedCardID = nil
         combat.selectedTargetID = nil
         combat.cardsPlayedThisTurn = 0
+        combat.attackCardsPlayedThisTurn = 0
+        combat.skillCardsPlayedThisTurn = 0
+        combat.blockGainedThisTurn = 0
 
         if !store.player.hasDebuff(.barricade) {
             if store.player.relics.contains(where: { $0.id == "calipers" }) {
@@ -206,9 +209,12 @@ enum CombatEngine {
             store.player.takeDamage(1)
         }
 
-        // Track attack cards for relic counters
+        // Track attack cards for relic counters (per-turn)
         if card.type == .attack {
+            combat.attackCardsPlayedThisTurn += 1
             store.player.attackCardsPlayedThisCombat += 1
+        } else if card.type == .skill {
+            combat.skillCardsPlayedThisTurn += 1
         }
 
         // Track cards played this turn for Time Eater
@@ -399,6 +405,8 @@ enum CombatEngine {
                         }
                     case .applyBuff(let type, let stacks):
                         combat.enemies[i].addBuff(BuffInstance(type: type, stacks: stacks))
+                    case .heal(let amount):
+                        combat.enemies[i].currentHP = min(combat.enemies[i].maxHP, combat.enemies[i].currentHP + amount)
                     default:
                         break
                     }
@@ -607,11 +615,11 @@ enum CombatEngine {
                 // Special-case relics that need combat counters
                 switch relic.id {
                 case "shuriken":
-                    if player.attackCardsPlayedThisCombat > 0 && player.attackCardsPlayedThisCombat % 3 == 0 {
+                    if let combat, combat.attackCardsPlayedThisTurn > 0 && combat.attackCardsPlayedThisTurn % 3 == 0 {
                         player.addBuff(BuffInstance(type: .strength, stacks: 1))
                     }
                 case "pen_nib":
-                    if player.attackCardsPlayedThisCombat > 0 && player.attackCardsPlayedThisCombat % 5 == 0 {
+                    if let combat, combat.attackCardsPlayedThisTurn > 0 && combat.attackCardsPlayedThisTurn % 5 == 0 {
                         player.penNibActive = true
                     }
                 case "orichalcum":
@@ -643,11 +651,18 @@ enum CombatEngine {
                         player.combatEnergy += 1
                     }
                 case "red_skull":
+                    // Passive: +3 strength when HP <= 50%, removed when HP recovers
                     if player.currentHP <= player.maxHP / 2 {
-                        player.addBuff(BuffInstance(type: .strength, stacks: 1))
+                        if !player.buffs.contains(where: { $0.type == .strength && $0.stacks >= 3 && $0.isRedSkullBonus }) {
+                            player.addBuff(BuffInstance(type: .strength, stacks: 3, isRedSkullBonus: true))
+                        }
+                    } else {
+                        if let idx = player.buffs.firstIndex(where: { $0.isRedSkullBonus }) {
+                            player.buffs.remove(at: idx)
+                        }
                     }
                 case "kunai":
-                    if player.attackCardsPlayedThisCombat > 0 && player.attackCardsPlayedThisCombat % 3 == 0 {
+                    if let combat, combat.attackCardsPlayedThisTurn > 0 && combat.attackCardsPlayedThisTurn % 3 == 0 {
                         player.addBuff(BuffInstance(type: .dexterity, stacks: 1))
                     }
                 case "wrist_blade":
@@ -701,8 +716,8 @@ enum CombatEngine {
                 case "paper_crane":
                     if let combat {
                         for i in combat.enemies.indices where combat.enemies[i].isAlive {
-                            if combat.enemies[i].buffStacks(.strength) > 0 {
-                                combat.enemies[i].addBuff(BuffInstance(type: .weak, stacks: 1, isDurationBased: true))
+                            if combat.enemies[i].buffStacks(.vulnerable) > 0 {
+                                combat.enemies[i].addBuff(BuffInstance(type: .poison, stacks: 2))
                             }
                         }
                     }
@@ -724,6 +739,31 @@ enum CombatEngine {
                 case "inserter":
                     // Inserter: gain 1 max HP when combat ends with all enemies dead
                     break // handled in GameStore.endCombat
+                // Dead relic fixes
+                case "ink_bottle":
+                    if let combat, combat.attackCardsPlayedThisTurn > 0 && combat.attackCardsPlayedThisTurn % 3 == 0 {
+                        CardEvaluator.drawCards(1, combat: combat, store: store)
+                    }
+                case "sundial_energy":
+                    if let combat, combat.turnNumber % 3 == 0 {
+                        player.combatEnergy += 1
+                    }
+                case "kunai_dex":
+                    if let combat, combat.skillCardsPlayedThisTurn > 0 && combat.skillCardsPlayedThisTurn % 3 == 0 {
+                        player.addBuff(BuffInstance(type: .dexterity, stacks: 1))
+                    }
+                case "runic_cube":
+                    if let combat, combat.hand.count < 5 {
+                        player.combatEnergy += 1
+                    }
+                case "tungsten_helm":
+                    if let combat, combat.blockGainedThisTurn > 0 {
+                        player.currentHP = min(player.maxHP, player.currentHP + 2)
+                    }
+                case "bag_of_gems":
+                    player.combatBlock += 3
+                case "potion_belt":
+                    break // passive: potion slot expansion handled in PlayerState
                 default:
                     // Generic: resolve effect through CardEvaluator
                     CardEvaluator.resolve(

@@ -10,6 +10,7 @@ struct CharacterSelectView: View {
     @State private var selectedClass: CharacterClass? = nil
     @State private var ascension: AscensionLevel = .none
     @State private var showUnlockBanner: UnlockableContent? = nil
+    @State private var showStartConfirm = false
 
     private var unlockState: UnlockState { UnlockStore.shared.state }
 
@@ -64,9 +65,7 @@ struct CharacterSelectView: View {
 
                 if let selected = selectedClass {
                     Button {
-                        HapticManager.impact(.medium)
-                        store.ascensionLevel = ascension
-                        store.startNewRun(characterClass: selected)
+                        showStartConfirm = true
                     } label: {
                         HStack(spacing: 8) {
                             Image(systemName: "play.fill")
@@ -107,6 +106,16 @@ struct CharacterSelectView: View {
                 .buttonStyle(.plain)
                 .padding(.bottom, 20)
             }
+        }
+        .alert(String(localized: "confirm_start_run"), isPresented: $showStartConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                if let selected = selectedClass {
+                    HapticManager.impact(.medium)
+                    store.ascensionLevel = ascension
+                    store.startNewRun(characterClass: selected)
+                }
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
         }
     }
 

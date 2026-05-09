@@ -10,6 +10,13 @@ struct ShopView: View {
     @State private var showRemoveSheet = false
     @State private var showTutorial: Bool = false
 
+    // Confirmation states
+    @State private var pendingBuyCardIndex: Int? = nil
+    @State private var pendingBuyRelicIndex: Int? = nil
+    @State private var pendingBuyPotionIndex: Int? = nil
+    @State private var pendingRemoveCardID: String? = nil
+    @State private var showLeaveConfirm = false
+
     var body: some View {
         ZStack {
             LinearGradient(
@@ -127,7 +134,7 @@ struct ShopView: View {
                 Spacer()
 
                 Button {
-                    store.completeShop()
+                    showLeaveConfirm = true
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "arrow.right")
@@ -154,6 +161,72 @@ struct ShopView: View {
         .sheet(isPresented: $showRemoveSheet) {
             removeCardSheet
         }
+        // Confirmation alerts
+        .alert(String(localized: "confirm_purchase_card"), isPresented: Binding(
+            get: { pendingBuyCardIndex != nil },
+            set: { if !$0 { pendingBuyCardIndex = nil } }
+        )) {
+            Button(String(localized: "btn_confirm")) {
+                if let index = pendingBuyCardIndex, index < store.shopCards.count {
+                    let price = cardPrice(store.shopCards[index].rarity)
+                    let card = store.shopCards[index]
+                    HapticManager.notification(.success)
+                    store.player.gold -= price
+                    store.player.deck.append(card.copy())
+                    store.shopCards.remove(at: index)
+                }
+                pendingBuyCardIndex = nil
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) { pendingBuyCardIndex = nil }
+        }
+        .alert(String(localized: "confirm_purchase_relic"), isPresented: Binding(
+            get: { pendingBuyRelicIndex != nil },
+            set: { if !$0 { pendingBuyRelicIndex = nil } }
+        )) {
+            Button(String(localized: "btn_confirm")) {
+                if let index = pendingBuyRelicIndex {
+                    HapticManager.notification(.success)
+                    store.purchaseRelic(at: index)
+                }
+                pendingBuyRelicIndex = nil
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) { pendingBuyRelicIndex = nil }
+        }
+        .alert(String(localized: "confirm_purchase_potion"), isPresented: Binding(
+            get: { pendingBuyPotionIndex != nil },
+            set: { if !$0 { pendingBuyPotionIndex = nil } }
+        )) {
+            Button(String(localized: "btn_confirm")) {
+                if let index = pendingBuyPotionIndex {
+                    HapticManager.notification(.success)
+                    store.purchasePotion(at: index)
+                }
+                pendingBuyPotionIndex = nil
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) { pendingBuyPotionIndex = nil }
+        }
+        .alert(String(localized: "confirm_remove_card"), isPresented: Binding(
+            get: { pendingRemoveCardID != nil },
+            set: { if !$0 { pendingRemoveCardID = nil } }
+        )) {
+            Button(String(localized: "btn_confirm"), role: .destructive) {
+                if let cardID = pendingRemoveCardID,
+                   let idx = store.player.deck.firstIndex(where: { $0.id == cardID }) {
+                    store.player.deck.remove(at: idx)
+                    store.player.gold -= 75
+                    store.hasRemovedCardThisShopVisit = true
+                    showRemoveSheet = false
+                }
+                pendingRemoveCardID = nil
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) { pendingRemoveCardID = nil }
+        }
+        .alert(String(localized: "confirm_leave_shop"), isPresented: $showLeaveConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                store.completeShop()
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
+        }
         .onAppear {
             if !store.settings.hasSeenShopTutorial {
                 showTutorial = true
@@ -178,10 +251,7 @@ struct ShopView: View {
                 HapticManager.notification(.warning)
                 return
             }
-            HapticManager.notification(.success)
-            store.player.gold -= price
-            store.player.deck.append(card.copy())
-            store.shopCards.remove(at: index)
+            pendingBuyCardIndex = index
         } label: {
             VStack(spacing: 4) {
                 ZStack {
@@ -226,14 +296,7 @@ struct ShopView: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                     ForEach(store.player.deck) { card in
                         Button {
-                            guard store.player.gold >= 75 && !store.hasRemovedCardThisShopVisit else { return }
-                            HapticManager.impact(.medium)
-                            if let idx = store.player.deck.firstIndex(where: { $0.id == card.id }) {
-                                store.player.deck.remove(at: idx)
-                            }
-                            store.player.gold -= 75
-                            store.hasRemovedCardThisShopVisit = true
-                            showRemoveSheet = false
+                            pendingRemoveCardID = card.id
                         } label: {
                             VStack(spacing: 4) {
                                 Text(String(localized: LocalizedStringResource(stringLiteral: card.nameKey)))
@@ -270,15 +333,17 @@ struct ShopView: View {
         }
     }
 
-
     // MARK: - Shop Relic View
 
     private func shopRelicView(relic: RelicTemplate, index: Int) -> some View {
         let price = index < store.shopRelicPrices.count ? store.shopRelicPrices[index] : 150
         let canAfford = store.player.gold >= price
         return Button {
-            HapticManager.notification(.success)
-            store.purchaseRelic(at: index)
+            guard canAfford else {
+                HapticManager.notification(.warning)
+                return
+            }
+            pendingBuyRelicIndex = index
         } label: {
             VStack(spacing: 4) {
                 ZStack {
@@ -323,8 +388,11 @@ struct ShopView: View {
         let canAfford = store.player.gold >= price
         let hasEmptySlot = store.player.potions.contains(where: { $0 == nil })
         return Button {
-            HapticManager.notification(.success)
-            store.purchasePotion(at: index)
+            guard canAfford && hasEmptySlot else {
+                HapticManager.notification(.warning)
+                return
+            }
+            pendingBuyPotionIndex = index
         } label: {
             VStack(spacing: 4) {
                 ZStack {

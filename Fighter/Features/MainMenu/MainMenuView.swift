@@ -10,6 +10,7 @@ struct MainMenuView: View {
     @State private var showSettings = false
     @State private var showStatistics = false
     @State private var titleGlow = false
+    @State private var showContinueConfirm = false
 
     var body: some View {
         ZStack {
@@ -95,7 +96,7 @@ struct MainMenuView: View {
                 VStack(spacing: 14) {
                     if SaveManager.shared.hasSavedRun {
                         Button {
-                            SaveManager.shared.load(into: store)
+                            showContinueConfirm = true
                         } label: {
                             HStack(spacing: 8) {
                                 Image(systemName: "arrow.uturn.backward")
@@ -174,6 +175,12 @@ struct MainMenuView: View {
         }
         .sheet(isPresented: $showStatistics) {
             StatisticsView()
+        }
+        .alert(String(localized: "confirm_continue_run"), isPresented: $showContinueConfirm) {
+            Button(String(localized: "btn_confirm")) {
+                SaveManager.shared.load(into: store)
+            }
+            Button(String(localized: "btn_cancel"), role: .cancel) {}
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {

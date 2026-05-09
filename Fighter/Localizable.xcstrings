@@ -15,6 +15,7 @@
       }
     },
     "%lld": {},
+    "%lld runs": {},
     "%lld/%lld": {
       "localizations": {
         "en": {
@@ -25,6 +26,7 @@
         }
       }
     },
+    "%lld%%": {},
     "+": {},
     "+%lld": {},
     "adrenaline_assassin": {
@@ -175,6 +177,347 @@
           "stringUnit": {
             "state": "translated",
             "value": "获得 5 点格挡。"
+          }
+        }
+      }
+    },
+    "Asc %lld": {},
+    "asc_asc1_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Less starting gold (-15)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "初始金币减少 (-15)"
+          }
+        }
+      }
+    },
+    "asc_asc2_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduced healing at rest sites (75%)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "休息点回复量降低 (75%)"
+          }
+        }
+      }
+    },
+    "asc_asc3_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tougher elites (+15% HP)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精英敌人更强 (+15% HP)"
+          }
+        }
+      }
+    },
+    "asc_asc4_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fewer potion slots"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "药水槽位减少"
+          }
+        }
+      }
+    },
+    "asc_asc5_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fewer card rewards"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡牌奖励减少"
+          }
+        }
+      }
+    },
+    "asc_asc6_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tougher bosses (+15% HP)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boss更强 (+15% HP)"
+          }
+        }
+      }
+    },
+    "asc_asc7_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Less max HP (-5)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最大HP减少 (-5)"
+          }
+        }
+      }
+    },
+    "asc_asc8_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Harder events"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "事件更困难"
+          }
+        }
+      }
+    },
+    "asc_asc9_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tougher normal enemies (+10% HP)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普通敌人更强 (+10% HP)"
+          }
+        }
+      }
+    },
+    "asc_asc10_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start with a curse"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "初始携带诅咒牌"
+          }
+        }
+      }
+    },
+    "asc_asc11_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even less gold (-25% more)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "金币更少 (再-25%)"
+          }
+        }
+      }
+    },
+    "asc_asc12_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Further reduced healing (50%)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回复量进一步降低 (50%)"
+          }
+        }
+      }
+    },
+    "asc_asc13_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even tougher elites (+15% more HP)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精英更强 (再+15% HP)"
+          }
+        }
+      }
+    },
+    "asc_asc14_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even fewer potions"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "药水更少"
+          }
+        }
+      }
+    },
+    "asc_asc15_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even fewer card rewards"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡牌奖励更少"
+          }
+        }
+      }
+    },
+    "asc_asc16_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even tougher bosses (+15% more HP)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boss更强 (再+15% HP)"
+          }
+        }
+      }
+    },
+    "asc_asc17_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even less max HP (-5 more)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最大HP更少 (再-5)"
+          }
+        }
+      }
+    },
+    "asc_asc18_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even harder events"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "事件更加困难"
+          }
+        }
+      }
+    },
+    "asc_asc19_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even tougher normal enemies (+15% more HP)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普通敌人更强 (再+15% HP)"
+          }
+        }
+      }
+    },
+    "asc_asc20_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nightmare: enemies gain +1 Strength"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "噩梦：敌人获得+1力量"
           }
         }
       }
@@ -812,6 +1155,54 @@
         }
       }
     },
+    "btn_reset": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置"
+          }
+        }
+      }
+    },
+    "btn_reset_stats": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Statistics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置统计"
+          }
+        }
+      }
+    },
+    "btn_reset_unlocks": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Unlocks"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置解锁"
+          }
+        }
+      }
+    },
     "btn_rest": {
       "localizations": {
         "en": {
@@ -872,6 +1263,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "开始冒险"
+          }
+        }
+      }
+    },
+    "btn_statistics": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "统计"
           }
         }
       }
@@ -3195,6 +3602,23 @@
         }
       }
     },
+    "enemy_corrupted_spire": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Corrupted Spire"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "腐化高塔"
+          }
+        }
+      }
+    },
     "enemy_cultist": {
       "extractionState": "stale",
       "localizations": {
@@ -3208,6 +3632,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "邪教徒"
+          }
+        }
+      }
+    },
+    "enemy_dark_paladin": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark Paladin"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黑暗圣骑士"
           }
         }
       }
@@ -3259,6 +3700,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "巨虫"
+          }
+        }
+      }
+    },
+    "enemy_golem": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golem"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "石像"
           }
         }
       }
@@ -3365,6 +3823,40 @@
         }
       }
     },
+    "enemy_lich": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lich"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "巫妖"
+          }
+        }
+      }
+    },
+    "enemy_mage_knight": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mage Knight"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "魔法骑士"
+          }
+        }
+      }
+    },
     "enemy_nemesis": {
       "extractionState": "stale",
       "localizations": {
@@ -3399,6 +3891,23 @@
         }
       }
     },
+    "enemy_rat_king": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rat King"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鼠王"
+          }
+        }
+      }
+    },
     "enemy_reptomancer": {
       "extractionState": "stale",
       "localizations": {
@@ -3416,6 +3925,23 @@
         }
       }
     },
+    "enemy_shadow_lurker": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shadow Lurker"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暗影潜伏者"
+          }
+        }
+      }
+    },
     "enemy_shell_parasite": {
       "extractionState": "stale",
       "localizations": {
@@ -3429,6 +3955,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "壳寄生虫"
+          }
+        }
+      }
+    },
+    "enemy_skeleton": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skeleton"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "骷髅"
           }
         }
       }
@@ -3484,6 +4027,23 @@
         }
       }
     },
+    "enemy_spider": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spider"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "蜘蛛"
+          }
+        }
+      }
+    },
     "enemy_spiker": {
       "extractionState": "stale",
       "localizations": {
@@ -3531,6 +4091,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "噬时者"
+          }
+        }
+      }
+    },
+    "enemy_void_walker": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Void Walker"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虚空行者"
           }
         }
       }
@@ -7096,6 +7673,54 @@
         }
       }
     },
+    "label_asc_none": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普通"
+          }
+        }
+      }
+    },
+    "label_ascension": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ascension Level"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "飞升等级"
+          }
+        }
+      }
+    },
+    "label_ascension_progress": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ascension Progress"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "飞升进度"
+          }
+        }
+      }
+    },
     "label_boss": {
       "localizations": {
         "en": {
@@ -7156,6 +7781,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "选择一张卡牌"
+          }
+        }
+      }
+    },
+    "label_cleared": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleared"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已通关"
           }
         }
       }
@@ -7400,6 +8041,22 @@
         }
       }
     },
+    "label_new_unlocks": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Unlocks!"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新解锁！"
+          }
+        }
+      }
+    },
     "label_no_relics": {
       "localizations": {
         "en": {
@@ -7412,6 +8069,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "暂无遗物"
+          }
+        }
+      }
+    },
+    "label_per_character": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per Character"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "各角色记录"
           }
         }
       }
@@ -7528,6 +8201,38 @@
         }
       }
     },
+    "label_reset_stats_confirm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset all statistics? This cannot be undone."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确定重置所有统计数据？此操作不可撤销。"
+          }
+        }
+      }
+    },
+    "label_reset_unlocks_confirm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset all unlocks? This cannot be undone."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确定重置所有解锁？此操作不可撤销。"
+          }
+        }
+      }
+    },
     "label_rest": {
       "localizations": {
         "en": {
@@ -7624,6 +8329,22 @@
         }
       }
     },
+    "label_statistics": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "统计数据"
+          }
+        }
+      }
+    },
     "label_tap_to_continue": {
       "localizations": {
         "en": {
@@ -7636,6 +8357,51 @@
           "stringUnit": {
             "state": "translated",
             "value": "点击任意位置继续"
+          }
+        }
+      }
+    },
+    "label_total_runs": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total Runs: %lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "总冒险: %lld"
+          }
+        }
+      }
+    },
+    "label_total_runs %lld": {},
+    "label_unlock_progress": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlocked: %lld/%lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已解锁: %lld/%lld"
+          }
+        }
+      }
+    },
+    "label_unlock_progress %lld %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "label_unlock_progress %1$lld %2$lld"
           }
         }
       }
@@ -7684,6 +8450,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "胜利！"
+          }
+        }
+      }
+    },
+    "label_win_rate": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Win Rate"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "胜率"
           }
         }
       }
@@ -8500,6 +9282,23 @@
         }
       }
     },
+    "potion_ambrosia_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ambrosia Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "神酒"
+          }
+        }
+      }
+    },
     "potion_block_potion": {
       "extractionState": "stale",
       "localizations": {
@@ -8564,6 +9363,57 @@
           "stringUnit": {
             "state": "translated",
             "value": "对所有敌人施加 4 层中毒。"
+          }
+        }
+      }
+    },
+    "potion_buffer_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buffer Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缓冲药水"
+          }
+        }
+      }
+    },
+    "potion_dexterity_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dexterity Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "敏捷药水"
+          }
+        }
+      }
+    },
+    "potion_draw_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Draw Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抽牌药水"
           }
         }
       }
@@ -8840,6 +9690,23 @@
         }
       }
     },
+    "potion_genocide_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Genocide Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "灭绝药水"
+          }
+        }
+      }
+    },
     "potion_ghost_in_a_jar": {
       "extractionState": "stale",
       "localizations": {
@@ -8904,6 +9771,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "从弃牌堆随机取回 2 张牌。"
+          }
+        }
+      }
+    },
+    "potion_poison_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poison Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "毒药水"
+          }
+        }
+      }
+    },
+    "potion_power_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Power Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "能力药水"
           }
         }
       }
@@ -9006,6 +9907,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "抽 3 张牌。"
+          }
+        }
+      }
+    },
+    "potion_vulnerability_potion": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vulnerability Potion"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "易伤药水"
           }
         }
       }
@@ -9312,6 +10230,23 @@
         }
       }
     },
+    "relic_bag_of_gems": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bag of Gems"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "宝石袋"
+          }
+        }
+      }
+    },
     "relic_bag_of_marbles": {
       "extractionState": "stale",
       "localizations": {
@@ -9342,6 +10277,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "战斗开始时，对所有敌人施加 1 层易伤。"
+          }
+        }
+      }
+    },
+    "relic_bird_faced_urn": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bird-Faced Urn"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鸟面瓮"
           }
         }
       }
@@ -9822,6 +10774,23 @@
         }
       }
     },
+    "relic_frozen_core": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frozen Core"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "冰冻核心"
+          }
+        }
+      }
+    },
     "relic_fusion_hammer": {
       "extractionState": "stale",
       "localizations": {
@@ -9958,6 +10927,23 @@
         }
       }
     },
+    "relic_ink_bottle": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ink Bottle"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "墨水瓶"
+          }
+        }
+      }
+    },
     "relic_inserter": {
       "extractionState": "stale",
       "localizations": {
@@ -10060,6 +11046,23 @@
         }
       }
     },
+    "relic_kunai_dex": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kunai"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "苦无"
+          }
+        }
+      }
+    },
     "relic_lantern": {
       "extractionState": "stale",
       "localizations": {
@@ -10090,6 +11093,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "战斗的第一回合获得 1 点额外能量。"
+          }
+        }
+      }
+    },
+    "relic_lantern_turn": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lantern"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "灯笼"
           }
         }
       }
@@ -10434,6 +11454,40 @@
         }
       }
     },
+    "relic_potion_belt": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potion Belt"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "药水腰带"
+          }
+        }
+      }
+    },
+    "relic_red_guard_ring": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Red Guard Ring"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "红卫戒指"
+          }
+        }
+      }
+    },
     "relic_red_skull": {
       "extractionState": "stale",
       "localizations": {
@@ -10532,6 +11586,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "战斗开始时额外抽 1 张牌。"
+          }
+        }
+      }
+    },
+    "relic_ring_of_the_snake_plus": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ring of the Serpent"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "蛇环"
+          }
+        }
+      }
+    },
+    "relic_runic_cube": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runic Cube"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "符文立方体"
           }
         }
       }
@@ -10740,6 +11828,23 @@
         }
       }
     },
+    "relic_sundial_energy": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sundial"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日晷"
+          }
+        }
+      }
+    },
     "relic_thread_and_needle": {
       "extractionState": "stale",
       "localizations": {
@@ -10808,6 +11913,23 @@
         }
       }
     },
+    "relic_tungsten_helm": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tungsten Helm"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "钨钢头盔"
+          }
+        }
+      }
+    },
     "relic_vajra": {
       "extractionState": "stale",
       "localizations": {
@@ -10838,6 +11960,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "战斗开始时，获得 1 点力量。"
+          }
+        }
+      }
+    },
+    "relic_war_paint": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "War Paint"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "战漆"
           }
         }
       }
@@ -11228,6 +12367,22 @@
         }
       }
     },
+    "stat_bosses": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bosses"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boss击败"
+          }
+        }
+      }
+    },
     "stat_cards %lld": {
       "localizations": {
         "en": {
@@ -11240,6 +12395,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld 张牌"
+          }
+        }
+      }
+    },
+    "stat_damage %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld total damage"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "总伤害 %lld"
+          }
+        }
+      }
+    },
+    "stat_deaths": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deaths"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "死亡"
           }
         }
       }
@@ -11260,18 +12447,18 @@
         }
       }
     },
-    "stat_damage %lld": {
+    "stat_gold": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld total damage"
+            "value": "Gold Earned"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "总伤害 %lld"
+            "value": "总金币"
           }
         }
       }
@@ -11308,6 +12495,22 @@
         }
       }
     },
+    "stat_relics": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relics"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遗物收集"
+          }
+        }
+      }
+    },
     "stat_relics %lld": {
       "localizations": {
         "en": {
@@ -11320,6 +12523,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld 遗物"
+          }
+        }
+      }
+    },
+    "stat_streak": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Best Streak"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最佳连胜"
+          }
+        }
+      }
+    },
+    "stat_wins": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wins"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "胜利"
           }
         }
       }
@@ -12436,6 +13671,312 @@
         }
       }
     },
+    "unlock_ascension_unlock": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ascension Mode"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "飞升模式"
+          }
+        }
+      }
+    },
+    "unlock_ascension_unlock_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock ascension difficulty levels"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解锁飞升难度等级"
+          }
+        }
+      }
+    },
+    "unlock_boss_relic": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boss Relic Choice"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boss遗物选择"
+          }
+        }
+      }
+    },
+    "unlock_boss_relic_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose from boss relics after defeating bosses"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "击败Boss后可选择Boss遗物"
+          }
+        }
+      }
+    },
+    "unlock_char_assassin": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assassin"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刺客"
+          }
+        }
+      }
+    },
+    "unlock_char_assassin_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock the Assassin class"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解锁刺客职业"
+          }
+        }
+      }
+    },
+    "unlock_char_mage": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mage"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "法师"
+          }
+        }
+      }
+    },
+    "unlock_char_mage_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock the Mage class"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解锁法师职业"
+          }
+        }
+      }
+    },
+    "unlock_nightmare": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nightmare Difficulty"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "噩梦难度"
+          }
+        }
+      }
+    },
+    "unlock_nightmare_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock nightmare difficulty"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解锁噩梦难度"
+          }
+        }
+      }
+    },
+    "unlock_rare_cards": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rare Card Pack"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "稀有卡包"
+          }
+        }
+      }
+    },
+    "unlock_rare_cards_desc": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional rare cards appear in rewards"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "奖励中会出现更多稀有卡牌"
+          }
+        }
+      }
+    },
+    "unlock_req_bossesDefeated_1": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Defeat 1 boss"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "击败1个Boss"
+          }
+        }
+      }
+    },
+    "unlock_req_highestAscension_10": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reach Ascension 10"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "达到飞升10"
+          }
+        }
+      }
+    },
+    "unlock_req_totalRuns_2": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Complete 2 runs"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成2次冒险"
+          }
+        }
+      }
+    },
+    "unlock_req_totalRuns_3": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Complete 3 runs"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成3次冒险"
+          }
+        }
+      }
+    },
+    "unlock_req_totalRuns_5": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Complete 5 runs"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成5次冒险"
+          }
+        }
+      }
+    },
+    "unlock_req_totalWins_1": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Win 1 run"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "赢得1次胜利"
+          }
+        }
+      }
+    },
     "uppercut_warrior": {
       "extractionState": "stale",
       "localizations": {
@@ -12641,1461 +14182,311 @@
       }
     },
     "X": {},
-    "asc_asc1_desc": {
+    "btn_confirm": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Less starting gold (-15)"
+            "value": "Confirm"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "初始金币减少 (-15)"
+            "value": "确认"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc2_desc": {
+    "confirm_neow_bonus": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reduced healing at rest sites (75%)"
+            "value": "Confirm this blessing? Your choice cannot be changed."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "休息点回复量降低 (75%)"
+            "value": "确认选择此祝福？选择后无法更改。"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc3_desc": {
+    "confirm_start_run": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tougher elites (+15% HP)"
+            "value": "Begin a new adventure?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "精英敌人更强 (+15% HP)"
+            "value": "开始新的冒险？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc4_desc": {
+    "confirm_quit_to_menu": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fewer potion slots"
+            "value": "Return to main menu?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "药水槽位减少"
+            "value": "返回主菜单？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc5_desc": {
+    "confirm_continue_run": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fewer card rewards"
+            "value": "Continue from saved run?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "卡牌奖励减少"
+            "value": "继续上次的存档？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc6_desc": {
+    "confirm_event_choice": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tougher bosses (+15% HP)"
+            "value": "Confirm this choice?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Boss更强 (+15% HP)"
+            "value": "确认此选择？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc7_desc": {
+    "confirm_rest": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Less max HP (-5)"
+            "value": "Rest here? This will end your rest site visit."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "最大HP减少 (-5)"
+            "value": "在此休息？休息后将离开休息点。"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc8_desc": {
+    "confirm_upgrade": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Harder events"
+            "value": "Upgrade this card?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "事件更困难"
+            "value": "升级这张卡牌？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc9_desc": {
+    "confirm_purchase_card": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tougher normal enemies (+10% HP)"
+            "value": "Purchase this card?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "普通敌人更强 (+10% HP)"
+            "value": "购买这张卡牌？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc10_desc": {
+    "confirm_purchase_relic": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Start with a curse"
+            "value": "Purchase this relic?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "初始携带诅咒牌"
+            "value": "购买这个遗物？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc11_desc": {
+    "confirm_purchase_potion": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Even less gold (-25% more)"
+            "value": "Purchase this potion?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "金币更少 (再-25%)"
+            "value": "购买这瓶药水？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc12_desc": {
+    "confirm_remove_card": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Further reduced healing (50%)"
+            "value": "Remove this card from your deck?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "回复量进一步降低 (50%)"
+            "value": "从牌组中移除此卡牌？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc13_desc": {
+    "confirm_leave_shop": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Even tougher elites (+15% more HP)"
+            "value": "Leave the shop? You can't return later."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "精英更强 (再+15% HP)"
+            "value": "离开商店？离开后无法返回。"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc14_desc": {
+    "confirm_boss_relic": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Even fewer potions"
+            "value": "Take this Boss relic?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "药水更少"
+            "value": "选择这个Boss遗物？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc15_desc": {
+    "confirm_take_relic": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Even fewer card rewards"
+            "value": "Take this relic?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "卡牌奖励更少"
+            "value": "领取这个遗物？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc16_desc": {
+    "confirm_take_potion": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Even tougher bosses (+15% more HP)"
+            "value": "Take this potion?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Boss更强 (再+15% HP)"
+            "value": "领取这瓶药水？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc17_desc": {
+    "confirm_take_card": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Even less max HP (-5 more)"
+            "value": "Add this card to your deck?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "最大HP更少 (再-5)"
+            "value": "将此卡牌加入牌组？"
           }
         }
-      }
+      },
+      "extractionState": "manual"
     },
-    "asc_asc18_desc": {
+    "confirm_skip_reward": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Even harder events"
+            "value": "Skip all remaining rewards?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "事件更加困难"
+            "value": "跳过所有剩余奖励？"
           }
         }
-      }
-    },
-    "asc_asc19_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Even tougher normal enemies (+15% more HP)"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "普通敌人更强 (再+15% HP)"
-          }
-        }
-      }
-    },
-    "asc_asc20_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nightmare: enemies gain +1 Strength"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "噩梦：敌人获得+1力量"
-          }
-        }
-      }
-    },
-    "label_statistics": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statistics"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "统计数据"
-          }
-        }
-      }
-    },
-    "label_win_rate": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Win Rate"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "胜率"
-          }
-        }
-      }
-    },
-    "stat_wins": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wins"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "胜利"
-          }
-        }
-      }
-    },
-    "stat_deaths": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deaths"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "死亡"
-          }
-        }
-      }
-    },
-    "stat_streak": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Best Streak"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "最佳连胜"
-          }
-        }
-      }
-    },
-    "stat_bosses": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bosses"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Boss击败"
-          }
-        }
-      }
-    },
-    "stat_gold": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gold Earned"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "总金币"
-          }
-        }
-      }
-    },
-    "stat_relics": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Relics"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "遗物收集"
-          }
-        }
-      }
-    },
-    "label_ascension_progress": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ascension Progress"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "飞升进度"
-          }
-        }
-      }
-    },
-    "label_ascension": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ascension Level"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "飞升等级"
-          }
-        }
-      }
-    },
-    "label_asc_none": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Normal"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "普通"
-          }
-        }
-      }
-    },
-    "btn_statistics": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statistics"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "统计"
-          }
-        }
-      }
-    },
-    "label_per_character": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Per Character"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "各角色记录"
-          }
-        }
-      }
-    },
-    "label_cleared": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cleared"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已通关"
-          }
-        }
-      }
-    },
-    "unlock_ascension_unlock": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ascension Mode"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "飞升模式"
-          }
-        }
-      }
-    },
-    "unlock_nightmare": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nightmare Difficulty"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "噩梦难度"
-          }
-        }
-      }
-    },
-    "unlock_rare_cards": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rare Card Pack"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "稀有卡包"
-          }
-        }
-      }
-    },
-    "unlock_boss_relic": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Boss Relic Choice"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Boss遗物选择"
-          }
-        }
-      }
-    },
-    "unlock_char_assassin": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Assassin"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "刺客"
-          }
-        }
-      }
-    },
-    "unlock_char_mage": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mage"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "法师"
-          }
-        }
-      }
-    },
-    "unlock_ascension_unlock_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unlock ascension difficulty levels"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "解锁飞升难度等级"
-          }
-        }
-      }
-    },
-    "unlock_nightmare_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unlock nightmare difficulty"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "解锁噩梦难度"
-          }
-        }
-      }
-    },
-    "unlock_rare_cards_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Additional rare cards appear in rewards"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "奖励中会出现更多稀有卡牌"
-          }
-        }
-      }
-    },
-    "unlock_boss_relic_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose from boss relics after defeating bosses"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "击败Boss后可选择Boss遗物"
-          }
-        }
-      }
-    },
-    "unlock_char_assassin_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unlock the Assassin class"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "解锁刺客职业"
-          }
-        }
-      }
-    },
-    "unlock_char_mage_desc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unlock the Mage class"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "解锁法师职业"
-          }
-        }
-      }
-    },
-    "unlock_req_totalRuns_2": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Complete 2 runs"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "完成2次冒险"
-          }
-        }
-      }
-    },
-    "unlock_req_totalRuns_3": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Complete 3 runs"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "完成3次冒险"
-          }
-        }
-      }
-    },
-    "unlock_req_totalRuns_5": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Complete 5 runs"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "完成5次冒险"
-          }
-        }
-      }
-    },
-    "unlock_req_totalWins_1": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Win 1 run"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "赢得1次胜利"
-          }
-        }
-      }
-    },
-    "unlock_req_highestAscension_10": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reach Ascension 10"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "达到飞升10"
-          }
-        }
-      }
-    },
-    "unlock_req_bossesDefeated_1": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Defeat 1 boss"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "击败1个Boss"
-          }
-        }
-      }
-    },
-    "btn_reset_stats": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset Statistics"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "重置统计"
-          }
-        }
-      }
-    },
-    "btn_reset_unlocks": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset Unlocks"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "重置解锁"
-          }
-        }
-      }
-    },
-    "label_reset_stats_confirm": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset all statistics? This cannot be undone."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "确定重置所有统计数据？此操作不可撤销。"
-          }
-        }
-      }
-    },
-    "label_reset_unlocks_confirm": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset all unlocks? This cannot be undone."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "确定重置所有解锁？此操作不可撤销。"
-          }
-        }
-      }
-    },
-    "btn_reset": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "重置"
-          }
-        }
-      }
-    },
-    "label_new_unlocks": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New Unlocks!"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "新解锁！"
-          }
-        }
-      }
-    },
-    "label_total_runs": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total Runs: %lld"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "总冒险: %lld"
-          }
-        }
-      }
-    },
-    "label_unlock_progress": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unlocked: %lld/%lld"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已解锁: %lld/%lld"
-          }
-        }
-      }
-    },
-    "relic_red_guard_ring": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Red Guard Ring"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "红卫戒指"
-          }
-        }
-      }
-    },
-    "relic_bird_faced_urn": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bird-Faced Urn"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "鸟面瓮"
-          }
-        }
-      }
-    },
-    "relic_potion_belt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Potion Belt"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "药水腰带"
-          }
-        }
-      }
-    },
-    "relic_war_paint": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "War Paint"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "战漆"
-          }
-        }
-      }
-    },
-    "relic_lantern_turn": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lantern"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "灯笼"
-          }
-        }
-      }
-    },
-    "relic_bag_of_gems": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bag of Gems"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "宝石袋"
-          }
-        }
-      }
-    },
-    "relic_ink_bottle": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ink Bottle"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "墨水瓶"
-          }
-        }
-      }
-    },
-    "relic_sundial_energy": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sundial"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "日晷"
-          }
-        }
-      }
-    },
-    "relic_kunai_dex": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kunai"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "苦无"
-          }
-        }
-      }
-    },
-    "relic_runic_cube": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Runic Cube"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "符文立方体"
-          }
-        }
-      }
-    },
-    "relic_tungsten_helm": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tungsten Helm"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "钨钢头盔"
-          }
-        }
-      }
-    },
-    "relic_ring_of_the_snake_plus": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ring of the Serpent"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "蛇环"
-          }
-        }
-      }
-    },
-    "relic_frozen_core": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frozen Core"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "冰冻核心"
-          }
-        }
-      }
-    },
-    "potion_dexterity_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dexterity Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "敏捷药水"
-          }
-        }
-      }
-    },
-    "potion_draw_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Draw Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "抽牌药水"
-          }
-        }
-      }
-    },
-    "potion_vulnerability_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vulnerability Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "易伤药水"
-          }
-        }
-      }
-    },
-    "potion_power_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Power Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "能力药水"
-          }
-        }
-      }
-    },
-    "potion_poison_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Poison Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "毒药水"
-          }
-        }
-      }
-    },
-    "potion_buffer_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buffer Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "缓冲药水"
-          }
-        }
-      }
-    },
-    "potion_genocide_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Genocide Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "灭绝药水"
-          }
-        }
-      }
-    },
-    "potion_ambrosia_potion": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ambrosia Potion"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "神酒"
-          }
-        }
-      }
-    },
-    "enemy_rat_king": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rat King"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "鼠王"
-          }
-        }
-      }
-    },
-    "enemy_skeleton": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skeleton"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "骷髅"
-          }
-        }
-      }
-    },
-    "enemy_mage_knight": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mage Knight"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "魔法骑士"
-          }
-        }
-      }
-    },
-    "enemy_golem": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Golem"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "石像"
-          }
-        }
-      }
-    },
-    "enemy_shadow_lurker": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shadow Lurker"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "暗影潜伏者"
-          }
-        }
-      }
-    },
-    "enemy_spider": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spider"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "蜘蛛"
-          }
-        }
-      }
-    },
-    "enemy_dark_paladin": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dark Paladin"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "黑暗圣骑士"
-          }
-        }
-      }
-    },
-    "enemy_lich": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lich"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "巫妖"
-          }
-        }
-      }
-    },
-    "enemy_void_walker": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Void Walker"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "虚空行者"
-          }
-        }
-      }
-    },
-    "enemy_corrupted_spire": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Corrupted Spire"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "腐化高塔"
-          }
-        }
-      }
+      },
+      "extractionState": "manual"
     }
   },
   "version": "1.0"

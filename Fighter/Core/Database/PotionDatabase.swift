@@ -121,14 +121,6 @@ struct PotionDatabase {
             target: .none,
             rarity: .uncommon
         ),
-        PotionTemplate(
-            id: "essence_of_steel",
-            nameKey: "potion_essence_of_steel",
-            descriptionKey: "potion_essence_of_steel_desc",
-            effects: [.gainBlock(12)],
-            target: .selfTarget,
-            rarity: .uncommon
-        ),
 
         // MARK: - New Rare Potions
 
@@ -156,22 +148,6 @@ struct PotionDatabase {
             descriptionKey: "potion_dexterity_potion_desc",
             effects: [.applyBuff(.dexterity, stacks: 2)],
             target: .selfTarget,
-            rarity: .common
-        ),
-        PotionTemplate(
-            id: "draw_potion",
-            nameKey: "potion_draw_potion",
-            descriptionKey: "potion_draw_potion_desc",
-            effects: [.drawCards(3)],
-            target: .selfTarget,
-            rarity: .common
-        ),
-        PotionTemplate(
-            id: "vulnerability_potion",
-            nameKey: "potion_vulnerability_potion",
-            descriptionKey: "potion_vulnerability_potion_desc",
-            effects: [.applyDebuff(.vulnerable, stacks: 3)],
-            target: .enemy,
             rarity: .common
         ),
 

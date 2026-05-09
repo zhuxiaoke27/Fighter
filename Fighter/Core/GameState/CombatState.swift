@@ -25,6 +25,9 @@ final class CombatState {
     var selectedCardID: String? = nil
     var selectedTargetID: UUID? = nil
     var cardsPlayedThisTurn: Int = 0
+    var attackCardsPlayedThisTurn: Int = 0
+    var skillCardsPlayedThisTurn: Int = 0
+    var blockGainedThisTurn: Int = 0
 
     var drawPileCount: Int { drawPile.count }
     var discardPileCount: Int { discardPile.count }
