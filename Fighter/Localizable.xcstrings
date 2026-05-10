@@ -14196,8 +14196,7 @@
             "value": "确认"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_neow_bonus": {
       "localizations": {
@@ -14272,34 +14271,32 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Confirm this choice?"
+            "value": "Choose this option?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "确认此选择？"
+            "value": "确认选择此选项？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_rest": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rest here? This will end your rest site visit."
+            "value": "Rest here? This will use your rest site."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在此休息？休息后将离开休息点。"
+            "value": "确认休息？这将消耗篝火机会。"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_upgrade": {
       "localizations": {
@@ -14312,11 +14309,10 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "升级这张卡牌？"
+            "value": "确认升级这张卡牌？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_purchase_card": {
       "localizations": {
@@ -14329,11 +14325,10 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "购买这张卡牌？"
+            "value": "确认购买这张卡牌？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_purchase_relic": {
       "localizations": {
@@ -14346,11 +14341,10 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "购买这个遗物？"
+            "value": "确认购买这个遗物？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_purchase_potion": {
       "localizations": {
@@ -14363,11 +14357,10 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "购买这瓶药水？"
+            "value": "确认购买这瓶药水？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_remove_card": {
       "localizations": {
@@ -14380,45 +14373,42 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "从牌组中移除此卡牌？"
+            "value": "确认从牌组中移除这张卡牌？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_leave_shop": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Leave the shop? You can't return later."
+            "value": "Leave the shop? You cannot return."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "离开商店？离开后无法返回。"
+            "value": "确认离开商店？离开后无法返回。"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_boss_relic": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Take this Boss relic?"
+            "value": "Choose this boss relic?"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "选择这个Boss遗物？"
+            "value": "确认选择此Boss遗物？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_take_relic": {
       "localizations": {
@@ -14431,11 +14421,10 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "领取这个遗物？"
+            "value": "确认获取此遗物？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_take_potion": {
       "localizations": {
@@ -14448,11 +14437,10 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "领取这瓶药水？"
+            "value": "确认获取此药水？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_take_card": {
       "localizations": {
@@ -14465,28 +14453,26 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "将此卡牌加入牌组？"
+            "value": "确认将此卡牌加入牌组？"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     },
     "confirm_skip_reward": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Skip all remaining rewards?"
+            "value": "Skip all rewards? This cannot be undone."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "跳过所有剩余奖励？"
+            "value": "确认跳过所有奖励？此操作无法撤销。"
           }
         }
-      },
-      "extractionState": "manual"
+      }
     }
   },
   "version": "1.0"

@@ -803,13 +803,19 @@ enum EnemyDatabase {
 
     static func eliteBattle(act: Int) -> [EnemyTemplate] {
         let elites = allEnemies.filter { $0.act == act && $0.isElite }
-        guard let elite = elites.randomElement() else { return [cultist] }
+        guard let elite = elites.randomElement() else {
+            let anyElite = allEnemies.filter { $0.isElite }
+            return [anyElite.first ?? cultist]
+        }
         return [elite]
     }
 
     static func bossBattle(act: Int) -> [EnemyTemplate] {
         let bosses = allEnemies.filter { $0.act == act && $0.isBoss }
-        guard let boss = bosses.randomElement() else { return [cultist] }
+        guard let boss = bosses.randomElement() else {
+            let anyBoss = allEnemies.filter { $0.isBoss }
+            return [anyBoss.first ?? cultist]
+        }
         return [boss]
     }
 }

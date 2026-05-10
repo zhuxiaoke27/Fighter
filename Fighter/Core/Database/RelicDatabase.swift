@@ -649,7 +649,7 @@ struct RelicDatabase {
         if let rarity {
             pool = pool.filter { $0.rarity == rarity }
         }
-        return pool.randomElement() ?? allRelics[3]
+        return pool.randomElement() ?? allRelics.first { $0.rarity == .common && !ownedIDs.contains($0.id) } ?? allRelics[3]
     }
 
     static func randomBossRelics(count: Int = 3, excluding owned: [RelicTemplate] = []) -> [RelicTemplate] {
