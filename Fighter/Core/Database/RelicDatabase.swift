@@ -14,7 +14,7 @@ struct RelicDatabase {
             nameKey: "relic_burning_blood",
             descriptionKey: "relic_burning_blood_desc",
             effects: [
-                RelicEffect(trigger: .onCombatStart, effect: .heal(6))
+                RelicEffect(trigger: .passive, effect: .heal(6))
             ],
             rarity: .starter,
             tags: [.starter, .warrior, .defensive]
@@ -546,7 +546,7 @@ struct RelicDatabase {
             nameKey: "relic_bag_of_gems",
             descriptionKey: "relic_bag_of_gems_desc",
             effects: [
-                RelicEffect(trigger: .passive, effect: .composite([]))
+                RelicEffect(trigger: .onCombatStart, effect: .gainBlock(3))
             ],
             rarity: .common,
             tags: [.common, .economic]

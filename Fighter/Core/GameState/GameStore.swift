@@ -167,6 +167,10 @@ final class GameStore {
         rewardRelic = nil
         rewardPotion = nil
         if victory {
+            // Post-combat healing relics
+            if player.relics.contains(where: { $0.id == "burning_blood" }) {
+                player.currentHP = min(player.maxHP, player.currentHP + 6)
+            }
             // Inserter relic: gain 1 max HP on combat victory
             if player.relics.contains(where: { $0.id == "inserter" }) {
                 player.maxHP += 1

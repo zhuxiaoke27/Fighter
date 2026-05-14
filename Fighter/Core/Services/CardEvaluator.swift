@@ -89,6 +89,8 @@ struct CardEvaluator {
                 frail: player.hasDebuff(.frail)
             )
             player.combatBlock += finalBlock
+            combat.blockGainedThisTurn += finalBlock
+            CombatEngine.triggerRelics(.onBlockGained, store: store)
 
         case .applyBuff(let type, let stacks):
             player.addBuff(BuffInstance(type: type, stacks: stacks))

@@ -125,6 +125,8 @@ enum CombatEngine {
         let metallicize = store.player.buffStacks(.metallicize)
         if metallicize > 0 {
             store.player.combatBlock += metallicize
+            combat.blockGainedThisTurn += metallicize
+            triggerRelics(.onBlockGained, store: store)
         }
 
         // Persistent power buffs
@@ -143,6 +145,8 @@ enum CombatEngine {
         let platedArmor = store.player.buffStacks(.platedArmor)
         if platedArmor > 0 {
             store.player.combatBlock += platedArmor
+            combat.blockGainedThisTurn += platedArmor
+            triggerRelics(.onBlockGained, store: store)
         }
 
         // Regenerate: heal at turn start
@@ -156,7 +160,10 @@ enum CombatEngine {
         let frostStacks = store.player.buffStacks(.frost)
         if frostStacks > 0 {
             let focusBonus = store.player.buffStacks(.focus)
-            store.player.combatBlock += frostStacks + focusBonus
+            let frostBlock = frostStacks + focusBonus
+            store.player.combatBlock += frostBlock
+            combat.blockGainedThisTurn += frostBlock
+            triggerRelics(.onBlockGained, store: store)
         }
 
         // Dark: deal random damage at turn start
@@ -625,6 +632,7 @@ enum CombatEngine {
                 case "orichalcum":
                     if player.combatBlock == 0 {
                         player.combatBlock += 6
+                        if let combat { combat.blockGainedThisTurn += 6 }
                     }
                 case "meat_on_the_bone":
                     if player.currentHP <= player.maxHP / 2 {
@@ -645,6 +653,7 @@ enum CombatEngine {
                     player.combatEnergy += 1
                 case "chemical_x":
                     player.combatBlock += 5
+                    if let combat { combat.blockGainedThisTurn += 5 }
                 // New relics
                 case "happy_flower":
                     if let combat, combat.turnNumber % 3 == 0 {
@@ -667,6 +676,7 @@ enum CombatEngine {
                     }
                 case "wrist_blade":
                     player.combatBlock += 2
+                    if let combat { combat.blockGainedThisTurn += 2 }
                 case "pantograph":
                     if player.currentHP <= player.maxHP / 2 {
                         player.currentHP = min(player.currentHP + 5, player.maxHP)
@@ -677,6 +687,7 @@ enum CombatEngine {
                 case "orichalcum_heavy":
                     if player.combatBlock == 0 {
                         player.combatBlock += 4
+                        if let combat { combat.blockGainedThisTurn += 4 }
                     }
                 // New uncommon relics
                 case "champion_belt":
@@ -760,8 +771,6 @@ enum CombatEngine {
                     if let combat, combat.blockGainedThisTurn > 0 {
                         player.currentHP = min(player.maxHP, player.currentHP + 2)
                     }
-                case "bag_of_gems":
-                    player.combatBlock += 3
                 case "potion_belt":
                     break // passive: potion slot expansion handled in PlayerState
                 default:
@@ -813,6 +822,7 @@ enum CombatEngine {
              (.onExhaust, .onExhaust),
              (.onDraw, .onDraw),
              (.onGainStrength, .onGainStrength),
+             (.onBlockGained, .onBlockGained),
              (.passive, .passive):
             return true
         case (.onCardPlayed(let relicType), .onCardPlayed(let eventType)):
